@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mobile-first Site — Updated</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* ---------- Visual / animation helpers ---------- */
+
+    /* Remove default body margin on mobile feel */
+    body { margin: 0; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+    /* Menu panel slide in/out from left */
+    .menu-off { transform: translateX(-100%); transition: transform 360ms cubic-bezier(.22,.9,.34,1); }
+    .menu-on  { transform: translateX(0%);  transition: transform 360ms cubic-bezier(.22,.9,.34,1); }
+
+    /* Backdrop fade */
+    .backdrop-hidden { opacity: 0; pointer-events: none; transition: opacity 260ms ease; }
+    .backdrop-visible { opacity: 1; pointer-events: auto; transition: opacity 260ms ease; }
+
+    /* Staggered items */
+    .menu-item { opacity: 0; transform: translateX(-10px); transition: transform 360ms ease, opacity 360ms ease; }
+    .menu-item.show { opacity: 1; transform: translateX(0); }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 420ms ease, transform 420ms ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+
+    /* CTA arrow before text and small animation */
+    .cta-arrow { display:inline-block; transform-origin:center; transition: transform 240ms ease; margin-right:8px; }
+    .cta-link:hover .cta-arrow { transform: translateX(6px); }
+
+    /* Carousel: center card large, neighbors smaller */
+    .carousel-track { display:flex; gap:12px; align-items:center; transition: transform 420ms cubic-bezier(.22,.9,.34,1); will-change: transform; padding-left:6px; padding-right:6px; }
+    .card { flex: 0 0 76%; max-width: 76%; border-radius:12px; overflow:hidden; box-shadow:0 10px 20px rgba(8,24,48,0.12); background:white; transform-origin:center; transition: transform 360ms ease, opacity 360ms ease; }
+    .card.small { flex: 0 0 58%; max-width: 58%; transform: scale(.82); opacity:.85; }
+
+    /* active card pop animation */
+    .card.active { transform: scale(1); }
+    .card-pop { animation: popCard 360ms cubic-bezier(.22,.9,.34,1); }
+    @keyframes popCard {
+      from { transform: scale(.96); opacity:.92; }
+      to   { transform: scale(1); opacity:1; }
+    }
+
+    /* arrow press effect */
+    .arrow:active { transform: scale(.96); }
+
+    /* keep everything mobile-first */
+    @media (min-width: 768px) {
+      /* hide mobile elements on wider screens if needed */
+      .mobile-only { display: none; }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- ---------------- header (NOT fixed, TRANSPARENT) ---------------- -->
+  <header class="w-full mobile-only">
+    <div class="flex items-center justify-between px-4 py-3">
+      <!-- menu icon LEFT -->
+      <button id="openMenuBtn" aria-label="Open menu" class="text-blue-900">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- logo center -->
+      <div class="flex-1 flex justify-center">
+        <img src="/img/hallmark-2023-theme-light.png" alt="Logo" class="h-8 object-contain">
+      </div>
+
+      <!-- search icon RIGHT (regular icon) -->
+      <button id="searchIcon" aria-label="Search (not functional)" class="text-blue-900">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ---------------- Full-screen blue menu (slides in from left) ---------------- -->
+  <div id="menuContainer" class="fixed inset-0 z-50 mobile-only hidden">
+    <!-- backdrop -->
+    <div id="menuBackdrop" class="absolute inset-0 bg-black/30 backdrop-blur-sm backdrop-brightness-90"></div>
+
+    <!-- panel (full-screen blue) -->
+    <div id="menuPanel" class="absolute top-0 left-0 w-full h-full bg-[#0b53a3] text-white menu-off">
+      <div class="h-full flex flex-col px-6 pt-4 pb-6">
+        <!-- close button on RIGHT edge -->
+        <div class="flex items-center justify-end">
+          <button id="closeMenuBtn" aria-label="Close menu" class="p-2 text-white">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- menu items (stagger animate) -->
+        <nav id="menuNav" class="mt-6 flex-1 flex flex-col justify-start gap-6">
+          <a class="menu-item text-2xl font-semibold" href="#">Who We Are</a>
+          <a class="menu-item text-2xl font-semibold" href="#">What We Do</a>
+          <a class="menu-item text-2xl font-semibold" href="#">Sustainability</a>
+          <a class="menu-item text-2xl font-semibold" href="#">Investors</a>
+          <a class="menu-item text-2xl font-semibold" href="#">Newsroom</a>
+          <a class="menu-item text-2xl font-semibold" href="#">Career</a>
+        </nav>
+
+        <div class="mt-6 text-sm text-white/80">Menu (mobile) — links disabled for now</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------------- Main content (mobile-first) ---------------- -->
+  <main class="pt-2">
+
+    <!-- HERO -->
+    <section id="home" class="bg-[#114B95] text-white py-8">
+      <div class="max-w-lg mx-auto px-4 text-center">
+        <p class="reveal text-base leading-relaxed mb-6">
+          we believe that humanity can solve any challenge. that our greatest resource is our people. and that responsibility, trust and integrity will help us drive a prosperous future.
+        </p>
+
+        <!-- CTA: arrow BEFORE text and animated -->
+        <div class="reveal">
+          <a class="cta-link inline-flex items-center gap-2 px-5 py-2 rounded-md border border-white/20 justify-center" href="/who-we-are" style="background: rgba(255,255,255,0.06);">
+            <span class="cta-arrow text-white text-lg" aria-hidden>
+              <!-- arrow icon -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="text-white font-semibold">discover who we are</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT WE DO -->
+    <section class="bg-[#F5F6F7] py-6 px-4">
+      <div class="max-w-lg mx-auto text-center">
+        <p class="text-sm font-semibold text-[#0A2A66] tracking-wide mb-2 reveal">what we do</p>
+        <h2 class="text-2xl font-extrabold text-[#0A2A66] mb-3 reveal">energy that fuels <br> the world</h2>
+        <p class="max-w-md mx-auto text-gray-700 text-base reveal">
+          We’re working to deliver the energy needed today. To lower the carbon
+          intensity of our operations. And to build the lower carbon energy
+          system of tomorrow.
+        </p>
+      </div>
+
+      <!-- image grid -->
+      <div class="mt-4 px-2">
+        <div class="grid grid-cols-2 gap-3 max-w-lg mx-auto">
+          <img class="w-full h-28 object-cover rounded-lg reveal" src="/img/dohwnload.jpeg" alt="">
+          <img class="w-full h-28 object-cover rounded-lg reveal" src="/img/download (1).jpeg" alt="">
+          <img class="col-span-2 w-full h-40 object-cover rounded-lg reveal" src="/img/download.jpeg" alt="">
+          <img class="w-full h-28 object-cover rounded-lg reveal" src="/img/downloajd.jpeg" alt="">
+          <img class="w-full h-28 object-cover rounded-lg reveal" src="/img/downloamd.jpeg" alt="">
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSROOM CAROUSEL -->
+    <section class="py-6 px-4">
+      <div class="max-w-lg mx-auto">
+        <div class="text-center mb-4">
+          <p class="text-sm font-semibold text-blue-900 uppercase">newsroom</p>
+          <h3 class="text-2xl font-bold text-blue-900">latest at chevron</h3>
+        </div>
+
+        <!-- carousel viewport -->
+        <div id="carouselViewport" class="overflow-hidden">
+          <div id="carouselTrack" class="carousel-track">
+            <!-- Example cards: first is active -->
+            <article class="card active card-pop" data-index="0" aria-hidden="false">
+              <img class="w-full h-40 object-cover" src="/carousel-img/supporting-stem-education-in-new-mexico-hero.jpg" alt="">
+              <div class="p-4">
+                <p class="text-xs text-gray-500 mb-2">November 18, 2025</p>
+                <h4 class="text-sm font-semibold">supporting STEM education in new mexico</h4>
+                <p class="mt-2 text-xs text-gray-600">read article</p>
+              </div>
+            </article>
+
+            <article class="card small" data-index="1" aria-hidden="true">
+              <img class="w-full h-40 object-cover" src="/carousel-img/frontline-innovations-drive-business-solutions-hero.jpg" alt="">
+              <div class="p-4">
+                <p class="text-xs text-gray-500 mb-2">November 12, 2025</p>
+                <h4 class="text-sm font-semibold">frontline innovations drive business solutions</h4>
+              </div>
+            </article>
+
+            <article class="card small" data-index="2" aria-hidden="true">
+              <img class="w-full h-40 object-cover" src="/carousel-img/Apolo_Newsroom_Hero-01-D4-1.jpg" alt="">
+              <div class="p-4">
+                <p class="text-xs text-gray-500 mb-2">November 12, 2025</p>
+                <h4 class="text-sm font-semibold">how apolo helps pinpoint prime drilling</h4>
+              </div>
+            </article>
+
+            <article class="card small" data-index="3" aria-hidden="true">
+              <img class="w-full h-40 object-cover" src="/carousel-img/Apex_Newsroom_Hero-01-D2.jpg" alt="">
+              <div class="p-4">
+                <p class="text-xs text-gray-500 mb-2">November 12, 2025</p>
+                <h4 class="text-sm font-semibold">a smarter way to prospect</h4>
+              </div>
+            </article>
+
+            <article class="card small" data-index="4" aria-hidden="true">
+              <img class="w-full h-40 object-cover" src="/carousel-img/from-service-to-solutions-veterans-solve-problems-01.jpg" alt="">
+              <div class="p-4">
+                <p class="text-xs text-gray-500 mb-2">November 12, 2025</p>
+                <h4 class="text-sm font-semibold">from service to solutions</h4>
+              </div>
+            </article>
+
+            <article class="card small" data-index="5" aria-hidden="true">
+              <img class="w-full h-40 object-cover" src="/carousel-img/robotics-nr-hero.jpg" alt="">
+              <div class="p-4">
+                <p class="text-xs text-gray-500 mb-2">November 10, 2025</p>
+                <h4 class="text-sm font-semibold">robotics supports a more efficient workplace</h4>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- carousel controls -->
+        <div class="mt-4 flex items-center gap-3 justify-between">
+          <button id="carouselPrev" class="arrow flex-1 bg-blue-900 text-white py-3 rounded-lg">◀</button>
+
+          <!-- dots -->
+          <div id="carouselDots" class="flex gap-2 justify-center flex-1">
+            <!-- dots generated by JS -->
+          </div>
+
+          <button id="carouselNext" class="arrow flex-1 bg-blue-900 text-white py-3 rounded-lg">▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section id="contact" class="bg-blue-900 text-white py-10 px-4">
+      <div class="max-w-lg mx-auto text-center reveal">
+        <h4 class="text-2xl font-semibold mb-2">Get in touch</h4>
+        <p class="mb-4">Have questions? Want to work together? Reach out to us.</p>
+        <a class="inline-block bg-white/10 px-6 py-2 rounded-md border border-white/20" href="mailto:info@yourcompany.com">Contact Us</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ---------------- Scripts ---------------- -->
+  <script>
+    /* ---------------- Menu open/close and staggered animate ---------------- */
+    (function() {
+      const openBtn = document.getElementById('openMenuBtn');
+      const closeBtn = document.getElementById('closeMenuBtn');
+      const container = document.getElementById('menuContainer');
+      const panel = document.getElementById('menuPanel');
+      const backdrop = document.getElementById('menuBackdrop');
+      const items = document.querySelectorAll('.menu-item');
+
+      function openMenu() {
+        container.classList.remove('hidden');
+        container.style.display = 'block';
+        // show backdrop
+        backdrop.classList.remove('backdrop-hidden');
+        backdrop.classList.add('backdrop-visible');
+
+        // slide panel in
+        requestAnimationFrame(() => {
+          panel.classList.remove('menu-off');
+          panel.classList.add('menu-on');
+        });
+
+        // stagger menu items
+        items.forEach((el, i) => {
+          el.classList.remove('show');
+          setTimeout(() => el.classList.add('show'), 90 * (i + 1));
+        });
+
+        // prevent body scroll while menu open
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        // slide panel out (to left)
+        panel.classList.remove('menu-on');
+        panel.classList.add('menu-off');
+
+        backdrop.classList.remove('backdrop-visible');
+        backdrop.classList.add('backdrop-hidden');
+
+        // hide after transition
+        setTimeout(() => {
+          container.style.display = 'none';
+          items.forEach(el => el.classList.remove('show'));
+        }, 380);
+
+        document.body.style.overflow = '';
+      }
+
+      openBtn && openBtn.addEventListener('click', openMenu);
+      closeBtn && closeBtn.addEventListener('click', closeMenu);
+      backdrop && backdrop.addEventListener('click', closeMenu);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+
+      // init backdrop hidden
+      backdrop.classList.add('backdrop-hidden');
+      container.style.display = 'none';
+    })();
+
+    /* ---------------- Scroll reveal using IntersectionObserver ---------------- */
+    (function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    })();
+
+    /* ---------------- Carousel logic (mobile) ---------------- */
+    (function() {
+      const track = document.getElementById('carouselTrack');
+      const cards = Array.from(track.children);
+      const prevBtn = document.getElementById('carouselPrev');
+      const nextBtn = document.getElementById('carouselNext');
+      const dotsContainer = document.getElementById('carouselDots');
+
+      let current = 0;
+
+      // create dots
+      cards.forEach((c, i) => {
+        const d = document.createElement('button');
+        d.className = 'w-2 h-2 rounded-full bg-gray-300';
+        d.style.opacity = i === 0 ? '1' : '.4';
+        d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        d.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(d);
+      });
+      const dots = Array.from(dotsContainer.children);
+
+      function layout() {
+        // update classes for size: center current -> normal, neighbors small
+        cards.forEach((card, idx) => {
+          card.classList.remove('small', 'active', 'card-pop');
+          if (idx === current) {
+            card.classList.add('active', 'card-pop');
+            card.setAttribute('aria-hidden', 'false');
+          } else {
+            card.classList.add('small');
+            card.setAttribute('aria-hidden', 'true');
+          }
+        });
+
+        // compute translate to center the current card
+        // we compute cumulative widths and set transform accordingly
+        const viewport = document.getElementById('carouselViewport');
+        const vpW = viewport.clientWidth;
+        // get left offset of current card relative to track
+        let left = 0;
+        for (let i = 0; i < current; i++) {
+          left += cards[i].getBoundingClientRect().width + 12; // gap approximation (12)
+        }
+        const currentWidth = cards[current].getBoundingClientRect().width;
+        const gap = 12;
+        const targetX = (vpW - currentWidth) / 2;
+        const translate = -(left + (current * gap) - targetX);
+        track.style.transform = `translateX(${translate}px)`;
+
+        // update dots
+        dots.forEach((d,i)=> d.style.opacity = i === current ? '1' : '.4');
+      }
+
+      function goTo(i) {
+        if (i < 0) i = 0;
+        if (i > cards.length - 1) i = cards.length - 1;
+        current = i;
+        layout();
+      }
+
+      function next() { goTo(Math.min(current + 1, cards.length - 1)); }
+      function prev() { goTo(Math.max(current - 1, 0)); }
+
+      nextBtn.addEventListener('click', next);
+      prevBtn.addEventListener('click', prev);
+
+      // touch swipe support
+      let startX = 0;
+      track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, {passive:true});
+      track.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].clientX - startX;
+        const threshold = 40;
+        if (dx < -threshold) next();
+        else if (dx > threshold) prev();
+      }, {passive:true});
+
+      // relayout on load and resize
+      window.addEventListener('load', () => setTimeout(layout, 80));
+      window.addEventListener('resize', () => setTimeout(layout, 120));
+    })();
+  </script>
+</body>
+</html>
