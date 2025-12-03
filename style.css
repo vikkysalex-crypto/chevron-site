@@ -1,0 +1,106 @@
+
+    /* ---------- Visual / animation helpers ---------- */
+
+    /* Remove default body margin on mobile feel */
+    body { margin: 0; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+    /* Menu panel slide in/out from left */
+    .menu-off { transform: translateX(-100%); transition: transform 360ms cubic-bezier(.22,.9,.34,1); }
+    .menu-on  { transform: translateX(0%);  transition: transform 360ms cubic-bezier(.22,.9,.34,1); }
+
+    /* Backdrop fade */
+    .backdrop-hidden { opacity: 0; pointer-events: none; transition: opacity 260ms ease; }
+    .backdrop-visible { opacity: 1; pointer-events: auto; transition: opacity 260ms ease; }
+
+    /* Staggered items */
+    .menu-item { opacity: 0; transform: translateX(-10px); transition: transform 360ms ease, opacity 360ms ease; }
+    .menu-item.show { opacity: 1; transform: translateX(0); }
+
+    /* Reveal on scroll (used by many elements) */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 420ms cubic-bezier(.2,.9,.3,1), transform 420ms cubic-bezier(.2,.9,.3,1); }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+
+    /* CTA arrow before text and small animation */
+    .cta-arrow { display:inline-block; transform-origin:center; transition: transform 240ms ease; margin-right:8px; }
+    .cta-link:hover .cta-arrow { transform: translateX(6px); }
+
+    /* Carousel: center card large, neighbors smaller */
+    .carousel-track { display:flex; gap:12px; align-items:center; transition: transform 420ms cubic-bezier(.22,.9,.34,1); will-change: transform; padding-left:6px; padding-right:6px; }
+    .card { flex: 0 0 76%; max-width: 76%; border-radius:12px; overflow:hidden; box-shadow:0 10px 20px rgba(8,24,48,0.12); background:white; transform-origin:center; transition: transform 360ms ease, opacity 360ms ease; }
+    .card.small { flex: 0 0 58%; max-width: 58%; transform: scale(.82); opacity:.85; }
+
+    /* active card pop animation */
+    .card.active { transform: scale(1); }
+    .card-pop { animation: popCard 360ms cubic-bezier(.22,.9,.34,1); }
+    @keyframes popCard {
+      from { transform: scale(.96); opacity:.92; }
+      to   { transform: scale(1); opacity:1; }
+    }
+
+    /* arrow press effect */
+    .arrow:active { transform: scale(.96); }
+
+    /* keep everything mobile-first */
+    @media (min-width: 768px) {
+      /* hide mobile elements on wider screens if needed */
+      .mobile-only { display: none; }
+    }
+
+    /* Typing caret — used in hero typing */
+    @keyframes blink-caret {
+      50% { border-color: transparent; }
+    }
+    #typing-paragraph {
+      border-right: 2px solid rgba(255,255,255,0.85);
+      padding-right: 2px;
+      animation: blink-caret 1s steps(1) infinite;
+      min-height: 1.25rem; /* avoid collapse before typing */
+      display: inline-block;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    /* If reduced motion, remove animations in CSS as fallback */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { transition: none !important; transform: none !important; opacity: 1 !important; }
+      .menu-off, .menu-on, .backdrop-hidden, .backdrop-visible, .menu-item { transition: none !important; }
+      #typing-paragraph { animation: none !important; border-right: 0 !important; }
+    }
+
+    
+/* Carousel section styles (paste into your main <style> or CSS file) */
+.carousel-viewport { overflow: hidden; }
+.carousel-track { display:flex; gap:12px; align-items:center; transition: transform 420ms cubic-bezier(.22,.9,.34,1); padding-left:6px; padding-right:36px; will-change: transform; }
+.card { flex: 0 0 76%; max-width: 76%; border-radius:12px; overflow:hidden; transform-origin:center; transition: transform 360ms ease, opacity 360ms ease, background-color 240ms ease; box-shadow:0 10px 20px rgba(8,24,48,0.06); }
+.card.small { flex: 0 0 58%; max-width: 58%; transform: scale(.84); opacity:.92; }
+.card.active { transform: scale(1); box-shadow:0 16px 28px rgba(8,24,48,0.12); }
+.card img { display:block; width:100%; height:160px; object-fit:cover; }
+
+/* spacing and readable content */
+.card-content { padding: 16px; min-height: 160px; display:flex; flex-direction:column; justify-content:space-between; gap: 8px; }
+
+/* Active/inactive backgrounds and text colors (using utility-like names) */
+.bg-active { background: #0066B2; color: #fff; }
+.bg-inactive { background: #ffffff; color: #0a254d; }
+
+/* Read link */
+.read-link { display:inline-flex; align-items:center; gap:8px; text-decoration:underline; font-weight:600; }
+
+/* Arrow buttons (circular white with black icon). Hidden via aria-hidden when not available */
+.arrow-btn { width:44px; height:44px; border-radius:9999px; display:flex; align-items:center; justify-content:center; background:#ffffff; border:none; box-shadow:0 6px 14px rgba(2,6,23,0.08); cursor:pointer; }
+.arrow-btn[aria-hidden="true"] { display:none; }
+.arrow-btn svg { width:18px; height:18px; color:#000; }
+
+/* Dots */
+.carousel-dots button { width:8px; height:8px; border-radius:9999px; background:#D1D5DB; border:none; opacity:.4; transition: opacity 200ms ease; }
+.carousel-dots button.active { opacity:1; }
+
+/* Padding for last card centering on larger viewports */
+@media (min-width: 640px) {
+  .carousel-track { padding-right: 48px; }
+  .card img { height: 160px; }
+}
+
+.read-link {
+  text-decoration: none !important;
+}
