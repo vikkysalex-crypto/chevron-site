@@ -359,3 +359,200 @@
     resizeTimer = setTimeout(layout, 120);
   });
 })();
+
+
+// energy page js 
+// scripts.js
+// Minimal JavaScript to add play/pause behavior for the hero video,
+// a simple modal open/close, and a scroll-snap carousel controller.
+// scripts.js
+// Controls: hero video play/pause with autoplay attempt, simple newsletter modal,
+// and a scroll-snap carousel with prev/next and pagination dots.
+// Safe: checks for missing DOM nodes so it won't throw on pages without all elements.
+
+document.addEventListener('DOMContentLoaded', function () {
+  // HERO video play/pause
+  const video = document.getElementById('hero-video');
+  const ppBtn = document.getElementById('hero-playpause');
+  const iconPlay = document.getElementById('icon-play');
+  const iconPause = document.getElementById('icon-pause');
+
+  if (video && ppBtn && iconPlay && iconPause) {
+    // ensure video plays (autoplay muted usually allowed)
+    const ensureAutoplay = async () => {
+      try {
+        // try to play the video (autoplay muted is allowed in most browsers)
+        await video.play();
+        ppBtn.setAttribute('aria-pressed', 'false');
+        iconPause.classList.remove('hidden');
+        iconPlay.classList.add('hidden');
+        console.log('Autoplay started');
+      } catch (e) {
+        // autoplay refused — show play icon and expose controls so user can start
+        iconPause.classList.add('hidden');
+        iconPlay.classList.remove('hidden');
+        ppBtn.setAttribute('aria-pressed', 'true');
+        video.controls = true; // helpful fallback so user can start playback
+        console.warn('Autoplay blocked — showing controls and play icon.', e);
+      }
+    };
+    ensureAutoplay();
+
+    ppBtn.addEventListener('click', function () {
+      if (video.paused) {
+        video.play().then(() => {
+          ppBtn.setAttribute('aria-pressed', 'false');
+          iconPause.classList.remove('hidden');
+          iconPlay.classList.add('hidden');
+        }).catch((err) => {
+          console.error('Play failed:', err);
+        });
+      } else {
+        video.pause();
+        ppBtn.setAttribute('aria-pressed', 'true');
+        iconPause.classList.add('hidden');
+        iconPlay.classList.remove('hidden');
+      }
+    });
+
+    // Optional: update play/pause icons if user uses native controls (keeps UI in sync)
+    video.addEventListener('play', () => {
+      iconPause.classList.remove('hidden');
+      iconPlay.classList.add('hidden');
+      ppBtn.setAttribute('aria-pressed', 'false');
+    });
+    video.addEventListener('pause', () => {
+      iconPause.classList.add('hidden');
+      iconPlay.classList.remove('hidden');
+      ppBtn.setAttribute('aria-pressed', 'true');
+    });
+  } else {
+    // If elements are missing, log but don't crash
+    if (!video) console.info('No #hero-video found — skipping hero video setup.');
+    if (!ppBtn) console.info('No #hero-playpause button found — skipping play/pause setup.');
+  }
+
+  // Simple modal show/hide logic
+  const modal = document.getElementById('newsletter-modal');
+  const modalClose = document.getElementById('modal-close');
+
+  if (modal && modalClose) {
+    // For demonstration: show modal once (remove for production if not desired)
+    try {
+      setTimeout(() => {
+        modal.classList.remove('hidden');
+      }, 800); // small delay to avoid being too intrusive
+    } catch (e) {
+      console.warn('Failed to show modal automatically:', e);
+    }
+
+    modalClose.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.add('hidden');
+    });
+  } else {
+    if (!modal) console.info('No #newsletter-modal found — skipping modal setup.');
+  }
+
+  // CAROUSEL functionality (scroll-snap)
+  const track = document.getElementById('carousel-track');
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+  const dotsContainer = document.getElementById('carousel-dots');
+
+  if (track && dotsContainer) {
+    // Build dots based on slides
+    const slides = Array.from(track.children).filter(n => n.nodeType === 1); // element nodes only
+    if (slides.length === 0) {
+      console.info('No slides found inside #carousel-track — skipping carousel setup.');
+    } else {
+      slides.forEach((slide, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'w-3 h-3 rounded-full bg-gray-300';
+        btn.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+        btn.addEventListener('click', () => {
+          slide.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+        });
+        dotsContainer.appendChild(btn);
+      });
+
+      const dots = Array.from(dotsContainer.children);
+
+      // Update active dot based on scroll position
+      const updateActiveDot = () => {
+        const scrollLeft = track.scrollLeft;
+        // find the slide whose offsetLeft is closest to scrollLeft
+        let active = 0;
+        let minDiff = Infinity;
+        slides.forEach((s, i) => {
+          const diff = Math.abs(scrollLeft - s.offsetLeft);
+          if (diff < minDiff) {
+            minDiff = diff;
+            active = i;
+          }
+        });
+        dots.forEach((d, i) => {
+          d.style.backgroundColor = i === active ? '#0ea5e9' : '';
+          d.classList.toggle('ring-2', i === active);
+        });
+      };
+
+      // Throttled scroll handler to avoid tight loops during scrolling
+      track.addEventListener('scroll', throttle(updateActiveDot, 100));
+      // initial set
+      updateActiveDot();
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          const visibleIndex = getVisibleIndex();
+          const target = Math.max(0, visibleIndex - 1);
+          slides[target].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+        });
+      } else {
+        console.info('No #carousel-prev found — prev button disabled.');
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          const visibleIndex = getVisibleIndex();
+          const target = Math.min(slides.length - 1, visibleIndex + 1);
+          slides[target].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+        });
+      } else {
+        console.info('No #carousel-next found — next button disabled.');
+      }
+
+      function getVisibleIndex() {
+        const scrollLeft = track.scrollLeft;
+        let idx = 0;
+        let minDiff = Infinity;
+        slides.forEach((s, i) => {
+          const diff = Math.abs(scrollLeft - s.offsetLeft);
+          if (diff < minDiff) {
+            minDiff = diff;
+            idx = i;
+          }
+        });
+        return idx;
+      }
+    }
+  } else {
+    if (!track) console.info('No #carousel-track found — skipping carousel setup.');
+    if (!dotsContainer) console.info('No #carousel-dots found — skipping dots setup.');
+  }
+
+  // throttle utility
+  function throttle(fn, wait) {
+    let last = 0;
+    return function (...args) {
+      const now = Date.now();
+      if (now - last >= wait) {
+        last = now;
+        fn.apply(this, args);
+      }
+    };
+  }
+});

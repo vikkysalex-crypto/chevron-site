@@ -104,3 +104,41 @@
 .read-link {
   text-decoration: none !important;
 }
+
+
+
+
+/* energy */
+/* styles.css
+   Small complementary styles; keep minimal because Tailwind handles the bulk.
+*/
+
+/* Ensure the modal is visually centered on small screens */
+#newsletter-modal > div {
+  max-height: 90vh;
+}
+
+/* Provide an accessible focus ring for keyboard nav (more visible than default) */
+:focus {
+  outline: 3px solid rgba(59,130,246,0.5);
+  outline-offset: 2px;
+}
+
+/* If browser doesn't support aspect-ratio, give a fallback for the hero video height */
+@supports not (aspect-ratio: 16/9) {
+  #hero-video {
+    height: 60vh;
+    object-fit: cover;
+  }
+}
+
+/* Small utility to hide elements visually but keep them for screen readers */
+.sr-only {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+

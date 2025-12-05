@@ -12,10 +12,10 @@
 <body class="bg-white text-gray-900">
 
   <!-- ---------------- header (NOT fixed, TRANSPARENT) ---------------- -->
-  <header class="w-full mobile-only">
+  <header class="w-full mobile-only fixed top-0 left-0 z-50 bg-white/10 backdrop-blur-sm">
     <div class="flex items-center justify-between px-4 py-3">
       <!-- menu icon LEFT -->
-      <button type="button" id="openMenuBtn" aria-label="Open menu" class="text-blue-900">
+      <button type="button" id="openMenuBtn" aria-label="Open menu" class="text-white">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden>
           <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
@@ -27,7 +27,7 @@
       </div>
 
       <!-- search icon RIGHT (regular icon) -->
-      <button type="button" id="searchIcon" aria-label="Search (not functional)" class="text-blue-900">
+      <button type="button" id="searchIcon" aria-label="Search (not functional)" class="text-white">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
           <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -47,7 +47,7 @@
         <!-- close button on RIGHT edge -->
         <div class="flex items-center justify-end">
           <button type="button" id="closeMenuBtn" aria-label="Close menu" class="p-2 text-white">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
               <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </button>
@@ -61,6 +61,7 @@
           <a class="menu-item text-2xl font-semibold" href="#">Investors</a>
           <a class="menu-item text-2xl font-semibold" href="#">Newsroom</a>
           <a class="menu-item text-2xl font-semibold" href="#">Careers</a>
+          <a class="menu-item text-2xl font-semibold" href="/energy.html">Energies</a>
         </nav>
 
       </div>
@@ -71,13 +72,13 @@
   <main class="pt-2">
 
     <!-- HERO -->
-    <section id="home" class="bg-[#0b2d71] text-white py-8">
+    <section id="home" class="bg-[#0b2d71] text-white py-8 pt-24">
       <div class="max-w-lg mx-auto px-4 text-center">
         <!-- Typing paragraph: typing happens into #typing-paragraph; full text kept in hidden source -->
         <p class="reveal text-base leading-relaxed mb-6">
           <span id="typing-paragraph" aria-live="polite"></span>
           <span id="typing-source" class="hidden">
-we believe that humanity can solve any challenge. that our greatest resource is our people. and that responsibility, trust and integrity will help us drive a prosperous future.
+            we believe that humanity can solve any challenge. that our greatest resource is our people. and that responsibility, trust and integrity will help us drive a prosperous future.
           </span>
         </p>
 
