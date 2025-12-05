@@ -556,3 +556,14 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   }
 });
+
+
+// Sustainability dropdown
+const sustainBtn = document.getElementById('sustainBtn');
+const sustainDropdown = document.getElementById('sustainDropdown');
+const sustainArrow = document.getElementById('sustainArrow');
+
+sustainBtn.addEventListener('click', () => {
+  sustainDropdown.classList.toggle('hidden');
+  sustainArrow.classList.toggle('rotate-180');
+});

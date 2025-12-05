@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Energy — Tailwind Rewrite</title>
+  <title>What-we-do</title>
 
   <!-- Tailwind CDN for quick prototyping -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -75,27 +75,6 @@
   <!-- Main -->
   <main id="main-content" role="main" tabindex="-1" class="relative">
 
-    <!-- Modal (newsletter) -->
-    <div id="newsletter-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 hidden">
-      <div class="w-full max-w-xl bg-white rounded-lg shadow-lg overflow-hidden">
-        <div class="flex justify-end p-3">
-          <button id="modal-close" aria-label="Close" class="text-gray-600 hover:text-gray-900">
-            &times;
-          </button>
-        </div>
-        <div class="px-6 pb-8">
-          <p class="text-lg font-medium text-gray-900" id="newsletter-label">
-            Subscribe to our newsletter to receive news and updates.
-          </p>
-          <div class="mt-4">
-            <a href="/newsroom/preference-center" class="inline-block rounded-md bg-blue-600 text-white px-4 py-2 hover:bg-blue-700">
-              Sign up now
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- HERO: video + overlay content -->
     <section class="relative bg-gray-900 text-white">
       <!-- Video container -->
@@ -123,10 +102,9 @@
         <!-- Eyebrow + title + description -->
         <div class="absolute inset-x-0 bottom-0 md:bottom-6">
           <div class="container mx-auto px-6 md:px-12 pt-2 text-center bg-white">
-            <p class="inline-block bg-gray-200 text-blue-900 px-3 py-1 rounded-full text-sm font-semibold mb-4 text-black">what we do</p>
-            <h1 class="mt-2 text-2xl md:text-4xl font-extrabold text-[#0b2d71]">Energy Solutions</h1>
+            <h1 class="mt-2 text-4xl md:text-4xl font-extrabold text-[#0b2d71]">what we do</h1>
             <p class="mt-4 max-w-3xl pb-4 mx-auto text-lg md:text-xl text-black/90">
-              Affordable, reliable and ever-cleaner energy for today and tomorrow. That’s what we’re working towards, every day.
+              The world’s energy demands are greater than ever before. We’re working to deliver the lower carbon energy needed today while building the energy system of tomorrow.
             </p>
           </div>
         </div>
@@ -134,84 +112,158 @@
     </section>
     
 
-    <!-- Content blocks (oil, fuels, lubricants, chemicals) -->
-    <section class="container mx-auto px-4 md:px-8 py-12 md:py-20">
-      <!-- We'll use a vertical stack that alternates image left/right on larger screens -->
-      <div class="space-y-16">
-        <!-- Block 1 -->
-        <article class="md:flex md:items-stretch bg-white rounded-lg overflow-hidden shadow-sm">
-          <div class="md:w-1/2 h-56 md:h-auto bg-cover bg-center" style="background-image:url('/img/images.jpg');"></div>
-          <div class="md:w-1/2 p-8 bg-[#0b2d71] text-white">
-            <h2 class="text-2xl font-bold text-[#009dd9]">oil and natural gas</h2>
-            <p class="mt-4 text-base leading-relaxed text-white/90">
-              Oil and natural gas are essential to providing the energy we use every day. Our diverse set of assets helps us find and produce energy the world needs.
-            </p>
-            <a href="/what-we-do/energy/oil-and-natural-gas"
+    <!-- WHAT WE DO -->
+    <section class="bg-[#0b2d71] py-6 px-4">
+      <div class="max-w-lg mx-auto text-center">
+        <h2 class="text-4xl font-extrabold text-[#fff] mb-3 reveal">energy that fuels <br> the world</h2>
+        <p class="max-w-md mx-auto text-white text-base reveal pb-4">
+          We work every day to provide energy that helps billions of people achieve the benefits of modern life. And to create solutions that will help advance a lower carbon future.
+        </p>
+        <!-- button -->
+         <a href="/what-we-do/energy/explore-energy-solution"
              class="inline-flex items-center mt-6 font-medium group
              border border-[#009dd9] text-white px-5 py-3 rounded-md
              hover:bg-white hover:text-blue-900 transition-all">
-             <span class="mr-3">see our portfolio</span>
+             <span class="mr-3">explore energy solutions</span>
                 <svg class="w-5 h-5 transform group-hover:translate-x-1 transition"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path d="M5 12h14M13 5l7 7-7 7"/>
                 </svg>
             </a>
+      </div>
 
-          </div>
-        </article>
-
-        <!-- Block 2 (reverse on md+) -->
-        <article class="md:flex md:items-stretch bg-white rounded-lg overflow-hidden shadow-sm">
-          <div class="md:w-1/2 order-last md:order-first h-56 md:h-auto bg-cover bg-center" style="background-image:url('/img/downloadN.jpg');"></div>
-          <div class="md:w-1/2 p-8 bg-[#003653] text-white">
-            <h2 class="text-2xl font-bold text-teal-300">fuels</h2>
-            <p class="mt-4 text-base leading-relaxed text-white/90">
-              From drives across town to travel across countries, we’ve been providing quality transportation fuels for more than 140 years. And we’ll continue to deliver affordable, reliable, lower carbon fuels into the future.
-            </p>
-            <a href="/what-we-do/energy/fuels" class="inline-flex items-center mt-6 font-medium group
-             border border-[#009dd9] text-white px-5 py-3 rounded-md
-             hover:bg-white hover:text-blue-900 transition-all">
-              <span class="mr-3">learn about fuels</span>
-              <svg class="w-5 h-5 transform group-hover:translate-x-1 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- Block 3 -->
-        <article class="md:flex md:items-stretch bg-white rounded-lg overflow-hidden shadow-sm">
-          <div class="md:w-1/2 h-56 md:h-auto bg-cover bg-center" style="background-image:url('/img/download\ \(1\).jpg');"></div>
-          <div class="md:w-1/2 p-8 bg-[#06102a] text-white">
-            <h2 class="text-2xl font-bold text-sky-300">lubricants</h2>
-            <p class="mt-4 text-base leading-relaxed text-white/90">
-              From motor oil for the family car to lubricants for heavy duty transportation and industrial equipment, we deliver premium products that help improve fuel economy and extend the period between oil changes.
-            </p>
-            <a href="/what-we-do/energy/lubricants" class="inline-flex items-center mt-6 font-medium group
-             border border-[#009dd9] text-white px-5 py-3 rounded-md
-             hover:bg-white hover:text-blue-900 transition-all">
-              <span class="mr-3">explore lubricants</span>
-              <svg class="w-5 h-5 transform group-hover:translate-x-1 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- Block 4 -->
-        <article class="md:flex md:items-stretch bg-white rounded-lg overflow-hidden shadow-sm">
-          <div class="md:w-1/2 order-last md:order-first h-56 md:h-auto bg-cover bg-center" style="background-image:url('/img/images\ \(1\)1.jpg');"></div>
-          <div class="md:w-1/2 p-8 bg-[#2a0b33] text-white">
-            <h2 class="text-2xl font-bold text-purple-300">chemicals and additives</h2>
-            <p class="mt-4 text-base leading-relaxed text-white/90">
-              Together with our partners, Chevron is a leading manufacturer of petrochemicals and additives that are essential to creating everyday consumer and industrial products, as well as maximizing the reliability, efficiency and life of engines.
-            </p>
-            <a href="/what-we-do/energy/chemicals-and-additives" class="inline-flex items-center mt-6 font-medium group
-             border border-[#009dd9] text-white px-5 py-3 rounded-md
-             hover:bg-white hover:text-blue-900 transition-all">
-              <span class="mr-3">see chemicals and additives</span>
-              <svg class="w-5 h-5 transform group-hover:translate-x-1 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </article>
+      <!-- image grid -->
+      <div class="mt-4 px-2">
+        <div class="grid grid-cols-2 gap-3 max-w-lg mx-auto">
+          <img class="w-full h-28 object-cover rounded-lg reveal" src="/img/what-we-do-img-1.jpg" alt="">
+          <img class="w-full h-28 object-cover rounded-lg reveal" src="/img/what-we-do-img-2.jpg" alt="">
+          <img class="col-span-2 w-full h-40 object-cover rounded-lg reveal" src="/img/what-we-do-img-3.jpg" alt="">
+          <img class="w-full h-28 object-cover rounded-lg reveal" src="/img/what-we-do-img-4.jpg" alt="">
+          <img class="w-full h-28 object-cover rounded-lg reveal" src="/img/what-we-do-img-5.jpg" alt="">
+        </div>
       </div>
     </section>
+
+    <!-- WHAT WE DO (fixed & responsive) -->
+    <section class="bg-[#00708c] py-8 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+        <!-- Text column -->
+        <div class="text-center md:text-left">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3 reveal">
+            innovative technology.<br />scalable solutions.
+            </h2>
+
+            <p class="max-w-xl mx-auto md:mx-0 text-white text-base reveal pb-4">
+            Advancing technology helps us safely deliver the lower carbon energy the world needs.
+            New innovations help us build the lower carbon energy system for the future.
+            </p>
+
+            <div class="mt-6">
+            <a href="/what-we-do/energy/explore-energy-solution"
+                class="inline-flex items-center gap-3 font-medium border border-[#00b2bd] text-white px-5 py-3 rounded-md
+                        bg-transparent hover:bg-white hover:text-[#00708c] focus:outline-none focus:ring-4 focus:ring-[#00b2bd]/30 transition">
+                <span>discover tech and innovation</span>
+                <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            </div>
+        </div>
+
+        <!-- Image column -->
+        <div class="relative w-full">
+            <!-- Desktop: decorative background image (does not affect flow) -->
+            <div class="hidden md:block w-full h-[420px] bg-center bg-cover rounded-lg shadow-md"
+                style="background-image: url('/img/what-we-do-img.jpg');"
+                aria-hidden="true"></div>
+
+            <!-- Mobile: visible <img> for better loading and semantics -->
+            <img src="/img/what-we-do-img.jpg"
+                alt="Technology illustration — people working with industrial equipment" 
+                class="md:hidden w-full h-auto rounded-lg shadow-md object-cover" loading="lazy" />
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- MOBILE-FIRST: Delivering energy across the globe (Tailwind) -->
+    <section class="py-8 px-4 bg-[#3a0d36]">
+    <div class="max-w-md mx-auto"> <!-- mobile width; expands on larger screens -->
+        <!-- Heading + description -->
+        <header class="text-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#ba3093] leading-tight">
+            delivering energy across the globe
+        </h2>
+        <p class="mt-3 text-sm text-white">
+            No one company, industry, or country alone can build a lower carbon future. With our diverse assets,
+            investments, and people around the world, we are working to make meaningful progress while helping
+            local communities thrive.
+        </p>
+        </header>
+
+        <!-- CTA (full width on mobile) -->
+        <div class="mb-6">
+            <a href="/worldwide"
+                class="inline-flex items-center gap-3 font-medium border border-[#ba3093] text-white text-center px-5 py-3 rounded-md
+                        bg-transparent hover:bg-white hover:text-[#000] focus:outline-none focus:ring-4 focus:ring-[#3a0d36]/30 transition">
+                <span>discover chevron worldwide</span>
+                <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Cards (stacked for mobile) -->
+        <ul class="grid grid-cols-1 gap-4 list-none p-0 m-0">
+        <!-- Card 1 -->
+        <li>
+            <a href="/worldwide#1" class="group block rounded-lg overflow-hidden shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-200">
+            <img
+                src="/img/what-we-do-1.jpg"
+                alt="Chevron team on site in region one"
+                loading="lazy"
+                class="w-full h-48 object-cover"
+            >
+            </a>
+        </li>
+
+        <!-- Card 2 -->
+        <li>
+            <a href="/worldwide#2" class="group block rounded-lg overflow-hidden shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-200">
+            <img
+                src="/img/what-we-do-2.jpg"
+                alt="Chevron project imagery region two"
+                loading="lazy"
+                class="w-full h-48 object-cover"
+            >
+            </a>
+        </li>
+
+        <!-- Card 3 -->
+        <li>
+            <a href="/worldwide#3" class="group block rounded-lg overflow-hidden shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-200">
+            <img
+                src="/img/what-we-do-img-2.jpg"
+                alt="Chevron community work region three"
+                loading="lazy"
+                class="w-full h-48 object-cover"
+            >
+            </a>
+        </li>
+        </ul>
+    </div>
+
+    <!-- desktop/grid fallback: show cards in 2/3 columns on larger screens -->
+    <style>
+        @media (min-width: 768px) {
+        /* when screen is md+, make the outer container wider */
+        .max-w-md { max-width: 1100px; }
+        }
+    </style>
+    </section>
+
+
 
     <!-- Carousel: Newsroom articles (scroll snap) -->
     <section id="newsroom-carousel" class="py-6 px-4">

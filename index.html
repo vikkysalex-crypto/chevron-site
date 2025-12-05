@@ -56,8 +56,24 @@
         <!-- menu items (stagger animate) -->
         <nav id="menuNav" class="mt-6 flex-1 flex flex-col justify-start gap-6">
           <a class="menu-item text-2xl font-semibold" href="#">Who We Are</a>
-          <a class="menu-item text-2xl font-semibold" href="#">What We Do</a>
-          <a class="menu-item text-2xl font-semibold" href="#">Sustainability</a>
+          <a class="menu-item text-2xl font-semibold" href="/what-we-do.html">What We Do</a>
+          <div class="flex flex-col">
+          <button 
+            id="sustainBtn"
+            class="menu-item text-2xl font-semibold flex items-center justify-between w-full">
+            Sustainability
+            <svg id="sustainArrow" class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+
+          <!-- Dropdown items -->
+          <div id="sustainDropdown" class="ml-4 mt-3 flex-col gap-3 hidden">
+            <a class="text-xl text-white font-medium block" href="#">Climate</a>
+            <a class="text-xl text-white font-medium block" href="#">Environment</a>
+            <a class="text-xl text-white font-medium block" href="#">Social Investment</a>
+          </div>
+          </div>
           <a class="menu-item text-2xl font-semibold" href="#">Investors</a>
           <a class="menu-item text-2xl font-semibold" href="#">Newsroom</a>
           <a class="menu-item text-2xl font-semibold" href="#">Careers</a>
