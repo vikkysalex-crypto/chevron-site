@@ -570,3 +570,91 @@ sustainBtn.addEventListener('click', () => {
 
 
 
+// career js
+// scripts.js - defensive video play/pause helper
+document.addEventListener('DOMContentLoaded', function () {
+  // find any video with data-grid-video attribute and wire a toggle if an associated button exists
+  document.querySelectorAll('video').forEach((video) => {
+    // do nothing if no controls wanted
+    // if you want per-video controls, give the button an id related to the video
+    // e.g. <button data-video-toggle="#myVideo"> and video id="myVideo"
+  });
+
+  // small helper: reveal elements with .reveal when in viewport (very lightweight)
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    // fallback: instantly reveal
+    revealEls.forEach(el => el.classList.add('revealed'));
+  }
+});
+
+
+// footer-accordion.js
+document.addEventListener('DOMContentLoaded', function () {
+  const accordionRoot = document.getElementById('footer-accordion');
+  if (!accordionRoot) return;
+
+  // find all accordion groups (button + target list)
+  accordionRoot.querySelectorAll('button[aria-controls]').forEach(button => {
+    const targetId = button.getAttribute('aria-controls');
+    const panel = document.getElementById(targetId);
+    if (!panel) return;
+
+    // collapse initially on mobile
+    // ensure accessible attributes
+    button.setAttribute('aria-expanded', 'false');
+    panel.style.display = 'none';
+    panel.setAttribute('aria-hidden', 'true');
+
+    button.addEventListener('click', () => {
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        // close
+        button.setAttribute('aria-expanded', 'false');
+        panel.style.display = 'none';
+        panel.setAttribute('aria-hidden', 'true');
+      } else {
+        // open
+        button.setAttribute('aria-expanded', 'true');
+        panel.style.display = 'block';
+        panel.setAttribute('aria-hidden', 'false');
+      }
+    });
+
+    // Optionally close on outside click — not necessary for footer
+  });
+
+  // Optional: when viewport >= md, ensure all panels visible (desktop layout)
+  function checkResize() {
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    accordionRoot.querySelectorAll('button[aria-controls]').forEach(button => {
+      const panel = document.getElementById(button.getAttribute('aria-controls'));
+      if (!panel) return;
+      if (isDesktop) {
+        panel.style.display = 'flex';
+        panel.style.flexWrap = 'wrap';
+        panel.setAttribute('aria-hidden', 'false');
+        button.setAttribute('aria-expanded', 'true');
+      } else {
+        // restore mobile default if not opened
+        if (button.getAttribute('data-open') !== 'true') {
+          panel.style.display = 'none';
+          panel.setAttribute('aria-hidden', 'true');
+          button.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
+  }
+  window.addEventListener('resize', checkResize);
+  checkResize();
+});

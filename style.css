@@ -140,3 +140,21 @@
   clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
 }
+
+
+/* career styling */
+/* simple reveal helper if you use it elsewhere */
+.reveal {
+  transform: translateY(6px);
+  opacity: 0;
+  transition: transform 360ms cubic-bezier(.2,.8,.2,1), opacity 320ms ease;
+}
+.reveal.revealed {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* small image fallback for very old browsers */
+img[loading="lazy"] {
+  will-change: transform, opacity;
+}
