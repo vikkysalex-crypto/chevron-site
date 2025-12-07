@@ -658,3 +658,263 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('resize', checkResize);
   checkResize();
 });
+
+
+// contact js
+/* script.js
+   Recreates the form behaviors from your original code using vanilla JS:
+   - dependent sub-topic options (with data-parent + data-url redirect support)
+   - custom validation UI & error list
+   - comments length counter
+   - recaptcha callback handling
+   - modal open/close
+*/
+
+(function () {
+  // grab elements
+  const form = document.getElementById('contactForm');
+  const topic = document.getElementById('topic');
+  const subtopic = document.getElementById('subtopic');
+  const phoneRow = document.getElementById('phoneRow');
+  const mediaAffRow = document.getElementById('mediaAffRow');
+  const comments = document.getElementById('comments');
+  const commentsCount = document.getElementById('commentsCount');
+  const errorList = document.getElementById('errorMessages');
+  const recapWidget = document.getElementById('recapWidget');
+  const thanks = document.getElementById('thanks');
+
+  // modal elements
+  const openModalBtn = document.getElementById('openModal');
+  const modal = document.getElementById('modal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const modalBackdrop = document.getElementById('modalBackdrop');
+
+  // Build a dataset of all sub-topic options exactly as in your original markup
+  // For brevity the list replicates relevant entries (add more if necessary)
+  const subTopicOptions = [
+    { value: '', label: '', parent: 'service-stations' },
+    { value: '', label: '', parent: 'msds' },
+    { value: 'Fuel', label: 'Fuels', parent: 'products' },
+    { value: '', label: 'Fuels - Technical Questions', parent: 'products' },
+    { value: 'Lubricants', label: 'Lubricants', parent: 'products' },
+    { value: '', label: 'Lubricants - Technical Questions', parent: 'products', url: 'http://chevron-gsc.force.com/lubeteksupport' },
+    { value: '', label: 'Where to Buy', parent: 'products', url: 'https://www.chevronlubricants.com/en_us/home/where-to-buy.html' },
+    { value: 'Chemicals', label: 'Chemicals', parent: 'products' },
+    { value: 'Aviation', label: 'Aviation', parent: 'products' },
+    { value: 'Diesel', label: 'Diesel', parent: 'products' },
+    { value: '', label: 'Crude Oil', parent: 'products', url: 'https://crudemarketing.chevron.com/' },
+    { value: 'Historical Research', label: 'Historical Research', parent: 'research' },
+    { value: 'Climate Change', label: 'Climate Change', parent: 'research' },
+    { value: 'Greenhouse Gas', label: 'Greenhouse Gas', parent: 'research' },
+    { value: 'Environment, Social, and Governance', label: 'Environment, Social, and Governance', parent: 'research' },
+    { value: 'Careers and Employment', label: 'Retirement & Benefits', parent: 'jobs-internships-and-employment' },
+    { value: 'Careers and Employment', label: 'Employment', parent: 'jobs-internships-and-employment', url: 'https://careers.chevron.com' },
+    { value: 'Careers and Employment', label: 'Internship', parent: 'jobs-internships-and-employment', url: 'https://careers.chevron.com/students-and-graduates/internship-programs' },
+    { value: 'Careers and Employment', label: 'Employment Verification', parent: 'jobs-internships-and-employment', url: 'https://www.chevron.com/about/contact/human-resources' },
+    // ... add any other options you need to match original
+  ];
+
+  // Populate subtopic select from dataset
+  function populateSubTopics(parentKey) {
+    subtopic.innerHTML = '';
+    const matches = subTopicOptions.filter(o => o.parent === parentKey);
+    if (matches.length === 0) {
+      subtopic.disabled = true;
+      subtopic.innerHTML = '<option value="">--</option>';
+      return;
+    }
+    subtopic.disabled = false;
+    // add first empty option if desired
+    const first = document.createElement('option');
+    first.value = '';
+    first.textContent = '';
+    subtopic.appendChild(first);
+
+    matches.forEach(opt => {
+      const el = document.createElement('option');
+      el.value = opt.value || '';
+      el.textContent = opt.label || '';
+      if (opt.url) el.dataset.url = opt.url;
+      if (opt.parent) el.dataset.parent = opt.parent;
+      subtopic.appendChild(el);
+    });
+  }
+
+  // topic change handler: redirect if topic option has data-url OR populate subtopics
+  topic.addEventListener('change', function (e) {
+    const selected = topic.selectedOptions[0];
+    if (!selected) return;
+    const url = selected.getAttribute('data-url');
+    const topicKey = selected.getAttribute('data-topic');
+
+    // show/hide media-relations rows
+    if (topicKey === 'media-relations') {
+      phoneRow.classList.remove('hidden');
+      mediaAffRow.classList.remove('hidden');
+    } else {
+      phoneRow.classList.add('hidden');
+      mediaAffRow.classList.add('hidden');
+    }
+
+    if (url) {
+      // Redirect flow: reset selects and open url in new tab
+      // (mirrors original behavior: reset select to index 0)
+      window.open(url, '_blank');
+      topic.selectedIndex = 0;
+      subtopic.innerHTML = '';
+      subtopic.disabled = true;
+      return;
+    }
+
+    if (topicKey) {
+      populateSubTopics(topicKey);
+    } else {
+      subtopic.innerHTML = '';
+      subtopic.disabled = true;
+    }
+  });
+
+  // subtopic change: if selected option has data-url, open and reset selects (like original)
+  subtopic.addEventListener('change', function () {
+    const selected = subtopic.selectedOptions[0];
+    if (!selected) return;
+    const url = selected.dataset.url;
+    if (url) {
+      window.open(url, '_blank');
+      // reset selects
+      topic.selectedIndex = 0;
+      subtopic.innerHTML = '';
+      subtopic.disabled = true;
+    }
+  });
+
+  // Comments counter
+  comments.addEventListener('input', () => {
+    const len = Math.min(comments.value.length, 1000);
+    commentsCount.textContent = String(len);
+  });
+
+  // reCAPTCHA callback: called by global callback defined in HTML attribute
+  window.recapCallback = function () {
+    // remove recaptcha error indicator if present
+    const recaptchaMsg = document.getElementById('recapWidgetmessage');
+    if (recaptchaMsg) recaptchaMsg.classList && recaptchaMsg.classList.add('hide');
+    recapWidget.classList && recapWidget.classList.remove('recap-error');
+
+    // if no other errors, hide the error list
+    if (errorList.children.length === 0) {
+      errorList.classList.add('hidden');
+    }
+  };
+
+  // Validation UI: build list of required fields and show messages like original
+  function showValidationErrors(invalidElements) {
+    // Build error list
+    errorList.innerHTML = '';
+    invalidElements.forEach(el => {
+      const name = el.getAttribute('data-error-name') || el.name || 'Field';
+      const li = document.createElement('li');
+      li.textContent = `${name}: ${el.validationMessage || 'This field is required.'}`;
+      errorList.appendChild(li);
+    });
+    errorList.classList.remove('hidden');
+
+    // Focus first invalid item
+    if (invalidElements.length) {
+      invalidElements[0].focus();
+    }
+  }
+
+  // Form submit handling (prevent submit when invalid or recaptcha not checked)
+  form.addEventListener('submit', function (e) {
+    // perform HTML5 validity check
+    const invalids = Array.from(form.querySelectorAll('[required]')).filter(f => !f.checkValidity());
+
+    // check recaptcha
+    const recaptchaResponse = window.grecaptcha && grecaptcha.getResponse && grecaptcha.getResponse().length > 0;
+
+    if (invalids.length > 0 || !recaptchaResponse) {
+      e.preventDefault();
+      // mark recaptcha error if not checked
+      if (!recaptchaResponse) {
+        // create a visible recaptcha message if not present in errorList
+        const existingRecap = Array.from(errorList.children).some(li => li.textContent && li.textContent.toLowerCase().includes('recaptcha'));
+        if (!existingRecap) {
+          const li = document.createElement('li');
+          li.textContent = 'Please validate reCaptcha';
+          errorList.appendChild(li);
+        }
+        recapWidget.classList.add('recap-error');
+      }
+      showValidationErrors(invalids);
+      return false;
+    }
+
+    // If all good, let the form submit naturally.
+    // (Because this posts to Salesforce WebToCase, we do not attempt to AJAX it.)
+    return true;
+  });
+
+  // Utility: on input, update validation UI (remove error for that field)
+  form.querySelectorAll('[required]').forEach(field => {
+    field.addEventListener('input', (e) => {
+      // remove that field from error list if present
+      const items = Array.from(errorList.children);
+      const name = field.getAttribute('data-error-name');
+      items.forEach(li => {
+        if (li.textContent && name && li.textContent.startsWith(name + ':')) {
+          li.remove();
+        }
+      });
+      if (errorList.children.length === 0) errorList.classList.add('hidden');
+
+      // remove styling hint
+      field.classList.remove('error');
+      field.removeAttribute('aria-invalid');
+      field.removeAttribute('aria-describedby');
+    });
+  });
+
+  // Modal open/close
+  openModalBtn.addEventListener('click', () => {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  });
+  closeModalBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  });
+  modalBackdrop.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  });
+
+  // On page load: if referrer contains salesforce.com, show thanks and hide form (like original)
+  window.addEventListener('load', () => {
+    try {
+      if (document.referrer && document.referrer.indexOf('salesforce.com') > -1) {
+        form.classList.add('hidden');
+        thanks.classList.remove('hidden');
+      }
+    } catch (err) {
+      // ignore cross-origin access
+    }
+  });
+
+  // Prefill topic from URL querystring if provided (like original)
+  (function prefillFromQuery() {
+    const params = new URLSearchParams(window.location.search);
+    const t = params.get('topic');
+    if (t) {
+      const opts = Array.from(topic.options);
+      for (let i = 0; i < opts.length; i++) {
+        if (opts[i].text && opts[i].text.toLowerCase() === t.toLowerCase()) {
+          topic.selectedIndex = i;
+          topic.dispatchEvent(new Event('change'));
+          break;
+        }
+      }
+    }
+  })();
+
+})();
