@@ -112,208 +112,254 @@
   <!-- Main -->
   <main id="main-content" role="main" tabindex="-1" class="relative">
 
-    <!-- HERO: video + overlay content -->
-    <section class="relative bg-gray-900 text-white">
-      <!-- Video container -->
-      <div class="relative w-full overflow-hidden">
-        <video id="hero-video"
-               class="w-full h-[60vh] md:h-[70vh] object-cover"
-               poster="/-/media/chevron/what-we-do/energy/images/01_hero_fallback_xlarge.jpg"
-               muted playsinline loop>
-          <source src="/videos/Bayou Bend CCS_ The future of energy along the Texas Gulf Coast.mp4" type="video/mp4">
-          <!-- Fallback image for browsers that don't support video -->
-          Your browser does not support the video tag.
-        </video>
+    <!-- HERO: video with separate white content block below (mobile-first, responsive) -->
+  <section class="relative bg-gray-900 text-white">
+    <!-- Video container -->
+    <div class="relative w-full overflow-hidden">
+      <video id="hero-video"
+             class="w-full h-[56vw] md:h-[60vh] object-cover"
+             poster="/-/media/chevron/what-we-do/energy/images/01_hero_fallback_xlarge.jpg"
+             muted playsinline loop autoplay>
+        <!-- keep source path exactly as you provided -->
+        <source src="/videos/Bayou Bend CCS_ The future of energy along the Texas Gulf Coast.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
 
-        <!-- Overlay gradient -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/25"></div>
+      <!-- Overlay gradient (purely visual) -->
+      <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/35 to-black/20"></div>
 
-        <!-- Play/Pause button (overlay) -->
-        <div class="absolute top-16 right-6">
-          <button id="hero-playpause" aria-pressed="false" class="bg-white/10 hover:bg-white/20 text-white rounded-full p-3 backdrop-blur-sm">
-            <span id="hero-play-icon" class="sr-only">Pause</span>
-            <svg id="icon-play" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 3v18l15-9L5 3z"/></svg>
-            <svg id="icon-pause" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
-          </button>
+      <!-- Play / Pause button (top-right overlay) -->
+      <div class="absolute top-4 right-4">
+        <button id="hero-playpause"
+                type="button"
+                aria-pressed="false"
+                aria-label="Pause video"
+                class="bg-white/10 hover:bg-white/20 text-white rounded-full p-3 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white/30">
+          <!-- Play icon (shown when paused) -->
+          <svg id="icon-play" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M5 3v18l15-9L5 3z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+
+          <!-- Pause icon (shown when playing) -->
+          <svg id="icon-pause" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M6 4h4v16H6zM14 4h4v16h-4z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- CONTENT PANEL BELOW VIDEO (white, full width background, constrained inner container) -->
+    <div class="w-full bg-white hero-content-card">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 text-center">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-[#0b2d71]">what we do</h2>
+
+        <h1 class="mt-3 text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0b2d71] leading-tight">
+          what we do
+        </h1>
+
+        <p class="mt-4 max-w-3xl mx-auto text-base md:text-lg text-black/85">
+          The world’s energy demands are greater than ever before. We’re working to deliver the lower carbon energy needed today
+          while building the energy system of tomorrow.
+        </p>
+
+        <!-- optional CTA (visible on all sizes) -->
+        <div class="mt-6">
+          <a href="/what-we-do/energy/explore-energy-solution"
+             class="inline-flex items-center gap-3 px-5 py-3 rounded-md bg-[#0b2d71] text-white font-medium hover:bg-[#082a5d] transition">
+            Discover our energy solutions
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
-        <!-- Eyebrow + title + description -->
-        <div class="absolute inset-x-0 bottom-0 md:bottom-6">
-          <div class="container mx-auto px-6 md:px-12 pt-2 text-center bg-white">
-            <h1 class="mt-2 text-4xl md:text-4xl font-extrabold text-[#0b2d71]">what we do</h1>
-            <p class="mt-4 max-w-3xl pb-4 mx-auto text-lg md:text-xl text-black/90">
-              The world’s energy demands are greater than ever before. We’re working to deliver the lower carbon energy needed today while building the energy system of tomorrow.
+      </div>
+    </div>
+  </section>
+
+
+    <!-- WHAT WE DO (improved, responsive, accessible) -->
+    <section id="what-we-do" class="bg-[#0b2d71] text-white py-10 px-4">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <!-- text column -->
+          <div class="lg:col-span-5 xl:col-span-4 max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-3 reveal">
+              energy that fuels<br/>the world
+            </h2>
+
+            <p class="text-base sm:text-lg max-w-xl reveal">
+              We work every day to provide energy that helps billions of people achieve the benefits of modern life — and to create solutions that will help advance a lower-carbon future.
             </p>
+
+            <a
+              href="/what-we-do/energy/explore-energy-solution"
+              class="inline-flex items-center mt-6 font-medium group border border-[#009dd9] text-white px-5 py-3 rounded-md hover:bg-white hover:text-blue-900 transition-all focus:outline-none focus:ring-4 focus:ring-[#003d73] reveal"
+              aria-label="Explore energy solutions"
+            >
+              <span class="mr-3 lowercase">explore energy solutions</span>
+              <!-- decorative arrow (accessible) -->
+              <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- image grid column -->
+          <div class="lg:col-span-7 xl:col-span-8">
+            <!-- On small screens we keep a compact grid, on md/lg we create a balanced gallery next to the text -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 items-stretch">
+              <!-- image 1 -->
+              <figure class="w-full h-36 sm:h-28 lg:h-36 overflow-hidden rounded-lg reveal">
+                <picture>
+                  <!-- use srcset if you have different image sizes; fallback to src -->
+                  <img loading="lazy" decoding="async" src="/img/what-we-do-img-1.jpg"
+                      alt="Engineers inspecting equipment" class="w-full h-full object-cover"/>
+                </picture>
+              </figure>
+
+              <!-- image 2 -->
+              <figure class="w-full h-36 sm:h-28 lg:h-36 overflow-hidden rounded-lg reveal">
+                <picture>
+                  <img loading="lazy" decoding="async" src="/img/what-we-do-img-2.jpg"
+                      alt="Renewable energy installation" class="w-full h-full object-cover"/>
+                </picture>
+              </figure>
+
+              <!-- larger hero-like image spanning two columns on small screens but placed prominently on desktop -->
+              <figure class="col-span-2 sm:col-span-3 lg:col-span-2 w-full h-48 sm:h-40 lg:h-56 overflow-hidden rounded-lg reveal">
+                <picture>
+                  <img loading="lazy" decoding="async" src="/img/what-we-do-img-3.jpg"
+                      alt="Wide view of energy infrastructure" class="w-full h-full object-cover"/>
+                </picture>
+              </figure>
+
+              <!-- image 4 -->
+              <figure class="w-full h-36 sm:h-28 lg:h-36 overflow-hidden rounded-lg reveal">
+                <picture>
+                  <img loading="lazy" decoding="async" src="/img/what-we-do-img-4.jpg"
+                      alt="Team meeting about sustainability" class="w-full h-full object-cover"/>
+                </picture>
+              </figure>
+
+              <!-- image 5 -->
+              <figure class="w-full h-36 sm:h-28 lg:h-36 overflow-hidden rounded-lg reveal">
+                <picture>
+                  <img loading="lazy" decoding="async" src="/img/what-we-do-img-5.jpg"
+                      alt="Close-up of renewable technology" class="w-full h-full object-cover"/>
+                </picture>
+              </figure>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    
 
-    <!-- WHAT WE DO -->
-    <section class="bg-[#0b2d71] py-6 px-4">
-      <div class="max-w-lg mx-auto text-center">
-        <h2 class="text-4xl font-extrabold text-[#fff] mb-3 reveal">energy that fuels <br> the world</h2>
-        <p class="max-w-md mx-auto text-white text-base reveal pb-4">
-          We work every day to provide energy that helps billions of people achieve the benefits of modern life. And to create solutions that will help advance a lower carbon future.
-        </p>
-        <!-- button -->
-         <a href="/what-we-do/energy/explore-energy-solution"
-             class="inline-flex items-center mt-6 font-medium group
-             border border-[#009dd9] text-white px-5 py-3 rounded-md
-             hover:bg-white hover:text-blue-900 transition-all">
-             <span class="mr-3">explore energy solutions</span>
-                <svg class="w-5 h-5 transform group-hover:translate-x-1 transition"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M5 12h14M13 5l7 7-7 7"/>
-                </svg>
-            </a>
-      </div>
 
-      <!-- image grid -->
-      <div class="mt-4 px-2">
-        <div class="grid grid-cols-2 gap-3 max-w-lg mx-auto">
-          <img class="w-full h-28 object-cover rounded-lg reveal" src="/img/what-we-do-img-1.jpg" alt="">
-          <img class="w-full h-28 object-cover rounded-lg reveal" src="/img/what-we-do-img-2.jpg" alt="">
-          <img class="col-span-2 w-full h-40 object-cover rounded-lg reveal" src="/img/what-we-do-img-3.jpg" alt="">
-          <img class="w-full h-28 object-cover rounded-lg reveal" src="/img/what-we-do-img-4.jpg" alt="">
-          <img class="w-full h-28 object-cover rounded-lg reveal" src="/img/what-we-do-img-5.jpg" alt="">
-        </div>
-      </div>
-    </section>
-
-    <!-- WHAT WE DO (fixed & responsive) -->
-    <section class="bg-[#00708c] py-8 px-4">
-    <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-        <!-- Text column -->
-        <div class="text-center md:text-left">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3 reveal">
-            innovative technology.<br />scalable solutions.
-            </h2>
-
-            <p class="max-w-xl mx-auto md:mx-0 text-white text-base reveal pb-4">
-            Advancing technology helps us safely deliver the lower carbon energy the world needs.
-            New innovations help us build the lower carbon energy system for the future.
-            </p>
-
-            <div class="mt-6">
-            <a href="/what-we-do/energy/explore-energy-solution"
-                class="inline-flex items-center gap-3 font-medium border border-[#00b2bd] text-white px-5 py-3 rounded-md
-                        bg-transparent hover:bg-white hover:text-[#00708c] focus:outline-none focus:ring-4 focus:ring-[#00b2bd]/30 transition">
-                <span>discover tech and innovation</span>
-                <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path d="M5 12h14M13 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </a>
-            </div>
-        </div>
-
-        <!-- Image column -->
-        <div class="relative w-full">
-            <!-- Desktop: decorative background image (does not affect flow) -->
-            <div class="hidden md:block w-full h-[420px] bg-center bg-cover rounded-lg shadow-md"
-                style="background-image: url('/img/what-we-do-img.jpg');"
-                aria-hidden="true"></div>
-
-            <!-- Mobile: visible <img> for better loading and semantics -->
-            <img src="/img/what-we-do-img.jpg"
-                alt="Technology illustration — people working with industrial equipment" 
-                class="md:hidden w-full h-auto rounded-lg shadow-md object-cover" loading="lazy" />
-        </div>
-        </div>
-    </div>
-    </section>
-
-    <!-- MOBILE-FIRST: Delivering energy across the globe (Tailwind) -->
-    <section class="py-8 px-4 bg-[#3a0d36]">
-    <div class="max-w-md mx-auto"> <!-- mobile width; expands on larger screens -->
-        <!-- Heading + description -->
-        <header class="text-center mb-6">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#ba3093] leading-tight">
-            delivering energy across the globe
+  <!-- WHAT WE DO (fixed & responsive, improved) -->
+<section id="what-we-do-tech" class="bg-[#00708c] py-8 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+      <!-- Text column -->
+      <div class="text-center md:text-left">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3 reveal">
+          innovative technology.<br/>scalable solutions.
         </h2>
-        <p class="mt-3 text-sm text-white">
-            No one company, industry, or country alone can build a lower carbon future. With our diverse assets,
-            investments, and people around the world, we are working to make meaningful progress while helping
-            local communities thrive.
-        </p>
-        </header>
 
-        <!-- CTA (full width on mobile) -->
-        <div class="mb-6">
-            <a href="/worldwide"
-                class="inline-flex items-center gap-3 font-medium border border-[#ba3093] text-white text-center px-5 py-3 rounded-md
-                        bg-transparent hover:bg-white hover:text-[#000] focus:outline-none focus:ring-4 focus:ring-[#3a0d36]/30 transition">
-                <span>discover chevron worldwide</span>
-                <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path d="M5 12h14M13 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </a>
+        <p class="max-w-xl mx-auto md:mx-0 text-white text-base reveal pb-4">
+          Advancing technology helps us safely deliver the lower-carbon energy the world needs.
+          New innovations help us build the lower-carbon energy system for the future.
+        </p>
+
+        <div class="mt-6">
+          <a
+            href="/what-we-do/energy/explore-energy-solution"
+            class="inline-flex items-center gap-3 font-medium border border-[#00b2bd] text-white px-5 py-3 rounded-md
+                   bg-transparent hover:bg-white hover:text-[#00708c] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#00b2bd]/30 transition"
+            aria-label="Discover tech and innovation"
+          >
+            <span class="leading-none">discover tech and innovation</span>
+            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M5 12h14M13 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Image column -->
+      <div class="relative w-full">
+        <!-- Desktop: decorative background image (keeps markup light, improves paint on large screens) -->
+        <div
+          class="hidden md:block w-full h-[420px] bg-center bg-cover rounded-lg shadow-lg reveal"
+          style="background-image: url('/img/what-we-do-img.jpg');"
+          role="img"
+          aria-label="Technology illustration — people working with industrial equipment">
         </div>
 
-        <!-- Cards (stacked for mobile) -->
-        <ul class="grid grid-cols-1 gap-4 list-none p-0 m-0">
-        <!-- Card 1 -->
-        <li>
-            <a href="/worldwide#1" class="group block rounded-lg overflow-hidden shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-200">
-            <img
-                src="/img/what-we-do-1.jpg"
-                alt="Chevron team on site in region one"
-                loading="lazy"
-                class="w-full h-48 object-cover"
-            >
-            </a>
-        </li>
-
-        <!-- Card 2 -->
-        <li>
-            <a href="/worldwide#2" class="group block rounded-lg overflow-hidden shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-200">
-            <img
-                src="/img/what-we-do-2.jpg"
-                alt="Chevron project imagery region two"
-                loading="lazy"
-                class="w-full h-48 object-cover"
-            >
-            </a>
-        </li>
-
-        <!-- Card 3 -->
-        <li>
-            <a href="/worldwide#3" class="group block rounded-lg overflow-hidden shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-200">
-            <img
-                src="/img/what-we-do-img-2.jpg"
-                alt="Chevron community work region three"
-                loading="lazy"
-                class="w-full h-48 object-cover"
-            >
-            </a>
-        </li>
-        </ul>
+        <!-- Mobile & small screens: semantic <img> for better loading & alt text -->
+        <img
+          class="md:hidden w-full h-auto rounded-lg shadow-lg reveal object-cover"
+          src="/img/what-we-do-img-6.jpg"
+          sizes="(max-width: 767px) 100vw, 50vw"
+          alt="Technology illustration — people working with industrial equipment"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
     </div>
-
-    <!-- desktop/grid fallback: show cards in 2/3 columns on larger screens -->
-    <style>
-        @media (min-width: 768px) {
-        /* when screen is md+, make the outer container wider */
-        .max-w-md { max-width: 1100px; }
-        }
-    </style>
-    </section>
+  </div>
+</section>
 
 
+<!-- MOBILE-FIRST: Delivering energy across the globe (Tailwind, improved) -->
+<section id="deliver-worldwide" class="py-8 px-4 bg-[#3a0d36]">
+  <div class="max-w-md mx-auto md:max-w-5xl lg:max-w-7xl">
+    <!-- Header -->
+    <header class="text-center mb-6">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#ba3093] leading-tight reveal">
+        delivering energy across the globe
+      </h2>
+      <p class="mt-3 text-sm text-white max-w-prose mx-auto reveal">
+        No one company, industry, or country alone can build a lower carbon future. With our diverse assets,
+        investments, and people around the world, we are working to make meaningful progress while helping
+        local communities thrive.
+      </p>
+    </header>
 
-    <!-- Carousel: Newsroom articles (scroll snap) -->
+    <!-- CTA (full width on mobile, inline on larger screens) -->
+    <div class="mb-6 flex justify-center md:justify-start reveal">
+      <a
+        href="/worldwide"
+        class="w-full md:w-auto inline-flex justify-center items-center gap-3 font-medium border border-[#ba3093] text-white px-5 py-3 rounded-md
+               bg-transparent hover:bg-white hover:text-[#000] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#ba3093]/25 transition"
+        aria-label="Discover Chevron worldwide"
+      >
+        <span>discover chevron worldwide</span>
+        <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M5 12h14M13 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+
+    <!-- NEWSROOM CAROUSEL -->
     <section id="newsroom-carousel" class="py-6 px-4">
       <div class="max-w-lg mx-auto">
+
+        <!-- Heading -->
         <div class="text-center mb-4">
           <p class="text-sm font-semibold text-blue-900 uppercase">newsroom</p>
           <h3 class="text-2xl font-bold text-blue-900">latest at chevron</h3>
         </div>
 
-        <!-- carousel viewport -->
-        <div id="carouselViewport" class="carousel-viewport">
-          <div id="carouselTrack" class="carousel-track">
-            <!-- Card 0 (active by default) -->
+        <!-- CAROUSEL VIEWPORT -->
+        <div id="carouselViewport" class="relative overflow-hidden rounded-xl">
+          <div id="carouselTrack" class="flex transition-transform duration-500 ease-out">
+
+            <!-- CARD 0 -->
             <article class="card bg-active active" data-index="0" aria-hidden="false">
               <img src="/carousel-img/supporting-stem-education-in-new-mexico-hero.jpg" alt="">
               <div class="card-content">
@@ -322,18 +368,17 @@
                   <h4 class="text-sm font-semibold text-white">supporting STEM education in new mexico</h4>
                 </div>
                 <div>
-                  <a href="#" class="read-link text-white" aria-label="Read article: supporting STEM education in new mexico">
+                  <a href="#" class="read-link text-white">
                     Read Article
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
-                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                   </a>
-
                 </div>
               </div>
             </article>
 
-            <!-- Card 1 -->
+            <!-- CARD 1 -->
             <article class="card small bg-active" data-index="1" aria-hidden="true">
               <img src="/carousel-img/frontline-innovations-drive-business-solutions-hero.jpg" alt="">
               <div class="card-content">
@@ -342,17 +387,17 @@
                   <h4 class="text-sm font-semibold text-white">frontline innovations drive business solutions</h4>
                 </div>
                 <div>
-                  <a href="#" class="read-link text-white" aria-label="Read article: frontline innovations drive business solutions">
+                  <a href="#" class="read-link text-white">
                     Read Article
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
-                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
                     </svg>
                   </a>
                 </div>
               </div>
             </article>
 
-            <!-- Card 2 -->
+            <!-- CARD 2 -->
             <article class="card small bg-active" data-index="2" aria-hidden="true">
               <img src="/carousel-img/Apolo_Newsroom_Hero-01-D4-1.jpg" alt="">
               <div class="card-content">
@@ -361,17 +406,17 @@
                   <h4 class="text-sm font-semibold text-white">how apolo helps pinpoint prime drilling</h4>
                 </div>
                 <div>
-                  <a href="#" class="read-link text-white" aria-label="Read article: how apolo helps pinpoint prime drilling">
+                  <a href="#" class="read-link text-white">
                     Read Article
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
-                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
                     </svg>
                   </a>
                 </div>
               </div>
             </article>
 
-            <!-- Card 3 -->
+            <!-- CARD 3 -->
             <article class="card small bg-active" data-index="3" aria-hidden="true">
               <img src="/carousel-img/Apex_Newsroom_Hero-01-D2.jpg" alt="">
               <div class="card-content">
@@ -380,17 +425,17 @@
                   <h4 class="text-sm font-semibold text-white">a smarter way to prospect</h4>
                 </div>
                 <div>
-                  <a href="#" class="read-link text-white" aria-label="Read article: a smarter way to prospect">
+                  <a href="#" class="read-link text-white">
                     Read Article
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
-                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
                     </svg>
                   </a>
                 </div>
               </div>
             </article>
 
-            <!-- Card 4 -->
+            <!-- CARD 4 -->
             <article class="card small bg-active" data-index="4" aria-hidden="true">
               <img src="/carousel-img/from-service-to-solutions-veterans-solve-problems-01.jpg" alt="">
               <div class="card-content">
@@ -399,17 +444,17 @@
                   <h4 class="text-sm font-semibold text-white">from service to solutions</h4>
                 </div>
                 <div>
-                  <a href="#" class="read-link text-white" aria-label="Read article: from service to solutions">
+                  <a href="#" class="read-link text-white">
                     Read Article
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
-                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
                     </svg>
                   </a>
                 </div>
               </div>
             </article>
 
-            <!-- Card 5 -->
+            <!-- CARD 5 -->
             <article class="card small bg-active" data-index="5" aria-hidden="true">
               <img src="/carousel-img/robotics-nr-hero.jpg" alt="">
               <div class="card-content">
@@ -418,36 +463,40 @@
                   <h4 class="text-sm font-semibold text-white">robotics supports a more efficient workplace</h4>
                 </div>
                 <div>
-                  <a href="#" class="read-link text-white" aria-label="Read article: robotics supports a more efficient workplace">
+                  <a href="#" class="read-link text-white">
                     Read Article
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
-                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
                     </svg>
                   </a>
                 </div>
               </div>
             </article>
+
           </div>
         </div>
 
-        <!-- controls -->
+        <!-- CONTROLS -->
         <div class="mt-4 flex items-center gap-3 justify-between">
-          <button type="button" id="carouselPrev" class="arrow-btn" aria-label="Previous slide" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden><path d="M15 18L9 12l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <button id="carouselPrev" class="arrow-btn" aria-label="Previous slide" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M15 18L9 12l6-6" stroke="currentColor" stroke-width="2"/>
+            </svg>
           </button>
 
-          <div id="carouselDots" class="carousel-dots flex gap-2 justify-center flex-1" role="tablist" aria-label="Carousel slides">
-            <!-- JS will create dots -->
-          </div>
+          <div id="carouselDots" class="carousel-dots flex gap-2 justify-center flex-1"></div>
 
-          <button type="button" id="carouselNext" class="arrow-btn" aria-label="Next slide" aria-hidden="false">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <button id="carouselNext" class="arrow-btn" aria-label="Next slide" aria-hidden="false">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+            </svg>
           </button>
         </div>
+
       </div>
     </section>
 
-   <!-- Footer (Tailwind-ready) -->
+  <!-- Footer (Tailwind-ready) -->
   <footer id="footer" class="bg-[#052c65] text-white">
     <!-- Promo banner: email updates -->
     <div class="max-w-4xl mx-auto px-4 pt-8 pb-6">
