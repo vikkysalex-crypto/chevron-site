@@ -8,35 +8,48 @@
   <!-- Tailwind CDN for quick prototyping -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Optional: configure Tailwind (only necessary if customizing). We're using defaults here. -->
-
   <!-- External small CSS for things not directly in Tailwind -->
   <link rel="stylesheet" href="/style.css" />
+    <!-- back to top style -->
+   <link rel="stylesheet" href="/back-to-top.css">
 
 </head>
 <body class="bg-white text-gray-800 antialiased">
 
-  <header class="w-full mobile-only fixed top-0 left-0 z-50 bg-white/10 backdrop-blur-sm">
+  <!-- ---------------- Header (transparent, mobile-first) ---------------- -->
+  <header class="w-full fixed top-0 left-0 z-50 bg-white/10 backdrop-blur-md mobile-only">
     <div class="flex items-center justify-between px-4 py-3">
-      <!-- menu icon LEFT -->
-      <button type="button" id="openMenuBtn" aria-label="Open menu" class="text-white">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+
+      <!-- Menu icon (Left) -->
+      <button type="button" id="openMenuBtn" aria-label="Open menu" class="text-white active:scale-95 transition">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M3 6h18M3 12h18M3 18h18" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round"/>
         </svg>
       </button>
 
-      <!-- logo center -->
-      <div class="flex-1 flex justify-center">
-        <img src="/img/hallmark-2023-theme-light.png" alt="Logo" class="h-8 object-contain">
+      <!-- Logo (Center) -->
+      <div class="flex-1 flex justify-center pointer-events-none">
+        <img src="/img/hallmark-2023-theme-light.png"
+            alt="Chevron Logo"
+            class="h-9 w-auto object-contain drop-shadow-md">
       </div>
 
-      <!-- search icon RIGHT (regular icon) -->
-      <button type="button" id="searchIcon" aria-label="Search (not functional)" class="text-white">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <!-- Search icon (Right) -->
+      <button type="button" id="searchIcon" aria-label="Search" class="text-white active:scale-95 transition">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M21 21l-4.35-4.35" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round"/>
+          <circle cx="11" cy="11" r="6" 
+                  stroke="currentColor" 
+                  stroke-width="2"/>
         </svg>
       </button>
+
     </div>
   </header>
 
@@ -45,10 +58,16 @@
     <!-- backdrop -->
     <div id="menuBackdrop" class="absolute inset-0 bg-black/30 backdrop-blur-sm backdrop-brightness-90"></div>
 
-    <!-- panel (full-screen blue) -->
-    <div id="menuPanel" class="absolute top-0 left-0 w-full h-full bg-[#0b2d71] text-white menu-off" role="dialog" aria-modal="true" aria-label="Main menu">
+    <!-- panel -->
+    <div id="menuPanel"
+        class="absolute top-0 left-0 w-full h-full bg-[#0b2d71] text-white menu-off transition-transform duration-300"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Main menu">
+
       <div class="h-full flex flex-col px-6 pt-4 pb-6">
-        <!-- close button on RIGHT edge -->
+
+        <!-- close button -->
         <div class="flex items-center justify-end">
           <button type="button" id="closeMenuBtn" aria-label="Close menu" class="p-2 text-white">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
@@ -57,27 +76,29 @@
           </button>
         </div>
 
-        <!-- menu items (stagger animate) -->
+        <!-- menu items -->
         <nav id="menuNav" class="mt-6 flex-1 flex flex-col justify-start gap-6">
           <a class="menu-item text-2xl font-semibold" href="/who-we-are.html">Who We Are</a>
           <a class="menu-item text-2xl font-semibold" href="/what-we-do.html">What We Do</a>
-          <div class="flex flex-col">
-          <button 
-            id="sustainBtn"
-            class="menu-item text-2xl font-semibold flex items-center justify-between w-full">
-            Sustainability
-            <svg id="sustainArrow" class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M6 9l6 6 6-6"/>
-            </svg>
-          </button>
 
-          <!-- Dropdown items -->
-          <div id="sustainDropdown" class="ml-4 mt-3 flex-col gap-3 hidden">
-            <a class="text-xl text-white font-medium block" href="#">Climate</a>
-            <a class="text-xl text-white font-medium block" href="#">Environment</a>
-            <a class="text-xl text-white font-medium block" href="#">Social Investment</a>
+          <!-- Sustainability dropdown -->
+          <div class="flex flex-col">
+            <button 
+              id="sustainBtn"
+              class="menu-item text-2xl font-semibold flex items-center justify-between w-full">
+              Sustainability
+              <svg id="sustainArrow" class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+
+            <div id="sustainDropdown" class="ml-4 mt-3 flex-col gap-3 hidden">
+              <a class="text-xl text-white font-medium block" href="#">Climate</a>
+              <a class="text-xl text-white font-medium block" href="#">Environment</a>
+              <a class="text-xl text-white font-medium block" href="#">Social Investment</a>
+            </div>
           </div>
-          </div>
+
           <a class="menu-item text-2xl font-semibold" href="#">Investors</a>
           <a class="menu-item text-2xl font-semibold" href="#">Newsroom</a>
           <a class="menu-item text-2xl font-semibold" href="/careers.html">Careers</a>
@@ -90,426 +111,456 @@
 
   <!-- Main -->
   <main id="main-content" tabindex="-1" class="min-h-screen">
-    <!-- HERO: "who we are / leaders in energy" -->
+    <!-- HERO: "who we are / leaders in energy" (mobile-first, white panel below image) -->
     <section id="hero-leadership" class="w-full">
 
-        <!-- Background Image: Mobile -->
-        <div
-            class="md:hidden h-72 bg-center bg-cover"
-            style="background-image: url('/img/leadership-img.jpg');"
-            aria-hidden="true">
+      <!-- Background Image: Mobile -->
+      <div
+        class="md:hidden h-72 bg-center bg-cover"
+        style="background-image: url('/img/leadership-img.jpg');"
+        aria-hidden="true">
+      </div>
+
+      <!-- Background Image: Desktop -->
+      <div
+        class="hidden md:block h-[420px] bg-center bg-cover"
+        style="background-image: url('/img/leadership-img.jpg');"
+        aria-hidden="true">
+      </div>
+
+      <!-- White content panel (full width but constrained inner content) -->
+      <div class="w-full bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 text-center">
+
+          <!-- Eyebrow -->
+          <p class="uppercase text-sm font-semibold tracking-wide text-[#0b2d71]">
+            who we are
+          </p>
+
+          <!-- Title -->
+          <h1 class="mt-3 text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+            leaders in energy
+          </h1>
+
+          <!-- Description -->
+          <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-3xl mx-auto">
+            Our culture is built on the principles of responsibility, trust and integrity.
+            We take profound pride in leading the future of energy.
+          </p>
+
         </div>
-
-        <!-- Background Image: Desktop -->
-        <div
-            class="hidden md:block h-[420px] bg-center bg-cover"
-            style="background-image: url('/-/media/chevron/who-we-are/leadership/mkw-leadership-hero.png');"
-            aria-hidden="true">
-        </div>
-
-        <!-- Content Section Below the Image -->
-        <div class="w-full bg-white py-10 px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto text-center">
-
-                <!-- Eyebrow -->
-                <p class="uppercase text-sm font-semibold tracking-wide text-[#0b2d71]">
-                    who we are
-                </p>
-
-                <!-- Title -->
-                <h1 class="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900">
-                    leaders in energy
-                </h1>
-
-                <!-- Description -->
-                <p class="mt-3 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
-                    Our culture is built on the principles of responsibility, trust and integrity. 
-                    We take profound pride in leading the future of energy.
-                </p>
-
-            </div>
-        </div>
+      </div>
 
     </section>
 
-    <section id="corporate-officers" class="bg-[color:var(--chev-dark,#002b45)] text-white py-16">
-  <div class="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl mx-auto text-center">
-      <!-- Eyebrow -->
-      <p class="text-sm sm:text-base font-medium uppercase tracking-wide text-sky-200">
-        corporate officers
-      </p>
 
-      <!-- Heading -->
-      <h2 class="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white">
-        guided by vision and values
-      </h2>
+    <!-- CORPORATE OFFICERS (mobile-first, polished, tailwind) -->
+    <section id="corporate-officers" class="bg-[color:var(--chev-dark,#002b45)] text-white py-12 sm:py-16">
+      <div class="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
 
-      <!-- Description -->
-      <div class="mt-4 text-base sm:text-lg text-sky-100 max-w-xl mx-auto">
-        <span>
-          Our leaders are driven by a singular purpose: to provide affordable, reliable, ever-cleaner energy that enables human progress.
-        </span>
+          <!-- Eyebrow -->
+          <p class="text-sm sm:text-base font-medium uppercase tracking-wide text-sky-200">
+            corporate officers
+          </p>
+
+          <!-- Heading -->
+          <h2 class="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
+            guided by vision and values
+          </h2>
+
+          <!-- Decorative divider (subtle) -->
+          <div class="mt-4 flex justify-center">
+            <span class="block w-16 h-[2px] bg-white/20 rounded"></span>
+          </div>
+
+          <!-- Description -->
+          <p class="mt-4 text-base sm:text-lg text-sky-100 max-w-xl mx-auto leading-relaxed">
+            Our leaders are driven by a singular purpose: to provide affordable, reliable, ever-cleaner energy that enables human progress.
+          </p>
+
+        </div>
       </div>
-    </div>
-  </div>
-   </section>
+    </section>
 
-   <div class="max-w-[1200px] mx-auto">
-  <div class="flex flex-wrap gap-6">
-    
-    <!-- Leader Card -->
-    <a 
-      href="/who-we-are/leadership/michael-wirth" 
-      class="block bg-[#002b45] rounded-xl overflow-hidden group relative"
-    >
-      <!-- Image -->
-      <span class="block">
-        <img 
-          src="/img/leadership-img-1.jpg"
-          alt="Mike Wirth"
-          class="w-full h-auto"
-        />
-      </span>
 
-      <!-- Text -->
-      <span class="block p-5 text-white relative">
-        <span class="text-xl font-semibold capitalize leading-snug">
-          mike wirth
-          <span class="text-xs align-top">*</span><span class="text-xs align-top">^</span>
-        </span>
-
-        <br>
-
-        <span class="text-sm opacity-90 lt-title">
-          Chairman of the Board and Chief Executive Officer
-        </span>
-
-        <!-- Arrow Circle -->
-        <span 
-          class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center group-hover:translate-x-1 transition"
-        >
-          <span class="text-[#002b45] text-lg">
-            →
-          </span>
-        </span>
-      </span>
-    </a>
-
-  </div>
-   </div>
-
-   <section id="leadership-cards" class="bg-[var(--chev-dark,#002b45)] text-white py-8">
+<!-- LEADERSHIP CARDS — mobile-first, accessible, polished -->
+<section id="leadership-cards" class="bg-[color:var(--chev-dark,#002b45)] text-white py-8">
   <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
-      <!-- Card: Mark Nelson -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/mark-nelson"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="Mark A. Nelson — Vice Chairman">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-2.jpg"
-               alt="Mark Nelson"
-               class="w-full h-full object-cover">
+               alt="Mark A. Nelson"
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">mark a. nelson <span class="text-xs align-super">*^</span></h3>
-          <p class="mt-1 text-sm text-slate-200">Vice Chairman</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">mark a. nelson <span class="align-super text-xs ml-1">*^</span></h3>
+          <p class="mt-1 text-sm text-sky-200">Vice Chairman</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
-      <!-- Card: Eimear P. Bonner -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/eimear-bonner"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="Eimear P. Bonner — Chief Financial Officer">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-3.jpg"
                alt="Eimear P. Bonner"
-               class="w-full h-full object-cover">
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">eimear p. bonner <span class="text-xs align-super">*^</span></h3>
-          <p class="mt-1 text-sm text-slate-200">Chief Financial Officer</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">eimear p. bonner <span class="align-super text-xs ml-1">*^</span></h3>
+          <p class="mt-1 text-sm text-sky-200">Chief Financial Officer</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
-      <!-- Card: T. Ryder Booth -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/t-ryder-booth"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="T. Ryder Booth — Chief Technology and Engineering Officer">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-4.jpg"
                alt="T. Ryder Booth"
-               class="w-full h-full object-cover">
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">t. ryder booth <span class="text-xs align-super">*^</span></h3>
-          <p class="mt-1 text-sm text-slate-200">Chief Technology and Engineering Officer</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">t. ryder booth <span class="align-super text-xs ml-1">*^</span></h3>
+          <p class="mt-1 text-sm text-sky-200">Chief Technology and Engineering Officer</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
-      <!-- Card: Jeff B. Gustavson -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/jeff-gustavson"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="Jeff B. Gustavson — President, New Energies">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-5.jpg"
-               alt="Jeff Gustavson"
-               class="w-full h-full object-cover">
+               alt="Jeff B. Gustavson"
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">jeff b. gustavson <span class="text-xs align-super">*^</span></h3>
-          <p class="mt-1 text-sm text-slate-200">President, New Energies</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">jeff b. gustavson <span class="align-super text-xs ml-1">*^</span></h3>
+          <p class="mt-1 text-sm text-sky-200">President, New Energies</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
-      <!-- Card: R. Hewitt Pate -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/r-hewitt-pate"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="R. Hewitt Pate — Chief Legal Officer">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-6.jpg"
                alt="R. Hewitt Pate"
-               class="w-full h-full object-cover">
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">r. hewitt pate <span class="text-xs align-super">*^</span></h3>
-          <p class="mt-1 text-sm text-slate-200">Chief Legal Officer</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">r. hewitt pate <span class="align-super text-xs ml-1">*^</span></h3>
+          <p class="mt-1 text-sm text-sky-200">Chief Legal Officer</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
-      <!-- Card: Robert Clay Neff -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/robert-c-neff"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="Robert Clay Neff — President, Upstream">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-7.jpg"
-               alt="Robert C. Neff Jr."
-               class="w-full h-full object-cover">
+               alt="Robert Clay Neff Jr."
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">robert clay neff <span class="text-xs align-super">^</span></h3>
-          <p class="mt-1 text-sm text-slate-200">President, Upstream</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">robert clay neff <span class="align-super text-xs ml-1">^</span></h3>
+          <p class="mt-1 text-sm text-sky-200">President, Upstream</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
-      <!-- Card: Andy Walz -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/andy-walz"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="Andy Walz — President, Downstream, Midstream & Chemicals">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-8.jpg"
                alt="Andy Walz"
-               class="w-full h-full object-cover">
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">andy walz <span class="text-xs align-super">^</span></h3>
-          <p class="mt-1 text-sm text-slate-200">President, Downstream, Midstream &amp; Chemicals</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">andy walz <span class="align-super text-xs ml-1">^</span></h3>
+          <p class="mt-1 text-sm text-sky-200">President, Downstream, Midstream &amp; Chemicals</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
-      <!-- Card: Paul R. Antebi -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/paul-r-antebi"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="Paul R. Antebi — Chief Tax Officer and General Tax Counsel">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-9.jpg"
                alt="Paul R. Antebi"
-               class="w-full h-full object-cover">
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">paul r. antebi</h3>
-          <p class="mt-1 text-sm text-slate-200">Chief Tax Officer and General Tax Counsel</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">paul r. antebi</h3>
+          <p class="mt-1 text-sm text-sky-200">Chief Tax Officer and General Tax Counsel</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
-      <!-- Card: Marissa Badenhorst -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/marissa-badenhorst"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="Marissa Badenhorst — Chief Health, Safety and Environment Officer">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-10.jpg"
                alt="Marissa Badenhorst"
-               class="w-full h-full object-cover">
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">marissa badenhorst</h3>
-          <p class="mt-1 text-sm text-slate-200">Chief Health, Safety and Environment Officer</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">marissa badenhorst</h3>
+          <p class="mt-1 text-sm text-sky-200">Chief Health, Safety and Environment Officer</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
-      <!-- Card: Mary A. Francis -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/mary-francis"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="Mary A. Francis — Corporate Secretary and Chief Governance Officer">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-11.jpg"
-               alt="Mary Francis"
-               class="w-full h-full object-cover">
+               alt="Mary A. Francis"
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">mary a. francis</h3>
-          <p class="mt-1 text-sm text-slate-200">Corporate Secretary and Chief Governance Officer</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">mary a. francis</h3>
+          <p class="mt-1 text-sm text-sky-200">Corporate Secretary and Chief Governance Officer</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
-      <!-- Card: Michelle R. Green -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/michelle-green"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="Michelle R. Green — Chief Human Resources Officer">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-12.jpg"
-               alt="Michelle Green"
-               class="w-full h-full object-cover">
+               alt="Michelle R. Green"
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">michelle r. green</h3>
-          <p class="mt-1 text-sm text-slate-200">Chief Human Resources Officer</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">michelle r. green</h3>
+          <p class="mt-1 text-sm text-sky-200">Chief Human Resources Officer</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
-      <!-- Card: Alana K. Knowles -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/alana-knowles"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="Alana K. Knowles — Controller">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-13.jpg"
-               alt="Alana Knowles"
-               class="w-full h-full object-cover">
+               alt="Alana K. Knowles"
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">alana k. knowles <span class="text-xs align-super">^</span></h3>
-          <p class="mt-1 text-sm text-slate-200">Controller</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">alana k. knowles <span class="align-super text-xs ml-1">^</span></h3>
+          <p class="mt-1 text-sm text-sky-200">Controller</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
-      <!-- Card: Molly T. Laegeler -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/molly-laegeler"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="Molly T. Laegeler — Chief Strategy Officer">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-14.jpg"
-               alt="Molly Laegeler"
-               class="w-full h-full object-cover">
+               alt="Molly T. Laegeler"
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">molly t. laegeler</h3>
-          <p class="mt-1 text-sm text-slate-200">Chief Strategy Officer</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">molly t. laegeler</h3>
+          <p class="mt-1 text-sm text-sky-200">Chief Strategy Officer</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
-      <!-- Card: Laura J. Lane -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/laura-lane"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="Laura J. Lane — Chief Corporate Affairs Officer">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-15.jpg"
-               alt="Laura Lane"
-               class="w-full h-full object-cover">
+               alt="Laura J. Lane"
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">laura j. lane</h3>
-          <p class="mt-1 text-sm text-slate-200">Chief Corporate Affairs Officer</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">laura j. lane</h3>
+          <p class="mt-1 text-sm text-sky-200">Chief Corporate Affairs Officer</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
-      <!-- Card: Navin K. Mahajan -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/navin-mahajan"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="Navin K. Mahajan — Treasurer">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-16.jpg"
-               alt="Navin Mahajan"
-               class="w-full h-full object-cover">
+               alt="Navin K. Mahajan"
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">navin k. mahajan</h3>
-          <p class="mt-1 text-sm text-slate-200">Treasurer</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">navin k. mahajan</h3>
+          <p class="mt-1 text-sm text-sky-200">Treasurer</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
-      <!-- Card: Frank W. Mount -->
+      <!-- Card -->
       <a href="/who-we-are/leadership/frank-mount"
-         class="group block bg-[var(--chev-dark,#002b45)] rounded-xl overflow-hidden shadow-sm">
-        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden">
+         class="group block rounded-xl overflow-hidden shadow-sm focus:outline-none focus:ring-4 focus:ring-white/20 transition"
+         aria-label="Frank W. Mount — President, Corporate Business Development">
+        <div class="w-full h-48 sm:h-44 lg:h-52 overflow-hidden bg-slate-800">
           <img src="/img/leadership-img-11.jpg"
-               alt="Frank Mount"
-               class="w-full h-full object-cover">
+               alt="Frank W. Mount"
+               loading="lazy"
+               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
         </div>
 
-        <div class="p-4 relative">
-          <h3 class="text-lg font-semibold capitalize">frank w. mount</h3>
-          <p class="mt-1 text-sm text-slate-200">President, Corporate Business Development</p>
+        <div class="p-4 relative bg-[var(--chev-dark,#002b45)]">
+          <h3 class="text-lg font-semibold capitalize leading-snug">frank w. mount</h3>
+          <p class="mt-1 text-sm text-sky-200">President, Corporate Business Development</p>
 
-          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-            <span class="text-[var(--chev-dark,#002b45)] text-lg" aria-hidden="true">→</span>
+          <span class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-1">
+            <svg class="w-5 h-5 text-[color:var(--chev-dark,#002b45)]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
         </div>
       </a>
 
     </div>
   </div>
-   </section>
+</section>
+
 
     <section id="leadership-footnote" class="bg-[var(--chev-dark,#002b45)] pt-20 pb-8 text-white">
   <div class="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8" style="margin-top:-30px; margin-bottom:60px;">
@@ -773,6 +824,20 @@
     </div>
     </section>
 
+        <!-- Back to top button (paste before </body>) -->
+    <button id="backToTop"
+            class="fixed right-4 bottom-6 z-50 flex items-center justify-center w-12 h-12 rounded-full shadow-lg bg-[#0b2d71] text-white transform translate-y-6 opacity-0 pointer-events-none
+                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white focus:ring-opacity-80 transition-transform transition-opacity"
+            aria-label="Back to top"
+            title="Back to top"
+            aria-hidden="true">
+      <span class="sr-only">Back to top</span>
+      <svg id="backToTopIcon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 5.5v13" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6.5 11.5L12 6l5.5 5.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
     <!-- Committee CTA -->
     <section class="py-8 bg-offwhite" style="background-color:#f8fafb;">
       <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
@@ -782,30 +847,60 @@
       </div>
     </section>
 
-    <!-- Resources -->
-    <section class="py-10 bg-offwhite" style="background-color:#f8fafb;">
-      <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <h3 class="text-xl font-bold text-[var(--chev-dark)]">Resources</h3>
+<!-- RESOURCES — Mobile-first, accessible, Tailwind-only -->
+<section id="resources" class="py-10" style="background-color:#f8fafb;">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+    <h3 class="text-xl sm:text-2xl font-bold text-[color:var(--chev-dark,#002b45)]">
+      Resources
+    </h3>
 
-        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <a href="/newsroom/media/publications/annual-report" class="p-4 border rounded-md hover:shadow transition">
-            <p class="font-medium">2024 annual report</p>
-          </a>
+    <p class="mt-2 text-sm text-slate-600 max-w-2xl">
+      Helpful publications and guidance from Chevron — reports, governance and sustainability highlights.
+    </p>
 
-          <a href="/who-we-are/culture/the-chevron-way" class="p-4 border rounded-md hover:shadow transition">
-            <p class="font-medium">The Chevron Way</p>
-          </a>
+    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a
+        href="/newsroom/media/publications/annual-report"
+        class="group block p-4 rounded-lg border border-transparent hover:border-slate-200 bg-white hover:shadow-md transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[color:var(--chev-dark,#002b45)]"
+        aria-label="Open 2024 annual report (opens in new tab)"
+        target="_blank" rel="noopener noreferrer"
+      >
+        <p class="font-medium text-[color:var(--chev-dark,#002b45)]">2024 annual report</p>
+        <p class="mt-1 text-sm text-slate-500">Full corporate annual report (PDF).</p>
+      </a>
 
-          <a href="/investors/corporate-governance" class="p-4 border rounded-md hover:shadow transition">
-            <p class="font-medium">Governance guidelines</p>
-          </a>
+      <a
+        href="/who-we-are/culture/the-chevron-way"
+        class="group block p-4 rounded-lg border border-transparent hover:border-slate-200 bg-white hover:shadow-md transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[color:var(--chev-dark,#002b45)]"
+        aria-label="Open The Chevron Way"
+        target="_blank" rel="noopener noreferrer"
+      >
+        <p class="font-medium text-[color:var(--chev-dark,#002b45)]">The Chevron Way</p>
+        <p class="mt-1 text-sm text-slate-500">Our culture, values and the principles that guide how we work.</p>
+      </a>
 
-          <a href="/newsroom/media/publications/corporate-sustainability-highlights" class="p-4 border rounded-md hover:shadow transition">
-            <p class="font-medium">2024 corporate sustainability highlights</p>
-          </a>
-        </div>
-      </div>
-    </section>
+      <a
+        href="/investors/corporate-governance"
+        class="group block p-4 rounded-lg border border-transparent hover:border-slate-200 bg-white hover:shadow-md transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[color:var(--chev-dark,#002b45)]"
+        aria-label="Open governance guidelines"
+      >
+        <p class="font-medium text-[color:var(--chev-dark,#002b45)]">Governance guidelines</p>
+        <p class="mt-1 text-sm text-slate-500">Board practices, policies and corporate governance information.</p>
+      </a>
+
+      <a
+        href="/newsroom/media/publications/corporate-sustainability-highlights"
+        class="group block p-4 rounded-lg border border-transparent hover:border-slate-200 bg-white hover:shadow-md transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[color:var(--chev-dark,#002b45)]"
+        aria-label="Open 2024 corporate sustainability highlights"
+        target="_blank" rel="noopener noreferrer"
+      >
+        <p class="font-medium text-[color:var(--chev-dark,#002b45)]">2024 corporate sustainability highlights</p>
+        <p class="mt-1 text-sm text-slate-500">Summary of sustainability performance and progress.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
 
     <!-- Promo banner -->
     <section class="py-12 bg-[var(--chev-accent)] text-white">
@@ -820,13 +915,173 @@
       </div>
     </section>
 
-    <!-- Footer note -->
-    <section class="py-6 text-center text-sm text-slate-500">
-      <p>
-        <span class="mr-2">* Member of Chevron Corporation’s Executive Committee</span>
-        <span>^ Required to file reports under Section 16 of the Securities Exchange Act of 1934</span>
-      </p>
-    </section>
+   <!-- Footer (Tailwind-ready) -->
+  <footer id="footer" class="bg-[#052c65] text-white">
+    <!-- Promo banner: email updates -->
+    <div class="max-w-4xl mx-auto px-4 pt-8 pb-6">
+      <aside class="rounded-lg overflow-hidden shadow-sm">
+        <a href="/newsroom/preference-center"
+          target="_blank" rel="noopener noreferrer"
+          class="block bg-sky-700 text-white px-4 py-5 rounded-lg">
+          <div class="text-center">
+            <h3 class="text-lg font-semibold">chevron email updates</h3>
+            <p class="mt-1 text-sm">subscribe to our newsletter to receive news and updates.</p>
+          </div>
+        </a>
+      </aside>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 pb-8">
+
+      <!-- top: brand + short copy -->
+      <div class="flex flex-col md:flex-row md:items-start gap-6">
+        <!-- left: logo + copy -->
+        <div class="w-full md:w-1/3">
+          <img src="/img/hallmark-2023-theme-light.png"
+              alt="the human energy company"
+              width="200" height="131"
+              class="w-40 h-auto mb-4">
+
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Chevron has always put people at the center of the energy conversation. Because we understand that the
+            well-being of people everywhere depends on energy — energy that is affordable, reliable and ever-cleaner.
+          </p>
+
+          <div class="mt-4">
+            <a href="/newsroom/preference-center"
+              class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-white transition text-sm"
+              aria-label="Subscribe to our newsletter">
+              <span>subscribe to our newsletter</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- right: accordion + links (we removed "latest at chevron") -->
+        <div class="w-full md:w-2/3">
+          <div id="footer-accordion" class="space-y-3">
+
+            <!-- GET TO KNOW US (populated with user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-get-to-know-us">
+                <span>get to know us</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-get-to-know-us"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0 md:items-start">
+                <li><a class="block hover:underline" href="/who-we-are.html">who we are</a></li>
+                <li><a class="block hover:underline" href="/our-leadership.html">our leadership</a></li>
+                <li><a class="block hover:underline" href="/what-we-do.html">what we do</a></li>
+                <li><a class="block hover:underline" href="/tech-innovation.html">technology and innovation</a></li>
+                <li><a class="block hover:underline" href="/sustainability.html">sustainability</a></li>
+              </ul>
+            </div>
+
+            <!-- FUTURE OF ENERGY (user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-future">
+                <span>future of energy</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-future"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
+                <li><a class="block hover:underline" href="/carbon capture and storage.html">carbon capture and storage</a></li>
+                <li><a class="block hover:underline" href="/energy-in-progress.html">energy in progress</a></li>
+                <li><a class="block hover:underline" href="/new-energy.html">new energies</a></li>
+                <li><a class="block hover:underline" href="/methane-management.html">methane management</a></li>
+              </ul>
+            </div>
+
+            <!-- POPULAR LINKS (user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-popular">
+                <span>popular links</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-popular"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
+                <li><a class="block hover:underline" href="/careers.html">careers</a></li>
+                <li><a class="block hover:underline" href="/contact.html">contact us</a></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- small divider -->
+          <hr class="my-4 border-slate-700">
+
+          <!-- global links + country selector -->
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-slate-300">
+            <div class="flex flex-wrap gap-3">
+              <a class="hover:underline" href="/global-pages/site-map">site map</a>
+              <a class="hover:underline" href="/accessibility">accessibility</a>
+              <a class="hover:underline" href="/terms-of-use">terms of use</a>
+              <a class="hover:underline" href="/privacy">privacy</a>
+              <button type="button" class="hover:underline" onclick="OneTrust.ToggleInfoDisplay()">cookie settings (do not sell/share information)</button>
+              <a class="hover:underline" href="/privacy/global-cookie-statement">cookie statement</a>
+            </div>
+
+            <div class="mt-2 sm:mt-0">
+              <a class="inline-flex items-center gap-2 text-slate-100 hover:underline" href="https://www.chevron.com/worldwide/nigeria" rel="nofollow noopener">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M12 2c2.8 0 5 2.2 5 5 0 5-5 10-5 10s-5-5-5-10c0-2.8 2.2-5 5-5z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Nigeria</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- social icons row -->
+          <div class="mt-4 flex items-center gap-4">
+            <a href="https://www.facebook.com/Chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/facebook.svg" alt="facebook" class="w-6 h-6">
+            </a>
+            <a href="https://twitter.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/twitter.svg" alt="twitter" class="w-6 h-6">
+            </a>
+            <a href="https://www.instagram.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/instagram.svg" alt="instagram" class="w-6 h-6">
+            </a>
+            <a href="https://www.tiktok.com/@chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/tiktok.svg" alt="tiktok" class="w-6 h-6">
+            </a>
+            <a href="https://www.youtube.com/user/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/youtube.svg" alt="youtube" class="w-6 h-6">
+            </a>
+            <a href="https://www.linkedin.com/company/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/linkedin.svg" alt="linkedin" class="w-6 h-6">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- copyright -->
+      <div class="mt-6 border-t border-slate-800 pt-4 text-xs text-slate-400 text-center">
+        © 2001 – 2025 Chevron Corporation. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
   </main>
 
   <!-- Scripts -->
@@ -858,6 +1113,83 @@
       // Optionally auto-show modal for demo:
       // setTimeout(() => showNewsletterModal(), 1000);
     })();
+  </script>
+
+    <!-- back to top -->
+  <script>
+  (function () {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+
+    // configuration
+    const showAfter = 300; // px scrolled before showing button
+    const scrollBehavior = 'smooth'; // 'smooth' or 'instant' (respects reduced motion)
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // initialize state
+    btn.classList.add('hidden');
+    btn.setAttribute('aria-hidden', 'true');
+
+    // Show/hide on scroll
+    let lastScrollY = window.scrollY;
+    function onScroll() {
+      const y = window.scrollY || window.pageYOffset;
+      if (y > showAfter) {
+        if (!btn.classList.contains('visible')) {
+          btn.classList.remove('hidden');
+          btn.classList.add('visible');
+          btn.setAttribute('aria-hidden', 'false');
+        }
+      } else {
+        if (!btn.classList.contains('hidden')) {
+          btn.classList.remove('visible');
+          btn.classList.add('hidden');
+          btn.setAttribute('aria-hidden', 'true');
+        }
+      }
+      lastScrollY = y;
+    }
+
+    // Smooth scroll to top, accessible
+    function scrollToTop() {
+      if (reducedMotion) {
+        window.scrollTo(0, 0);
+        return;
+      }
+      // modern browsers
+      try {
+        window.scrollTo({ top: 0, behavior: scrollBehavior });
+      } catch (e) {
+        window.scrollTo(0, 0);
+      }
+    }
+
+    // click & keyboard support
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToTop();
+    });
+
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        scrollToTop();
+      }
+    });
+
+    // Show/hide on scroll with passive listener for performance
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Also check on load (in case page opened scrolled)
+    document.addEventListener('DOMContentLoaded', onScroll, { once: true });
+    // immediate check as well (for SPA or dynamic content)
+    onScroll();
+
+    // Optional: hide on small pages where no scroll
+    if (document.documentElement.scrollHeight <= window.innerHeight + 10) {
+      btn.classList.add('hidden');
+    }
+  })();
   </script>
 </body>
 </html>
