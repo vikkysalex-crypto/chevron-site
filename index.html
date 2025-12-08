@@ -7,6 +7,8 @@
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
+  <!-- back to top style -->
+   <link rel="stylesheet" href="/back-to-top.css">
 
 </head>
 <body class="bg-white text-gray-900">
@@ -47,7 +49,6 @@
 
     </div>
   </header>
-
 
   <!-- ---------------- Full-screen blue menu (slides in from left) ---------------- -->
   <div id="menuContainer" class="fixed inset-0 z-50 mobile-only hidden" aria-hidden="true">
@@ -338,6 +339,20 @@
       </div>
     </section>
 
+    <!-- Back to top button (paste before </body>) -->
+    <button id="backToTop"
+            class="fixed right-4 bottom-6 z-50 flex items-center justify-center w-12 h-12 rounded-full shadow-lg bg-[#0b2d71] text-white transform translate-y-6 opacity-0 pointer-events-none
+                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white focus:ring-opacity-80 transition-transform transition-opacity"
+            aria-label="Back to top"
+            title="Back to top"
+            aria-hidden="true">
+      <span class="sr-only">Back to top</span>
+      <svg id="backToTopIcon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 5.5v13" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6.5 11.5L12 6l5.5 5.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
    <!-- Footer (Tailwind-ready) -->
   <footer id="footer" class="bg-[#052c65] text-white">
     <!-- Promo banner: email updates -->
@@ -509,7 +524,83 @@
   </main>
 
   <!-- script -->
-   <script src="/main.js"></script>
+  <script src="/main.js"></script>
+  <!-- back to top -->
+  <script>
+  (function () {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+
+    // configuration
+    const showAfter = 300; // px scrolled before showing button
+    const scrollBehavior = 'smooth'; // 'smooth' or 'instant' (respects reduced motion)
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // initialize state
+    btn.classList.add('hidden');
+    btn.setAttribute('aria-hidden', 'true');
+
+    // Show/hide on scroll
+    let lastScrollY = window.scrollY;
+    function onScroll() {
+      const y = window.scrollY || window.pageYOffset;
+      if (y > showAfter) {
+        if (!btn.classList.contains('visible')) {
+          btn.classList.remove('hidden');
+          btn.classList.add('visible');
+          btn.setAttribute('aria-hidden', 'false');
+        }
+      } else {
+        if (!btn.classList.contains('hidden')) {
+          btn.classList.remove('visible');
+          btn.classList.add('hidden');
+          btn.setAttribute('aria-hidden', 'true');
+        }
+      }
+      lastScrollY = y;
+    }
+
+    // Smooth scroll to top, accessible
+    function scrollToTop() {
+      if (reducedMotion) {
+        window.scrollTo(0, 0);
+        return;
+      }
+      // modern browsers
+      try {
+        window.scrollTo({ top: 0, behavior: scrollBehavior });
+      } catch (e) {
+        window.scrollTo(0, 0);
+      }
+    }
+
+    // click & keyboard support
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToTop();
+    });
+
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        scrollToTop();
+      }
+    });
+
+    // Show/hide on scroll with passive listener for performance
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Also check on load (in case page opened scrolled)
+    document.addEventListener('DOMContentLoaded', onScroll, { once: true });
+    // immediate check as well (for SPA or dynamic content)
+    onScroll();
+
+    // Optional: hide on small pages where no scroll
+    if (document.documentElement.scrollHeight <= window.innerHeight + 10) {
+      btn.classList.add('hidden');
+    }
+  })();
+  </script>
 
 </body>
 </html>
