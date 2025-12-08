@@ -8,35 +8,48 @@
   <!-- Tailwind CDN for quick prototyping -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Optional: configure Tailwind (only necessary if customizing). We're using defaults here. -->
-
   <!-- External small CSS for things not directly in Tailwind -->
   <link rel="stylesheet" href="/style.css" />
+    <!-- back to top style -->
+   <link rel="stylesheet" href="/back-to-top.css">
 
 </head>
 <body class="bg-white text-gray-800 antialiased">
 
-  <header class="w-full mobile-only fixed top-0 left-0 z-50 bg-white/10 backdrop-blur-sm">
+ <!-- ---------------- Header (transparent, mobile-first) ---------------- -->
+  <header class="w-full fixed top-0 left-0 z-50 bg-white/10 backdrop-blur-md mobile-only">
     <div class="flex items-center justify-between px-4 py-3">
-      <!-- menu icon LEFT -->
-      <button type="button" id="openMenuBtn" aria-label="Open menu" class="text-white">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+
+      <!-- Menu icon (Left) -->
+      <button type="button" id="openMenuBtn" aria-label="Open menu" class="text-white active:scale-95 transition">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M3 6h18M3 12h18M3 18h18" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round"/>
         </svg>
       </button>
 
-      <!-- logo center -->
-      <div class="flex-1 flex justify-center">
-        <img src="/img/hallmark-2023-theme-light.png" alt="Logo" class="h-8 object-contain">
+      <!-- Logo (Center) -->
+      <div class="flex-1 flex justify-center pointer-events-none">
+        <img src="/img/hallmark-2023-theme-light.png"
+            alt="Chevron Logo"
+            class="h-9 w-auto object-contain drop-shadow-md">
       </div>
 
-      <!-- search icon RIGHT (regular icon) -->
-      <button type="button" id="searchIcon" aria-label="Search (not functional)" class="text-white">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <!-- Search icon (Right) -->
+      <button type="button" id="searchIcon" aria-label="Search" class="text-white active:scale-95 transition">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M21 21l-4.35-4.35" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round"/>
+          <circle cx="11" cy="11" r="6" 
+                  stroke="currentColor" 
+                  stroke-width="2"/>
         </svg>
       </button>
+
     </div>
   </header>
 
@@ -45,10 +58,16 @@
     <!-- backdrop -->
     <div id="menuBackdrop" class="absolute inset-0 bg-black/30 backdrop-blur-sm backdrop-brightness-90"></div>
 
-    <!-- panel (full-screen blue) -->
-    <div id="menuPanel" class="absolute top-0 left-0 w-full h-full bg-[#0b2d71] text-white menu-off" role="dialog" aria-modal="true" aria-label="Main menu">
+    <!-- panel -->
+    <div id="menuPanel"
+        class="absolute top-0 left-0 w-full h-full bg-[#0b2d71] text-white menu-off transition-transform duration-300"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Main menu">
+
       <div class="h-full flex flex-col px-6 pt-4 pb-6">
-        <!-- close button on RIGHT edge -->
+
+        <!-- close button -->
         <div class="flex items-center justify-end">
           <button type="button" id="closeMenuBtn" aria-label="Close menu" class="p-2 text-white">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
@@ -57,27 +76,29 @@
           </button>
         </div>
 
-        <!-- menu items (stagger animate) -->
+        <!-- menu items -->
         <nav id="menuNav" class="mt-6 flex-1 flex flex-col justify-start gap-6">
           <a class="menu-item text-2xl font-semibold" href="/who-we-are.html">Who We Are</a>
           <a class="menu-item text-2xl font-semibold" href="/what-we-do.html">What We Do</a>
-          <div class="flex flex-col">
-          <button 
-            id="sustainBtn"
-            class="menu-item text-2xl font-semibold flex items-center justify-between w-full">
-            Sustainability
-            <svg id="sustainArrow" class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M6 9l6 6 6-6"/>
-            </svg>
-          </button>
 
-          <!-- Dropdown items -->
-          <div id="sustainDropdown" class="ml-4 mt-3 flex-col gap-3 hidden">
-            <a class="text-xl text-white font-medium block" href="#">Climate</a>
-            <a class="text-xl text-white font-medium block" href="#">Environment</a>
-            <a class="text-xl text-white font-medium block" href="#">Social Investment</a>
+          <!-- Sustainability dropdown -->
+          <div class="flex flex-col">
+            <button 
+              id="sustainBtn"
+              class="menu-item text-2xl font-semibold flex items-center justify-between w-full">
+              Sustainability
+              <svg id="sustainArrow" class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+
+            <div id="sustainDropdown" class="ml-4 mt-3 flex-col gap-3 hidden">
+              <a class="text-xl text-white font-medium block" href="#">Climate</a>
+              <a class="text-xl text-white font-medium block" href="#">Environment</a>
+              <a class="text-xl text-white font-medium block" href="#">Social Investment</a>
+            </div>
           </div>
-          </div>
+
           <a class="menu-item text-2xl font-semibold" href="#">Investors</a>
           <a class="menu-item text-2xl font-semibold" href="#">Newsroom</a>
           <a class="menu-item text-2xl font-semibold" href="/careers.html">Careers</a>
