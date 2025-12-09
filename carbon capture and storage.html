@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" >
+  <meta name="viewport" content="width=device-width,initial-scale=1" >
+  <title>maritimegasoil</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <!-- back to top style -->
+   <link rel="stylesheet" href="/back-to-top.css">
+
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- ---------------- Header (transparent, mobile-first) ---------------- -->
+  <header class="w-full fixed top-0 left-0 z-50 bg-white/10 backdrop-blur-md mobile-only">
+    <div class="flex items-center justify-between px-4 py-3">
+
+      <!-- Menu icon (Left) -->
+      <button type="button" id="openMenuBtn" aria-label="Open menu" class="text-white active:scale-95 transition">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M3 6h18M3 12h18M3 18h18" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- Logo (Center) -->
+      <div class="flex-1 flex justify-center pointer-events-none">
+        <img src="/img/hallmark-2023-theme-light.png"
+            alt="Chevron Logo"
+            class="h-9 w-auto object-contain drop-shadow-md">
+      </div>
+
+      <!-- Search icon (Right) -->
+      <button type="button" id="searchIcon" aria-label="Search" class="text-white active:scale-95 transition">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M21 21l-4.35-4.35" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round"/>
+          <circle cx="11" cy="11" r="6" 
+                  stroke="currentColor" 
+                  stroke-width="2"/>
+        </svg>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ---------------- Full-screen blue menu (slides in from left) ---------------- -->
+  <div id="menuContainer" class="fixed inset-0 z-50 mobile-only hidden" aria-hidden="true">
+    <!-- backdrop -->
+    <div id="menuBackdrop" class="absolute inset-0 bg-black/30 backdrop-blur-sm backdrop-brightness-90"></div>
+
+    <!-- panel -->
+    <div id="menuPanel"
+        class="absolute top-0 left-0 w-full h-full bg-[#0b2d71] text-white menu-off transition-transform duration-300"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Main menu">
+
+      <div class="h-full flex flex-col px-6 pt-4 pb-6">
+
+        <!-- close button -->
+        <div class="flex items-center justify-end">
+          <button type="button" id="closeMenuBtn" aria-label="Close menu" class="p-2 text-white">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- menu items -->
+        <nav id="menuNav" class="mt-6 flex-1 flex flex-col justify-start gap-6">
+          <a class="menu-item text-2xl font-semibold" href="/who-we-are.html">Who We Are</a>
+          <a class="menu-item text-2xl font-semibold" href="/what-we-do.html">What We Do</a>
+
+          <!-- Sustainability dropdown -->
+          <div class="flex flex-col">
+            <button 
+              id="sustainBtn"
+              class="menu-item text-2xl font-semibold flex items-center justify-between w-full">
+              Sustainability
+              <svg id="sustainArrow" class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+
+            <div id="sustainDropdown" class="ml-4 mt-3 flex-col gap-3 hidden">
+              <a class="text-xl text-white font-medium block" href="#">Climate</a>
+              <a class="text-xl text-white font-medium block" href="#">Environment</a>
+              <a class="text-xl text-white font-medium block" href="#">Social Investment</a>
+            </div>
+          </div>
+
+          <a class="menu-item text-2xl font-semibold" href="#">Investors</a>
+          <a class="menu-item text-2xl font-semibold" href="#">Newsroom</a>
+          <a class="menu-item text-2xl font-semibold" href="/careers.html">Careers</a>
+          <a class="menu-item text-2xl font-semibold" href="/energy.html">Energies</a>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------------- Main content (mobile-first) ---------------- -->
+  <main class="pt-2">
+
+    <!-- HERO -->
+    <div id="z01-2" class="r z01jj container-fluid background-color-offwhite">
+        <div class="inner-container centered width-1200">
+            <div class="content-container width-800 centered text-left text-elevated" style="padding:60px 0;">
+                
+                <h1 class="text-sm font-semibold text-[#0A2A66] tracking-wide mb-2 reveal" style="margin-bottom:20px;">
+                    leading in carbon capture
+                </h1>
+
+                <div class="description type-body centered">
+                    <p style="max-width:650px; margin:auto;">
+                        We believe that CCS is an important part of achieving our global goals, 
+                        and innovation can help deliver a lower carbon future.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- CCS Timeline — clean, responsive, accessible -->
+<section id="ccs-timeline" class="py-12 px-4 bg-[#0b2d71] text-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-[1000px] mx-auto">
+      <!-- Optional section heading -->
+      <h2 class="text-2xl md:text-3xl font-extrabold mb-6">leading in carbon capture</h2>
+
+      <!-- Timeline list -->
+      <ul class="timeline-list space-y-4" role="list" aria-label="CCS timeline">
+        <!-- Template timeline item: duplicate/modify for each year -->
+        <li class="timeline-item">
+          <button class="tl-row group" data-id="m1972" aria-haspopup="dialog">
+            <span class="tl-date">1972</span>
+            <span class="tl-content">
+              pioneered increasing oil extractions through CO₂ injections
+            </span>
+            <span class="tl-icon" aria-hidden="true">+</span>
+          </button>
+        </li>
+
+        <li class="timeline-item">
+          <button class="tl-row group" data-id="m1985" aria-haspopup="dialog">
+            <span class="tl-date">1985</span>
+            <span class="tl-content">safely operated a colorado CO₂ pipeline for over 35 years</span>
+            <span class="tl-icon" aria-hidden="true">+</span>
+          </button>
+        </li>
+
+        <li class="timeline-item">
+          <button class="tl-row group" data-id="m2009" aria-haspopup="dialog">
+            <span class="tl-date">2009</span>
+            <span class="tl-content">began construction of one of the world’s largest CCS projects</span>
+            <span class="tl-icon" aria-hidden="true">+</span>
+          </button>
+        </li>
+
+        <li class="timeline-item">
+          <button class="tl-row group" data-id="m2019" aria-haspopup="dialog">
+            <span class="tl-date">2019</span>
+            <span class="tl-content">startup and operation began at gorgon CCS</span>
+            <span class="tl-icon" aria-hidden="true">+</span>
+          </button>
+        </li>
+
+        <li class="timeline-item">
+          <button class="tl-row group" data-id="m2020" aria-haspopup="dialog">
+            <span class="tl-date">2020</span>
+            <span class="tl-content">launched a project to pilot Svante carbon capture technology at our Kern River oil field</span>
+            <span class="tl-icon" aria-hidden="true">+</span>
+          </button>
+        </li>
+
+        <li class="timeline-item">
+          <button class="tl-row group" data-id="m2023" aria-haspopup="dialog">
+            <span class="tl-date">2023</span>
+            <span class="tl-content">aiming to lead CO₂ transportation and storage in Southeast Texas</span>
+            <span class="tl-icon" aria-hidden="true">+</span>
+          </button>
+        </li>
+
+        <li class="timeline-item">
+          <button class="tl-row group" data-id="m2024a" aria-haspopup="dialog">
+            <span class="tl-date">2024</span>
+            <span class="tl-content">gorgon injects over 10 million tonnes of CO₂</span>
+            <span class="tl-icon" aria-hidden="true">+</span>
+          </button>
+        </li>
+
+        <li class="timeline-item">
+          <button class="tl-row group" data-id="m2024b" aria-haspopup="dialog">
+            <span class="tl-date">2024</span>
+            <span class="tl-content">progress at bayou bend CCS LLC</span>
+            <span class="tl-icon" aria-hidden="true">+</span>
+          </button>
+        </li>
+
+        <li class="timeline-item">
+          <button class="tl-row group" data-id="m2025" aria-haspopup="dialog">
+            <span class="tl-date">2025</span>
+            <span class="tl-content">pascagoula CCS</span>
+            <span class="tl-icon" aria-hidden="true">+</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal templates (hidden in DOM) -->
+  <template id="tmpl-m1972">
+    <div class="modal-inner">
+      <h3>1972 — pioneered increasing oil extractions through CO₂ injections</h3>
+      <p>In 1972 Chevron pioneered EOR methods that used CO₂ to increase oil recovery — a technique that later informed carbon management practices.</p>
+    </div>
+  </template>
+
+  <template id="tmpl-m1985">
+    <div class="modal-inner">
+      <h3>1985 — safely operated a Colorado CO₂ pipeline for over 35 years</h3>
+      <p>Chevron safely operated a CO₂ pipeline in Colorado, demonstrating long-term operational capability for CO₂ transport at scale.</p>
+    </div>
+  </template>
+
+  <template id="tmpl-m2009">
+    <div class="modal-inner">
+      <h3>2009 — began construction of one of the world’s largest CCS projects</h3>
+      <p>Construction started on a major CCS project, increasing our portfolio and learning in large-scale CO₂ handling and injection.</p>
+    </div>
+  </template>
+
+  <template id="tmpl-m2019">
+    <div class="modal-inner">
+      <h3>2019 — startup and operation began at Gorgon CCS</h3>
+      <p>Gorgon started operations and became a milestone for large-scale offshore CCS deployment.</p>
+    </div>
+  </template>
+
+  <template id="tmpl-m2020">
+    <div class="modal-inner">
+      <h3>2020 — pilot of Svante carbon capture technology at Kern River</h3>
+      <p>We piloted Svante’s technology to evaluate new capture materials and approaches at Kern River, helping advance capture efficiency.</p>
+    </div>
+  </template>
+
+  <template id="tmpl-m2023">
+    <div class="modal-inner">
+      <h3>2023 — aiming to lead CO₂ transportation and storage in Southeast Texas</h3>
+      <p>Initiatives were launched to develop transport and storage infrastructure in Southeast Texas to scale CCS deployment for industrial and power sources.</p>
+    </div>
+  </template>
+
+  <template id="tmpl-m2024a">
+    <div class="modal-inner">
+      <h3>2024 — Gorgon injects over 10 million tonnes of CO₂</h3>
+      <p>Gorgon achieved a major operational milestone by injecting over 10 million tonnes of CO₂, demonstrating long-term performance.</p>
+    </div>
+  </template>
+
+  <template id="tmpl-m2024b">
+    <div class="modal-inner">
+      <h3>2024 — progress at Bayou Bend CCS LLC</h3>
+      <p>Bayou Bend made measurable progress in permitting and site development toward commercial CO₂ storage capacity.</p>
+    </div>
+  </template>
+
+  <template id="tmpl-m2025">
+    <div class="modal-inner">
+      <h3>2025 — Pascagoula CCS</h3>
+      <p>Pascagoula CCS continues to progress as part of expanding capacity for CO₂ storage and enabling decarbonization of local industries.</p>
+    </div>
+  </template>
+
+  <!-- Modal (accessible) -->
+  <div id="ccs-modal" class="ccs-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="ccs-modal-backdrop" data-close></div>
+    <div class="ccs-modal-panel" role="document" tabindex="-1" aria-describedby="ccs-modal-desc">
+      <button class="modal-close" aria-label="Close dialog" data-close>✕</button>
+      <div id="ccs-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Scoped styles -->
+  <style>
+    /* basic reset for this component */
+    #ccs-timeline { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    .timeline-list { position: relative; }
+
+    /* timeline vertical line (desktop) */
+    @media (min-width: 768px) {
+      .timeline-list::before {
+        content: "";
+        position: absolute;
+        left: 92px; /* aligns to date column */
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: rgba(255,255,255,0.12);
+        border-radius: 2px;
+      }
+    }
+
+    .timeline-item { list-style: none; }
+
+    .tl-row {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: transparent;
+      border: none;
+      text-align: left;
+      padding: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: inherit;
+      transition: background 180ms ease, transform 160ms ease;
+      box-shadow: none;
+    }
+    .tl-row:hover, .tl-row:focus {
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .tl-date {
+      min-width: 72px;
+      font-weight: 700;
+      color: #9fe7e0;
+      font-size: 0.95rem;
+    }
+    .tl-content {
+      flex: 1;
+      color: #e6f7f6;
+      font-size: 0.98rem;
+      line-height: 1.25;
+    }
+    .tl-icon {
+      color: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.06);
+      padding: 6px 8px;
+      border-radius: 999px;
+      font-weight: 700;
+      min-width: 36px;
+      text-align: center;
+      transition: transform 180ms ease;
+    }
+    .tl-row:hover .tl-icon, .tl-row:focus .tl-icon { transform: translateX(6px); }
+
+    /* desktop layout: date column & content column */
+    @media (min-width: 768px) {
+      .tl-row { display: grid; grid-template-columns: 92px 1fr 44px; align-items:center; gap:16px; }
+      .tl-date { text-align: right; padding-right: 8px; }
+    }
+
+    /* modal styles (centered panel) */
+    .ccs-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 1200; }
+    .ccs-modal[aria-hidden="false"] { display: flex; }
+    .ccs-modal-backdrop { position: absolute; inset: 0; background: rgba(2,6,23,0.6); }
+    .ccs-modal-panel {
+      position: relative;
+      background: linear-gradient(180deg,#021229,#07243a);
+      color: #e6f7f6;
+      border-radius: 12px;
+      max-width: 820px;
+      width: calc(100% - 48px);
+      padding: 28px;
+      box-shadow: 0 24px 60px rgba(2,6,23,0.6);
+      transform: translateY(8px);
+    }
+    .modal-close {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      border: none;
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .modal-close:focus { outline: 3px solid rgba(159,231,224,0.18); }
+
+    /* modal content */
+    .ccs-modal-panel h3 { margin:0 0 12px; font-size:1.25rem; color:#fff; }
+    .ccs-modal-panel p { margin:0 0 10px; color:#dff7f5; line-height:1.45; }
+
+    /* reveal animation helper (consistent) */
+    .reveal { opacity:0; transform: translateY(8px); transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1); }
+    .reveal.is-visible { opacity:1; transform: translateY(0); }
+  </style>
+
+  <!-- Interaction script -->
+  <script>
+    (function () {
+      const modal = document.getElementById('ccs-modal');
+      const modalContent = document.getElementById('ccs-modal-content');
+      let lastFocused = null;
+
+      function openModalFromTemplate(id) {
+        const tmpl = document.getElementById('tmpl-' + id);
+        if (!tmpl) return;
+        modalContent.innerHTML = ''; // clear
+        modalContent.appendChild(tmpl.content.cloneNode(true));
+        // mark visible
+        modal.setAttribute('aria-hidden', 'false');
+        modal.classList.add('reveal');
+        // set up focus
+        lastFocused = document.activeElement;
+        const panel = modal.querySelector('.ccs-modal-panel');
+        // focus first focusable inside modal or the panel itself
+        const focusable = modal.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
+        (focusable || panel).focus();
+        document.body.style.overflow = 'hidden';
+        // add key handler to close on ESC
+        document.addEventListener('keydown', escHandler);
+      }
+
+      function closeModal() {
+        modal.setAttribute('aria-hidden', 'true');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', escHandler);
+        if (lastFocused) lastFocused.focus();
+      }
+
+      function escHandler(e) {
+        if (e.key === 'Escape') closeModal();
+      }
+
+      // wire timeline buttons to templates
+      document.querySelectorAll('#ccs-timeline .tl-row').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.id.replace(/^m/, '');
+          openModalFromTemplate(id);
+        });
+        btn.addEventListener('keydown', (ev) => {
+          if (ev.key === 'Enter' || ev.key === ' ') {
+            ev.preventDefault();
+            btn.click();
+          }
+        });
+      });
+
+      // close controls
+      document.querySelectorAll('#ccs-timeline [data-close]').forEach(el => el.addEventListener('click', closeModal));
+      // clicking backdrop closes
+      document.querySelector('#ccs-timeline .ccs-modal-backdrop').addEventListener('click', closeModal);
+
+      // small reveal on load for timeline items
+      document.querySelectorAll('#ccs-timeline .timeline-item').forEach((li, idx) => {
+        setTimeout(() => {
+          li.classList.add('reveal', 'is-visible');
+        }, 80 * idx);
+      });
+    })();
+  </script>
+</section>
+
+
+<!-- Carbon capture fact sheet CTA (clean, accessible) -->
+<section id="ccus-factsheet-cta" class="py-10 px-4 bg-[#f8fafb]">
+  <div class="max-w-7xl mx-auto">
+    <div class="mx-auto max-w-[1000px] text-center">
+      <a
+        href="/-/media/chevron/operations/documents/CCUS-fact-sheet-112024.pdf"
+        class="inline-flex items-center gap-4 justify-center rounded-lg bg-[#0b6b84] text-white px-6 py-4 shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#0b6b84]/30"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="View the carbon capture fact sheet (opens in a new tab)"
+        title="View the carbon capture fact sheet (PDF)"
+      >
+        <!-- Download icon -->
+        <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="4" y="17" width="16" height="3" rx="1.2" stroke="currentColor" stroke-width="1.6" fill="none"/>
+        </svg>
+
+        <div class="text-left">
+          <div class="text-sm font-semibold">view the carbon capture fact sheet</div>
+          <div class="text-xs opacity-80">PDF — opens in a new tab</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <style>
+    /* small scoped styles to match your elevated look */
+    #ccus-factsheet-cta a { text-decoration: none; border-radius: 10px; }
+    #ccus-factsheet-cta .text-sm { text-transform: none; }
+    @media (max-width: 420px) {
+      #ccus-factsheet-cta a { padding-left: 1rem; padding-right: 1rem; }
+    }
+  </style>
+</section>
+
+
+<div id="mod_5fcc1f58" class="c06r r container-fluid background-color-offwhite text-elevated" data-cvx-module-name="c06r">
+    <div class="inner-container centered width-1920" style="margin-bottom:60px;">
+        <div class="width-800 centered text-center text-container">
+
+            <a href="https://www.chevron.com/what-we-do/energy/new-energies/partnerships#carboncapture,utilization,andstorage"
+               class="cta-link type-cta"
+               target="_blank"
+               rel="noopener noreferrer"
+               title="learn more about our carbon capture partnerships and projects"
+               aria-label="learn more about our carbon capture partnerships and projects (opens in new tab)">
+
+                <span class="cta-glyphicon">
+                    <span class="animate glyphicon glyphicon-2023-arrow-up-right" aria-hidden="true"></span>
+                </span>
+
+                <span class="cta-underline">
+                    learn more about our carbon capture partnerships and projects
+                </span>
+
+            </a>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="mod_072446b8" class="c06r r container-fluid background-color-offwhite text-elevated" data-cvx-module-name="c06r">
+    <div class="inner-container centered width-1920" style="margin-bottom:60px;">
+        <div class="width-1000 centered text-center text-container">
+
+            <p class="type-eyebrow text-base color-dark-blue">
+                policies towards progress
+            </p>
+
+            <h2 class="type-header text-elevated header color-dark-blue color-important">
+                policies towards carbon capture
+            </h2>
+
+            <div class="description width-600 type-body text-base">
+                <p>
+                    To advance widescale deployment, governments and public-private partnerships can be particularly effective in overcoming barriers such as high cost of CO<sub>2</sub> capture, lack of CO<sub>2</sub> transportation infrastructure, and gaps in public understanding and acceptance of CCS.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+    <!-- NEWSROOM CAROUSEL -->
+    <section id="newsroom-carousel" class="py-6 px-4">
+      <div class="max-w-lg mx-auto">
+
+        <!-- Heading -->
+        <div class="text-center mb-4">
+          <p class="text-sm font-semibold text-blue-900 uppercase">newsroom</p>
+          <h3 class="text-2xl font-bold text-blue-900">latest at chevron</h3>
+        </div>
+
+        <!-- CAROUSEL VIEWPORT -->
+        <div id="carouselViewport" class="relative overflow-hidden rounded-xl">
+          <div id="carouselTrack" class="flex transition-transform duration-500 ease-out">
+
+            <!-- CARD 0 -->
+            <article class="card bg-active active" data-index="0" aria-hidden="false">
+              <img src="/carousel-img/supporting-stem-education-in-new-mexico-hero.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs mb-2 text-white/90">November 18, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">supporting STEM education in new mexico</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 1 -->
+            <article class="card small bg-active" data-index="1" aria-hidden="true">
+              <img src="/carousel-img/frontline-innovations-drive-business-solutions-hero.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">frontline innovations drive business solutions</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 2 -->
+            <article class="card small bg-active" data-index="2" aria-hidden="true">
+              <img src="/carousel-img/Apolo_Newsroom_Hero-01-D4-1.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">how apolo helps pinpoint prime drilling</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 3 -->
+            <article class="card small bg-active" data-index="3" aria-hidden="true">
+              <img src="/carousel-img/Apex_Newsroom_Hero-01-D2.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">a smarter way to prospect</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 4 -->
+            <article class="card small bg-active" data-index="4" aria-hidden="true">
+              <img src="/carousel-img/from-service-to-solutions-veterans-solve-problems-01.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">from service to solutions</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 5 -->
+            <article class="card small bg-active" data-index="5" aria-hidden="true">
+              <img src="/carousel-img/robotics-nr-hero.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs text-white/90 mb-2">November 10, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">robotics supports a more efficient workplace</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- CONTROLS -->
+        <div class="mt-4 flex items-center gap-3 justify-between">
+          <button id="carouselPrev" class="arrow-btn" aria-label="Previous slide" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M15 18L9 12l6-6" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+
+          <div id="carouselDots" class="carousel-dots flex gap-2 justify-center flex-1"></div>
+
+          <button id="carouselNext" class="arrow-btn" aria-label="Next slide" aria-hidden="false">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Back to top button (paste before </body>) -->
+    <button id="backToTop"
+            class="fixed right-4 bottom-6 z-50 flex items-center justify-center w-12 h-12 rounded-full shadow-lg bg-[#0b2d71] text-white transform translate-y-6 opacity-0 pointer-events-none
+                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white focus:ring-opacity-80 transition-transform transition-opacity"
+            aria-label="Back to top"
+            title="Back to top"
+            aria-hidden="true">
+      <span class="sr-only">Back to top</span>
+      <svg id="backToTopIcon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 5.5v13" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6.5 11.5L12 6l5.5 5.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+   <!-- Footer (Tailwind-ready) -->
+  <footer id="footer" class="bg-[#052c65] text-white">
+    <!-- Promo banner: email updates -->
+    <div class="max-w-4xl mx-auto px-4 pt-8 pb-6">
+      <aside class="rounded-lg overflow-hidden shadow-sm">
+        <a href="/newsroom/preference-center"
+          target="_blank" rel="noopener noreferrer"
+          class="block bg-sky-700 text-white px-4 py-5 rounded-lg">
+          <div class="text-center">
+            <h3 class="text-lg font-semibold">chevron email updates</h3>
+            <p class="mt-1 text-sm">subscribe to our newsletter to receive news and updates.</p>
+          </div>
+        </a>
+      </aside>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 pb-8">
+
+      <!-- top: brand + short copy -->
+      <div class="flex flex-col md:flex-row md:items-start gap-6">
+        <!-- left: logo + copy -->
+        <div class="w-full md:w-1/3">
+          <img src="/img/hallmark-2023-theme-light.png"
+              alt="the human energy company"
+              width="200" height="131"
+              class="w-40 h-auto mb-4">
+
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Chevron has always put people at the center of the energy conversation. Because we understand that the
+            well-being of people everywhere depends on energy — energy that is affordable, reliable and ever-cleaner.
+          </p>
+
+          <div class="mt-4">
+            <a href="/newsroom/preference-center"
+              class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-white transition text-sm"
+              aria-label="Subscribe to our newsletter">
+              <span>subscribe to our newsletter</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- right: accordion + links (we removed "latest at chevron") -->
+        <div class="w-full md:w-2/3">
+          <div id="footer-accordion" class="space-y-3">
+
+            <!-- GET TO KNOW US (populated with user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-get-to-know-us">
+                <span>get to know us</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-get-to-know-us"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0 md:items-start">
+                <li><a class="block hover:underline" href="/who-we-are.html">who we are</a></li>
+                <li><a class="block hover:underline" href="/our-leadership.html">our leadership</a></li>
+                <li><a class="block hover:underline" href="/what-we-do.html">what we do</a></li>
+                <li><a class="block hover:underline" href="/tech-innovation.html">technology and innovation</a></li>
+                <li><a class="block hover:underline" href="/sustainability.html">sustainability</a></li>
+              </ul>
+            </div>
+
+            <!-- FUTURE OF ENERGY (user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-future">
+                <span>future of energy</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-future"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
+                <li><a class="block hover:underline" href="/carbon capture and storage.html">carbon capture and storage</a></li>
+                <li><a class="block hover:underline" href="/energy-in-progress.html">energy in progress</a></li>
+                <li><a class="block hover:underline" href="/new-energy.html">new energies</a></li>
+                <li><a class="block hover:underline" href="/methane-management.html">methane management</a></li>
+              </ul>
+            </div>
+
+            <!-- POPULAR LINKS (user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-popular">
+                <span>popular links</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-popular"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
+                <li><a class="block hover:underline" href="/careers.html">careers</a></li>
+                <li><a class="block hover:underline" href="/contact.html">contact us</a></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- small divider -->
+          <hr class="my-4 border-slate-700">
+
+          <!-- global links + country selector -->
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-slate-300">
+            <div class="flex flex-wrap gap-3">
+              <a class="hover:underline" href="/global-pages/site-map">site map</a>
+              <a class="hover:underline" href="/accessibility">accessibility</a>
+              <a class="hover:underline" href="/terms-of-use">terms of use</a>
+              <a class="hover:underline" href="/privacy">privacy</a>
+              <button type="button" class="hover:underline" onclick="OneTrust.ToggleInfoDisplay()">cookie settings (do not sell/share information)</button>
+              <a class="hover:underline" href="/privacy/global-cookie-statement">cookie statement</a>
+            </div>
+
+            <div class="mt-2 sm:mt-0">
+              <a class="inline-flex items-center gap-2 text-slate-100 hover:underline" href="https://www.chevron.com/worldwide/nigeria" rel="nofollow noopener">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M12 2c2.8 0 5 2.2 5 5 0 5-5 10-5 10s-5-5-5-10c0-2.8 2.2-5 5-5z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Nigeria</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- social icons row -->
+          <div class="mt-4 flex items-center gap-4">
+            <a href="https://www.facebook.com/Chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/facebook.svg" alt="facebook" class="w-6 h-6">
+            </a>
+            <a href="https://twitter.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/twitter.svg" alt="twitter" class="w-6 h-6">
+            </a>
+            <a href="https://www.instagram.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/instagram.svg" alt="instagram" class="w-6 h-6">
+            </a>
+            <a href="https://www.tiktok.com/@chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/tiktok.svg" alt="tiktok" class="w-6 h-6">
+            </a>
+            <a href="https://www.youtube.com/user/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/youtube.svg" alt="youtube" class="w-6 h-6">
+            </a>
+            <a href="https://www.linkedin.com/company/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/linkedin.svg" alt="linkedin" class="w-6 h-6">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- copyright -->
+      <div class="mt-6 border-t border-slate-800 pt-4 text-xs text-slate-400 text-center">
+        © 2001 – 2025 Chevron Corporation. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  </main>
+
+  <!-- script -->
+  <script src="/main.js"></script>
+  <!-- back to top -->
+  <script>
+  (function () {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+
+    // configuration
+    const showAfter = 300; // px scrolled before showing button
+    const scrollBehavior = 'smooth'; // 'smooth' or 'instant' (respects reduced motion)
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // initialize state
+    btn.classList.add('hidden');
+    btn.setAttribute('aria-hidden', 'true');
+
+    // Show/hide on scroll
+    let lastScrollY = window.scrollY;
+    function onScroll() {
+      const y = window.scrollY || window.pageYOffset;
+      if (y > showAfter) {
+        if (!btn.classList.contains('visible')) {
+          btn.classList.remove('hidden');
+          btn.classList.add('visible');
+          btn.setAttribute('aria-hidden', 'false');
+        }
+      } else {
+        if (!btn.classList.contains('hidden')) {
+          btn.classList.remove('visible');
+          btn.classList.add('hidden');
+          btn.setAttribute('aria-hidden', 'true');
+        }
+      }
+      lastScrollY = y;
+    }
+
+    // Smooth scroll to top, accessible
+    function scrollToTop() {
+      if (reducedMotion) {
+        window.scrollTo(0, 0);
+        return;
+      }
+      // modern browsers
+      try {
+        window.scrollTo({ top: 0, behavior: scrollBehavior });
+      } catch (e) {
+        window.scrollTo(0, 0);
+      }
+    }
+
+    // click & keyboard support
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToTop();
+    });
+
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        scrollToTop();
+      }
+    });
+
+    // Show/hide on scroll with passive listener for performance
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Also check on load (in case page opened scrolled)
+    document.addEventListener('DOMContentLoaded', onScroll, { once: true });
+    // immediate check as well (for SPA or dynamic content)
+    onScroll();
+
+    // Optional: hide on small pages where no scroll
+    if (document.documentElement.scrollHeight <= window.innerHeight + 10) {
+      btn.classList.add('hidden');
+    }
+  })();
+  </script>
+
+</body>
+</html>
