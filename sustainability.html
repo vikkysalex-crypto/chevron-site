@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" >
+  <meta name="viewport" content="width=device-width,initial-scale=1" >
+  <title>maritimegasoil</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <!-- back to top style -->
+   <link rel="stylesheet" href="/back-to-top.css">
+
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- ---------------- Header (transparent, mobile-first) ---------------- -->
+  <header class="w-full fixed top-0 left-0 z-50 bg-white/10 backdrop-blur-md mobile-only">
+    <div class="flex items-center justify-between px-4 py-3">
+
+      <!-- Menu icon (Left) -->
+      <button type="button" id="openMenuBtn" aria-label="Open menu" class="text-white active:scale-95 transition">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M3 6h18M3 12h18M3 18h18" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- Logo (Center) -->
+      <div class="flex-1 flex justify-center pointer-events-none">
+        <img src="/img/hallmark-2023-theme-light.png"
+            alt="Chevron Logo"
+            class="h-9 w-auto object-contain drop-shadow-md">
+      </div>
+
+      <!-- Search icon (Right) -->
+      <button type="button" id="searchIcon" aria-label="Search" class="text-white active:scale-95 transition">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M21 21l-4.35-4.35" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round"/>
+          <circle cx="11" cy="11" r="6" 
+                  stroke="currentColor" 
+                  stroke-width="2"/>
+        </svg>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ---------------- Full-screen blue menu (slides in from left) ---------------- -->
+  <div id="menuContainer" class="fixed inset-0 z-50 mobile-only hidden" aria-hidden="true">
+    <!-- backdrop -->
+    <div id="menuBackdrop" class="absolute inset-0 bg-black/30 backdrop-blur-sm backdrop-brightness-90"></div>
+
+    <!-- panel -->
+    <div id="menuPanel"
+        class="absolute top-0 left-0 w-full h-full bg-[#0b2d71] text-white menu-off transition-transform duration-300"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Main menu">
+
+      <div class="h-full flex flex-col px-6 pt-4 pb-6">
+
+        <!-- close button -->
+        <div class="flex items-center justify-end">
+          <button type="button" id="closeMenuBtn" aria-label="Close menu" class="p-2 text-white">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- menu items -->
+        <nav id="menuNav" class="mt-6 flex-1 flex flex-col justify-start gap-6">
+          <a class="menu-item text-2xl font-semibold" href="/who-we-are.html">Who We Are</a>
+          <a class="menu-item text-2xl font-semibold" href="/what-we-do.html">What We Do</a>
+
+          <!-- Sustainability dropdown -->
+          <div class="flex flex-col">
+            <button 
+              id="sustainBtn"
+              class="menu-item text-2xl font-semibold flex items-center justify-between w-full">
+              Sustainability
+              <svg id="sustainArrow" class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+
+            <div id="sustainDropdown" class="ml-4 mt-3 flex-col gap-3 hidden">
+              <a class="text-xl text-white font-medium block" href="#">Climate</a>
+              <a class="text-xl text-white font-medium block" href="#">Environment</a>
+              <a class="text-xl text-white font-medium block" href="#">Social Investment</a>
+            </div>
+          </div>
+
+          <a class="menu-item text-2xl font-semibold" href="#">Investors</a>
+          <a class="menu-item text-2xl font-semibold" href="#">Newsroom</a>
+          <a class="menu-item text-2xl font-semibold" href="/careers.html">Careers</a>
+          <a class="menu-item text-2xl font-semibold" href="/energy.html">Energies</a>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------------- Main content (mobile-first) ---------------- -->
+  <main class="pt-2">
+
+      <!-- HERO: video with separate white content block below (mobile-first, responsive) -->
+  <section class="relative bg-gray-900 text-white">
+    <!-- Video container -->
+    <div class="relative w-full overflow-hidden">
+      <video id="hero-video"
+             class="w-full h-[56vw] md:h-[60vh] object-cover"
+             poster="/-/media/chevron/what-we-do/energy/images/01_hero_fallback_xlarge.jpg"
+             muted playsinline loop autoplay>
+        <!-- keep source path exactly as you provided -->
+        <source src="/videos/Bayou Bend CCS_ The future of energy along the Texas Gulf Coast.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Overlay gradient (purely visual) -->
+      <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/35 to-black/20"></div>
+
+      <!-- Play / Pause button (top-right overlay) -->
+      <div class="absolute top-4 right-4">
+        <button id="hero-playpause"
+                type="button"
+                aria-pressed="false"
+                aria-label="Pause video"
+                class="bg-white/10 hover:bg-white/20 text-white rounded-full p-3 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white/30">
+          <!-- Play icon (shown when paused) -->
+          <svg id="icon-play" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M5 3v18l15-9L5 3z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+
+          <!-- Pause icon (shown when playing) -->
+          <svg id="icon-pause" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M6 4h4v16H6zM14 4h4v16h-4z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- CONTENT PANEL BELOW VIDEO (white, full width background, constrained inner container) -->
+    <div class="w-full bg-white hero-content-card">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 text-center">
+
+        <h1 class="mt-3 text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0b2d71] leading-tight">
+          sustainability
+        </h1>
+
+        <p class="mt-4 max-w-3xl mx-auto text-base md:text-lg text-black/85">
+         We strive to protect the environment, empower people and get results the right way. This approach is integrated throughout our business.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Around the world — interactive map & location cards (responsive, accessible) -->
+<section id="around-the-world" class="py-10 px-4 bg-[#f8fafb]">
+  <div class="max-w-7xl mx-auto">
+    <!-- header -->
+    <div class="text-center mb-8">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0b2d71]">around the world</h2>
+      <p class="mt-2 text-sm text-slate-700 max-w-xl mx-auto">Learn about our sustainability efforts in the regions where we operate.</p>
+    </div>
+
+    <!-- layout: map left, controls right on desktop -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <!-- Map column -->
+      <div class="lg:col-span-7 bg-white rounded-lg shadow-sm p-4">
+        <div class="relative w-full h-[420px] md:h-[540px] overflow-hidden rounded" id="map-wrap" aria-label="World map showing locations">
+          <!-- Background world map (use your preferred image or SVG). Using a placeholder map image path below. -->
+          <img src="/img/map.png" alt="" class="w-full h-full object-cover filter saturate-90" loading="lazy">
+
+          <!-- Pins (position via percentages) -->
+          <!-- Each pin is a button for keyboard accessibility. data-id must match detail-card id. -->
+          <button class="map-pin" data-id="AR" aria-haspopup="dialog" aria-controls="card-AR" title="Argentina"
+                  style="left:26%; top:58%;"> <span class="sr-only">Argentina</span></button>
+
+          <button class="map-pin" data-id="AU" aria-haspopup="dialog" aria-controls="card-AU" title="Australia"
+                  style="left:85%; top:72%;"> <span class="sr-only">Australia</span></button>
+
+          <button class="map-pin" data-id="BE" aria-haspopup="dialog" aria-controls="card-BE" title="Belgium"
+                  style="left:51%; top:30%;"> <span class="sr-only">Belgium</span></button>
+
+          <button class="map-pin" data-id="CO" aria-haspopup="dialog" aria-controls="card-CO" title="Colombia"
+                  style="left:30%; top:53%;"> <span class="sr-only">Colombia</span></button>
+
+          <button class="map-pin" data-id="CY" aria-haspopup="dialog" aria-controls="card-CY" title="Cyprus"
+                  style="left:62%; top:37%;"> <span class="sr-only">Cyprus</span></button>
+
+          <button class="map-pin" data-id="IN" aria-haspopup="dialog" aria-controls="card-IN" title="India"
+                  style="left:72%; top:48%;"> <span class="sr-only">India</span></button>
+
+          <button class="map-pin" data-id="ZA" aria-haspopup="dialog" aria-controls="card-ZA" title="South Africa"
+                  style="left:54%; top:77%;"> <span class="sr-only">South Africa</span></button>
+
+          <button class="map-pin" data-id="US" aria-haspopup="dialog" aria-controls="card-US" title="United States (California, El Segundo, Richmond, New Mexico)"
+                  style="left:14%; top:40%;"> <span class="sr-only">United States</span></button>
+
+          <!-- Detail card container (popups anchored to map) -->
+          <div id="map-card-anchor" class="absolute z-40 left-4 top-4 w-[92%] md:w-[70%] lg:w-[64%] pointer-events-none"></div>
+        </div>
+      </div>
+
+      <!-- Controls column -->
+      <aside class="lg:col-span-5">
+        <div class="bg-white rounded-lg shadow-sm p-5 sticky top-24">
+          <div class="mb-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-semibold text-[#0b2d71]">select a location to learn more</h3>
+              <button id="map-reset" class="text-sm text-slate-500 hover:text-slate-700" aria-label="Reset selection">Reset</button>
+            </div>
+            <input id="map-search" class="mt-3 w-full rounded border px-3 py-2 text-sm focus:ring-2 focus:ring-[#0b2d71]/20" placeholder="Search locations (Argentina, Australia...)" aria-label="Search locations">
+          </div>
+
+          <div id="location-list" class="grid grid-cols-2 gap-3">
+            <!-- Buttons match the pins above (data-id attribute) -->
+            <button class="location-btn type-button py-3 px-3 text-left rounded bg-slate-50 hover:bg-slate-100 focus:ring-2 focus:ring-[#0b2d71]/20" data-id="AR">Argentina</button>
+            <button class="location-btn type-button py-3 px-3 text-left rounded bg-slate-50 hover:bg-slate-100 focus:ring-2 focus:ring-[#0b2d71]/20" data-id="AU">Australia</button>
+            <button class="location-btn type-button py-3 px-3 text-left rounded bg-slate-50 hover:bg-slate-100 focus:ring-2 focus:ring-[#0b2d71]/20" data-id="BE">Belgium</button>
+            <button class="location-btn type-button py-3 px-3 text-left rounded bg-slate-50 hover:bg-slate-100 focus:ring-2 focus:ring-[#0b2d71]/20" data-id="CO">Colombia</button>
+            <button class="location-btn type-button py-3 px-3 text-left rounded bg-slate-50 hover:bg-slate-100 focus:ring-2 focus:ring-[#0b2d71]/20" data-id="CY">Cyprus</button>
+            <button class="location-btn type-button py-3 px-3 text-left rounded bg-slate-50 hover:bg-slate-100 focus:ring-2 focus:ring-[#0b2d71]/20" data-id="IN">India</button>
+            <button class="location-btn type-button py-3 px-3 text-left rounded bg-slate-50 hover:bg-slate-100 focus:ring-2 focus:ring-[#0b2d71]/20" data-id="ZA">South Africa</button>
+            <button class="location-btn type-button py-3 px-3 text-left rounded bg-slate-50 hover:bg-slate-100 focus:ring-2 focus:ring-[#0b2d71]/20" data-id="US">United States</button>
+          </div>
+
+          <!-- a short hint -->
+          <p class="mt-4 text-xs text-slate-500">Tap a pin or select a location to view details. Use keyboard to tab to pins and press Enter.</p>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Hidden detail cards (canonical content) -->
+    <div id="detail-cards" class="hidden">
+      <!-- AR -->
+      <article id="card-AR" class="detail-card" data-id="AR" data-card-pos="right">
+        <div class="card-media"><img src="/~/media/chevron/sustainability/images/homepage_location_argentina_medium.jpg" alt="El Trapial plant guide — Argentina" loading="lazy"></div>
+        <div class="card-body">
+          <p class="eyebrow">Argentina</p>
+          <h3 class="card-title">el trapial plant guide</h3>
+          <div class="card-desc">
+            <p>In 2022, Chevron Argentina scientists created a site plant guide. Guides like this one can be used to set environmental baselines. They give valuable information to researchers, planners and others working with natural resources.</p>
+            <p>By the end of 2023, the team had identified about 230 species. These included over 60 plants and over 160 types of animals.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- AU -->
+      <article id="card-AU" class="detail-card" data-id="AU" data-card-pos="left">
+        <div class="card-media"><img src="/~/media/chevron/sustainability/images/homepage_location_australia_medium.jpg" alt="Sustainability at HQ — Australia" loading="lazy"></div>
+        <div class="card-body">
+          <p class="eyebrow">Australia</p>
+          <h3 class="card-title">sustainability at HQ</h3>
+          <div class="card-desc">
+            <p>Chevron Australia’s new headquarters is designed with health and well-being in mind. Nature takes focus in the 29-story tower. Thousands of plants inhabit the workspace and floor-to-ceiling windows provide natural light and views of the nearby river and parklands.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- BE -->
+      <article id="card-BE" class="detail-card" data-id="BE" data-card-pos="left">
+        <div class="card-media"><!-- optional image omitted --></div>
+        <div class="card-body">
+          <p class="eyebrow">Belgium</p>
+          <h3 class="card-title">reducing plastic waste</h3>
+          <div class="card-desc">
+            <p>In 2023, the Chevron Belgium BV lubricants facility in Ghent began using a different type of “stretch foil,” reducing plastic film usage by an estimated 7% over the year.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- CO -->
+      <article id="card-CO" class="detail-card" data-id="CO" data-card-pos="right">
+        <div class="card-media"><!-- optional image omitted --></div>
+        <div class="card-body">
+          <p class="eyebrow">Colombia</p>
+          <h3 class="card-title">the energy reefs project</h3>
+          <div class="card-desc">
+            <p>In 2023, Chevron funded Corales de Paz to support the Energy Reefs project, joining local experts and communities on expeditions to study and help conserve coral and reefs.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- CY -->
+      <article id="card-CY" class="detail-card" data-id="CY" data-card-pos="left">
+        <div class="card-media"><!-- optional image omitted --></div>
+        <div class="card-body">
+          <p class="eyebrow">Cyprus</p>
+          <h3 class="card-title">the tiganokinisi caravan</h3>
+          <div class="card-desc">
+            <p>In 2023, Chevron sponsored a mobile information and science education caravan demonstrating how used cooking oil can become biodiesel, supporting rural education and events.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- IN -->
+      <article id="card-IN" class="detail-card" data-id="IN" data-card-pos="left">
+        <div class="card-media"><!-- optional image omitted --></div>
+        <div class="card-body">
+          <p class="eyebrow">India</p>
+          <h3 class="card-title">miller center for social entrepreneurship</h3>
+          <div class="card-desc">
+            <p>Chevron contributed to the Miller Center to support Asia-Pacific enterprises that have the potential to grow and scale their social and economic impact.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ZA -->
+      <article id="card-ZA" class="detail-card" data-id="ZA" data-card-pos="right">
+        <div class="card-media"><!-- optional image omitted --></div>
+        <div class="card-body">
+          <p class="eyebrow">South Africa</p>
+          <h3 class="card-title">chevron engineering leadership program</h3>
+          <div class="card-desc">
+            <p>Students participated in a two-week program solving local challenges and bringing ideas to life using 3D printing and prototyping tools.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- US (special: contains multiple slides for California/El Segundo/Richmond/New Mexico) -->
+      <article id="card-US" class="detail-card detail-carousel" data-id="US" data-card-pos="right">
+        <div class="carousel-slides">
+          <!-- Slide A: California -->
+          <div class="carousel-slide" data-slide="0">
+            <div class="card-media"><img src="/~/media/chevron/sustainability/images/homepage_location_california_medium.jpg" alt="Guadalupe restoration project — California" loading="lazy"></div>
+            <div class="card-body">
+              <p class="eyebrow">california</p>
+              <h3 class="card-title">guadalupe restoration project</h3>
+              <div class="card-desc"><p>We’ve grown over 2,800 La Graciosa thistles at a nursery and transplanted more than 1,135 onsite—reestablishing almost 24 acres of this endangered plant’s natural home.</p></div>
+            </div>
+          </div>
+
+          <!-- Slide B: El Segundo -->
+          <div class="carousel-slide" data-slide="1">
+            <div class="card-media"><img src="/~/media/chevron/sustainability/images/homepage_location_elsegundo_medium.jpg" alt="El Segundo air monitoring" loading="lazy"></div>
+            <div class="card-body">
+              <p class="eyebrow">el segundo, ca</p>
+              <h3 class="card-title">air monitoring technology</h3>
+              <div class="card-desc"><p>El Segundo Refinery uses a fenceline monitoring system to collect real-time air quality data that is publicly available.</p></div>
+            </div>
+          </div>
+
+          <!-- Slide C: Richmond -->
+          <div class="carousel-slide" data-slide="2">
+            <div class="card-media"><img src="/img/map.png" alt="Richmond recycled water" loading="lazy"></div>
+            <div class="card-body">
+              <p class="eyebrow">richmond, ca</p>
+              <h3 class="card-title">using more recycled water than ever</h3>
+              <div class="card-desc"><p>The Richmond Refinery explores options to reduce water use and uses more than 7 million gallons of recycled water per day.</p></div>
+            </div>
+          </div>
+
+          <!-- Slide D: New Mexico -->
+          <div class="carousel-slide" data-slide="3">
+            <div class="card-media"><img src="/img/map.png" alt="Pecos watershed conservation initiative" loading="lazy"></div>
+            <div class="card-body">
+              <p class="eyebrow">new mexico</p>
+              <h3 class="card-title">pecos watershed conservation initiative</h3>
+              <div class="card-desc"><p>Chevron helps fund and support restoration and better land-management practices across the Pecos River watershed.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- carousel controls (rendered into the card when shown) -->
+        <div class="carousel-controls" aria-hidden="true">
+          <button class="carousel-prev" aria-label="Previous slide">‹</button>
+          <div class="carousel-pagination" role="tablist"></div>
+          <button class="carousel-next" aria-label="Next slide">›</button>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Styles (scoped) -->
+  <style>
+    /* Basic pin style */
+    #around-the-world .map-pin {
+      --pin-size: 20px;
+      position: absolute;
+      width: var(--pin-size);
+      height: var(--pin-size);
+      border-radius: 999px;
+      background: linear-gradient(180deg,#ff5a5f,#e33a3a);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      transform: translate(-50%,-50%);
+      border: 2px solid #fff;
+      cursor: pointer;
+      z-index: 30;
+    }
+    #around-the-world .map-pin:focus { outline: 4px solid rgba(11,45,113,0.12); }
+
+    /* Card (popup) visual style */
+    .detail-card, .detail-card * { box-sizing: border-box; }
+    .detail-card {
+      width: 100%;
+      max-width: 720px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      background: linear-gradient(180deg,#0b2d71,#0b2d71);
+      color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      pointer-events: auto;
+      box-shadow: 0 18px 40px rgba(2,10,30,0.2);
+    }
+    .detail-card .card-media img { width:100%; height:100%; object-fit:cover; display:block; min-height:160px; }
+    .detail-card .card-body { padding:16px; }
+    .detail-card .eyebrow { text-transform:uppercase; font-weight:600; color:#a7f3e3; font-size:0.85rem; margin-bottom:6px; }
+    .card-title { font-weight:800; font-size:1.15rem; margin:0 0 8px; color:#fff; }
+    .card-desc p { margin:0 0 8px; color: #e6f7f6; font-size:0.95rem; }
+
+    /* Carousel slides */
+    .detail-carousel .carousel-slides { position:relative; overflow:hidden; width:100%; }
+    .detail-carousel .carousel-slide { display:none; grid-template-columns: 1fr 1fr; gap:12px; align-items:stretch; }
+    .detail-carousel .carousel-slide.active { display:grid; }
+    .carousel-controls { display:flex; align-items:center; justify-content:center; gap:10px; padding:10px; }
+    .carousel-prev, .carousel-next { background:#fff;color:#0b2d71;border:none;padding:6px 10px;border-radius:6px;cursor:pointer; }
+    .carousel-pagination { display:flex; gap:6px; }
+    .carousel-pagination button { width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,0.45);border:none; }
+    .carousel-pagination button.active { background:#fff; transform:scale(1.25); }
+
+    /* Responsive: stack card components on small screens */
+    @media (max-width: 720px) {
+      .detail-card { grid-template-columns: 1fr; }
+      .detail-card .card-media { order:0; }
+      .detail-card .card-body { order:1; }
+      #map-wrap { height:360px; }
+    }
+
+    /* Small helper for hidden canonical cards */
+    #detail-cards { display:none; }
+
+    /* Reveal small animation (consistent with other sections you used) */
+    .reveal { opacity:0; transform: translateY(8px); transition:all 420ms cubic-bezier(.2,.9,.2,1); will-change:opacity,transform; }
+    .reveal.is-visible { opacity:1; transform: translateY(0); }
+
+    /* Misc */
+    .sticky { position: sticky; top: 24px; }
+  </style>
+
+  <!-- Interaction script (vanilla JS) -->
+  <script>
+    (function () {
+      // Map + controls interaction
+      const pins = document.querySelectorAll('#around-the-world .map-pin');
+      const buttons = document.querySelectorAll('#around-the-world .location-btn');
+      const list = document.getElementById('location-list');
+      const anchor = document.getElementById('map-card-anchor');
+      const resetBtn = document.getElementById('map-reset');
+      const search = document.getElementById('map-search');
+
+      // build a map of card templates from the hidden canonical cards
+      const templates = {};
+      document.querySelectorAll('#detail-cards article.detail-card, #detail-cards article.detail-carousel').forEach(card => {
+        templates[card.dataset.id] = card.cloneNode(true);
+      });
+
+      // helper to close any open card
+      function closeOpenCard() {
+        anchor.innerHTML = '';
+        anchor.style.pointerEvents = 'none';
+      }
+
+      function openCard(id, pinEl) {
+        closeOpenCard();
+        const tpl = templates[id];
+        if (!tpl) return;
+        // make visible copy
+        const card = tpl.cloneNode(true);
+        card.classList.add('reveal');
+        // make sure aria attributes
+        card.setAttribute('role', 'dialog');
+        card.setAttribute('aria-label', tpl.querySelector('.card-title') ? tpl.querySelector('.card-title').textContent : id);
+        // show carousel controls if needed
+        if (card.classList.contains('detail-carousel')) initCarousel(card);
+        // place card visually: if pinEl provided we'll try to anchor near the pin (on map); else put top-left
+        anchor.style.pointerEvents = 'auto';
+        anchor.appendChild(card);
+        // small position logic: prefer to the right of pin, or left if near right edge
+        if (pinEl) {
+          const mapRect = document.getElementById('map-wrap').getBoundingClientRect();
+          const pinRect = pinEl.getBoundingClientRect();
+          // compute relative left percent of pin's center
+          const relX = ((pinRect.left + pinRect.width/2) - mapRect.left) / mapRect.width;
+          if (relX > 0.6) {
+            anchor.style.left = '2%';
+            anchor.style.top = '6%';
+            anchor.style.width = '92%';
+          } else {
+            anchor.style.left = '6%';
+            anchor.style.top = '6%';
+            anchor.style.width = '88%';
+          }
+        } else {
+          anchor.style.left = '6%';
+          anchor.style.top = '6%';
+          anchor.style.width = '88%';
+        }
+
+        // animate reveal
+        requestAnimationFrame(() => card.classList.add('is-visible'));
+        // focus management
+        const focusable = card.querySelector('button, a');
+        if (focusable) focusable.focus();
+        // clicking outside card closes it
+        setTimeout(() => {
+          document.addEventListener('click', outsideClose);
+        }, 0);
+
+        function outsideClose(ev) {
+          if (!anchor.contains(ev.target) && !ev.target.classList.contains('map-pin') && !ev.target.classList.contains('location-btn')) {
+            closeOpenCard();
+            document.removeEventListener('click', outsideClose);
+          }
+        }
+      }
+
+      // pin click handler
+      pins.forEach(pin => {
+        pin.addEventListener('click', ev => {
+          const id = pin.dataset.id;
+          openCard(id, pin);
+        });
+        pin.addEventListener('keydown', ev => {
+          if (ev.key === 'Enter' || ev.key === ' ') {
+            ev.preventDefault();
+            openCard(pin.dataset.id, pin);
+          }
+        });
+      });
+
+      // list button handler
+      buttons.forEach(btn => {
+        btn.addEventListener('click', ev => {
+          const id = btn.dataset.id;
+          // find matching pin (if present) to position card near it
+          const pin = document.querySelector('#around-the-world .map-pin[data-id="' + id + '"]');
+          openCard(id, pin);
+        });
+      });
+
+      // reset
+      resetBtn && resetBtn.addEventListener('click', () => closeOpenCard());
+
+      // search filtering
+      search && search.addEventListener('input', (e) => {
+        const q = e.target.value.trim().toLowerCase();
+        document.querySelectorAll('#around-the-world .location-btn').forEach(btn => {
+          const name = btn.textContent.trim().toLowerCase();
+          btn.style.display = name.includes(q) ? '' : 'none';
+        });
+      });
+
+      // tiny carousel for the US card (called when card cloned into anchor)
+      function initCarousel(card) {
+        const slides = Array.from(card.querySelectorAll('.carousel-slide'));
+        const controls = card.querySelector('.carousel-controls');
+        if (!slides.length) return;
+        let idx = 0;
+        const pagination = card.querySelector('.carousel-pagination');
+
+        function render() {
+          slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+          // rebuild pagination
+          if (pagination) {
+            pagination.innerHTML = '';
+            slides.forEach((_, i) => {
+              const b = document.createElement('button');
+              b.setAttribute('aria-label', 'Go to slide ' + (i+1));
+              b.className = i === idx ? 'active' : '';
+              b.addEventListener('click', () => { idx = i; render(); });
+              pagination.appendChild(b);
+            });
+          }
+        }
+
+        // hook up prev/next
+        const prev = card.querySelector('.carousel-prev');
+        const next = card.querySelector('.carousel-next');
+        prev && prev.addEventListener('click', () => { idx = (idx - 1 + slides.length) % slides.length; render(); });
+        next && next.addEventListener('click', () => { idx = (idx + 1) % slides.length; render(); });
+
+        // initial render
+        render();
+        // expose for possible future auto-play or state sync
+      }
+
+      // keyboard: ESC closes card
+      document.addEventListener('keydown', ev => {
+        if (ev.key === 'Escape') closeOpenCard();
+      });
+
+      // initial small reveal for header
+      document.querySelectorAll('#around-the-world .reveal').forEach(el => { el.classList.add('is-visible'); });
+    })();
+  </script>
+</section>
+
+<!-- ESG Promo Banner — responsive, accessible, Tailwind-friendly -->
+<section id="promo-esg" class="py-8 px-4 bg-[#f7fafc]">
+  <div class="max-w-7xl mx-auto">
+    <div class="mx-auto max-w-[1200px]">
+      <a
+        href="/investors/esg"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group block rounded-lg overflow-hidden shadow-lg bg-[#0b6b84] text-white no-underline focus:outline-none focus-visible:ring-4 focus-visible:ring-[#0b6b84]/30"
+        aria-label="Explore ESG topics from A to Z (opens in a new tab)"
+      >
+        <!-- Decorative opacity cover + content -->
+        <div class="relative">
+          <!-- background gradient/cover for visual depth -->
+          <div class="absolute inset-0 bg-gradient-to-r from-[#0b6b84] to-[#007a92] opacity-100 pointer-events-none"></div>
+
+          <!-- content -->
+          <div class="relative px-6 py-10 md:py-12 lg:py-16 text-center">
+            <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight mb-4 drop-shadow-sm">
+              find our environment, social and governance topics in one place
+            </h3>
+
+            <span class="inline-flex items-center gap-3 mt-2 text-base font-medium bg-white/8 px-4 py-2 rounded-md transition-transform transform group-hover:translate-x-0.5">
+              <span class="cta-underline">explore ESG topics from a–z</span>
+              <svg class="w-5 h-5 transform transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+
+            <p class="sr-only">Opens in a new tab</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <style>
+    /* Scoped styles for banner */
+    #promo-esg a { display: block; }
+    #promo-esg h3 { text-transform: none; color: #ffffff; }
+    #promo-esg .cta-underline { text-decoration: underline; text-underline-offset: 3px; color: #fff; }
+
+    /* Hover + focus polish */
+    #promo-esg a:focus-visible { outline: none; box-shadow: 0 10px 30px rgba(11,107,132,0.12), 0 0 0 4px rgba(11,107,132,0.12); border-radius: 12px; }
+    #promo-esg a:hover .cta-underline { text-decoration-thickness: 2px; }
+
+    /* Responsive spacing */
+    @media (min-width: 768px) {
+      #promo-esg h3 { margin-bottom: 8px; }
+    }
+
+    @media (max-width: 420px) {
+      #promo-esg h3 { font-size: 1.125rem; line-height: 1.12; }
+    }
+  </style>
+</section>
+
+
+    <!-- WHAT WE DO -->
+    <section class="bg-[#F5F6F7] py-10 px-5">
+      <div class="max-w-xl mx-auto text-center">
+
+        <!-- Eyebrow -->
+        <p class="text-sm font-semibold text-[#0A2A66] tracking-wide mb-2 reveal">
+          what we do
+        </p>
+
+        <!-- Heading -->
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0A2A66] mb-4 leading-tight reveal">
+          energy that fuels <br class="hidden sm:block"> the world
+        </h2>
+
+        <!-- Description -->
+        <p class="max-w-md mx-auto text-gray-700 text-base sm:text-lg leading-relaxed reveal">
+          We’re working to deliver the energy needed today. To lower the carbon
+          intensity of our operations. And to build the lower carbon energy
+          system of tomorrow.
+        </p>
+      </div>
+
+      <!-- IMAGE GRID -->
+      <div class="mt-8 px-2">
+        <div class="grid grid-cols-2 gap-3 max-w-xl mx-auto">
+
+          <!-- Top 2 images -->
+          <img class="w-full h-32 object-cover rounded-lg reveal"
+              src="/img/dohwnload.jpeg" alt="">
+          <img class="w-full h-32 object-cover rounded-lg reveal"
+              src="/img/download (1).jpeg" alt="">
+
+          <!-- Large center image -->
+          <img class="col-span-2 w-full h-44 object-cover rounded-lg reveal"
+              src="/img/download.jpeg" alt="">
+
+          <!-- Bottom 2 images -->
+          <img class="w-full h-32 object-cover rounded-lg reveal"
+              src="/img/downloajd.jpeg" alt="">
+          <img class="w-full h-32 object-cover rounded-lg reveal"
+              src="/img/downloamd.jpeg" alt="">
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSROOM CAROUSEL -->
+    <section id="newsroom-carousel" class="py-6 px-4">
+      <div class="max-w-lg mx-auto">
+
+        <!-- Heading -->
+        <div class="text-center mb-4">
+          <p class="text-sm font-semibold text-blue-900 uppercase">newsroom</p>
+          <h3 class="text-2xl font-bold text-blue-900">latest at chevron</h3>
+        </div>
+
+        <!-- CAROUSEL VIEWPORT -->
+        <div id="carouselViewport" class="relative overflow-hidden rounded-xl">
+          <div id="carouselTrack" class="flex transition-transform duration-500 ease-out">
+
+            <!-- CARD 0 -->
+            <article class="card bg-active active" data-index="0" aria-hidden="false">
+              <img src="/carousel-img/supporting-stem-education-in-new-mexico-hero.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs mb-2 text-white/90">November 18, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">supporting STEM education in new mexico</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 1 -->
+            <article class="card small bg-active" data-index="1" aria-hidden="true">
+              <img src="/carousel-img/frontline-innovations-drive-business-solutions-hero.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">frontline innovations drive business solutions</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 2 -->
+            <article class="card small bg-active" data-index="2" aria-hidden="true">
+              <img src="/carousel-img/Apolo_Newsroom_Hero-01-D4-1.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">how apolo helps pinpoint prime drilling</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 3 -->
+            <article class="card small bg-active" data-index="3" aria-hidden="true">
+              <img src="/carousel-img/Apex_Newsroom_Hero-01-D2.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">a smarter way to prospect</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 4 -->
+            <article class="card small bg-active" data-index="4" aria-hidden="true">
+              <img src="/carousel-img/from-service-to-solutions-veterans-solve-problems-01.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">from service to solutions</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 5 -->
+            <article class="card small bg-active" data-index="5" aria-hidden="true">
+              <img src="/carousel-img/robotics-nr-hero.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs text-white/90 mb-2">November 10, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">robotics supports a more efficient workplace</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- CONTROLS -->
+        <div class="mt-4 flex items-center gap-3 justify-between">
+          <button id="carouselPrev" class="arrow-btn" aria-label="Previous slide" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M15 18L9 12l6-6" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+
+          <div id="carouselDots" class="carousel-dots flex gap-2 justify-center flex-1"></div>
+
+          <button id="carouselNext" class="arrow-btn" aria-label="Next slide" aria-hidden="false">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Back to top button (paste before </body>) -->
+    <button id="backToTop"
+            class="fixed right-4 bottom-6 z-50 flex items-center justify-center w-12 h-12 rounded-full shadow-lg bg-[#0b2d71] text-white transform translate-y-6 opacity-0 pointer-events-none
+                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white focus:ring-opacity-80 transition-transform transition-opacity"
+            aria-label="Back to top"
+            title="Back to top"
+            aria-hidden="true">
+      <span class="sr-only">Back to top</span>
+      <svg id="backToTopIcon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 5.5v13" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6.5 11.5L12 6l5.5 5.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+   <!-- Footer (Tailwind-ready) -->
+  <footer id="footer" class="bg-[#052c65] text-white">
+    <!-- Promo banner: email updates -->
+    <div class="max-w-4xl mx-auto px-4 pt-8 pb-6">
+      <aside class="rounded-lg overflow-hidden shadow-sm">
+        <a href="/newsroom/preference-center"
+          target="_blank" rel="noopener noreferrer"
+          class="block bg-sky-700 text-white px-4 py-5 rounded-lg">
+          <div class="text-center">
+            <h3 class="text-lg font-semibold">chevron email updates</h3>
+            <p class="mt-1 text-sm">subscribe to our newsletter to receive news and updates.</p>
+          </div>
+        </a>
+      </aside>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 pb-8">
+
+      <!-- top: brand + short copy -->
+      <div class="flex flex-col md:flex-row md:items-start gap-6">
+        <!-- left: logo + copy -->
+        <div class="w-full md:w-1/3">
+          <img src="/img/hallmark-2023-theme-light.png"
+              alt="the human energy company"
+              width="200" height="131"
+              class="w-40 h-auto mb-4">
+
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Chevron has always put people at the center of the energy conversation. Because we understand that the
+            well-being of people everywhere depends on energy — energy that is affordable, reliable and ever-cleaner.
+          </p>
+
+          <div class="mt-4">
+            <a href="/newsroom/preference-center"
+              class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-white transition text-sm"
+              aria-label="Subscribe to our newsletter">
+              <span>subscribe to our newsletter</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- right: accordion + links (we removed "latest at chevron") -->
+        <div class="w-full md:w-2/3">
+          <div id="footer-accordion" class="space-y-3">
+
+            <!-- GET TO KNOW US (populated with user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-get-to-know-us">
+                <span>get to know us</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-get-to-know-us"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0 md:items-start">
+                <li><a class="block hover:underline" href="/who-we-are.html">who we are</a></li>
+                <li><a class="block hover:underline" href="/our-leadership.html">our leadership</a></li>
+                <li><a class="block hover:underline" href="/what-we-do.html">what we do</a></li>
+                <li><a class="block hover:underline" href="/tech-innovation.html">technology and innovation</a></li>
+                <li><a class="block hover:underline" href="/sustainability.html">sustainability</a></li>
+              </ul>
+            </div>
+
+            <!-- FUTURE OF ENERGY (user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-future">
+                <span>future of energy</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-future"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
+                <li><a class="block hover:underline" href="/carbon capture and storage.html">carbon capture and storage</a></li>
+                <li><a class="block hover:underline" href="/energy-in-progress.html">energy in progress</a></li>
+                <li><a class="block hover:underline" href="/new-energy.html">new energies</a></li>
+                <li><a class="block hover:underline" href="/methane-management.html">methane management</a></li>
+              </ul>
+            </div>
+
+            <!-- POPULAR LINKS (user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-popular">
+                <span>popular links</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-popular"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
+                <li><a class="block hover:underline" href="/careers.html">careers</a></li>
+                <li><a class="block hover:underline" href="/contact.html">contact us</a></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- small divider -->
+          <hr class="my-4 border-slate-700">
+
+          <!-- global links + country selector -->
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-slate-300">
+            <div class="flex flex-wrap gap-3">
+              <a class="hover:underline" href="/global-pages/site-map">site map</a>
+              <a class="hover:underline" href="/accessibility">accessibility</a>
+              <a class="hover:underline" href="/terms-of-use">terms of use</a>
+              <a class="hover:underline" href="/privacy">privacy</a>
+              <button type="button" class="hover:underline" onclick="OneTrust.ToggleInfoDisplay()">cookie settings (do not sell/share information)</button>
+              <a class="hover:underline" href="/privacy/global-cookie-statement">cookie statement</a>
+            </div>
+
+            <div class="mt-2 sm:mt-0">
+              <a class="inline-flex items-center gap-2 text-slate-100 hover:underline" href="https://www.chevron.com/worldwide/nigeria" rel="nofollow noopener">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M12 2c2.8 0 5 2.2 5 5 0 5-5 10-5 10s-5-5-5-10c0-2.8 2.2-5 5-5z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Nigeria</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- social icons row -->
+          <div class="mt-4 flex items-center gap-4">
+            <a href="https://www.facebook.com/Chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/facebook.svg" alt="facebook" class="w-6 h-6">
+            </a>
+            <a href="https://twitter.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/twitter.svg" alt="twitter" class="w-6 h-6">
+            </a>
+            <a href="https://www.instagram.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/instagram.svg" alt="instagram" class="w-6 h-6">
+            </a>
+            <a href="https://www.tiktok.com/@chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/tiktok.svg" alt="tiktok" class="w-6 h-6">
+            </a>
+            <a href="https://www.youtube.com/user/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/youtube.svg" alt="youtube" class="w-6 h-6">
+            </a>
+            <a href="https://www.linkedin.com/company/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/linkedin.svg" alt="linkedin" class="w-6 h-6">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- copyright -->
+      <div class="mt-6 border-t border-slate-800 pt-4 text-xs text-slate-400 text-center">
+        © 2001 – 2025 Chevron Corporation. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  </main>
+
+  <!-- script -->
+  <script src="/main.js"></script>
+  <!-- back to top -->
+  <script>
+  (function () {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+
+    // configuration
+    const showAfter = 300; // px scrolled before showing button
+    const scrollBehavior = 'smooth'; // 'smooth' or 'instant' (respects reduced motion)
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // initialize state
+    btn.classList.add('hidden');
+    btn.setAttribute('aria-hidden', 'true');
+
+    // Show/hide on scroll
+    let lastScrollY = window.scrollY;
+    function onScroll() {
+      const y = window.scrollY || window.pageYOffset;
+      if (y > showAfter) {
+        if (!btn.classList.contains('visible')) {
+          btn.classList.remove('hidden');
+          btn.classList.add('visible');
+          btn.setAttribute('aria-hidden', 'false');
+        }
+      } else {
+        if (!btn.classList.contains('hidden')) {
+          btn.classList.remove('visible');
+          btn.classList.add('hidden');
+          btn.setAttribute('aria-hidden', 'true');
+        }
+      }
+      lastScrollY = y;
+    }
+
+    // Smooth scroll to top, accessible
+    function scrollToTop() {
+      if (reducedMotion) {
+        window.scrollTo(0, 0);
+        return;
+      }
+      // modern browsers
+      try {
+        window.scrollTo({ top: 0, behavior: scrollBehavior });
+      } catch (e) {
+        window.scrollTo(0, 0);
+      }
+    }
+
+    // click & keyboard support
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToTop();
+    });
+
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        scrollToTop();
+      }
+    });
+
+    // Show/hide on scroll with passive listener for performance
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Also check on load (in case page opened scrolled)
+    document.addEventListener('DOMContentLoaded', onScroll, { once: true });
+    // immediate check as well (for SPA or dynamic content)
+    onScroll();
+
+    // Optional: hide on small pages where no scroll
+    if (document.documentElement.scrollHeight <= window.innerHeight + 10) {
+      btn.classList.add('hidden');
+    }
+  })();
+  </script>
+
+</body>
+</html>
