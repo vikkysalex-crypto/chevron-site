@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" >
+  <meta name="viewport" content="width=device-width,initial-scale=1" >
+  <title>maritimegasoil</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <!-- back to top style -->
+   <link rel="stylesheet" href="/back-to-top.css">
+
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- ---------------- Header (transparent, mobile-first) ---------------- -->
+  <header class="w-full fixed top-0 left-0 z-50 bg-white/10 backdrop-blur-md mobile-only">
+    <div class="flex items-center justify-between px-4 py-3">
+
+      <!-- Menu icon (Left) -->
+      <button type="button" id="openMenuBtn" aria-label="Open menu" class="text-white active:scale-95 transition">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M3 6h18M3 12h18M3 18h18" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- Logo (Center) -->
+      <div class="flex-1 flex justify-center pointer-events-none">
+        <img src="/img/hallmark-2023-theme-light.png"
+            alt="Chevron Logo"
+            class="h-9 w-auto object-contain drop-shadow-md">
+      </div>
+
+      <!-- Search icon (Right) -->
+      <button type="button" id="searchIcon" aria-label="Search" class="text-white active:scale-95 transition">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M21 21l-4.35-4.35" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round"/>
+          <circle cx="11" cy="11" r="6" 
+                  stroke="currentColor" 
+                  stroke-width="2"/>
+        </svg>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ---------------- Full-screen blue menu (slides in from left) ---------------- -->
+  <div id="menuContainer" class="fixed inset-0 z-50 mobile-only hidden" aria-hidden="true">
+    <!-- backdrop -->
+    <div id="menuBackdrop" class="absolute inset-0 bg-black/30 backdrop-blur-sm backdrop-brightness-90"></div>
+
+    <!-- panel -->
+    <div id="menuPanel"
+        class="absolute top-0 left-0 w-full h-full bg-[#0b2d71] text-white menu-off transition-transform duration-300"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Main menu">
+
+      <div class="h-full flex flex-col px-6 pt-4 pb-6">
+
+        <!-- close button -->
+        <div class="flex items-center justify-end">
+          <button type="button" id="closeMenuBtn" aria-label="Close menu" class="p-2 text-white">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- menu items -->
+        <nav id="menuNav" class="mt-6 flex-1 flex flex-col justify-start gap-6">
+          <a class="menu-item text-2xl font-semibold" href="/who-we-are.html">Who We Are</a>
+          <a class="menu-item text-2xl font-semibold" href="/what-we-do.html">What We Do</a>
+
+          <!-- Sustainability dropdown -->
+          <div class="flex flex-col">
+            <button 
+              id="sustainBtn"
+              class="menu-item text-2xl font-semibold flex items-center justify-between w-full">
+              Sustainability
+              <svg id="sustainArrow" class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+
+            <div id="sustainDropdown" class="ml-4 mt-3 flex-col gap-3 hidden">
+              <a class="text-xl text-white font-medium block" href="/climate.html">Climate</a>
+              <a class="text-xl text-white font-medium block" href="/Environment.html">Environment</a>
+              <a class="text-xl text-white font-medium block" href="/Social Investment.html">Social Investment</a>
+            </div>
+          </div>
+
+          <a class="menu-item text-2xl font-semibold" href="#">Investors</a>
+          <a class="menu-item text-2xl font-semibold" href="#">Newsroom</a>
+          <a class="menu-item text-2xl font-semibold" href="/careers.html">Careers</a>
+          <a class="menu-item text-2xl font-semibold" href="/energy.html">Energies</a>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------------- Main content (mobile-first) ---------------- -->
+  <main class="pt-2">
+
+    <!-- HERO: "who we are / leaders in energy" (mobile-first, white panel below image) -->
+    <section id="hero-leadership" class="w-full">
+
+      <!-- Background Image: Mobile -->
+      <div
+        class="md:hidden h-72 bg-center bg-cover"
+        style="background-image: url('/img/leadership-img.jpg');"
+        aria-hidden="true">
+      </div>
+
+      <!-- Background Image: Desktop -->
+      <div
+        class="hidden md:block h-[420px] bg-center bg-cover"
+        style="background-image: url('/img/leadership-img.jpg');"
+        aria-hidden="true">
+      </div>
+
+      <!-- White content panel (full width but constrained inner content) -->
+      <div class="w-full bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 text-center">
+
+          <!-- Eyebrow -->
+          <p class="uppercase text-sm font-semibold tracking-wide text-[#0b2d71]">
+           Sustainability
+          </p>
+
+          <!-- Title -->
+          <h1 class="mt-3 text-4xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+            environment
+          </h1>
+
+          <!-- Description -->
+          <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-3xl mx-auto">
+           Chevron is taking steps to help protect the environment where we operate. We do this by stewarding our water usage, integrating biodiversity into our decision making, reducing waste and managing air emissions from our operations.
+          </p>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Read more about our environmental efforts — Tailwind -->
+<section id="mod-ad054392" class="bg-white text-gray-900 py-10 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-[800px] mx-auto text-center">
+      <a
+        href="/newsroom/media/publications/corporate-sustainability-report"
+        class="inline-flex items-center justify-center gap-3 rounded-md bg-[#0b6b84] text-white px-6 py-3 font-medium shadow-sm hover:shadow-md hover:translate-y-[-1px] transition-transform focus:outline-none focus-visible:ring-4 focus-visible:ring-[#0b6b84]/30"
+        title="Read more about our environmental efforts"
+        aria-label="Read more about our environmental efforts"
+      >
+        <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <span>read more about our environmental efforts</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Quote Section — Tailwind -->
+<section id="mod-68cf2303" class="bg-[#004f53] text-white py-12 px-4">
+  <div class="max-w-7xl mx-auto space-y-10 md:space-y-0 md:flex md:items-center md:gap-10">
+
+    <!-- Image -->
+    <div class="md:flex-shrink-0 md:w-1/2 flex justify-center">
+      <img 
+        src="/img/environment-img-1.jpg" 
+        alt="Headshot of Chevron Vice Chairman, Mark Nelson"
+        class="rounded-2xl w-full max-w-xl shadow-lg"
+      >
+    </div>
+
+    <!-- Quote -->
+    <figure class="md:w-1/2 space-y-6">
+      <blockquote>
+        <p class="text-2xl md:text-3xl font-semibold leading-snug text-center md:text-left">
+          “Through efforts large and small, we’ll continue to advance how we help to protect the environment and deliver energy.”
+        </p>
+      </blockquote>
+
+      <figcaption class="text-center md:text-left text-sm opacity-80">
+        <p>
+          <span class="font-semibold">Mark Nelson</span>
+          <span class="mx-2">|</span>
+          <span>Vice Chairman</span>
+        </p>
+      </figcaption>
+    </figure>
+
+  </div>
+</section>
+
+
+<!-- Stewarding water management — mobile-first Tailwind -->
+<section id="mod-b7f8f7ec" class="bg-[#0b2d71] text-white">
+  <div class="max-w-7xl mx-auto px-4 py-12 sm:py-16">
+    <div class="max-w-[1000px] mx-auto text-center">
+
+      <!-- Heading -->
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight mb-4 text-[#a8e9f0]">
+        stewarding water management
+      </h2>
+
+      <!-- Description -->
+      <div class="mx-auto max-w-[600px] text-sm sm:text-base text-white/90 leading-relaxed mb-6">
+        <p>
+          Water is vital to our operations and the communities where we operate. That’s why we’re focused on efficient
+          and responsible water use, reuse, recycling and conservation. But we can’t do it alone. Close collaboration
+          with stakeholders is important to strengthen our water stewardship.
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div>
+        <a
+          href="https://www.chevron.com/investors/esg#stewarding-water"
+          class="inline-flex items-center gap-3 font-medium rounded-md bg-[#00b2bd] text-white px-5 py-3 shadow-sm hover:shadow-md transition transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#00b2bd]/25"
+          title="learn more about our approach"
+          aria-label="Learn more about our water stewardship approach"
+          target="_blank" rel="noopener noreferrer"
+        >
+          <span>learn more about our approach</span>
+          <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- More About Our Efforts — Tailwind Rewrite -->
+<section id="mod-b3600e20" class="bg-[#0b2d71] text-white">
+  <div class="max-w-7xl mx-auto px-4 pt-10 pb-0">
+    <div class="max-w-[1000px] mx-auto text-center">
+      
+      <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold text-white">
+        more about our efforts
+      </h3>
+
+    </div>
+  </div>
+</section>
+
+<!-- "More about our efforts" — Tailwind responsive carousel -->
+<section id="mod-e5cfb97b" class="bg-[#0b2d71] text-white py-8 px-4">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="max-w-[1100px] mx-auto">
+      <h3 class="sr-only">More about our efforts — articles</h3>
+
+      <!-- Carousel viewport -->
+      <div class="relative">
+        <div id="mwe-slides" class="overflow-hidden rounded-lg">
+          <ul class="flex transition-transform duration-400 ease-[cubic-bezier(.2,.9,.2,1)]"
+              style="transform: translateX(0%);">
+            <!-- Slide 1 -->
+            <li class="w-full flex-shrink-0">
+              <a href="/newsroom/2024/q1/hydrogen-facility-to-be-a-chevron-first"
+                 class="block md:flex md:items-stretch bg-white/5 hover:bg-white/8 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/20"
+                 aria-label="Hydrogen facility to be a Chevron first — read article">
+                <div class="md:w-1/2 w-full aspect-[16/9] md:aspect-auto">
+                  <img src="/img/environment-img-2.jpg"
+                       alt="The team at Chevron's Lost Hills facility check on the solar panels"
+                       class="w-full h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-tr-none" loading="lazy" decoding="async">
+                </div>
+
+                <div class="md:w-1/2 w-full p-6 md:p-8">
+                  <h4 class="text-lg font-semibold text-white mb-2">hydrogen facility to be a chevron first</h4>
+                  <p class="text-sm text-white/80 mb-4">February 29, 2024</p>
+                  <div class="mt-auto">
+                    <span class="inline-flex items-center gap-3 text-sm font-medium text-[#00b2bd]">
+                      <span>read article</span>
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                        <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+
+            <!-- Slide 2 -->
+            <li class="w-full flex-shrink-0">
+              <a href="/newsroom/2023/q2/working-together-to-meet-asias-basic-human-needs"
+                 class="block md:flex md:items-stretch bg-white/5 hover:bg-white/8 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/20"
+                 aria-label="Working together to meet Asia’s basic human needs — read article">
+                <div class="md:w-1/2 w-full aspect-[16/9] md:aspect-auto">
+                  <img src="/img/environment-img-3.jpg"
+                       alt="A group of children drink cups of water"
+                       class="w-full h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-tr-none" loading="lazy" decoding="async">
+                </div>
+
+                <div class="md:w-1/2 w-full p-6 md:p-8">
+                  <h4 class="text-lg font-semibold text-white mb-2">working together to meet asia’s basic human needs</h4>
+                  <p class="text-sm text-white/80 mb-4">June 15, 2023</p>
+                  <div class="mt-auto">
+                    <span class="inline-flex items-center gap-3 text-sm font-medium text-[#00b2bd]">
+                      <span>read article</span>
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                        <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Prev / Next -->
+        <div class="absolute inset-y-0 left-2 flex items-center">
+          <button id="mwe-prev" class="bg-white/8 hover:bg-white/12 text-white rounded-full p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+                  aria-label="Previous slide" disabled>
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="absolute inset-y-0 right-2 flex items-center">
+          <button id="mwe-next" class="bg-white/8 hover:bg-white/12 text-white rounded-full p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+                  aria-label="Next slide">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-4 flex justify-center gap-3" role="tablist" aria-label="Select a slide to show">
+          <button class="w-2.5 h-2.5 rounded-full bg-white/50" data-slide="0" aria-label="Go to slide 1" aria-selected="true" role="tab"></button>
+          <button class="w-2.5 h-2.5 rounded-full bg-white/30" data-slide="1" aria-label="Go to slide 2" aria-selected="false" role="tab"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tiny carousel script (no dependencies) -->
+  <script>
+    (function () {
+      const slidesWrap = document.querySelector('#mwe-slides > ul');
+      const prevBtn = document.getElementById('mwe-prev');
+      const nextBtn = document.getElementById('mwe-next');
+      const dots = Array.from(document.querySelectorAll('[data-slide]'));
+      const slideCount = slidesWrap.children.length;
+      let index = 0;
+
+      function updateControls() {
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === slideCount - 1;
+        dots.forEach((d, i) => {
+          const selected = i === index;
+          d.classList.toggle('bg-white/80', selected);
+          d.classList.toggle('bg-white/30', !selected);
+          d.setAttribute('aria-selected', selected ? 'true' : 'false');
+        });
+      }
+
+      function goTo(i) {
+        if (i < 0 || i >= slideCount) return;
+        index = i;
+        const pct = -index * 100;
+        slidesWrap.style.transform = `translateX(${pct}%)`;
+        updateControls();
+      }
+
+      prevBtn.addEventListener('click', () => goTo(index - 1));
+      nextBtn.addEventListener('click', () => goTo(index + 1));
+      dots.forEach((d) => d.addEventListener('click', () => goTo(Number(d.dataset.slide))));
+
+      // keyboard support (left/right)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') goTo(index - 1);
+        if (e.key === 'ArrowRight') goTo(index + 1);
+      });
+
+      // allow swipe on touch devices
+      let startX = 0;
+      slidesWrap.addEventListener('touchstart', (e) => startX = e.touches[0].clientX);
+      slidesWrap.addEventListener('touchend', (e) => {
+        const endX = (e.changedTouches && e.changedTouches[0].clientX) || 0;
+        const dx = endX - startX;
+        if (dx > 40) goTo(index - 1);
+        else if (dx < -40) goTo(index + 1);
+      });
+
+      // initial update
+      goTo(0);
+    })();
+  </script>
+
+  <style>
+    /* small niceties */
+    #mod-e5cfb97b a { text-decoration: none; }
+    /* make slides horizontal width correct for translateX in % */
+    #mwe-slides > ul > li { width: 100%; }
+    @media (min-width: 768px) {
+      #mwe-slides > ul { display: flex; }
+      #mwe-slides > ul > li { display: block; }
+    }
+  </style>
+</section>
+
+
+<div id="biodiversity-module" class="w-full bg-white py-12">
+  <div class="max-w-5xl mx-auto">
+    <div class="relative w-full h-[330px] md:h-[330px] bg-center bg-cover biodiversity-bg">
+      <img 
+        src="/img/environment-img-4.png" 
+        alt="icon of trees and biodiversity"
+        class="hidden md:block w-full h-full object-cover"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</div>
+
+
+
+<section class="w-full bg-white py-12">
+  <div class="max-w-[1920px] mx-auto mb-16 px-4">
+    <div class="max-w-[1000px] mx-auto text-center">
+      
+      <h2 class="text-3xl md:text-4xl font-bold text-[#002F6C] mb-6">
+        building up biodiversity
+      </h2>
+
+      <p class="max-w-[600px] mx-auto text-base text-gray-700 mb-8">
+        Chevron recognizes the importance of biodiversity. We work with communities,
+        regulatory agencies, industry groups and conservation organizations to support
+        efforts to protect ecosystems where we operate. Our aim is to develop an
+        understanding of potential risks and use mitigation to avoid, reduce, restore or
+        offset potential impacts on biodiversity.
+      </p>
+
+      <a 
+        href="https://www.chevron.com/investors/esg#biodiversity"
+        class="inline-flex items-center gap-2 text-base font-semibold text-blue-700 hover:text-blue-900 transition"
+        title="learn more about our approach"
+      >
+        <span class="inline-block transition-transform duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" fill="none"/>
+          </svg>
+        </span>
+        learn more about our approach
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+
+<section class="w-full bg-white py-0">
+  <div class="max-w-[1920px] mx-auto mb-0 px-4">
+    <div class="max-w-[1000px] mx-auto text-center">
+      
+      <h3 class="text-2xl md:text-3xl font-bold text-[#002F6C]">
+        more about our efforts
+      </h3>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Article carousel — Tailwind (mobile-first, accessible) -->
+<section id="mod-40e5a16c" class="bg-white text-white py-8 px-4">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="max-w-[1100px] mx-auto">
+      <h3 class="sr-only">Article carousel</h3>
+
+      <!-- Carousel viewport -->
+      <div class="relative">
+        <div id="article-slides" class="overflow-hidden rounded-lg bg-[#0b2d71]">
+          <ul class="flex transition-transform duration-300 ease-[cubic-bezier(.2,.9,.2,1)]"
+              style="transform: translateX(0%);">
+            <!-- Slide 1 -->
+            <li class="w-full flex-shrink-0">
+              <a href="/newsroom/2024/q1/sustainable-aquaculture-in-indonesia-protects-mangroves-way-of-life"
+                 class="block md:flex md:items-stretch bg-white/5 hover:bg-white/8 focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-200"
+                 aria-label="Sustainable aquaculture in Indonesia protects mangroves, way of life — read article">
+                <div class="md:w-1/2 w-full aspect-[16/9] md:aspect-auto">
+                  <img src="/img/environment-img-5.jpg"
+                       alt="The proboscis monkey is native to the island of Borneo and depends on the mangrove habitat for its survival."
+                       class="w-full h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-tr-none" loading="lazy" decoding="async">
+                </div>
+
+                <div class="md:w-1/2 w-full p-6 md:p-8">
+                  <h4 class="text-lg font-semibold mb-2">sustainable aquaculture in Indonesia protects mangroves, way of life</h4>
+                  <p class="text-sm text-white mb-4">February 16, 2024</p>
+                  <div class="mt-auto">
+                    <span class="inline-flex items-center gap-3 text-sm font-medium text-white">
+                      <span>read article</span>
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                        <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+
+            <!-- Slide 2 -->
+            <li class="w-full flex-shrink-0">
+              <a href="/newsroom/2023/q2/barrow-island-operations-hatches-plan-to-protect-turtles"
+                 class="block md:flex md:items-stretch bg-white/5 hover:bg-white/8 focus:outline-none focus-visible:ring-4 focus-visible:ring-sky-200"
+                 aria-label="Barrow Island operations hatches plan to protect turtles — read article">
+                <div class="md:w-1/2 w-full aspect-[16/9] md:aspect-auto">
+                  <img src="/img/environment-img-6.jpg"
+                       alt="Julian Kalau, a Chevron Australia environmental advisor, helps affix a satellite tracker on a flatback sea turtle."
+                       class="w-full h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-tr-none" loading="lazy" decoding="async">
+                </div>
+
+                <div class="md:w-1/2 w-full p-6 md:p-8">
+                  <h4 class="text-lg font-semibold text-white mb-2">barrow island operations hatches plan to protect turtles</h4>
+                  <p class="text-sm text-white mb-4">May 02, 2023</p>
+                  <div class="mt-auto">
+                    <span class="inline-flex items-center gap-3 text-sm font-medium text-white">
+                      <span>read article</span>
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                        <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Prev / Next -->
+        <div class="absolute inset-y-0 left-2 flex items-center">
+          <button id="article-prev" class="bg-white/8 hover:bg-white/12 text-gray-800 rounded-full p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+                  aria-label="Previous slide" disabled>
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="absolute inset-y-0 right-2 flex items-center">
+          <button id="article-next" class="bg-white/8 hover:bg-white/12 text-gray-800 rounded-full p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+                  aria-label="Next slide">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-4 flex justify-center gap-3" role="tablist" aria-label="Select a slide to show">
+          <button class="w-2.5 h-2.5 rounded-full bg-gray-400/80" data-slide="0" aria-label="Go to slide 1" aria-selected="true" role="tab"></button>
+          <button class="w-2.5 h-2.5 rounded-full bg-gray-300/60" data-slide="1" aria-label="Go to slide 2" aria-selected="false" role="tab"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tiny carousel script (no dependencies) -->
+  <script>
+    (function () {
+      const slidesWrap = document.querySelector('#article-slides > ul');
+      const prevBtn = document.getElementById('article-prev');
+      const nextBtn = document.getElementById('article-next');
+      const dots = Array.from(document.querySelectorAll('[data-slide]'));
+      const slideCount = slidesWrap.children.length;
+      let index = 0;
+
+      function updateControls() {
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === slideCount - 1;
+        dots.forEach((d, i) => {
+          const selected = i === index;
+          d.classList.toggle('bg-gray-800', selected);
+          d.classList.toggle('bg-gray-300/60', !selected);
+          d.setAttribute('aria-selected', selected ? 'true' : 'false');
+        });
+      }
+
+      function goTo(i) {
+        if (i < 0 || i >= slideCount) return;
+        index = i;
+        const pct = -index * 100;
+        slidesWrap.style.transform = `translateX(${pct}%)`;
+        updateControls();
+      }
+
+      prevBtn.addEventListener('click', () => goTo(index - 1));
+      nextBtn.addEventListener('click', () => goTo(index + 1));
+      dots.forEach((d) => d.addEventListener('click', () => goTo(Number(d.dataset.slide))));
+
+      // keyboard support (left/right)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') goTo(index - 1);
+        if (e.key === 'ArrowRight') goTo(index + 1);
+      });
+
+      // touch support
+      let startX = 0;
+      slidesWrap.addEventListener('touchstart', (e) => startX = e.touches[0].clientX);
+      slidesWrap.addEventListener('touchend', (e) => {
+        const endX = (e.changedTouches && e.changedTouches[0].clientX) || 0;
+        const dx = endX - startX;
+        if (dx > 40) goTo(index - 1);
+        else if (dx < -40) goTo(index + 1);
+      });
+
+      // init
+      goTo(0);
+    })();
+  </script>
+
+  <style>
+    /* ensure slide width behavior */
+    #article-slides > ul > li { width: 100%; }
+    @media (min-width: 768px) {
+      #article-slides > ul { display: flex; }
+      #article-slides > ul > li { display: block; }
+    }
+  </style>
+</section>
+
+<!-- Reducing waste icon — Tailwind (mobile-first, responsive background) -->
+<section id="mod-2edf200e" class="bg-[#0b2d71] text-white py-12">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="relative w-full h-[330px] md:h-[330px] bg-center bg-cover waste-bg rounded-md overflow-hidden">
+      <!-- img fallback for md+ (semantics + better LCP for large screens) -->
+      <img
+        src="/img/environment-img-2.jpg"
+        alt="Icon for Reducing Waste"
+        class="hidden md:block w-full h-full object-cover"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </div>
+</section>
+
+<section class="bg-[#0b2d71] text-white py-12">
+  <div class="max-w-screen-2xl mx-auto mb-16 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      
+      <h2 class="text-3xl md:text-4xl font-semibold text-[#7cc7ff] mb-4">
+        reducing waste material
+      </h2>
+
+      <p class="max-w-xl mx-auto text-base mb-6">
+        We are working to improve waste management and reduce associated potential
+        environmental, health and safety impacts.
+      </p>
+
+      <a 
+        href="https://www.chevron.com/investors/esg#waste-management"
+        class="inline-flex items-center gap-2 text-base font-medium text-white border border-white rounded-full px-6 py-3 hover:bg-white hover:text-[#0b2d71] transition"
+        title="learn more about our approach"
+      >
+        <span class="inline-block">
+          <span class="glyphicon glyphicon-2023-arrow-up-right"></span>
+        </span>
+        learn more about our approach
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-[#0b2d71] text-white py-8">
+  <div class="max-w-screen-2xl mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h3 class="text-xl md:text-2xl font-semibold">
+        more about our efforts
+      </h3>
+    </div>
+  </div>
+</section>
+
+
+<!-- Waste-to-energy / circular economy carousel — Tailwind (mobile-first, accessible) -->
+<section id="mod-d7dcf64a" class="bg-[#004f53] text-white py-8 px-4">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="max-w-[1100px] mx-auto">
+      <h3 class="sr-only">Waste & circular economy articles</h3>
+
+      <!-- Carousel viewport -->
+      <div class="relative">
+        <div id="circular-slides" class="overflow-hidden rounded-lg">
+          <ul class="flex transition-transform duration-300 ease-[cubic-bezier(.2,.9,.2,1)]"
+              style="transform: translateX(0%);">
+            <!-- Slide 1 -->
+            <li class="w-full flex-shrink-0">
+              <a href="/newsroom/2023/q3/first-of-its-kind-facility-turns-waste-into-hydrogen"
+                 class="block md:flex md:items-stretch bg-white/5 hover:bg-white/7 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/20"
+                 aria-label="First-of-its-kind facility turns waste into hydrogen — read article">
+                <div class="md:w-1/2 w-full aspect-[16/9] md:aspect-auto">
+                  <img src="/img/environment-img-7.jpg"
+                       alt="Deli Cole and Robert Marshall working on Raven SR S1 LLC"
+                       class="w-full h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-tr-none" loading="lazy" decoding="async">
+                </div>
+
+                <div class="md:w-1/2 w-full p-6 md:p-8">
+                  <h4 class="text-lg font-semibold text-white mb-2">first-of-its-kind facility turns waste into hydrogen</h4>
+                  <p class="text-sm text-white/80 mb-4">August 04, 2023</p>
+                  <div class="mt-auto">
+                    <span class="inline-flex items-center gap-3 text-sm font-medium text-[#7de0d8]">
+                      <span>read article</span>
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                        <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+
+            <!-- Slide 2 -->
+            <li class="w-full flex-shrink-0">
+              <a href="/newsroom/2023/q1/circular-fuel-economy-seeks-to-reduce-carbon-intensity-with-used-cooking-oil"
+                 class="block md:flex md:items-stretch bg-white/5 hover:bg-white/7 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/20"
+                 aria-label="Circular fuel economy seeks to reduce carbon intensity with used cooking oil — read article">
+                <div class="md:w-1/2 w-full aspect-[16/9] md:aspect-auto">
+                  <img src="/img/environment-img-8.jpg"
+                       alt="Truck with the title Restaurant Technologies sitting in a garage"
+                       class="w-full h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-tr-none" loading="lazy" decoding="async">
+                </div>
+
+                <div class="md:w-1/2 w-full p-6 md:p-8">
+                  <h4 class="text-lg font-semibold text-white mb-2">circular fuel economy seeks to reduce carbon intensity with used cooking oil</h4>
+                  <p class="text-sm text-white/80 mb-4">February 09, 2023</p>
+                  <div class="mt-auto">
+                    <span class="inline-flex items-center gap-3 text-sm font-medium text-[#7de0d8]">
+                      <span>read article</span>
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                        <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+
+            <!-- Slide 3 -->
+            <li class="w-full flex-shrink-0">
+              <a href="/newsroom/2023/q4/making-the-case-to-farm-for-tables-and-fuel-tanks"
+                 class="block md:flex md:items-stretch bg-white/5 hover:bg-white/7 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/20"
+                 aria-label="Making the case to farm for tables and fuel tanks — read article">
+                <div class="md:w-1/2 w-full aspect-[16/9] md:aspect-auto">
+                  <img src="/img/environment-img-9.jpg"
+                       alt="Kevin Lucke, president of Chevron Renewable Energy Group"
+                       class="w-full h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-tr-none" loading="lazy" decoding="async">
+                </div>
+
+                <div class="md:w-1/2 w-full p-6 md:p-8">
+                  <h4 class="text-lg font-semibold text-white mb-2">making the case to farm for tables and fuel tanks</h4>
+                  <p class="text-sm text-white/80 mb-4">December 18, 2023</p>
+                  <div class="mt-auto">
+                    <span class="inline-flex items-center gap-3 text-sm font-medium text-[#7de0d8]">
+                      <span>read article</span>
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                        <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Prev / Next -->
+        <div class="absolute inset-y-0 left-2 flex items-center">
+          <button id="circular-prev" class="bg-white/8 hover:bg-white/12 text-white rounded-full p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+                  aria-label="Previous slide" disabled>
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="absolute inset-y-0 right-2 flex items-center">
+          <button id="circular-next" class="bg-white/8 hover:bg-white/12 text-white rounded-full p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+                  aria-label="Next slide">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-4 flex justify-center gap-3" role="tablist" aria-label="Select a slide to show">
+          <button class="w-2.5 h-2.5 rounded-full bg-white/80" data-slide="0" aria-label="Go to slide 1" aria-selected="true" role="tab"></button>
+          <button class="w-2.5 h-2.5 rounded-full bg-white/30" data-slide="1" aria-label="Go to slide 2" aria-selected="false" role="tab"></button>
+          <button class="w-2.5 h-2.5 rounded-full bg-white/30" data-slide="2" aria-label="Go to slide 3" aria-selected="false" role="tab"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tiny carousel script (no dependencies) -->
+  <script>
+    (function () {
+      const slidesWrap = document.querySelector('#circular-slides > ul');
+      const prevBtn = document.getElementById('circular-prev');
+      const nextBtn = document.getElementById('circular-next');
+      const dots = Array.from(document.querySelectorAll('#circular-slides ~ .mt-4 [data-slide]'));
+      // fallback: select pagination buttons in case DOM differs
+      const fallbackDots = Array.from(document.querySelectorAll('[data-slide]'));
+      const pager = dots.length ? dots : fallbackDots;
+
+      const slideCount = slidesWrap.children.length;
+      let index = 0;
+
+      function updateControls() {
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === slideCount - 1;
+        pager.forEach((d, i) => {
+          const selected = i === index;
+          d.classList.toggle('bg-white/80', selected);
+          d.classList.toggle('bg-white/30', !selected);
+          d.setAttribute('aria-selected', selected ? 'true' : 'false');
+        });
+      }
+
+      function goTo(i) {
+        if (i < 0 || i >= slideCount) return;
+        index = i;
+        const pct = -index * 100;
+        slidesWrap.style.transform = `translateX(${pct}%)`;
+        updateControls();
+      }
+
+      prevBtn.addEventListener('click', () => goTo(index - 1));
+      nextBtn.addEventListener('click', () => goTo(index + 1));
+      pager.forEach((d) => d.addEventListener('click', () => goTo(Number(d.dataset.slide))));
+
+      // keyboard support (left/right)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') goTo(index - 1);
+        if (e.key === 'ArrowRight') goTo(index + 1);
+      });
+
+      // touch support
+      let startX = 0;
+      slidesWrap.addEventListener('touchstart', (e) => startX = e.touches[0].clientX);
+      slidesWrap.addEventListener('touchend', (e) => {
+        const endX = (e.changedTouches && e.changedTouches[0].clientX) || 0;
+        const dx = endX - startX;
+        if (dx > 40) goTo(index - 1);
+        else if (dx < -40) goTo(index + 1);
+      });
+
+      // init
+      goTo(0);
+    })();
+  </script>
+
+  <style>
+    /* ensure slide width behavior */
+    #circular-slides > ul > li { width: 100%; }
+    @media (min-width: 768px) {
+      #circular-slides > ul { display: flex; }
+      #circular-slides > ul > li { display: block; }
+    }
+  </style>
+</section>
+
+<section class="relative w-full bg-white py-0">
+  <div class="relative max-w-screen-xl mx-auto mt-16 mb-0">
+    
+    <!-- Background Wrapper -->
+    <div class="relative w-full">
+
+      <!-- Mobile Background -->
+      <div 
+        class="
+          block md:hidden 
+          w-full h-[300px] 
+          bg-center bg-no-repeat bg-cover
+        "
+        style="background-image:url('/img/environment-img-10.png')">
+      </div>
+
+      <!-- Desktop Background + Image -->
+      <div 
+        class="
+          hidden md:block 
+          w-full h-[330px] 
+          bg-center bg-no-repeat bg-cover
+        "
+        style="background-image:url('/img/environment-img-10.png')"
+      >
+        <img 
+          src="/-/media/chevron/sustainability/images/air-emissions.png?h=330&hash=D502A47241085E6F93F7EEC493CED7CA" 
+          alt="Icon of Air Emissions" 
+          class="w-full h-full object-cover"
+          loading="lazy"
+        >
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="w-full bg-white text-gray-900">
+  <div class="max-w-screen-2xl mx-auto mb-16">
+    <div class="max-w-3xl mx-auto text-center px-4">
+
+      <!-- Heading -->
+      <h2 class="text-3xl font-semibold text-[#003366] mb-6">
+        managing air emissions
+      </h2>
+
+      <!-- Description -->
+      <p class="max-w-xl mx-auto text-base text-gray-700 mb-6">
+        We seek to find and use technologies that help reduce emissions of sulfur oxides,
+        nitrogen oxides and volatile organic compounds. We monitor air dispersion to help
+        better understand emission sources. And we share best practices across our operations.
+      </p>
+
+      <!-- CTA Button -->
+      <a 
+        href="https://www.chevron.com/investors/esg#greenhouse-gas-ghg-emissions-management"
+        title="learn more about our approach"
+        class="inline-flex items-center gap-2 text-base font-medium text-[#003366] hover:text-[#0055aa] transition"
+      >
+        <span class="inline-block">
+          <svg class="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" 
+               fill="none" stroke="currentColor" stroke-width="2" 
+               viewBox="0 0 24 24">
+            <path d="M7 17L17 7M17 7H7m10 0v10" />
+          </svg>
+        </span>
+        learn more about our approach
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="w-full bg-white text-base">
+  <div class="max-w-screen-2xl mx-auto mb-0">
+    <div class="max-w-2xl mx-auto text-center px-4">
+      
+      <h3 class="text-xl font-semibold text-[#003366]">
+        more about our efforts
+      </h3>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Text-only article carousel — Tailwind (mobile-first, accessible) -->
+<section id="mod-3aabf143" class="bg-white text-gray-900 py-8 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-[1100px] mx-auto">
+      <h3 class="sr-only">More about our efforts — articles</h3>
+
+      <div class="relative">
+        <!-- Slides viewport -->
+        <div id="text-slides" class="overflow-hidden rounded-lg">
+          <ul class="flex transition-transform duration-300 ease-[cubic-bezier(.2,.9,.2,1)]" style="transform: translateX(0%);">
+            <!-- Slide 1 -->
+            <li class="w-full flex-shrink-0">
+              <a href="/newsroom/2024/q2/sharing-data-is-benefiting-emission-reduction-efforts"
+                 class="block bg-[#0b2d71] text-white p-6 md:p-8 hover:bg-[#0d3a86] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#0b2d71]/30"
+                 aria-label="Sharing data is benefiting emission reduction efforts — read more">
+                <div class="max-w-[900px] mx-auto">
+                  <h4 class="text-lg md:text-xl font-semibold mb-2">sharing data is benefiting emission reduction efforts</h4>
+                  <p class="text-sm text-white/80 mb-4">April 04, 2024</p>
+                  <span class="inline-flex items-center gap-3 text-sm font-medium text-[#00b2bd]">
+                    <span>read more</span>
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            </li>
+
+            <!-- Slide 2 -->
+            <li class="w-full flex-shrink-0">
+              <a href="/newsroom/2023/q1/raven-sr-chevron-hyzon-motors-collaborate-to-produce-hydrogen-from-green-waste"
+                 class="block bg-[#0b2d71] text-white p-6 md:p-8 hover:bg-[#0d3a86] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#0b2d71]/30"
+                 aria-label="Raven SR, Chevron and Hyzon Motors collaborate to produce hydrogen from green waste — read more">
+                <div class="max-w-[900px] mx-auto">
+                  <h4 class="text-lg md:text-xl font-semibold mb-2">raven SR, chevron and hyzon motors collaborate to produce hydrogen from green waste</h4>
+                  <p class="text-sm text-white/80 mb-4">January 09, 2023</p>
+                  <span class="inline-flex items-center gap-3 text-sm font-medium text-[#00b2bd]">
+                    <span>read more</span>
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Prev / Next -->
+        <div class="absolute inset-y-0 left-2 flex items-center">
+          <button id="text-prev" class="bg-white/10 text-white rounded-full p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40" aria-label="Previous slide" disabled>
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="absolute inset-y-0 right-2 flex items-center">
+          <button id="text-next" class="bg-white/10 text-white rounded-full p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40" aria-label="Next slide">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-4 flex justify-center gap-3" role="tablist" aria-label="Select a slide to show">
+          <button class="w-2.5 h-2.5 rounded-full bg-white/80" data-slide="0" aria-label="Go to slide 1" aria-selected="true" role="tab"></button>
+          <button class="w-2.5 h-2.5 rounded-full bg-white/30" data-slide="1" aria-label="Go to slide 2" aria-selected="false" role="tab"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tiny carousel script (no dependencies) -->
+  <script>
+    (function () {
+      const slidesWrap = document.querySelector('#text-slides > ul');
+      const prevBtn = document.getElementById('text-prev');
+      const nextBtn = document.getElementById('text-next');
+      const dots = Array.from(document.querySelectorAll('[data-slide]'));
+      const slideCount = slidesWrap.children.length;
+      let index = 0;
+
+      function updateControls() {
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === slideCount - 1;
+        dots.forEach((d, i) => {
+          const selected = i === index;
+          d.classList.toggle('bg-white/80', selected);
+          d.classList.toggle('bg-white/30', !selected);
+          d.setAttribute('aria-selected', selected ? 'true' : 'false');
+        });
+      }
+
+      function goTo(i) {
+        if (i < 0 || i >= slideCount) return;
+        index = i;
+        const pct = -index * 100;
+        slidesWrap.style.transform = `translateX(${pct}%)`;
+        updateControls();
+      }
+
+      prevBtn.addEventListener('click', () => goTo(index - 1));
+      nextBtn.addEventListener('click', () => goTo(index + 1));
+      dots.forEach((d) => d.addEventListener('click', () => goTo(Number(d.dataset.slide))));
+
+      // keyboard support
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') goTo(index - 1);
+        if (e.key === 'ArrowRight') goTo(index + 1);
+      });
+
+      // touch support
+      let startX = 0;
+      slidesWrap.addEventListener('touchstart', (e) => startX = e.touches[0].clientX);
+      slidesWrap.addEventListener('touchend', (e) => {
+        const endX = (e.changedTouches && e.changedTouches[0].clientX) || 0;
+        const dx = endX - startX;
+        if (dx > 40) goTo(index - 1);
+        else if (dx < -40) goTo(index + 1);
+      });
+
+      // init
+      goTo(0);
+    })();
+  </script>
+
+  <style>
+    /* ensure slide width behavior */
+    #text-slides > ul > li { width: 100%; }
+    @media (min-width: 768px) {
+      #text-slides > ul { display: flex; }
+      #text-slides > ul > li { display: block; }
+    }
+  </style>
+</section>
+
+
+    <!-- NEWSROOM CAROUSEL -->
+    <section id="newsroom-carousel" class="py-6 px-4">
+      <div class="max-w-lg mx-auto">
+
+        <!-- Heading -->
+        <div class="text-center mb-4">
+          <p class="text-sm font-semibold text-blue-900 uppercase">newsroom</p>
+          <h3 class="text-2xl font-bold text-blue-900">latest at chevron</h3>
+        </div>
+
+        <!-- CAROUSEL VIEWPORT -->
+        <div id="carouselViewport" class="relative overflow-hidden rounded-xl">
+          <div id="carouselTrack" class="flex transition-transform duration-500 ease-out">
+
+            <!-- CARD 0 -->
+            <article class="card bg-active active" data-index="0" aria-hidden="false">
+              <img src="/carousel-img/supporting-stem-education-in-new-mexico-hero.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs mb-2 text-white/90">November 18, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">supporting STEM education in new mexico</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 1 -->
+            <article class="card small bg-active" data-index="1" aria-hidden="true">
+              <img src="/carousel-img/frontline-innovations-drive-business-solutions-hero.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">frontline innovations drive business solutions</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 2 -->
+            <article class="card small bg-active" data-index="2" aria-hidden="true">
+              <img src="/carousel-img/Apolo_Newsroom_Hero-01-D4-1.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">how apolo helps pinpoint prime drilling</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 3 -->
+            <article class="card small bg-active" data-index="3" aria-hidden="true">
+              <img src="/carousel-img/Apex_Newsroom_Hero-01-D2.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">a smarter way to prospect</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 4 -->
+            <article class="card small bg-active" data-index="4" aria-hidden="true">
+              <img src="/carousel-img/from-service-to-solutions-veterans-solve-problems-01.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">from service to solutions</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 5 -->
+            <article class="card small bg-active" data-index="5" aria-hidden="true">
+              <img src="/carousel-img/robotics-nr-hero.jpg" alt="">
+              <div class="card-content">
+                <div>
+                  <p class="text-xs text-white/90 mb-2">November 10, 2025</p>
+                  <h4 class="text-sm font-semibold text-white">robotics supports a more efficient workplace</h4>
+                </div>
+                <div>
+                  <a href="#" class="read-link text-white">
+                    Read Article
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- CONTROLS -->
+        <div class="mt-4 flex items-center gap-3 justify-between">
+          <button id="carouselPrev" class="arrow-btn" aria-label="Previous slide" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M15 18L9 12l6-6" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+
+          <div id="carouselDots" class="carousel-dots flex gap-2 justify-center flex-1"></div>
+
+          <button id="carouselNext" class="arrow-btn" aria-label="Next slide" aria-hidden="false">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Back to top button (paste before </body>) -->
+    <button id="backToTop"
+            class="fixed right-4 bottom-6 z-50 flex items-center justify-center w-12 h-12 rounded-full shadow-lg bg-[#0b2d71] text-white transform translate-y-6 opacity-0 pointer-events-none
+                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white focus:ring-opacity-80 transition-transform transition-opacity"
+            aria-label="Back to top"
+            title="Back to top"
+            aria-hidden="true">
+      <span class="sr-only">Back to top</span>
+      <svg id="backToTopIcon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 5.5v13" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6.5 11.5L12 6l5.5 5.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+   <!-- Footer (Tailwind-ready) -->
+  <footer id="footer" class="bg-[#052c65] text-white">
+    <!-- Promo banner: email updates -->
+    <div class="max-w-4xl mx-auto px-4 pt-8 pb-6">
+      <aside class="rounded-lg overflow-hidden shadow-sm">
+        <a href="/newsroom/preference-center"
+          target="_blank" rel="noopener noreferrer"
+          class="block bg-sky-700 text-white px-4 py-5 rounded-lg">
+          <div class="text-center">
+            <h3 class="text-lg font-semibold">chevron email updates</h3>
+            <p class="mt-1 text-sm">subscribe to our newsletter to receive news and updates.</p>
+          </div>
+        </a>
+      </aside>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 pb-8">
+
+      <!-- top: brand + short copy -->
+      <div class="flex flex-col md:flex-row md:items-start gap-6">
+        <!-- left: logo + copy -->
+        <div class="w-full md:w-1/3">
+          <img src="/img/hallmark-2023-theme-light.png"
+              alt="the human energy company"
+              width="200" height="131"
+              class="w-40 h-auto mb-4">
+
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Chevron has always put people at the center of the energy conversation. Because we understand that the
+            well-being of people everywhere depends on energy — energy that is affordable, reliable and ever-cleaner.
+          </p>
+
+          <div class="mt-4">
+            <a href="/newsroom/preference-center"
+              class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-white transition text-sm"
+              aria-label="Subscribe to our newsletter">
+              <span>subscribe to our newsletter</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- right: accordion + links (we removed "latest at chevron") -->
+        <div class="w-full md:w-2/3">
+          <div id="footer-accordion" class="space-y-3">
+
+            <!-- GET TO KNOW US (populated with user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-get-to-know-us">
+                <span>get to know us</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-get-to-know-us"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0 md:items-start">
+                <li><a class="block hover:underline" href="/who-we-are.html">who we are</a></li>
+                <li><a class="block hover:underline" href="/our-leadership.html">our leadership</a></li>
+                <li><a class="block hover:underline" href="/what-we-do.html">what we do</a></li>
+                <li><a class="block hover:underline" href="/tech-innovation.html">technology and innovation</a></li>
+                <li><a class="block hover:underline" href="/sustainability.html">sustainability</a></li>
+              </ul>
+            </div>
+
+            <!-- FUTURE OF ENERGY (user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-future">
+                <span>future of energy</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-future"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
+                <li><a class="block hover:underline" href="/carbon capture and storage.html">carbon capture and storage</a></li>
+                <li><a class="block hover:underline" href="/energy-in-progress.html">energy in progress</a></li>
+                <li><a class="block hover:underline" href="/new-energy.html">new energies</a></li>
+                <li><a class="block hover:underline" href="/methane-management.html">methane management</a></li>
+              </ul>
+            </div>
+
+            <!-- POPULAR LINKS (user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-popular">
+                <span>popular links</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-popular"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
+                <li><a class="block hover:underline" href="/careers.html">careers</a></li>
+                <li><a class="block hover:underline" href="/contact.html">contact us</a></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- small divider -->
+          <hr class="my-4 border-slate-700">
+
+          <!-- global links + country selector -->
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-slate-300">
+            <div class="flex flex-wrap gap-3">
+              <a class="hover:underline" href="/global-pages/site-map">site map</a>
+              <a class="hover:underline" href="/accessibility">accessibility</a>
+              <a class="hover:underline" href="/terms-of-use">terms of use</a>
+              <a class="hover:underline" href="/privacy">privacy</a>
+              <button type="button" class="hover:underline" onclick="OneTrust.ToggleInfoDisplay()">cookie settings (do not sell/share information)</button>
+              <a class="hover:underline" href="/privacy/global-cookie-statement">cookie statement</a>
+            </div>
+
+            <div class="mt-2 sm:mt-0">
+              <a class="inline-flex items-center gap-2 text-slate-100 hover:underline" href="https://www.chevron.com/worldwide/nigeria" rel="nofollow noopener">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M12 2c2.8 0 5 2.2 5 5 0 5-5 10-5 10s-5-5-5-10c0-2.8 2.2-5 5-5z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Nigeria</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- social icons row -->
+          <div class="mt-4 flex items-center gap-4">
+            <a href="https://www.facebook.com/Chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/facebook.svg" alt="facebook" class="w-6 h-6">
+            </a>
+            <a href="https://twitter.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/twitter.svg" alt="twitter" class="w-6 h-6">
+            </a>
+            <a href="https://www.instagram.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/instagram.svg" alt="instagram" class="w-6 h-6">
+            </a>
+            <a href="https://www.tiktok.com/@chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/tiktok.svg" alt="tiktok" class="w-6 h-6">
+            </a>
+            <a href="https://www.youtube.com/user/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/youtube.svg" alt="youtube" class="w-6 h-6">
+            </a>
+            <a href="https://www.linkedin.com/company/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/linkedin.svg" alt="linkedin" class="w-6 h-6">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- copyright -->
+      <div class="mt-6 border-t border-slate-800 pt-4 text-xs text-slate-400 text-center">
+        © 2001 – 2025 Chevron Corporation. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  </main>
+
+  <!-- script -->
+  <script src="/main.js"></script>
+  <!-- back to top -->
+  <script>
+  (function () {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+
+    // configuration
+    const showAfter = 300; // px scrolled before showing button
+    const scrollBehavior = 'smooth'; // 'smooth' or 'instant' (respects reduced motion)
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // initialize state
+    btn.classList.add('hidden');
+    btn.setAttribute('aria-hidden', 'true');
+
+    // Show/hide on scroll
+    let lastScrollY = window.scrollY;
+    function onScroll() {
+      const y = window.scrollY || window.pageYOffset;
+      if (y > showAfter) {
+        if (!btn.classList.contains('visible')) {
+          btn.classList.remove('hidden');
+          btn.classList.add('visible');
+          btn.setAttribute('aria-hidden', 'false');
+        }
+      } else {
+        if (!btn.classList.contains('hidden')) {
+          btn.classList.remove('visible');
+          btn.classList.add('hidden');
+          btn.setAttribute('aria-hidden', 'true');
+        }
+      }
+      lastScrollY = y;
+    }
+
+    // Smooth scroll to top, accessible
+    function scrollToTop() {
+      if (reducedMotion) {
+        window.scrollTo(0, 0);
+        return;
+      }
+      // modern browsers
+      try {
+        window.scrollTo({ top: 0, behavior: scrollBehavior });
+      } catch (e) {
+        window.scrollTo(0, 0);
+      }
+    }
+
+    // click & keyboard support
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToTop();
+    });
+
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        scrollToTop();
+      }
+    });
+
+    // Show/hide on scroll with passive listener for performance
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Also check on load (in case page opened scrolled)
+    document.addEventListener('DOMContentLoaded', onScroll, { once: true });
+    // immediate check as well (for SPA or dynamic content)
+    onScroll();
+
+    // Optional: hide on small pages where no scroll
+    if (document.documentElement.scrollHeight <= window.innerHeight + 10) {
+      btn.classList.add('hidden');
+    }
+  })();
+  </script>
+
+</body>
+</html>

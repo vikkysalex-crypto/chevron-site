@@ -62,4 +62,28 @@
 
 
 
-  
+  /* part of environment style */
+  /* mobile default */
+.biodiversity-bg {
+  background-image: url('/img/environment-img-4.png');
+}
+
+@media (min-width: 768px) {
+  .biodiversity-bg {
+    background-image: url('/-/media/chevron/sustainability/images/biodiversity.png?h=330&hash=F67EF588A16B3041687C4263CFB2FAC7');
+  }
+}
+
+
+/* place in your stylesheet (keeps hashed URLs exactly like the original) */
+.waste-bg {
+  background-image: url('/img/environment-img-4.png');
+  background-position: center;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .waste-bg {
+    background-image: url('/-/media/chevron/sustainability/images/waste-material.png?h=330&hash=5F842755FE4EDBEE615B44AE6F6A4E43');
+  }
+}
