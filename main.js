@@ -918,3 +918,15 @@ document.addEventListener('DOMContentLoaded', function () {
   })();
 
 })();
+
+
+// environment js
+// Optional: smooth continuous arrow bounce
+document.querySelectorAll('.cta-arrow').forEach(arrow => {
+  arrow.addEventListener('mouseenter', () => {
+    arrow.style.transform = "translateX(4px)";
+  });
+  arrow.addEventListener('mouseleave', () => {
+    arrow.style.transform = "translateX(0)";
+  });
+});
