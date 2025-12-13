@@ -13,42 +13,91 @@
 </head>
 <body class="bg-white text-gray-900">
 
-  <!-- ---------------- Header (transparent, mobile-first) ---------------- -->
-  <header class="w-full fixed top-0 left-0 z-50 bg-white/10 backdrop-blur-md mobile-only">
-    <div class="flex items-center justify-between px-4 py-3">
+<!-- ================= HEADER ================= -->
+<header
+  class="fixed top-0 left-0 z-50 w-full bg-white/10 backdrop-blur-md text-white transition-colors duration-300">
 
-      <!-- Menu icon (Left) -->
-      <button type="button" id="openMenuBtn" aria-label="Open menu" class="text-white active:scale-95 transition">
+  <div class="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-3 md:px-6">
+
+    <!-- ================= LEFT ================= -->
+    <div class="flex items-center gap-4">
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        id="openMenuBtn"
+        aria-label="Open menu"
+        class="md:hidden active:scale-95 transition">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-          <path d="M3 6h18M3 12h18M3 18h18" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round"/>
+          <path
+            d="M3 6h18M3 12h18M3 18h18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
         </svg>
       </button>
 
-      <!-- Logo (Center) -->
-      <div class="flex-1 flex justify-center pointer-events-none">
-        <img src="/img/hallmark-2023-theme-light.png"
-            alt="Chevron Logo"
-            class="h-9 w-auto object-contain drop-shadow-md">
-      </div>
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="/who-we-are.html" class="hover:opacity-80">who we are</a>
+        <a href="/what-we-do.html" class="hover:opacity-80">what we do</a>
+        <a href="/sustainability.html" class="hover:opacity-80">sustainability</a>
+        <a href="/investors.html" class="hover:opacity-80">investors</a>
+      </nav>
 
-      <!-- Search icon (Right) -->
-      <button type="button" id="searchIcon" aria-label="Search" class="text-white active:scale-95 transition">
+    </div>
+
+    <!-- ================= CENTER ================= -->
+    <div class="absolute left-1/2 -translate-x-1/2">
+      <img
+        src="/img/hallmark-2023-theme-light.png"
+        alt="Chevron Logo"
+        class="h-9 w-auto object-contain drop-shadow-md"
+      />
+    </div>
+
+    <!-- ================= RIGHT ================= -->
+    <div class="flex items-center gap-5 text-sm font-medium">
+
+      <!-- Desktop Links -->
+      <a href="/Newsroom.html" class="hidden md:inline hover:opacity-80">
+        newsroom
+      </a>
+
+      <a href="/careers.html" class="hidden md:inline hover:opacity-80">
+        careers
+      </a>
+
+      <!-- Search Icon -->
+      <button
+        type="button"
+        id="searchIcon"
+        aria-label="Search"
+        class="active:scale-95 transition">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-          <path d="M21 21l-4.35-4.35" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round"/>
-          <circle cx="11" cy="11" r="6" 
-                  stroke="currentColor" 
-                  stroke-width="2"/>
+          <path
+            d="M21 21l-4.35-4.35"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <circle
+            cx="11"
+            cy="11"
+            r="6"
+            stroke="currentColor"
+            stroke-width="2"
+          />
         </svg>
       </button>
 
     </div>
-  </header>
+
+  </div>
+</header>
+
+
 
   <!-- ---------------- Full-screen blue menu (slides in from left) ---------------- -->
   <div id="menuContainer" class="fixed inset-0 z-50 mobile-only hidden" aria-hidden="true">
@@ -110,24 +159,17 @@
   <main class="pt-2">
 
     <!-- HERO -->
-    <div id="z01-2" class="r z01jj container-fluid background-color-offwhite">
-        <div class="inner-container centered width-1200">
-            <div class="content-container width-800 centered text-left text-elevated" style="padding:60px 0;">
-                
-                <h1 class="text-sm font-semibold text-[#0A2A66] tracking-wide mb-2 reveal" style="margin-bottom:20px;">
-                    leading in carbon capture
-                </h1>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-28">
+  <div class="max-w-3xl mx-auto text-left">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0b2d71] mb-4">
+      leading in carbon capture
+    </h2>
+    <p class="text-base sm:text-lg md:text-xl text-gray-800">
+      We believe that CCS is an important part of achieving our global goals, and innovation can help deliver a lower carbon future.
+    </p>
+  </div>
+</div>
 
-                <div class="description type-body centered">
-                    <p style="max-width:650px; margin:auto;">
-                        We believe that CCS is an important part of achieving our global goals, 
-                        and innovation can help deliver a lower carbon future.
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
     <!-- CCS Timeline — clean, responsive, accessible -->
 <section id="ccs-timeline" class="py-12 px-4 bg-[#0b2d71] text-white">
