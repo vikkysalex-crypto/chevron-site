@@ -13,42 +13,91 @@
 </head>
 <body class="bg-white text-gray-900">
 
-  <!-- ---------------- Header (transparent, mobile-first) ---------------- -->
-  <header class="w-full fixed top-0 left-0 z-50 bg-white/10 backdrop-blur-md mobile-only">
-    <div class="flex items-center justify-between px-4 py-3">
+<!-- ================= HEADER ================= -->
+<header
+  class="fixed top-0 left-0 z-50 w-full bg-white/10 backdrop-blur-md text-white transition-colors duration-300">
 
-      <!-- Menu icon (Left) -->
-      <button type="button" id="openMenuBtn" aria-label="Open menu" class="text-white active:scale-95 transition">
+  <div class="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-3 md:px-6">
+
+    <!-- ================= LEFT ================= -->
+    <div class="flex items-center gap-4">
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        id="openMenuBtn"
+        aria-label="Open menu"
+        class="md:hidden active:scale-95 transition">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-          <path d="M3 6h18M3 12h18M3 18h18" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round"/>
+          <path
+            d="M3 6h18M3 12h18M3 18h18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
         </svg>
       </button>
 
-      <!-- Logo (Center) -->
-      <div class="flex-1 flex justify-center pointer-events-none">
-        <img src="/img/hallmark-2023-theme-light.png"
-            alt="Chevron Logo"
-            class="h-9 w-auto object-contain drop-shadow-md">
-      </div>
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="/who-we-are.html" class="hover:opacity-80">who we are</a>
+        <a href="/what-we-do.html" class="hover:opacity-80">what we do</a>
+        <a href="/sustainability.html" class="hover:opacity-80">sustainability</a>
+        <a href="/investors.html" class="hover:opacity-80">investors</a>
+      </nav>
 
-      <!-- Search icon (Right) -->
-      <button type="button" id="searchIcon" aria-label="Search" class="text-white active:scale-95 transition">
+    </div>
+
+    <!-- ================= CENTER ================= -->
+    <div class="absolute left-1/2 -translate-x-1/2">
+      <img
+        src="/img/hallmark-2023-theme-light.png"
+        alt="Chevron Logo"
+        class="h-9 w-auto object-contain drop-shadow-md"
+      />
+    </div>
+
+    <!-- ================= RIGHT ================= -->
+    <div class="flex items-center gap-5 text-sm font-medium">
+
+      <!-- Desktop Links -->
+      <a href="/Newsroom.html" class="hidden md:inline hover:opacity-80">
+        newsroom
+      </a>
+
+      <a href="/careers.html" class="hidden md:inline hover:opacity-80">
+        careers
+      </a>
+
+      <!-- Search Icon -->
+      <button
+        type="button"
+        id="searchIcon"
+        aria-label="Search"
+        class="active:scale-95 transition">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-          <path d="M21 21l-4.35-4.35" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round"/>
-          <circle cx="11" cy="11" r="6" 
-                  stroke="currentColor" 
-                  stroke-width="2"/>
+          <path
+            d="M21 21l-4.35-4.35"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <circle
+            cx="11"
+            cy="11"
+            r="6"
+            stroke="currentColor"
+            stroke-width="2"
+          />
         </svg>
       </button>
 
     </div>
-  </header>
+
+  </div>
+</header>
+
+
 
   <!-- ---------------- Full-screen blue menu (slides in from left) ---------------- -->
   <div id="menuContainer" class="fixed inset-0 z-50 mobile-only hidden" aria-hidden="true">
@@ -109,77 +158,55 @@
   <!-- ---------------- Main content (mobile-first) ---------------- -->
   <main class="pt-2">
 
-<section 
-  id="article-hero"
-  class="relative w-full bg-gradient-to-b from-[#004e56]/80 to-[#00323a]/80 pb-10"
->
+<section id="mod_f2e75f63" class="relative bg-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 py-8 sm:py-12">
 
-  <!-- Mobile background -->
-  <div 
-    class="absolute inset-0 bg-cover bg-center md:hidden opacity-60"
-    style="background-image: url('/img/newaroom-img-1.png');">
-  </div>
+    <a href="/newsroom/2025/q4/the-people-who-power-the-us-energy-advantage"
+       class="group block md:flex md:items-center md:justify-between bg-gradient-to-b from-teal-900/70 via-teal-900/50 to-teal-900/70 rounded-lg overflow-hidden shadow-lg">
 
-  <!-- Desktop background -->
-  <div 
-    class="absolute inset-0 bg-cover bg-center hidden md:block opacity-60"
-    style="background-image: url('/img/newaroom-img-1.png');">
-  </div>
+      <!-- Text Content -->
+      <div class="md:w-1/2 p-6 md:p-10 text-center md:text-left flex flex-col justify-center">
+        <span class="text-sm sm:text-base font-semibold uppercase tracking-wide text-teal-300 mb-2">our operations</span>
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight mb-4 group-hover:underline">
+          the people who power the US energy advantage
+        </h1>
+        <div class="text-gray-200 text-sm sm:text-base">
+          Chevron’s U.S. operations are fueling jobs and economic growth throughout the nation.
+        </div>
+        <p class="mt-4 text-gray-400 text-xs sm:text-sm flex flex-col sm:flex-row gap-2 sm:gap-4">
+          <span class="border-r pr-2 sm:pr-4">november 06, 2025</span>
+          <span>2 min read</span>
+        </p>
+      </div>
 
-  <!-- Overlay to simulate original gradient-percent layer -->
-  <div class="absolute inset-0 bg-gradient-to-b from-[#004e56]/60 to-[#00323a]/60"></div>
+      <!-- Image -->
+      <div class="md:w-1/2 relative h-60 sm:h-80 md:h-96">
+        <img src="/img/environment-img-10.jpg"
+             alt="Chevron U.S. operations"
+             class="absolute inset-0 w-full h-full object-cover"/>
+        <!-- Gradient overlay for readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30"></div>
+      </div>
 
-  <!-- Content -->
-  <div class="relative max-w-[1200px] mx-auto px-4 py-12 md:py-20 text-white">
-
-    <div class="max-w-[900px] mx-auto text-center text-white">
-
-      <p class="text-sm md:text-base font-semibold text-white uppercase mb-2">
-        our operations
-      </p>
-
-      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-4">
-        the people who power the US energy advantage
-      </h1>
-
-      <p class="text-sm md:text-base mb-4">
-        2 min read | november 06, 2025
-      </p>
-
-      <h2 
-        id="article-summary"
-        class="text-base md:text-lg font-medium max-w-2xl mx-auto mb-6"
-      >
-        Thanks to thousands of U.S.-based employees, Chevron boosted its U.S. production by nearly 20% last year.
-      </h2>
-
-      <p class="text-sm md:text-base  max-w-[600px] mx-auto">
-        Chevron’s U.S. operations are fueling jobs and economic growth throughout the nation.
-      </p>
-
-    </div>
-
+    </a>
   </div>
 </section>
 
-<section class="w-full bg-white py-10" id="mod_3820628a">
-  <div class="max-w-3xl mx-auto flex flex-col items-center mb-14">
-    
-    <div class="max-w-xl mx-auto text-base text-gray-800 leading-relaxed space-y-4">
+
+<section id="mod_3820628a" class="bg-white text-gray-900 py-8">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="prose prose-gray mx-auto text-center sm:text-left">
       <p>
         Curt Colburn doesn’t mind starting each workday at 3:30 a.m. He feels a sense of purpose in the work he does in 
-        <a 
-          href="https://www.chevron.com/newsroom/2025/q3/explainer-what-is-the-permian-basin#:~:text=The%20Permian%20Basin%20is%20an,of%20New%20Mexico%20and%20Texas.#:~:text=The%20Permian%20Basin%20is%20an,of%20New%20Mexico%20and%20Texas."
-          class="text-blue-700 underline hover:text-blue-900"
-        >
+        <a href="https://www.chevron.com/newsroom/2025/q3/explainer-what-is-the-permian-basin#:~:text=The%20Permian%20Basin%20is%20an,of%20New%20Mexico%20and%20Texas.#:~:text=The%20Permian%20Basin%20is%20an,of%20New%20Mexico%20and%20Texas." 
+           class="text-blue-700 hover:underline">
           the Permian Basin,
-        </a> 
+        </a>
         a major oil- and gas-producing region that spans West Texas and southeast New Mexico.
       </p>
-
       <p>
-        “We believe in what we’re doing,” said Colburn, a production supervisor. 
-        “We’re out here for more than a paycheck.”
+        “We believe in what we’re doing,” said Colburn, a production supervisor. “We’re out here for more than a paycheck.”
       </p>
     </div>
 
@@ -187,18 +214,19 @@
 </section>
 
 
-<section id="mod_d1862366" class="w-full bg-white py-10">
-  <div class="max-w-3xl mx-auto flex flex-col items-center mb-10">
+<section id="mod_d1862366" class="bg-white text-gray-900 py-8">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
 
-    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6 text-center">
+    <!-- Headline -->
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0b2d71] mb-4 text-center sm:text-left">
       built on grit
     </h2>
 
-    <div class="max-w-xl mx-auto text-base text-gray-800 leading-relaxed space-y-4">
+    <!-- Body text -->
+    <div class="prose prose-gray mx-auto text-center sm:text-left">
       <p>
         Colburn is among thousands of U.S.-based Chevron employees—hundreds in the Permian Basin alone—who work to produce the energy that powers everything from automobiles to military bases. And their efforts are paying off, with Chevron now producing 1 million barrels of oil-equivalent (BOE) per day in the Permian Basin.
       </p>
-
       <p>
         “We’re literally helping power America,” Colburn said. “I’m proud to play a part in it.”
       </p>
@@ -208,147 +236,143 @@
 </section>
 
 
-<section id="mod_6db9c133" class="w-full py-10">
-  <div class="max-w-5xl mx-auto flex justify-center mb-10">
+<section id="mod_6db9c133" class="bg-gradient-to-b from-[#0b2d71]/80 to-[#0b2d71]/20 text-white py-8">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
 
-    <div class="relative w-full bg-gradient-to-r from-[#002B49]/90 to-[#002B49]/70 rounded-lg overflow-hidden">
-
-      <!-- Background Image -->
-      <div 
-        class="absolute inset-0 bg-cover bg-center opacity-40"
-        style="background-image: url('/img/newsroom-2.png');">
+    <div class="relative rounded-lg overflow-hidden shadow-lg">
+      <!-- Background image -->
+      <div class="absolute inset-0 bg-cover bg-center opacity-70 sm:opacity-100" 
+           style="background-image: url('/img/newsroom-2.png');">
       </div>
 
-      <!-- Content -->
-      <div class="relative z-10 flex flex-col items-center text-center px-6 py-16">
+      <!-- Overlay for gradient/fade effect -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-black/40"></div>
 
-        <p class="text-white text-2xl md:text-3xl font-semibold italic max-w-2xl">
+      <!-- Quote content -->
+      <div class="relative z-10 text-center sm:text-left px-6 py-12">
+        <blockquote class="text-xl sm:text-2xl md:text-3xl font-light mb-4">
           “Americans count on us to keep production running.”
-        </p>
-
-        <p class="text-white mt-4 text-lg leading-tight">
+        </blockquote>
+        <p class="text-base sm:text-lg font-medium">
           curt colburn<br>
-          <span class="text-white/80 text-base">production supervisor</span>
+          <span class="text-gray-200">production supervisor</span>
         </p>
-
       </div>
-
     </div>
 
   </div>
 </section>
 
 
-<section class="w-full bg-white py-10">
-  <div class="max-w-3xl mx-auto flex flex-col items-center mb-10">
-
-    <h2 class="text-3xl font-bold text-[#002B49] mb-6">
+<section id="mod_21911f72" class="bg-white text-gray-900 py-10">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+    
+    <!-- Heading -->
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1c4c8e] mb-4 text-center sm:text-left">
       hands at work
     </h2>
 
-    <div class="max-w-xl mx-auto text-[17px] leading-relaxed text-gray-800 space-y-4">
-      <p>
-        In Colorado, people like Nick Gonzalez are hard at work overseeing Chevron’s operations in an area that produces approximately 400,000 BOE per day.
-      </p>
-
-      <p>
-        Gonzalez is responsible for managing the Colorado region’s integrated operations center, where Chevron uses digital tools and systems to optimize performance.
-      </p>
-
-      <p>
-        “I’m blessed to work with a team that takes pride in and is passionate about safely and responsibly providing energy to our community,” Gonzalez said. “We understand the need for responsible operations and take that seriously.”
-      </p>
+    <!-- Body text -->
+    <div class="space-y-4 text-gray-800 text-base sm:text-lg">
+      <p>In Colorado, people like Nick Gonzalez are hard at work overseeing Chevron’s operations in an area that produces approximately 400,000 BOE per day.</p>
+      <p>Gonzalez is responsible for managing the Colorado region’s integrated operations center, where Chevron uses digital tools and systems to optimize performance.</p>
+      <p>“I’m blessed to work with a team that takes pride in and is passionate about safely and responsibly providing energy to our community,” Gonzalez said. “We understand the need for responsible operations and take that seriously.”</p>
     </div>
 
   </div>
 </section>
 
 
-<section class="w-full py-0 mb-10">
-  <div class="max-w-5xl mx-auto">
-
-    <div class="relative w-full bg-gradient-to-r from-[#002B49]/80 to-[#002B49]/80 overflow-hidden flex items-center justify-center">
-
-      <!-- Background Image -->
-      <div 
-        class="absolute inset-0 bg-cover bg-center opacity-90"
-        style="background-image: url('/img/newaroom-img-1.png');">
-      </div>
-
-      <!-- Content -->
-      <div class="relative text-center px-6 py-16 max-w-2xl mx-auto">
-        <p class="text-white text-2xl font-light leading-snug mb-6">
+<section id="mod_6ce51030" class="relative bg-[#0b2d71] text-white py-12">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    
+    <!-- Image background -->
+    <div class="w-full rounded-lg overflow-hidden shadow-lg">
+      <img 
+        src="/img/newsroom-3.png" 
+        alt="Nick Gonzalez" 
+        class="w-full h-auto object-cover"
+      />
+      
+      <!-- Overlay text -->
+      <div class="absolute inset-0 bg-black/30 flex flex-col justify-center items-center px-4 text-center">
+        <blockquote class="text-lg sm:text-xl md:text-2xl font-light leading-relaxed mb-4">
           “Powering America takes all of us. When we work together, we build something bigger.”
-        </p>
-
-        <p class="text-white text-lg">
+        </blockquote>
+        <p class="text-sm sm:text-base md:text-lg font-medium">
           nick gonzalez<br>
           integrated operations center supervisor
         </p>
       </div>
-
     </div>
 
   </div>
 </section>
 
-<section id="mod_d342b3cc" class="w-full bg-white py-10">
-  <div class="max-w-3xl mx-auto px-4 mb-10">
-    <div class="prose prose-lg lg:prose-xl mx-auto text-gray-800">
+
+<section id="mod_d342b3cc" class="bg-white text-gray-900 py-10">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="space-y-6 text-base sm:text-lg md:text-xl leading-relaxed">
+
       <p>
         Chevron is one of the largest oil and gas producers in Colorado, and the company’s employees work tirelessly to monitor its 24-hour operations so that it can safely deliver affordable and reliable energy.
       </p>
 
       <p>
-        “I’m consistently impressed with the talent and dedication within this company,” Gonzalez said. “Some of the best and brightest are working to solve
-        <a href="#" class="text-sky-700 hover:text-sky-900 underline">the problems that the industry faces.</a>
+        “I’m consistently impressed with the talent and dedication within this company,” Gonzalez said. “Some of the best and brightest are working to solve 
+        <a href="#" class="text-blue-600 underline hover:text-blue-700">the problems that the industry faces</a>.”
       </p>
 
       <p>
-        <a class="text-sky-700 hover:text-sky-900 underline" href="https://www.chevron.com/newsroom/2025/q2/fueling-colorado-while-striving-to-protect-what-makes-it-home">
-          Chevron Colorado also leverages technology and innovation
-        </a>
-        to reduce its operational footprint and its carbon intensity.
+        <a href="#" class="text-blue-600 underline hover:text-blue-700">Chevron Colorado also</a> 
+        <a href="https://www.chevron.com/newsroom/2025/q2/fueling-colorado-while-striving-to-protect-what-makes-it-home" class="text-blue-600 underline hover:text-blue-700">
+          leverages technology and innovation
+        </a> to reduce its operational footprint and its carbon intensity.
       </p>
 
       <p>
         For example, Chevron Colorado’s next-generation tankless facilities reduced greenhouse gas emissions by more than 90% in 2024 and reduced surface footprint by more than 95%, compared with legacy designs.
       </p>
+
     </div>
   </div>
 </section>
 
 
-<section id="mod_009146c9" class="w-full bg-white py-10">
-  <div class="max-w-3xl mx-auto px-4 mb-10">
+
+<section id="mod_009146c9" class="bg-white text-gray-900 py-10">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
 
     <!-- Image -->
-    <div class="w-full mb-6">
+    <div class="w-full">
       <img 
-        src="/img/social-environment-1.png"
-        alt="oil and gas production fact bar"
-        class="w-full h-auto mx-auto fade-in"
+        src="/img/the-people-who-power-the-us-energy-advantage-oil-and-gas-production.png" 
+        alt="Oil and natural gas production fact bar"
+        class="w-full h-auto rounded-lg shadow-lg mx-auto"
         loading="lazy"
-      >
+      />
     </div>
 
     <!-- Caption -->
-    <p class="text-center text-sm max-w-xl mx-auto text-gray-700">
+    <p class="text-center text-sm sm:text-base text-gray-700 max-w-3xl mx-auto">
       Oil and natural gas production supports 10.8 million jobs in all 50 states and contributes nearly $1.8 trillion to the U.S. economy (according to a 2021 report prepared for the American Petroleum Institute).
     </p>
 
   </div>
 </section>
 
-<section id="mod_23fc0d03" class="w-full bg-white py-14">
-  <div class="max-w-3xl mx-auto flex flex-col items-center mb-14 px-4">
 
-    <h2 class="text-3xl font-semibold text-dark-blue text-center mb-6">
+<section id="mod_23fc0d03" class="bg-white text-gray-900 py-10">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+
+    <!-- Heading -->
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1c4c8e] text-center">
       powering progress
     </h2>
 
-    <div class="max-w-xl text-center">
-      <p class="text-base text-gray-700">
+    <!-- Body text -->
+    <div class="text-center text-gray-700 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
+      <p>
         Behind America’s energy leadership stands the workforce that drives its success. With help from employees like Colburn and Gonzalez, Chevron boosted its U.S. production by nearly 20% last year, bringing more energy to the communities and businesses that keep America running.
       </p>
     </div>
@@ -356,34 +380,28 @@
   </div>
 </section>
 
-<section id="mod_abbb64b1" class="w-full bg-white py-14">
-  <div class="max-w-3xl mx-auto flex flex-col items-center mb-14 px-4">
+<section id="mod_abbb64b1" class="bg-white text-gray-900 py-10">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
 
-    <h2 class="text-3xl font-semibold text-dark-blue text-center mb-6">
+    <!-- Heading -->
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1c4c8e] text-center">
       investments with impact
     </h2>
 
-    <div class="max-w-xl text-center space-y-4 text-base text-gray-700">
+    <!-- Body text -->
+    <div class="text-center text-gray-700 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto space-y-4">
       <p>
         Chevron supports the communities where it operates, spending $44 billion with U.S. vendors and suppliers since 2022.
       </p>
-
       <p>
         In 2025, the company plans to invest nearly $9 billion in U.S. energy projects, 
-        <a href="https://www.chevron.com/newsroom/local/richmond/2018/q3/diverse-and-local-richmond-refinery-helps-neighboring-businesses-grow" class="text-blue-600 underline">
-          creating jobs
-        </a>
-        and
-        <a href="https://www.chevron.com/newsroom/2025/q2/fueling-colorado-while-striving-to-protect-what-makes-it-home" class="text-blue-600 underline">
-          stimulating industrial growth
-        </a>.
+        <a href="https://www.chevron.com/newsroom/local/richmond/2018/q3/diverse-and-local-richmond-refinery-helps-neighboring-businesses-grow" class="text-[#0b2d71] underline">creating jobs</a> and 
+        <a href="https://www.chevron.com/newsroom/2025/q2/fueling-colorado-while-striving-to-protect-what-makes-it-home" class="text-[#0b2d71] underline">stimulating industrial growth</a>. 
         In the Permian Basin, where Chevron has maintained a presence for more than a century, its operations have contributed to a flourishing regional economy that supported approximately 630,000 jobs in Texas and 145,000 in New Mexico in 2023.
       </p>
-
       <p>
         The company supported more than 850,000 jobs nationwide that year.
       </p>
-
       <p>
         The investments Chevron is making are helping drive U.S. energy security and the U.S. energy advantage.
       </p>
@@ -393,270 +411,168 @@
 </section>
 
 
-<section id="mod_dfcb2aa4" class="w-full py-0 mb-10">
-  <div class="max-w-4xl mx-auto px-4">
 
-    <div class="relative w-full bg-gradient-to-r from-[#002B49]/70 to-[#002B49]/70 rounded-none overflow-hidden flex items-center justify-center">
+<section id="mod_dfcb2aa4" class="relative bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-      <!-- Background Image -->
-      <div 
-        class="absolute inset-0 bg-cover bg-center opacity-80 transition-opacity duration-700"
-        style="background-image: url('/img/leadership-img-1.jpg');">
+    <!-- Background image container -->
+    <div class="relative rounded-lg overflow-hidden shadow-lg">
+      <!-- Image -->
+      <div class="absolute inset-0">
+        <img 
+          src="/img/leadership-img-3.jpg"
+          alt="Melissa Barrios Messina"
+          class="w-full h-full object-cover"
+        />
+        <!-- Overlay gradient -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0b2d71]/70 via-[#0b2d71]/50 to-[#0b2d71]/70"></div>
       </div>
 
-      <!-- Text Content -->
-      <div class="relative z-10 max-w-2xl py-16 px-6 text-center text-white space-y-4">
-        
-        <p class="text-xl italic leading-relaxed">
+      <!-- Content on top of image -->
+      <div class="relative z-10 text-center px-6 py-16 sm:py-20">
+        <blockquote class="text-white text-lg sm:text-xl md:text-2xl font-semibold mb-4">
           “It takes real investment to help keep this country running. This year, Chevron is spending approximately $9 billion on energy projects so we have the tools to get the job done.”
-        </p>
-
-        <p class="text-base font-light">
+        </blockquote>
+        <p class="text-white text-sm sm:text-base">
           melissa barrios messina<br>
           central operations integrations coordinator
         </p>
-
       </div>
-
     </div>
 
   </div>
 </section>
 
 
-<!-- topics covered — Tailwind (mobile-first, no external CSS) -->
-<div id="mod_9e43de5d" class="w-full bg-white">
-  <div class="max-w-[1200px] mx-auto mt-8 px-4">
-    <h2 class="text-2xl md:text-3xl font-semibold text-[#003B71] mb-4 text-center">topics covered</h2>
+<section id="topics-and-social" class="bg-white text-gray-900 py-8">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
-    <ul class="list-none m-0 p-0 space-y-2">
-      <li class="m-0">
-        <a
-          href="/newsroom/our-operations"
-          class="block text-base text-[#003B71] text-left hover:underline focus:underline focus:outline-none text-center"
-        >
-          our operations
+    <!-- Heading -->
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1c4c8e] mb-6">
+      topics covered
+    </h2>
+
+    <!-- List of topics -->
+    <ul class="space-y-3 mb-8">
+      <!-- Topic 1 -->
+      <li>
+        <a href="/newsroom/our-operations"
+           class="group flex items-center justify-between rounded-md px-4 py-3 bg-white hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 transition"
+           aria-label="Our Operations">
+          <span class="text-base font-medium text-[#0b2d71]">our operations</span>
+          <svg class="w-5 h-5 text-gray-400 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </a>
       </li>
 
-      <li class="m-0">
-        <a
-          href="/newsroom/people-and-community"
-          class="block text-base text-[#003B71] text-left hover:underline focus:underline focus:outline-none text-center"
-        >
-          people and community
+      <!-- Topic 2 -->
+      <li>
+        <a href="/newsroom/people-and-community"
+           class="group flex items-center justify-between rounded-md px-4 py-3 bg-white hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 transition"
+           aria-label="People and Community">
+          <span class="text-base font-medium text-[#0b2d71]">people and community</span>
+          <svg class="w-5 h-5 text-gray-400 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </a>
       </li>
     </ul>
-  </div>
-</div>
 
-
-<!-- social share section — Tailwind only -->
-<div id="mod_9fd638d4" class="w-full mt-0 mb-10">
-  <div class="max-w-[1280px] mx-auto px-4">
-    <div class="w-full flex justify-center">
-      <div class="flex justify-center">
-        <div>
-          <ul class="flex items-center space-x-5">
-            
-            <!-- Facebook -->
-            <li>
-              <a
-                href="#"
-                onclick="return SocialService.showPopup('https://www.facebook.com/sharer.php?s=100&p[url]=https%3a%2f%2fwww.chevron.com%2fnewsroom%2f2025%2fq4%2fthe-people-who-power-the-us-energy-advantage%3futm_campaign%3dpage_social_share%26utm_medium%3dsocial%26utm_source%3dfacebook', this);"
-              >
-                <img
-                  src="/-/media/chevron/images/blue-facebook-24px.png"
-                  class="w-[22px] h-[22px]"
-                  alt="Share this story on Facebook"
-                >
-              </a>
-            </li>
-
-            <!-- Twitter -->
-            <li>
-              <a
-                href="#"
-                onclick="return SocialService.showPopup('https://twitter.com/share/?text=The+people+who+power+the+US+energy+advantage&url=https%3a%2f%2fwww.chevron.com%2fnewsroom%2f2025%2fq4%2fthe-people-who-power-the-us-energy-advantage%3futm_campaign%3dpage_social_share%26utm_medium%3dsocial%26utm_source%3dtwitter', this);"
-              >
-                <img
-                  src="/-/media/chevron/images/blue-twitter-24px.png"
-                  class="w-[22px] h-[22px]"
-                  alt="Share this story on Twitter"
-                >
-              </a>
-            </li>
-
-            <!-- LinkedIn -->
-            <li>
-              <a
-                href="#"
-                onclick="return SocialService.showPopup('https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fwww.chevron.com%2fnewsroom%2f2025%2fq4%2fthe-people-who-power-the-us-energy-advantage%3futm_campaign%3dpage_social_share%26utm_medium%3dsocial', this);"
-              >
-                <img
-                  src="/-/media/chevron/images/blue-linkedin-24px.png"
-                  class="w-[22px] h-[22px]"
-                  alt="Share this story on LinkedIn"
-                >
-              </a>
-            </li>
-
-            <!-- Email -->
-            <li>
-              <a href="#" onclick="return SocialService.showEmail()">
-                <img
-                  src="/-/media/chevron/images/blue-mail-24px.png"
-                  class="w-[22px] h-[22px]"
-                  alt="Email this story"
-                >
-              </a>
-            </li>
-
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div id="mod_c3e862bb" class="w-full bg-[#f7f7f7] py-6">
-  <div class="max-w-[1200px] mx-auto px-4">
-
-    <h2 class="text-2xl font-semibold text-[#003b71] mb-4">related content</h2>
-
-    <ul class="space-y-6">
-
-      <!-- Item 1 -->
-      <li class="relative pb-1 border-b border-transparent hover:border-[#003b71] transition-all">
-        <a href="/newsroom/2024/q3/70-years-of-partnership-in-angola" class="block">
-
-          <!-- Desktop image -->
-          <div class="hidden md:block">
-            <img src="/-/media/chevron/newsroom/2024/Q3/70-years-of-partnership-in-Angola-01.jpg?h=230&hash=8896C2A0B217B994DF436D82843B4D4E"
-                 alt="Workers on an Offshore Platform"
-                 class="w-full h-auto rounded-md">
-          </div>
-
-          <!-- Mobile image -->
-          <div class="md:hidden">
-            <img src="/-/media/chevron/newsroom/2024/Q3/70-years-of-partnership-in-Angola-01.jpg?mh=262&hash=DAEA1172ACA04FF0BCA44FDB8EAB63A2"
-                 alt="Workers on an Offshore Platform"
-                 class="w-full h-auto rounded-md">
-          </div>
-
-          <div class="mt-3">
-            <span class="block text-lg font-medium text-[#003b71]">70 years of partnership in Angola</span>
-
-            <p class="text-sm text-gray-600 flex flex-wrap items-center gap-2 mt-1">
-              <span class="pr-2 border-r border-gray-400">our operations</span>
-              <span>september 20, 2024</span>
-            </p>
-          </div>
-
-        </a>
-      </li>
-
-      <!-- Item 2 -->
-      <li class="relative pb-1 border-b border-transparent hover:border-[#003b71] transition-all">
-        <a href="/newsroom/2024/q1/offshore-project-a-test-of-discipline" class="block">
-
-          <div class="hidden md:block">
-            <img src="/-/media/chevron/newsroom/2024/Q2/offshore-project-is-a-test-of-discipline-1a.jpg?h=230&hash=E6C26861B1C78F39AA94F8E7F73DA3AA"
-                 alt="Blind Faith facility"
-                 class="w-full h-auto rounded-md">
-          </div>
-
-          <div class="md:hidden">
-            <img src="/-/media/chevron/newsroom/2024/Q2/offshore-project-is-a-test-of-discipline-1a.jpg?mh=262&hash=4529CF9EAFD694925AB22AE1FE47DB01"
-                 alt="Blind Faith facility"
-                 class="w-full h-auto rounded-md">
-          </div>
-
-          <div class="mt-3">
-            <span class="block text-lg font-medium text-[#003b71]">offshore project a test of discipline</span>
-
-            <p class="text-sm text-gray-600 flex flex-wrap items-center gap-2 mt-1">
-              <span class="pr-2 border-r border-gray-400">our operations</span>
-              <span>march 25, 2024</span>
-            </p>
-          </div>
-
-        </a>
-      </li>
-
-      <!-- Item 3 -->
-      <li class="relative pb-1 border-b border-transparent hover:border-[#003b71] transition-all">
-        <a href="/newsroom/2024/q1/forewoman-makes-waves-offshore-angola" class="block">
-
-          <div class="hidden md:block">
-            <img src="/-/media/chevron/newsroom/2024/Q1/forewoman-makes-waves-offshore-angola-hero-2.jpg?h=230&hash=BB6E4E923D267893B415BB3F30171CD8"
-                 alt="Katila Dompetelo and co-workers"
-                 class="w-full h-auto rounded-md">
-          </div>
-
-          <div class="md:hidden">
-            <img src="/-/media/chevron/newsroom/2024/Q1/forewoman-makes-waves-offshore-angola-hero-2.jpg?mh=262&hash=DD0E30D895253BBC4DCBA3C7496A5452"
-                 alt="Katila Dompetelo and co-workers"
-                 class="w-full h-auto rounded-md">
-          </div>
-
-          <div class="mt-3">
-            <span class="block text-lg font-medium text-[#003b71]">forewoman makes waves offshore Angola</span>
-
-            <p class="text-sm text-gray-600 flex flex-wrap items-center gap-2 mt-1">
-              <span class="pr-2 border-r border-gray-400">people and community</span>
-              <span>march 06, 2024</span>
-            </p>
-          </div>
-
-        </a>
-      </li>
-
-      <!-- Item 4 -->
-      <li class="relative pb-1 border-b border-transparent hover:border-[#003b71] transition-all">
-        <a href="/newsroom/2024/q1/chevron-exec-california-policy-would-deter-energy-production" class="block">
-
-          <div class="hidden md:block">
-            <img src="/-/media/chevron/newsroom/2024/Q1/chevron-exec-california-policy-would-deter-energy-production-hero.jpg?h=230&hash=E9504E022CFCB52CFAA51B188B4DFBD7"
-                 alt="Andy Walz"
-                 class="w-full h-auto rounded-md">
-          </div>
-
-          <div class="md:hidden">
-            <img src="/-/media/chevron/newsroom/2024/Q1/chevron-exec-california-policy-would-deter-energy-production-hero.jpg?mh=262&hash=CB03CAF8F70A9785F5F5397B3473837C"
-                 alt="Andy Walz"
-                 class="w-full h-auto rounded-md">
-          </div>
-
-          <div class="mt-3">
-            <span class="block text-lg font-medium text-[#003b71]">chevron exec: california policy would deter energy production</span>
-
-            <p class="text-sm text-gray-600 flex flex-wrap items-center gap-2 mt-1">
-              <span class="pr-2 border-r border-gray-400">our operations</span>
-              <span>january 08, 2024</span>
-            </p>
-          </div>
-
-        </a>
-      </li>
-
-    </ul>
-
-    <div class="text-center mt-8">
-      <a href="/newsroom/archive" class="inline-flex items-center text-[#003b71] font-medium">
-        <span class="underline">view archive</span>
-        <span class="ml-1 text-sm">›</span>
+    <!-- Social icons row -->
+    <div class="flex flex-wrap justify-center items-center gap-4">
+      <a href="https://www.facebook.com/Chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+        <img src="/icons/facebook.svg" alt="facebook" class="w-6 h-6">
+      </a>
+      <a href="https://twitter.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+        <img src="/icons/twitter.svg" alt="twitter" class="w-6 h-6">
+      </a>
+      <a href="https://www.instagram.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+        <img src="/icons/instagram.svg" alt="instagram" class="w-6 h-6">
+      </a>
+      <a href="https://www.tiktok.com/@chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+        <img src="/icons/tiktok.svg" alt="tiktok" class="w-6 h-6">
+      </a>
+      <a href="https://www.youtube.com/user/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+        <img src="/icons/youtube.svg" alt="youtube" class="w-6 h-6">
+      </a>
+      <a href="https://www.linkedin.com/company/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+        <img src="/icons/linkedin.svg" alt="linkedin" class="w-6 h-6">
       </a>
     </div>
 
   </div>
-</div>
+</section>
 
 
 
+<section id="related-content" class="bg-[#f9f9f9] py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
+    <!-- Section heading -->
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1c4c8e] mb-8">
+      related content
+    </h2>
+
+    <!-- Articles grid -->
+    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+      <!-- Article 1 -->
+      <li class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+        <a href="/newsroom/2024/q3/70-years-of-partnership-in-angola" class="block">
+          <img src="/img/1.jpg" alt="Workers on an Offshore Platform" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-base font-semibold text-[#0b2d71] mb-1">70 years of partnership in Angola</h3>
+            <p class="text-sm text-gray-500"><span class="mr-2">our operations</span>|<span class="ml-2">september 20, 2024</span></p>
+          </div>
+        </a>
+      </li>
+
+      <!-- Article 2 -->
+      <li class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+        <a href="/newsroom/2024/q1/offshore-project-a-test-of-discipline" class="block">
+          <img src="/img/2.jpg" alt="Blind Faith facility" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-base font-semibold text-[#0b2d71] mb-1">offshore project a test of discipline</h3>
+            <p class="text-sm text-gray-500"><span class="mr-2">our operations</span>|<span class="ml-2">march 25, 2024</span></p>
+          </div>
+        </a>
+      </li>
+
+      <!-- Article 3 -->
+      <li class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+        <a href="/newsroom/2024/q1/forewoman-makes-waves-offshore-angola" class="block">
+          <img src="/img/3.jpg" alt="Katila Dompetelo and her co-workers" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-base font-semibold text-[#0b2d71] mb-1">forewoman makes waves offshore Angola</h3>
+            <p class="text-sm text-gray-500"><span class="mr-2">people and community</span>|<span class="ml-2">march 06, 2024</span></p>
+          </div>
+        </a>
+      </li>
+
+      <!-- Article 4 -->
+      <li class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+        <a href="/newsroom/2024/q1/chevron-exec-california-policy-would-deter-energy-production" class="block">
+          <img src="/img/4.jpg" alt="Andy Walz, president of Chevron Americas Products" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-base font-semibold text-[#0b2d71] mb-1">chevron exec: california policy would deter energy production</h3>
+            <p class="text-sm text-gray-500"><span class="mr-2">our operations</span>|<span class="ml-2">january 08, 2024</span></p>
+          </div>
+        </a>
+      </li>
+    </ul>
+
+    <!-- View archive button -->
+    <div class="mt-8">
+      <a href="/newsroom/archive" class="inline-flex items-center text-[#0b2d71] font-semibold hover:underline" title="see the details">
+        <span class="underline">view archive</span>
+        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
 
 
 
