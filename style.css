@@ -1,6 +1,4 @@
 
-    /* ---------- Visual / animation helpers ---------- */
-
     /* Remove default body margin on mobile feel */
     body { margin: 0; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
 
