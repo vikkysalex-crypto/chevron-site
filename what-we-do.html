@@ -16,42 +16,89 @@
 </head>
 <body class="bg-white text-gray-800 antialiased">
 
- <!-- ---------------- Header (transparent, mobile-first) ---------------- -->
-  <header class="w-full fixed top-0 left-0 z-50 bg-white/10 backdrop-blur-md mobile-only">
-    <div class="flex items-center justify-between px-4 py-3">
+<!-- ================= HEADER ================= -->
+<header
+  class="fixed top-0 left-0 z-50 w-full bg-white/10 backdrop-blur-md text-white transition-colors duration-300">
 
-      <!-- Menu icon (Left) -->
-      <button type="button" id="openMenuBtn" aria-label="Open menu" class="text-white active:scale-95 transition">
+  <div class="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-3 md:px-6">
+
+    <!-- ================= LEFT ================= -->
+    <div class="flex items-center gap-4">
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        id="openMenuBtn"
+        aria-label="Open menu"
+        class="md:hidden active:scale-95 transition">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-          <path d="M3 6h18M3 12h18M3 18h18" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round"/>
+          <path
+            d="M3 6h18M3 12h18M3 18h18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
         </svg>
       </button>
 
-      <!-- Logo (Center) -->
-      <div class="flex-1 flex justify-center pointer-events-none">
-        <img src="/img/hallmark-2023-theme-light.png"
-            alt="Chevron Logo"
-            class="h-9 w-auto object-contain drop-shadow-md">
-      </div>
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="/who-we-are.html" class="hover:opacity-80">who we are</a>
+        <a href="/what-we-do.html" class="hover:opacity-80">what we do</a>
+        <a href="/sustainability.html" class="hover:opacity-80">sustainability</a>
+        <a href="/investors.html" class="hover:opacity-80">investors</a>
+      </nav>
 
-      <!-- Search icon (Right) -->
-      <button type="button" id="searchIcon" aria-label="Search" class="text-white active:scale-95 transition">
+    </div>
+
+    <!-- ================= CENTER ================= -->
+    <div class="absolute left-1/2 -translate-x-1/2">
+      <img
+        src="/img/hallmark-2023-theme-light.png"
+        alt="Chevron Logo"
+        class="h-9 w-auto object-contain drop-shadow-md"
+      />
+    </div>
+
+    <!-- ================= RIGHT ================= -->
+    <div class="flex items-center gap-5 text-sm font-medium">
+
+      <!-- Desktop Links -->
+      <a href="/Newsroom.html" class="hidden md:inline hover:opacity-80">
+        newsroom
+      </a>
+
+      <a href="/careers.html" class="hidden md:inline hover:opacity-80">
+        careers
+      </a>
+
+      <!-- Search Icon -->
+      <button
+        type="button"
+        id="searchIcon"
+        aria-label="Search"
+        class="active:scale-95 transition">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-          <path d="M21 21l-4.35-4.35" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round"/>
-          <circle cx="11" cy="11" r="6" 
-                  stroke="currentColor" 
-                  stroke-width="2"/>
+          <path
+            d="M21 21l-4.35-4.35"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <circle
+            cx="11"
+            cy="11"
+            r="6"
+            stroke="currentColor"
+            stroke-width="2"
+          />
         </svg>
       </button>
 
     </div>
-  </header>
+
+  </div>
+</header>
 
   <!-- ---------------- Full-screen blue menu (slides in from left) ---------------- -->
   <div id="menuContainer" class="fixed inset-0 z-50 mobile-only hidden" aria-hidden="true">
@@ -112,208 +159,238 @@
   <!-- Main -->
   <main id="main-content" role="main" tabindex="-1" class="relative">
 
-    <!-- HERO: video with separate white content block below (mobile-first, responsive) -->
-  <section class="relative bg-gray-900 text-white">
-    <!-- Video container -->
-    <div class="relative w-full overflow-hidden">
-      <video id="hero-video"
-             class="w-full h-[56vw] md:h-[60vh] object-cover"
-             poster="/-/media/chevron/what-we-do/energy/images/01_hero_fallback_xlarge.jpg"
-             muted playsinline loop autoplay>
-        <!-- keep source path exactly as you provided -->
-        <source src="/videos/Bayou Bend CCS_ The future of energy along the Texas Gulf Coast.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+<!-- HERO: video + white content panel (safe below fixed header) -->
+<section class="relative bg-gray-900 text-white pt-[72px] md:pt-[84px]">
+  
+  <!-- ================= VIDEO AREA ================= -->
+  <div class="relative w-full overflow-hidden">
+    <video
+      id="hero-video"
+      class="w-full h-[56vw] max-h-[70vh] object-cover"
+      poster="/-/media/chevron/what-we-do/energy/images/01_hero_fallback_xlarge.jpg"
+      muted
+      playsinline
+      loop
+      autoplay
+    >
+      <source
+        src="/videos/Bayou Bend CCS_ The future of energy along the Texas Gulf Coast.mp4"
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
+    </video>
 
-      <!-- Overlay gradient (purely visual) -->
-      <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/35 to-black/20"></div>
+    <!-- Overlay gradient -->
+    <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/40 via-black/20 to-black/30"></div>
 
-      <!-- Play / Pause button (top-right overlay) -->
-      <div class="absolute top-4 right-4">
-        <button id="hero-playpause"
-                type="button"
-                aria-pressed="false"
-                aria-label="Pause video"
-                class="bg-white/10 hover:bg-white/20 text-white rounded-full p-3 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white/30">
-          <!-- Play icon (shown when paused) -->
-          <svg id="icon-play" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-            <path d="M5 3v18l15-9L5 3z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-
-          <!-- Pause icon (shown when playing) -->
-          <svg id="icon-pause" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-            <path d="M6 4h4v16H6zM14 4h4v16h-4z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- CONTENT PANEL BELOW VIDEO (white, full width background, constrained inner container) -->
-    <div class="w-full bg-white hero-content-card">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 text-center">
-        <h2 class="text-sm font-semibold uppercase tracking-wide text-[#0b2d71]">what we do</h2>
-
-        <h1 class="mt-3 text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0b2d71] leading-tight">
-          what we do
-        </h1>
-
-        <p class="mt-4 max-w-3xl mx-auto text-base md:text-lg text-black/85">
-          The world’s energy demands are greater than ever before. We’re working to deliver the lower carbon energy needed today
-          while building the energy system of tomorrow.
-        </p>
-
-        <!-- optional CTA (visible on all sizes) -->
-        <div class="mt-6">
-          <a href="/what-we-do/energy/explore-energy-solution"
-             class="inline-flex items-center gap-3 px-5 py-3 rounded-md bg-[#0b2d71] text-white font-medium hover:bg-[#082a5d] transition">
-            Discover our energy solutions
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-    <!-- WHAT WE DO (improved, responsive, accessible) -->
-    <section id="what-we-do" class="bg-[#0b2d71] text-white py-10 px-4">
-      <div class="mx-auto max-w-7xl">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <!-- text column -->
-          <div class="lg:col-span-5 xl:col-span-4 max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-3 reveal">
-              energy that fuels<br/>the world
-            </h2>
-
-            <p class="text-base sm:text-lg max-w-xl reveal">
-              We work every day to provide energy that helps billions of people achieve the benefits of modern life — and to create solutions that will help advance a lower-carbon future.
-            </p>
-
-            <a
-              href="/what-we-do/energy/explore-energy-solution"
-              class="inline-flex items-center mt-6 font-medium group border border-[#009dd9] text-white px-5 py-3 rounded-md hover:bg-white hover:text-blue-900 transition-all focus:outline-none focus:ring-4 focus:ring-[#003d73] reveal"
-              aria-label="Explore energy solutions"
-            >
-              <span class="mr-3 lowercase">explore energy solutions</span>
-              <!-- decorative arrow (accessible) -->
-              <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-          </div>
-
-          <!-- image grid column -->
-          <div class="lg:col-span-7 xl:col-span-8">
-            <!-- On small screens we keep a compact grid, on md/lg we create a balanced gallery next to the text -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 items-stretch">
-              <!-- image 1 -->
-              <figure class="w-full h-36 sm:h-28 lg:h-36 overflow-hidden rounded-lg reveal">
-                <picture>
-                  <!-- use srcset if you have different image sizes; fallback to src -->
-                  <img loading="lazy" decoding="async" src="/img/what-we-do-img-1.jpg"
-                      alt="Engineers inspecting equipment" class="w-full h-full object-cover"/>
-                </picture>
-              </figure>
-
-              <!-- image 2 -->
-              <figure class="w-full h-36 sm:h-28 lg:h-36 overflow-hidden rounded-lg reveal">
-                <picture>
-                  <img loading="lazy" decoding="async" src="/img/what-we-do-img-2.jpg"
-                      alt="Renewable energy installation" class="w-full h-full object-cover"/>
-                </picture>
-              </figure>
-
-              <!-- larger hero-like image spanning two columns on small screens but placed prominently on desktop -->
-              <figure class="col-span-2 sm:col-span-3 lg:col-span-2 w-full h-48 sm:h-40 lg:h-56 overflow-hidden rounded-lg reveal">
-                <picture>
-                  <img loading="lazy" decoding="async" src="/img/what-we-do-img-3.jpg"
-                      alt="Wide view of energy infrastructure" class="w-full h-full object-cover"/>
-                </picture>
-              </figure>
-
-              <!-- image 4 -->
-              <figure class="w-full h-36 sm:h-28 lg:h-36 overflow-hidden rounded-lg reveal">
-                <picture>
-                  <img loading="lazy" decoding="async" src="/img/what-we-do-img-4.jpg"
-                      alt="Team meeting about sustainability" class="w-full h-full object-cover"/>
-                </picture>
-              </figure>
-
-              <!-- image 5 -->
-              <figure class="w-full h-36 sm:h-28 lg:h-36 overflow-hidden rounded-lg reveal">
-                <picture>
-                  <img loading="lazy" decoding="async" src="/img/what-we-do-img-5.jpg"
-                      alt="Close-up of renewable technology" class="w-full h-full object-cover"/>
-                </picture>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-  <!-- WHAT WE DO (fixed & responsive, improved) -->
-<section id="what-we-do-tech" class="bg-[#00708c] py-8 px-4">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-      <!-- Text column -->
-      <div class="text-center md:text-left">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3 reveal">
-          innovative technology.<br/>scalable solutions.
-        </h2>
-
-        <p class="max-w-xl mx-auto md:mx-0 text-white text-base reveal pb-4">
-          Advancing technology helps us safely deliver the lower-carbon energy the world needs.
-          New innovations help us build the lower-carbon energy system for the future.
-        </p>
-
-        <div class="mt-6">
-          <a
-            href="/what-we-do/energy/explore-energy-solution"
-            class="inline-flex items-center gap-3 font-medium border border-[#00b2bd] text-white px-5 py-3 rounded-md
-                   bg-transparent hover:bg-white hover:text-[#00708c] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#00b2bd]/30 transition"
-            aria-label="Discover tech and innovation"
-          >
-            <span class="leading-none">discover tech and innovation</span>
-            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-              <path d="M5 12h14M13 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Image column -->
-      <div class="relative w-full">
-        <!-- Desktop: decorative background image (keeps markup light, improves paint on large screens) -->
-        <div
-          class="hidden md:block w-full h-[420px] bg-center bg-cover rounded-lg shadow-lg reveal"
-          style="background-image: url('/img/what-we-do-img.jpg');"
-          role="img"
-          aria-label="Technology illustration — people working with industrial equipment">
-        </div>
-
-        <!-- Mobile & small screens: semantic <img> for better loading & alt text -->
-        <img
-          class="md:hidden w-full h-auto rounded-lg shadow-lg reveal object-cover"
-          src="/img/what-we-do-img-6.jpg"
-          sizes="(max-width: 767px) 100vw, 50vw"
-          alt="Technology illustration — people working with industrial equipment"
-          loading="lazy"
-          decoding="async"
+    <!-- Play / Pause -->
+    <button
+      id="hero-playpause"
+      type="button"
+      aria-pressed="false"
+      aria-label="Pause video"
+      class="absolute top-4 right-4 z-10 rounded-full bg-white/10 p-3 text-white backdrop-blur-sm hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/40 transition"
+    >
+      <!-- Pause -->
+      <svg
+        id="icon-pause"
+        class="w-5 h-5"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M6 4h4v16H6zM14 4h4v16h-4z"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         />
+      </svg>
+
+      <!-- Play -->
+      <svg
+        id="icon-play"
+        class="w-5 h-5 hidden"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M5 3v18l15-9L5 3z"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+  </div>
+
+  <!-- ================= WHITE CONTENT PANEL ================= -->
+  <div class="w-full bg-white">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 md:py-12 text-center">
+
+      <p class="text-sm font-semibold uppercase tracking-wide text-[#0b2d71]">
+        what we do
+      </p>
+
+      <h1 class="mt-3 text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0b2d71] leading-tight">
+        what we do
+      </h1>
+
+      <p class="mt-4 max-w-3xl mx-auto text-base md:text-lg text-black/85">
+        The world’s energy demands are greater than ever before. We’re working to
+        deliver the lower carbon energy needed today while building the energy
+        system of tomorrow.
+      </p>
+
+      <div class="mt-6">
+        <a
+          href="/what-we-do/energy/explore-energy-solution"
+          class="inline-flex items-center gap-3 rounded-md bg-[#0b2d71] px-6 py-3 font-medium text-white hover:bg-[#082a5d] transition"
+        >
+          Discover our energy solutions
+          <svg
+            class="w-4 h-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M5 12h14M13 5l7 7-7 7"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
       </div>
+
     </div>
   </div>
 </section>
 
 
-<!-- MOBILE-FIRST: Delivering energy across the globe (Tailwind, improved) -->
+<!-- WHAT WE DO (mobile-first, responsive) -->
+<section id="what-we-do" class="bg-[#0b2d71] text-white py-10 px-4">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      
+      <!-- Text Column -->
+      <div class="lg:col-span-5 xl:col-span-4 text-center lg:text-left max-w-xl mx-auto lg:mx-0">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-3">
+          energy that fuels<br />the world
+        </h2>
+        <p class="text-base sm:text-lg max-w-xl">
+          We work every day to provide energy that helps billions of people achieve the benefits of modern life — and to create solutions that will help advance a lower-carbon future.
+        </p>
+
+        <a href="/what-we-do/energy/explore-energy-solution"
+           class="inline-flex items-center mt-6 font-medium group border border-[#009dd9] text-white px-5 py-3 rounded-md hover:bg-white hover:text-blue-900 transition-all focus:outline-none focus:ring-4 focus:ring-[#003d73]"
+           aria-label="Explore energy solutions">
+          <span class="mr-3 lowercase">explore energy solutions</span>
+          <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Image Grid Column -->
+      <div class="lg:col-span-7 xl:col-span-8">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          
+          <!-- Image 1 -->
+          <figure class="w-full h-36 sm:h-28 lg:h-36 rounded-lg overflow-hidden">
+            <img src="/img/what-we-do-img-1.jpg" alt="Engineers inspecting equipment" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          </figure>
+
+          <!-- Image 2 -->
+          <figure class="w-full h-36 sm:h-28 lg:h-36 rounded-lg overflow-hidden">
+            <img src="/img/what-we-do-img-2.jpg" alt="Renewable energy installation" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          </figure>
+
+          <!-- Larger Hero-like Image -->
+          <figure class="col-span-2 sm:col-span-3 lg:col-span-2 w-full h-48 sm:h-40 lg:h-56 rounded-lg overflow-hidden">
+            <img src="/img/what-we-do-img-3.jpg" alt="Wide view of energy infrastructure" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          </figure>
+
+          <!-- Image 4 -->
+          <figure class="w-full h-36 sm:h-28 lg:h-36 rounded-lg overflow-hidden">
+            <img src="/img/what-we-do-img-4.jpg" alt="Team meeting about sustainability" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          </figure>
+
+          <!-- Image 5 -->
+          <figure class="w-full h-36 sm:h-28 lg:h-36 rounded-lg overflow-hidden">
+            <img src="/img/what-we-do-img-5.jpg" alt="Close-up of renewable technology" class="w-full h-full object-cover" loading="lazy" decoding="async">
+          </figure>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- WHAT WE DO — Tech & Innovation (responsive, accessible) -->
+<section id="what-we-do-tech" class="bg-[#00708c] py-8 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+
+      <!-- Text Column -->
+      <div class="text-center md:text-left">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3">
+          innovative technology.<br />scalable solutions.
+        </h2>
+
+        <p class="max-w-xl mx-auto md:mx-0 text-white text-base mb-4">
+          Advancing technology helps us safely deliver the lower-carbon energy the world needs.
+          New innovations help us build the lower-carbon energy system for the future.
+        </p>
+
+        <a href="/what-we-do/energy/explore-energy-solution"
+           class="inline-flex items-center gap-3 font-medium border border-[#00b2bd] text-white px-5 py-3 rounded-md
+                  bg-transparent hover:bg-white hover:text-[#00708c] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#00b2bd]/30 transition"
+           aria-label="Discover tech and innovation">
+          <span>discover tech and innovation</span>
+          <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Image Column -->
+      <div class="relative w-full">
+        <!-- Desktop background image -->
+        <div class="hidden md:block w-full h-[420px] bg-center bg-cover rounded-lg shadow-lg"
+             style="background-image: url('/img/what-we-do-img.jpg');"
+             role="img"
+             aria-label="Technology illustration — people working with industrial equipment">
+        </div>
+
+        <!-- Mobile / small screens -->
+        <img class="md:hidden w-full h-auto rounded-lg shadow-lg object-cover"
+             src="/img/what-we-do-img-6.jpg"
+             sizes="(max-width: 767px) 100vw, 50vw"
+             alt="Technology illustration — people working with industrial equipment"
+             loading="lazy"
+             decoding="async" />
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- DELIVERING ENERGY ACROSS THE GLOBE (responsive, accessible) -->
 <section id="deliver-worldwide" class="py-8 px-4 bg-[#3a0d36]">
   <div class="max-w-md mx-auto md:max-w-5xl lg:max-w-7xl">
-    <!-- Header -->
+
+    <!-- Section Header -->
     <header class="text-center mb-6">
       <h2 class="text-2xl sm:text-3xl font-extrabold text-[#ba3093] leading-tight reveal">
         delivering energy across the globe
@@ -325,348 +402,411 @@
       </p>
     </header>
 
-    <!-- CTA (full width on mobile, inline on larger screens) -->
+    <!-- CTA Button -->
     <div class="mb-6 flex justify-center md:justify-start reveal">
-      <a
-        href="/worldwide"
-        class="w-full md:w-auto inline-flex justify-center items-center gap-3 font-medium border border-[#ba3093] text-white px-5 py-3 rounded-md
-               bg-transparent hover:bg-white hover:text-[#000] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#ba3093]/25 transition"
-        aria-label="Discover Chevron worldwide"
-      >
+      <a href="/worldwide"
+         class="w-full md:w-auto inline-flex justify-center items-center gap-3 font-medium border border-[#ba3093] text-white px-5 py-3 rounded-md
+                bg-transparent hover:bg-white hover:text-[#000] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#ba3093]/25 transition"
+         aria-label="Discover Chevron worldwide">
         <span>discover chevron worldwide</span>
         <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
           <path d="M5 12h14M13 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
     </div>
+
   </div>
 </section>
 
+<!-- Back to top button (paste before </body>) -->
+<button id="backToTop"
+        class="fixed right-4 bottom-6 z-50 flex items-center justify-center w-12 h-12 rounded-full shadow-lg
+               bg-[#0b2d71] text-white
+               translate-y-6 opacity-0 pointer-events-none
+               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/80
+               transition-all duration-300 ease-out"
+        aria-label="Back to top"
+        title="Back to top"
+        aria-hidden="true">
+  <span class="sr-only">Back to top</span>
+
+  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 5.5v13"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"/>
+    <path d="M6.5 11.5L12 6l5.5 5.5"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"/>
+  </svg>
+</button>
 
 
 
-    <!-- NEWSROOM CAROUSEL -->
-    <section id="newsroom-carousel" class="py-6 px-4">
-      <div class="max-w-lg mx-auto">
 
-        <!-- Heading -->
-        <div class="text-center mb-4">
-          <p class="text-sm font-semibold text-blue-900 uppercase">newsroom</p>
-          <h3 class="text-2xl font-bold text-blue-900">latest at chevron</h3>
-        </div>
+<!-- NEWSROOM CAROUSEL -->
+<section id="newsroom-carousel" class="py-6 px-4">
+  <div class="max-w-lg mx-auto">
 
-        <!-- CAROUSEL VIEWPORT -->
-        <div id="carouselViewport" class="relative overflow-hidden rounded-xl">
-          <div id="carouselTrack" class="flex transition-transform duration-500 ease-out">
-
-            <!-- CARD 0 -->
-            <article class="card bg-active active" data-index="0" aria-hidden="false">
-              <img src="/carousel-img/supporting-stem-education-in-new-mexico-hero.jpg" alt="">
-              <div class="card-content">
-                <div>
-                  <p class="text-xs mb-2 text-white/90">November 18, 2025</p>
-                  <h4 class="text-sm font-semibold text-white">supporting STEM education in new mexico</h4>
-                </div>
-                <div>
-                  <a href="#" class="read-link text-white">
-                    Read Article
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            <!-- CARD 1 -->
-            <article class="card small bg-active" data-index="1" aria-hidden="true">
-              <img src="/carousel-img/frontline-innovations-drive-business-solutions-hero.jpg" alt="">
-              <div class="card-content">
-                <div>
-                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
-                  <h4 class="text-sm font-semibold text-white">frontline innovations drive business solutions</h4>
-                </div>
-                <div>
-                  <a href="#" class="read-link text-white">
-                    Read Article
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            <!-- CARD 2 -->
-            <article class="card small bg-active" data-index="2" aria-hidden="true">
-              <img src="/carousel-img/Apolo_Newsroom_Hero-01-D4-1.jpg" alt="">
-              <div class="card-content">
-                <div>
-                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
-                  <h4 class="text-sm font-semibold text-white">how apolo helps pinpoint prime drilling</h4>
-                </div>
-                <div>
-                  <a href="#" class="read-link text-white">
-                    Read Article
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            <!-- CARD 3 -->
-            <article class="card small bg-active" data-index="3" aria-hidden="true">
-              <img src="/carousel-img/Apex_Newsroom_Hero-01-D2.jpg" alt="">
-              <div class="card-content">
-                <div>
-                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
-                  <h4 class="text-sm font-semibold text-white">a smarter way to prospect</h4>
-                </div>
-                <div>
-                  <a href="#" class="read-link text-white">
-                    Read Article
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            <!-- CARD 4 -->
-            <article class="card small bg-active" data-index="4" aria-hidden="true">
-              <img src="/carousel-img/from-service-to-solutions-veterans-solve-problems-01.jpg" alt="">
-              <div class="card-content">
-                <div>
-                  <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
-                  <h4 class="text-sm font-semibold text-white">from service to solutions</h4>
-                </div>
-                <div>
-                  <a href="#" class="read-link text-white">
-                    Read Article
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            <!-- CARD 5 -->
-            <article class="card small bg-active" data-index="5" aria-hidden="true">
-              <img src="/carousel-img/robotics-nr-hero.jpg" alt="">
-              <div class="card-content">
-                <div>
-                  <p class="text-xs text-white/90 mb-2">November 10, 2025</p>
-                  <h4 class="text-sm font-semibold text-white">robotics supports a more efficient workplace</h4>
-                </div>
-                <div>
-                  <a href="#" class="read-link text-white">
-                    Read Article
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </article>
-
-          </div>
-        </div>
-
-        <!-- CONTROLS -->
-        <div class="mt-4 flex items-center gap-3 justify-between">
-          <button id="carouselPrev" class="arrow-btn" aria-label="Previous slide" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M15 18L9 12l6-6" stroke="currentColor" stroke-width="2"/>
-            </svg>
-          </button>
-
-          <div id="carouselDots" class="carousel-dots flex gap-2 justify-center flex-1"></div>
-
-          <button id="carouselNext" class="arrow-btn" aria-label="Next slide" aria-hidden="false">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
-            </svg>
-          </button>
-        </div>
-
-      </div>
-    </section>
-
-  <!-- Footer (Tailwind-ready) -->
-  <footer id="footer" class="bg-[#052c65] text-white">
-    <!-- Promo banner: email updates -->
-    <div class="max-w-4xl mx-auto px-4 pt-8 pb-6">
-      <aside class="rounded-lg overflow-hidden shadow-sm">
-        <a href="/newsroom/preference-center"
-          target="_blank" rel="noopener noreferrer"
-          class="block bg-sky-700 text-white px-4 py-5 rounded-lg">
-          <div class="text-center">
-            <h3 class="text-lg font-semibold">chevron email updates</h3>
-            <p class="mt-1 text-sm">subscribe to our newsletter to receive news and updates.</p>
-          </div>
-        </a>
-      </aside>
+    <!-- Heading -->
+    <div class="text-center mb-4">
+      <p class="text-sm font-semibold text-blue-900 uppercase">newsroom</p>
+      <h3 class="text-2xl font-bold text-blue-900">latest at chevron</h3>
     </div>
 
-    <div class="max-w-4xl mx-auto px-4 pb-8">
+    <!-- CAROUSEL VIEWPORT -->
+    <div id="carouselViewport" class="relative overflow-hidden rounded-xl">
+      <div id="carouselTrack" class="flex transition-transform duration-500 ease-out">
 
-      <!-- top: brand + short copy -->
-      <div class="flex flex-col md:flex-row md:items-start gap-6">
-        <!-- left: logo + copy -->
-        <div class="w-full md:w-1/3">
-          <img src="/img/hallmark-2023-theme-light.png"
-              alt="the human energy company"
-              width="200" height="131"
-              class="w-40 h-auto mb-4">
-
-          <p class="text-sm text-slate-300 leading-relaxed">
-            Chevron has always put people at the center of the energy conversation. Because we understand that the
-            well-being of people everywhere depends on energy — energy that is affordable, reliable and ever-cleaner.
-          </p>
-
-          <div class="mt-4">
-            <a href="/newsroom/preference-center"
-              class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-white transition text-sm"
-              aria-label="Subscribe to our newsletter">
-              <span>subscribe to our newsletter</span>
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- right: accordion + links (we removed "latest at chevron") -->
-        <div class="w-full md:w-2/3">
-          <div id="footer-accordion" class="space-y-3">
-
-            <!-- GET TO KNOW US (populated with user items) -->
-            <div class="bg-transparent">
-              <button
-                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
-                aria-expanded="false"
-                aria-controls="group-get-to-know-us">
-                <span>get to know us</span>
-                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-
-              <ul id="group-get-to-know-us"
-                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0 md:items-start">
-                <li><a class="block hover:underline" href="/who-we-are.html">who we are</a></li>
-                <li><a class="block hover:underline" href="/our-leadership.html">our leadership</a></li>
-                <li><a class="block hover:underline" href="/what-we-do.html">what we do</a></li>
-                <li><a class="block hover:underline" href="/tech-innovation.html">technology and innovation</a></li>
-                <li><a class="block hover:underline" href="/sustainability.html">sustainability</a></li>
-              </ul>
+        <!-- CARD 0 -->
+        <article class="card bg-active active" data-index="0" aria-hidden="false">
+          <img src="/carousel-img/supporting-stem-education-in-new-mexico-hero.jpg" alt="">
+          <div class="card-content">
+            <div>
+              <p class="text-xs mb-2 text-white/90">November 18, 2025</p>
+              <h4 class="text-sm font-semibold text-white">supporting STEM education in new mexico</h4>
             </div>
-
-            <!-- FUTURE OF ENERGY (user items) -->
-            <div class="bg-transparent">
-              <button
-                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
-                aria-expanded="false"
-                aria-controls="group-future">
-                <span>future of energy</span>
-                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <div>
+              <a href="#" class="read-link text-white">
+                Read Article
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </svg>
-              </button>
-
-              <ul id="group-future"
-                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
-                <li><a class="block hover:underline" href="/carbon capture and storage.html">carbon capture and storage</a></li>
-                <li><a class="block hover:underline" href="/energy-in-progress.html">energy in progress</a></li>
-                <li><a class="block hover:underline" href="/new-energy.html">new energies</a></li>
-                <li><a class="block hover:underline" href="/methane-management.html">methane management</a></li>
-              </ul>
-            </div>
-
-            <!-- POPULAR LINKS (user items) -->
-            <div class="bg-transparent">
-              <button
-                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
-                aria-expanded="false"
-                aria-controls="group-popular">
-                <span>popular links</span>
-                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-
-              <ul id="group-popular"
-                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
-                <li><a class="block hover:underline" href="/careers.html">careers</a></li>
-                <li><a class="block hover:underline" href="/contact.html">contact us</a></li>
-              </ul>
-            </div>
-
-          </div>
-
-          <!-- small divider -->
-          <hr class="my-4 border-slate-700">
-
-          <!-- global links + country selector -->
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-slate-300">
-            <div class="flex flex-wrap gap-3">
-              <a class="hover:underline" href="/global-pages/site-map">site map</a>
-              <a class="hover:underline" href="/accessibility">accessibility</a>
-              <a class="hover:underline" href="/terms-of-use">terms of use</a>
-              <a class="hover:underline" href="/privacy">privacy</a>
-              <button type="button" class="hover:underline" onclick="OneTrust.ToggleInfoDisplay()">cookie settings (do not sell/share information)</button>
-              <a class="hover:underline" href="/privacy/global-cookie-statement">cookie statement</a>
-            </div>
-
-            <div class="mt-2 sm:mt-0">
-              <a class="inline-flex items-center gap-2 text-slate-100 hover:underline" href="https://www.chevron.com/worldwide/nigeria" rel="nofollow noopener">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M12 2c2.8 0 5 2.2 5 5 0 5-5 10-5 10s-5-5-5-10c0-2.8 2.2-5 5-5z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span>Nigeria</span>
               </a>
             </div>
           </div>
+        </article>
 
-          <!-- social icons row -->
-          <div class="mt-4 flex items-center gap-4">
-            <a href="https://www.facebook.com/Chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
-              <img src="/icons/facebook.svg" alt="facebook" class="w-6 h-6">
-            </a>
-            <a href="https://twitter.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
-              <img src="/icons/twitter.svg" alt="twitter" class="w-6 h-6">
-            </a>
-            <a href="https://www.instagram.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
-              <img src="/icons/instagram.svg" alt="instagram" class="w-6 h-6">
-            </a>
-            <a href="https://www.tiktok.com/@chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
-              <img src="/icons/tiktok.svg" alt="tiktok" class="w-6 h-6">
-            </a>
-            <a href="https://www.youtube.com/user/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
-              <img src="/icons/youtube.svg" alt="youtube" class="w-6 h-6">
-            </a>
-            <a href="https://www.linkedin.com/company/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
-              <img src="/icons/linkedin.svg" alt="linkedin" class="w-6 h-6">
-            </a>
+        <!-- CARD 1 -->
+        <article class="card small bg-active" data-index="1" aria-hidden="true">
+          <img src="/carousel-img/frontline-innovations-drive-business-solutions-hero.jpg" alt="">
+          <div class="card-content">
+            <div>
+              <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+              <h4 class="text-sm font-semibold text-white">frontline innovations drive business solutions</h4>
+            </div>
+            <div>
+              <a href="#" class="read-link text-white">
+                Read Article
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </a>
+            </div>
           </div>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="card small bg-active" data-index="2" aria-hidden="true">
+          <img src="/carousel-img/Apolo_Newsroom_Hero-01-D4-1.jpg" alt="">
+          <div class="card-content">
+            <div>
+              <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+              <h4 class="text-sm font-semibold text-white">how apolo helps pinpoint prime drilling</h4>
+            </div>
+            <div>
+              <a href="#" class="read-link text-white">
+                Read Article
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="card small bg-active" data-index="3" aria-hidden="true">
+          <img src="/carousel-img/Apex_Newsroom_Hero-01-D2.jpg" alt="">
+          <div class="card-content">
+            <div>
+              <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+              <h4 class="text-sm font-semibold text-white">a smarter way to prospect</h4>
+            </div>
+            <div>
+              <a href="#" class="read-link text-white">
+                Read Article
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 4 -->
+        <article class="card small bg-active" data-index="4" aria-hidden="true">
+          <img src="/carousel-img/from-service-to-solutions-veterans-solve-problems-01.jpg" alt="">
+          <div class="card-content">
+            <div>
+              <p class="text-xs text-white/90 mb-2">November 12, 2025</p>
+              <h4 class="text-sm font-semibold text-white">from service to solutions</h4>
+            </div>
+            <div>
+              <a href="#" class="read-link text-white">
+                Read Article
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 5 -->
+        <article class="card small bg-active" data-index="5" aria-hidden="true">
+          <img src="/carousel-img/robotics-nr-hero.jpg" alt="">
+          <div class="card-content">
+            <div>
+              <p class="text-xs text-white/90 mb-2">November 10, 2025</p>
+              <h4 class="text-sm font-semibold text-white">robotics supports a more efficient workplace</h4>
+            </div>
+            <div>
+              <a href="#" class="read-link text-white">
+                Read Article
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="mt-4 flex items-center gap-3 justify-between">
+      <button id="carouselPrev" class="arrow-btn" aria-label="Previous slide" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M15 18L9 12l6-6" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </button>
+
+      <div id="carouselDots" class="carousel-dots flex gap-2 justify-center flex-1"></div>
+
+      <button id="carouselNext" class="arrow-btn" aria-label="Next slide" aria-hidden="false">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer (Tailwind-ready) -->
+<footer id="footer" class="bg-[#052c65] text-white">
+  <!-- Promo banner: email updates -->
+  <div class="max-w-4xl mx-auto px-4 pt-8 pb-6">
+    <aside class="rounded-lg overflow-hidden shadow-sm">
+      <a href="/newsroom/preference-center"
+        target="_blank" rel="noopener noreferrer"
+        class="block bg-sky-700 text-white px-4 py-5 rounded-lg">
+        <div class="text-center">
+          <h3 class="text-lg font-semibold">chevron email updates</h3>
+          <p class="mt-1 text-sm">subscribe to our newsletter to receive news and updates.</p>
+        </div>
+      </a>
+    </aside>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 pb-8">
+
+    <!-- top: brand + short copy -->
+    <div class="flex flex-col md:flex-row md:items-start gap-6">
+      <!-- left: logo + copy -->
+      <div class="w-full md:w-1/3">
+        <img src="/img/hallmark-2023-theme-light.png"
+            alt="the human energy company"
+            width="200" height="131"
+            class="w-40 h-auto mb-4">
+
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Chevron has always put people at the center of the energy conversation. Because we understand that the
+          well-being of people everywhere depends on energy — energy that is affordable, reliable and ever-cleaner.
+        </p>
+
+        <div class="mt-4">
+          <a href="/newsroom/preference-center"
+            class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-white transition text-sm"
+            aria-label="Subscribe to our newsletter">
+            <span>subscribe to our newsletter</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
       </div>
 
-      <!-- copyright -->
-      <div class="mt-6 border-t border-slate-800 pt-4 text-xs text-slate-400 text-center">
-        © 2001 – 2025 Chevron Corporation. All rights reserved.
-      </div>
+      <!-- right: accordion + links (we removed "latest at chevron") -->
+      <div class="w-full md:w-2/3">
+        <div id="footer-accordion" class="space-y-3">
 
+          <!-- GET TO KNOW US (populated with user items) -->
+          <div class="bg-transparent">
+            <button
+              class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+              aria-expanded="false"
+              aria-controls="group-get-to-know-us">
+              <span>get to know us</span>
+              <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <ul id="group-get-to-know-us"
+                class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0 md:items-start">
+              <li><a class="block hover:underline" href="/who-we-are.html">who we are</a></li>
+              <li><a class="block hover:underline" href="/our-leadership.html">our leadership</a></li>
+              <li><a class="block hover:underline" href="/what-we-do.html">what we do</a></li>
+              <li><a class="block hover:underline" href="/tech-innovation.html">technology and innovation</a></li>
+              <li><a class="block hover:underline" href="/sustainability.html">sustainability</a></li>
+            </ul>
+          </div>
+
+          <!-- FUTURE OF ENERGY (user items) -->
+          <div class="bg-transparent">
+            <button
+              class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+              aria-expanded="false"
+              aria-controls="group-future">
+              <span>future of energy</span>
+              <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <ul id="group-future"
+                class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
+              <li><a class="block hover:underline" href="/carbon capture and storage.html">carbon capture and storage</a></li>
+              <li><a class="block hover:underline" href="/energy-in-progress.html">energy in progress</a></li>
+              <li><a class="block hover:underline" href="/new-energy.html">new energies</a></li>
+              <li><a class="block hover:underline" href="/methane-management.html">methane management</a></li>
+            </ul>
+          </div>
+
+          <!-- POPULAR LINKS (user items) -->
+          <div class="bg-transparent">
+            <button
+              class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+              aria-expanded="false"
+              aria-controls="group-popular">
+              <span>popular links</span>
+              <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <ul id="group-popular"
+                class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
+              <li><a class="block hover:underline" href="/careers.html">careers</a></li>
+              <li><a class="block hover:underline" href="/contact.html">contact us</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- small divider -->
+        <hr class="my-4 border-slate-700">
+
+        <!-- global links + country selector -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-slate-300">
+          <div class="flex flex-wrap gap-3">
+            <a class="hover:underline" href="/global-pages/site-map">site map</a>
+            <a class="hover:underline" href="/accessibility">accessibility</a>
+            <a class="hover:underline" href="/terms-of-use">terms of use</a>
+            <a class="hover:underline" href="/privacy">privacy</a>
+            <button type="button" class="hover:underline" onclick="OneTrust.ToggleInfoDisplay()">cookie settings (do not sell/share information)</button>
+            <a class="hover:underline" href="/privacy/global-cookie-statement">cookie statement</a>
+          </div>
+
+          <div class="mt-2 sm:mt-0">
+            <a class="inline-flex items-center gap-2 text-slate-100 hover:underline" href="https://www.chevron.com/worldwide/nigeria" rel="nofollow noopener">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M12 2c2.8 0 5 2.2 5 5 0 5-5 10-5 10s-5-5-5-10c0-2.8 2.2-5 5-5z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Nigeria</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- social icons row -->
+        <div class="mt-4 flex items-center gap-4">
+          <a href="https://www.facebook.com/Chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+            <img src="/icons/facebook.svg" alt="facebook" class="w-6 h-6">
+          </a>
+          <a href="https://twitter.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+            <img src="/icons/twitter.svg" alt="twitter" class="w-6 h-6">
+          </a>
+          <a href="https://www.instagram.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+            <img src="/icons/instagram.svg" alt="instagram" class="w-6 h-6">
+          </a>
+          <a href="https://www.tiktok.com/@chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+            <img src="/icons/tiktok.svg" alt="tiktok" class="w-6 h-6">
+          </a>
+          <a href="https://www.youtube.com/user/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+            <img src="/icons/youtube.svg" alt="youtube" class="w-6 h-6">
+          </a>
+          <a href="https://www.linkedin.com/company/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+            <img src="/icons/linkedin.svg" alt="linkedin" class="w-6 h-6">
+          </a>
+        </div>
+      </div>
     </div>
-  </footer>
+
+    <!-- copyright -->
+    <div class="mt-6 border-t border-slate-800 pt-4 text-xs text-slate-400 text-center">
+      © 2001 – 2025 Chevron Corporation. All rights reserved.
+    </div>
+
+  </div>
+</footer>
 
   </main>
 
   <!-- Scripts -->
   <script src="/main.js" defer></script>
+  <!-- back-to-top -->
+
+<script>
+  const backToTopBtn = document.getElementById('backToTop');
+
+  const toggleBackToTop = () => {
+    if (window.scrollY > 400) {
+      backToTopBtn.classList.remove(
+        'opacity-0',
+        'translate-y-6',
+        'pointer-events-none'
+      );
+      backToTopBtn.classList.add(
+        'opacity-100',
+        'translate-y-0'
+      );
+      backToTopBtn.setAttribute('aria-hidden', 'false');
+    } else {
+      backToTopBtn.classList.add(
+        'opacity-0',
+        'translate-y-6',
+        'pointer-events-none'
+      );
+      backToTopBtn.classList.remove(
+        'opacity-100',
+        'translate-y-0'
+      );
+      backToTopBtn.setAttribute('aria-hidden', 'true');
+    }
+  };
+
+  window.addEventListener('scroll', toggleBackToTop);
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
 </body>
 </html>
