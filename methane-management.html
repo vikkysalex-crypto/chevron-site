@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>methane-management</title>
+
+  <!-- Tailwind CDN for quick prototyping -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- External small CSS for things not directly in Tailwind -->
+  <link rel="stylesheet" href="/style.css" />
+
+    <!-- back to top style -->
+   <link rel="stylesheet" href="/back-to-top.css">
+
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+<!-- ================= HEADER ================= -->
+<header
+  class="fixed top-0 left-0 z-50 w-full bg-white/10 backdrop-blur-md text-white transition-colors duration-300">
+
+  <div class="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-3 md:px-6">
+
+    <!-- ================= LEFT ================= -->
+    <div class="flex items-center gap-4">
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        id="openMenuBtn"
+        aria-label="Open menu"
+        class="md:hidden active:scale-95 transition">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M3 6h18M3 12h18M3 18h18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="/who-we-are.html" class="hover:opacity-80">who we are</a>
+        <a href="/what-we-do.html" class="hover:opacity-80">what we do</a>
+        <a href="/sustainability.html" class="hover:opacity-80">sustainability</a>
+        <a href="/investors.html" class="hover:opacity-80">investors</a>
+      </nav>
+
+    </div>
+
+    <!-- ================= CENTER ================= -->
+    <div class="absolute left-1/2 -translate-x-1/2">
+      <img
+        src="/img/hallmark-2023-theme-light.png"
+        alt="Chevron Logo"
+        class="h-9 w-auto object-contain drop-shadow-md"
+      />
+    </div>
+
+    <!-- ================= RIGHT ================= -->
+    <div class="flex items-center gap-5 text-sm font-medium">
+
+      <!-- Desktop Links -->
+      <a href="/Newsroom.html" class="hidden md:inline hover:opacity-80">
+        newsroom
+      </a>
+
+      <a href="/careers.html" class="hidden md:inline hover:opacity-80">
+        careers
+      </a>
+
+      <!-- Search Icon -->
+      <button
+        type="button"
+        id="searchIcon"
+        aria-label="Search"
+        class="active:scale-95 transition">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M21 21l-4.35-4.35"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <circle
+            cx="11"
+            cy="11"
+            r="6"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+        </svg>
+      </button>
+
+    </div>
+
+  </div>
+</header>
+
+
+
+  <!-- ---------------- Full-screen blue menu (slides in from left) ---------------- -->
+  <div id="menuContainer" class="fixed inset-0 z-50 mobile-only hidden" aria-hidden="true">
+    <!-- backdrop -->
+    <div id="menuBackdrop" class="absolute inset-0 bg-black/30 backdrop-blur-sm backdrop-brightness-90"></div>
+
+    <!-- panel -->
+    <div id="menuPanel"
+        class="absolute top-0 left-0 w-full h-full bg-[#0b2d71] text-white menu-off transition-transform duration-300"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Main menu">
+
+      <div class="h-full flex flex-col px-6 pt-4 pb-6">
+
+        <!-- close button -->
+        <div class="flex items-center justify-end">
+          <button type="button" id="closeMenuBtn" aria-label="Close menu" class="p-2 text-white">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- menu items -->
+        <nav id="menuNav" class="mt-6 flex-1 flex flex-col justify-start gap-6">
+          <a class="menu-item text-2xl font-semibold" href="/who-we-are.html">Who We Are</a>
+          <a class="menu-item text-2xl font-semibold" href="/what-we-do.html">What We Do</a>
+
+          <!-- Sustainability dropdown -->
+          <div class="flex flex-col">
+            <button 
+              id="sustainBtn"
+              class="menu-item text-2xl font-semibold flex items-center justify-between w-full">
+              Sustainability
+              <svg id="sustainArrow" class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+
+            <div id="sustainDropdown" class="ml-4 mt-3 flex-col gap-3 hidden">
+              <a class="text-xl text-white font-medium block" href="/climate.html">Climate</a>
+              <a class="text-xl text-white font-medium block" href="/Environment.html">Environment</a>
+              <a class="text-xl text-white font-medium block" href="/Social Investment.html">Social Investment</a>
+            </div>
+          </div>
+
+          <a class="menu-item text-2xl font-semibold" href="/Investors.html">Investors</a>
+          <a class="menu-item text-2xl font-semibold" href="/Newsroom.html">Newsroom</a>
+          <a class="menu-item text-2xl font-semibold" href="/careers.html">Careers</a>
+          <a class="menu-item text-2xl font-semibold" href="/energy.html">Energies</a>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <main id="main-content" role="main" tabindex="-1" class="relative">
+
+<!-- ================= HERO SECTION ================= -->
+<section class="relative w-full bg-gray-900 text-white pt-14 md:pt-16">
+  <!-- ↑ Push hero BELOW fixed header -->
+
+  <!-- ===== VIDEO AREA ===== -->
+  <div class="relative w-full overflow-hidden">
+    <video
+      id="hero-video"
+      class="w-full h-[60vh] sm:h-[65vh] md:h-[72vh] object-cover"
+      poster="/-/media/chevron/what-we-do/energy/images/01_hero_fallback_xlarge.jpg"
+      muted
+      playsinline
+      loop
+      autoplay
+    >
+      <source
+        src="/videos/methane-management-background-16x9.mp4"
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay Gradient -->
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40"></div>
+
+    <!-- Play / Pause Button -->
+    <div class="absolute top-4 right-4 z-20">
+      <button
+        id="hero-playpause"
+        aria-label="Pause video"
+        aria-pressed="false"
+        class="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/40 transition"
+      >
+        <!-- Pause icon (shown when playing) -->
+        <svg id="icon-pause" class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M6 4h4v16H6zM14 4h4v16h-4z"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          />
+        </svg>
+
+        <!-- Play icon (shown when paused) -->
+        <svg id="icon-play" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M5 3v18l15-9L5 3z"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== WHITE CONTENT PANEL ===== -->
+  <div class="w-full bg-white text-[#0b2d71]">
+    <div class="mx-auto max-w-6xl px-5 py-8 sm:py-10 md:py-12 text-center">
+
+      <!-- Subheading -->
+      <p class="mb-2 text-xs sm:text-sm font-medium uppercase tracking-wider text-[#0b2d71]/80">
+        methane management
+      </p>
+
+      <!-- Main Heading -->
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
+        keeping methane in the pipe
+      </h1>
+
+      <!-- Paragraph -->
+      <p class="mx-auto mt-4 max-w-3xl text-base sm:text-lg text-slate-800">
+        Reducing methane emissions requires all hands on deck — energy companies, governments and other key stakeholders. Chevron's blueprint embraces new technology, innovative facilities, and improved procedures. It's a plan we believe will help our industry reduce methane intensity.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- Methane Management Matters Section -->
+<section id="methane-mgmt-matters" class="bg-gray-50 py-16">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+
+    <!-- Headline with Highlight Buttons -->
+    <h2 class="text-3xl font-bold text-blue-900 mb-8">
+      <span class="block text-sm font-semibold text-blue-600 uppercase mb-2">Methane Management Matters</span>
+      <span class="block mb-2">
+        both natural and human-driven,
+        <button data-modal-target="#modal1" class="highlight-btn text-blue-600 underline font-semibold hover:text-blue-800 focus:outline-none">
+          methane
+          <span class="sr-only">click to learn more</span>
+        </button>
+        is an invisible
+        <button data-modal-target="#modal1" class="highlight-btn text-blue-600 underline font-semibold hover:text-blue-800 focus:outline-none">
+          greenhouse gas
+          <span class="sr-only">click to learn more</span>
+        </button>
+      </span>
+      <span class="block">
+        preventing and reducing
+        <button data-modal-target="#modal1" class="highlight-btn text-blue-600 underline font-semibold hover:text-blue-800 focus:outline-none">
+          methane emissions
+          <span class="sr-only">click to learn more</span>
+        </button>
+        is important for a lower carbon future
+      </span>
+    </h2>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+      <div class="bg-white max-w-4xl w-full mx-4 rounded-lg overflow-hidden shadow-lg">
+        <div class="flex justify-end p-4">
+          <button class="text-gray-500 hover:text-gray-900" onclick="closeModal('#modal1')" aria-label="Close modal">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 8.586l4.95-4.95a1 1 0 111.414 1.414L11.414 10l4.95 4.95a1 1 0 01-1.414 1.414L10 11.414l-4.95 4.95a1 1 0 01-1.414-1.414L8.586 10l-4.95-4.95a1 1 0 011.414-1.414L10 8.586z" clip-rule="evenodd"/>
+            </svg>
+          </button>
+        </div>
+        <div class="p-6 space-y-6 text-left text-gray-700">
+
+          <!-- Methane 101 -->
+          <div>
+            <h3 class="text-2xl font-semibold text-blue-900 mb-2">Methane 101</h3>
+            <p>Methane is a colorless, odorless gas that comes from natural sources such as wetlands and human-driven sources, including the oil and gas industry.</p>
+            <p>Preventing and reducing methane emissions is important for a lower carbon future.</p>
+          </div>
+
+          <!-- Methane vs CO2 -->
+          <div>
+            <h3 class="text-2xl font-semibold text-blue-900 mb-2">Methane vs CO<sub>2</sub></h3>
+            <img src="-/media/chevron/newsroom/2022/Q3/methane-management-methane-vs-co2-viz-v2.png" alt="Methane Potency Visualization" class="w-full mb-2">
+            <p>While short-lived in the atmosphere, methane is more potent than CO<sub>2</sub> — 25x over a 100-year period<sup>1</sup>.</p>
+            <a href="/-/media/chevron/sustainability/documents/climate-change-resilience-report.pdf" target="_blank" class="text-blue-600 underline hover:text-blue-800 inline-flex items-center gap-1">
+              Learn more about methane
+              <svg class="w-4 h-4 inline" fill="currentColor" viewBox="0 0 16 16"><path d="M9 3h4v4h-1V5.414l-6.293 6.293-.707-.707L11.586 4H9V3z"/><path d="M14 14H2V2h6V1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6h-1v6z"/></svg>
+            </a>
+            <p class="text-xs mt-2 leading-5">
+              <sup>1</sup> The AR4 100-year Global Warming Potential (GWP-100) assigns a GWP of 25 to convert the mass of methane to its carbon dioxide–equivalent value. 
+              <a href="/-/media/chevron/sustainability/documents/climate-change-resilience-report.pdf" target="_blank" class="underline">2021 Climate Change Resilience Report</a>
+            </p>
+          </div>
+
+          <!-- A Lower Carbon Future -->
+          <div>
+            <h3 class="text-2xl font-semibold text-blue-900 mb-2">A Lower Carbon Future</h3>
+            <p>We’re committed to lowering our methane emissions intensity. Since 2016, we have reduced our methane intensity by more than 50 percent across Chevron. See the latest findings in our new report.</p>
+            <a href="https://chevron.co/methane-report" target="_blank" class="text-blue-600 underline hover:text-blue-800 inline-flex items-center gap-1">
+              Download our 2022 Methane Report
+              <svg class="w-4 h-4 inline" fill="currentColor" viewBox="0 0 16 16"><path d="M9 3h4v4h-1V5.414l-6.293 6.293-.707-.707L11.586 4H9V3z"/><path d="M14 14H2V2h6V1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6h-1v6z"/></svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Modal Toggle Script -->
+<script>
+  document.querySelectorAll('.highlight-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.querySelector(btn.dataset.modalTarget);
+      target.classList.remove('hidden');
+      target.classList.add('flex');
+    });
+  });
+
+  function closeModal(selector) {
+    const modal = document.querySelector(selector);
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+</script>
+
+
+
+<!-- Our Solution Section -->
+<section id="our-solution" class="bg-gray-50 py-16">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+
+    <!-- Headline with Highlight Buttons -->
+    <h2 class="text-3xl font-bold text-blue-900 mb-8">
+      <span class="block text-sm font-semibold text-blue-600 uppercase mb-2">Our Solution</span>
+      <span class="block">
+        We’re continuously working to stay ahead of the curve.
+        <button data-modal-target="#solution-modal" class="highlight-btn text-blue-600 underline font-semibold hover:text-blue-800 focus:outline-none">
+          forging partnerships
+          <span class="sr-only">click to learn more</span>
+        </button>
+        testing and applying
+        <button data-modal-target="#solution-modal" class="highlight-btn text-blue-600 underline font-semibold hover:text-blue-800 focus:outline-none">
+          technologies
+          <span class="sr-only">click to learn more</span>
+        </button>.
+      </span>
+    </h2>
+
+    <!-- Modal Structure -->
+    <div id="solution-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+      <div class="bg-white max-w-4xl w-full mx-4 rounded-lg overflow-hidden shadow-lg">
+        <div class="flex justify-end p-4">
+          <button class="text-gray-500 hover:text-gray-900" onclick="closeModal('#solution-modal')" aria-label="Close modal">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 8.586l4.95-4.95a1 1 0 111.414 1.414L11.414 10l4.95 4.95a1 1 0 01-1.414 1.414L10 11.414l-4.95 4.95a1 1 0 01-1.414-1.414L8.586 10l-4.95-4.95a1 1 0 011.414-1.414L10 8.586z" clip-rule="evenodd"/>
+            </svg>
+          </button>
+        </div>
+        <div class="p-6 space-y-6 text-left text-gray-700">
+
+          <!-- Forging Partnerships -->
+          <div>
+            <h3 class="text-2xl font-semibold text-blue-900 mb-2">Forging Partnerships</h3>
+            <p>Chevron is co-founder of the Environmental Partnership, which has conducted over 1.2 million leak detection surveys since 2018. The Collaboratory to Advance Methane Science addresses methane emissions along the entire value chain, from production to end use.</p>
+            <a href="/newsroom/2022/q2/independent-analysis-recognizes-environmental-excellence" target="_blank" class="text-blue-600 underline hover:text-blue-800 inline-flex items-center gap-1">
+              Project Canary Results
+              <svg class="w-4 h-4 inline" fill="currentColor" viewBox="0 0 16 16"><path d="M9 3h4v4h-1V5.414l-6.293 6.293-.707-.707L11.586 4H9V3z"/><path d="M14 14H2V2h6V1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6h-1v6z"/></svg>
+            </a>
+          </div>
+
+          <!-- Technologies -->
+          <div>
+            <h3 class="text-2xl font-semibold text-blue-900 mb-2">Technologies</h3>
+            <p>From the surface to sky – several proactive approaches are expanding methane-detection and reduction capabilities.</p>
+            <a href="/newsroom/2022/q2/applying-technologies-to-find-and-fix-methane-emissions" target="_blank" class="text-blue-600 underline hover:text-blue-800 inline-flex items-center gap-1">
+              Learn more about technology
+              <svg class="w-4 h-4 inline" fill="currentColor" viewBox="0 0 16 16"><path d="M9 3h4v4h-1V5.414l-6.293 6.293-.707-.707L11.586 4H9V3z"/><path d="M14 14H2V2h6V1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6h-1v6z"/></svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Modal Toggle Script -->
+<script>
+  document.querySelectorAll('.highlight-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.querySelector(btn.dataset.modalTarget);
+      target.classList.remove('hidden');
+      target.classList.add('flex');
+    });
+  });
+
+  function closeModal(selector) {
+    const modal = document.querySelector(selector);
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+</script>
+
+
+
+
+<!-- Methane Intensity Section -->
+<section id="c45-wrapper" class="bg-gray-50 py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="bg-blue-900 text-white rounded-lg overflow-hidden p-8 relative">
+
+      <!-- Top Label -->
+      <div class="text-lg font-semibold mb-4">Methane Intensity</div>
+
+      <!-- Center Numbers -->
+      <div class="flex justify-center items-center space-x-4 mb-4">
+        <div class="text-2xl font-bold">↓</div>
+        <div class="flex flex-col space-y-1 text-xl font-semibold">
+          <div>10%</div>
+          <div>20%</div>
+          <div>30%</div>
+          <div>35%</div>
+          <div>40%</div>
+          <div>45%</div>
+          <div>46%</div>
+          <div>47%</div>
+          <div>48%</div>
+          <div>49%</div>
+          <div>50%</div>
+        </div>
+      </div>
+
+      <!-- Bottom Label -->
+      <div class="text-center text-lg font-medium mb-2">Chevron</div>
+
+      <!-- Fill Bar -->
+      <div class="h-4 w-full bg-blue-700 rounded-full overflow-hidden">
+        <div class="h-4 bg-green-400 w-1/2 transition-all duration-1000"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Methane Reduction Highlight -->
+<section class="bg-gray-50 py-16">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-blue-900 mb-6">
+      <span class="block">
+        Since 2016, we have reduced our methane intensity by more than 
+        <button id="methaneModalBtn" class="text-blue-600 underline font-semibold hover:text-blue-800 transition">
+          50 percent
+          <span class="sr-only">click to learn more</span>
+        </button>
+        across Chevron.
+      </span>
+    </h2>
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="methaneModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-lg max-w-lg mx-4 p-6 relative">
+    <button id="closeModal" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900">
+      &times;
+      <span class="sr-only">Close modal</span>
+    </button>
+    <h3 class="text-2xl font-bold text-blue-900 mb-4">Trailblazing for positive change</h3>
+    <p class="mb-4">Chevron is lowering methane emissions, and has trialed multiple advanced methane detection technologies since 2016.</p>
+    <a href="/newsroom/2022/q2/applying-technologies-to-find-and-fix-methane-emissions" 
+       target="_blank" 
+       class="inline-block text-blue-600 underline hover:text-blue-800 font-semibold transition">
+      Learn how operations can reduce carbon emissions
+    </a>
+  </div>
+</div>
+
+<script>
+  const modalBtn = document.getElementById('methaneModalBtn');
+  const modal = document.getElementById('methaneModal');
+  const closeModal = document.getElementById('closeModal');
+
+  modalBtn.addEventListener('click', () => {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  });
+
+  closeModal.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+  });
+</script>
+
+
+
+<!-- Our Plan Section -->
+<section class="bg-white py-16">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-blue-900 mb-6">Our plan for reducing methane intensity</h2>
+    <div class="text-gray-700 text-lg space-y-4">
+      <p>
+        Chevron’s approach focuses on continuous improvement, innovation, and collaboration across the energy value chain.
+      </p>
+      <p>
+        By integrating advanced detection technologies, best practices, and partnerships with industry leaders, we aim to reduce methane emissions while maintaining reliable operations.
+      </p>
+      <p>
+        Our strategy includes regular monitoring, leak detection and repair programs, and investment in new solutions that drive measurable impact.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Our Plan Flip Cards Section -->
+<section class="bg-white py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-blue-900 text-center mb-12">Our Plan for Reducing Methane Intensity</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- Card 1: Facility Design -->
+      <div class="group perspective">
+        <div class="relative w-full h-72 transition-transform duration-500 transform-style-preserve-3d group-hover:rotate-y-180">
+          <!-- Front -->
+          <div class="absolute w-full h-full bg-blue-900 text-white rounded-lg shadow-lg backface-hidden flex flex-col justify-center items-center text-center p-4" style="background-image: url('/-/media/chevron/newsroom/2022/Q3/methane-management-design-new-facilities.png'); background-size: cover;">
+            <p class="text-4xl font-bold mb-2">1</p>
+            <p class="font-semibold">Facility Design</p>
+          </div>
+          <!-- Back -->
+          <div class="absolute w-full h-full bg-blue-800 text-white rounded-lg shadow-lg backface-hidden rotate-y-180 flex flex-col justify-center items-center text-center p-4">
+            <p class="mb-4">Design new facilities to better prevent methane leaks, and retrofit existing facilities.</p>
+            <a href="/newsroom/2022/q2/lower-carbon-factors-into-facilities-design" target="_blank" class="text-white underline hover:text-gray-300 transition">Learn more</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Operating Practices -->
+      <div class="group perspective">
+        <div class="relative w-full h-72 transition-transform duration-500 transform-style-preserve-3d group-hover:rotate-y-180">
+          <!-- Front -->
+          <div class="absolute w-full h-full bg-blue-900 text-white rounded-lg shadow-lg backface-hidden flex flex-col justify-center items-center text-center p-4" style="background-image: url('/-/media/chevron/newsroom/2022/Q3/methane-management-captured-entrained-gas-v2.png'); background-size: cover;">
+            <p class="text-4xl font-bold mb-2">2</p>
+            <p class="font-semibold">Operating Practices</p>
+          </div>
+          <!-- Back -->
+          <div class="absolute w-full h-full bg-blue-800 text-white rounded-lg shadow-lg backface-hidden rotate-y-180 flex flex-col justify-center items-center text-center p-4">
+            <p class="mb-4">Adopt a methane leak elimination mindset and deploy best practices.</p>
+            <a href="/newsroom/2022/q3/workplace-culture-is-the-secret-to-success" target="_blank" class="text-white underline hover:text-gray-300 transition">Learn more</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Advanced Technology -->
+      <div class="group perspective">
+        <div class="relative w-full h-72 transition-transform duration-500 transform-style-preserve-3d group-hover:rotate-y-180">
+          <!-- Front -->
+          <div class="absolute w-full h-full bg-blue-900 text-white rounded-lg shadow-lg backface-hidden flex flex-col justify-center items-center text-center p-4" style="background-image: url('/-/media/chevron/newsroom/2022/Q3/methane-management-prevent-methane-leaks.png'); background-size: cover;">
+            <p class="text-4xl font-bold mb-2">3</p>
+            <p class="font-semibold">Advanced Technology</p>
+          </div>
+          <!-- Back -->
+          <div class="absolute w-full h-full bg-blue-800 text-white rounded-lg shadow-lg backface-hidden rotate-y-180 flex flex-col justify-center items-center text-center p-4">
+            <p class="mb-4">Deploy advanced sensor technology to detect methane leaks and report results externally.</p>
+            <a href="/newsroom/2022/q2/applying-technologies-to-find-and-fix-methane-emissions" target="_blank" class="text-white underline hover:text-gray-300 transition">Learn more</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Tailwind required CSS for 3D flip -->
+<style>
+  .perspective { perspective: 1000px; }
+  .backface-hidden { backface-visibility: hidden; }
+  .rotate-y-180 { transform: rotateY(180deg); }
+  .transform-style-preserve-3d { transform-style: preserve-3d; }
+</style>
+
+
+
+<!-- Climate Change Resilience Report -->
+<section class="bg-white py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <a href="/sitecore/media-library/chevron/sustainability/documents/climate-change-resilience-report" class="flex flex-col lg:flex-row items-center bg-white hover:shadow-lg transition-shadow rounded-lg overflow-hidden">
+      
+      <!-- Image -->
+      <div class="w-full lg:w-2/3 h-64 lg:h-auto order-1 lg:order-2">
+        <div class="h-full w-full bg-cover bg-center" style="background-image: url('/img/cli.png');"></div>
+      </div>
+
+      <!-- Text -->
+      <div class="w-full lg:w-1/3 flex items-center justify-center order-2 lg:order-1 p-6">
+        <div class="text-center lg:text-left max-w-md">
+          <h2 class="text-2xl font-bold text-blue-900 underline mb-4">Climate Change Resilience Report</h2>
+          <p class="text-gray-700 text-lg">Discover the actions we're taking to advance our lower carbon ambitions.</p>
+        </div>
+      </div>
+
+    </a>
+  </div>
+</section>
+
+
+
+<!-- Our Positions Section -->
+<section id="our-positions" class="bg-offwhite py-16">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-blue-900 mb-6">
+      <span class="block text-base font-semibold">Our Positions</span>
+      <span class="block mt-2">
+        With clear performance 
+        <button class="highlight text-blue-600 underline hover:text-blue-800 transition" data-bs-toggle="modal" data-bs-target="#highlight-modal-standards">
+          standards<span class="sr-only">click to learn more</span>
+        </button>, new 
+        <button class="highlight text-blue-600 underline hover:text-blue-800 transition" data-bs-toggle="modal" data-bs-target="#highlight-modal-tech">
+          tech<span class="sr-only">click to learn more</span>
+        </button> and using 
+        <button class="highlight text-blue-600 underline hover:text-blue-800 transition" data-bs-toggle="modal" data-bs-target="#highlight-modal-best-practices">
+          best practices<span class="sr-only">click to learn more</span>
+        </button>, 
+        <button class="highlight text-blue-600 underline hover:text-blue-800 transition" data-bs-toggle="modal" data-bs-target="#highlight-modal-together">
+          together<span class="sr-only">click to learn more</span>
+        </button> we can lower methane emissions
+      </span>
+    </h2>
+  </div>
+
+  <!-- Modals -->
+  <div class="modal fade" id="highlight-modal-standards" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-md-down">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close text-blue-900" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-left p-6">
+          <h3 class="text-2xl font-bold text-blue-900 mb-2">Standards</h3>
+          <p>Policy should set appropriate methane metrics while providing flexibility for companies to determine the optimal way to meet those metrics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="highlight-modal-tech" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-md-down">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close text-blue-900" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-left p-6">
+          <h3 class="text-2xl font-bold text-blue-900 mb-2">Tech</h3>
+          <p>Policy should flexibly incorporate new and future technologies, such as aerial and drone monitoring, that can identify and address methane emissions most effectively.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="highlight-modal-best-practices" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-md-down">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close text-blue-900" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-left p-6">
+          <h3 class="text-2xl font-bold text-blue-900 mb-2">Best Practices</h3>
+          <p>Methane emissions are disproportionately concentrated among a small number of operators, sites, and equipment. Reasonable minimum equipment standards help ensure all operators are working to curtail methane emissions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="highlight-modal-together" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-md-down">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close text-blue-900" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-left p-6">
+          <h3 class="text-2xl font-bold text-blue-900 mb-2">Together</h3>
+          <p>Improving methane performance is important for oil and natural gas (24 percent of U.S. methane emissions), as well as other sectors, which make up the remaining 76 percent. Policy should apply to all key sectors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Related Content Section -->
+<section id="related-content" class="bg-offwhite py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center">Related Content</h2>
+
+    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Item 1 -->
+      <li class="group bg-white rounded shadow overflow-hidden">
+        <a href="/newsroom/2025/q1/biodiesel-helps-cities-lower-emissions" class="block">
+          <div class="w-full h-48 sm:h-56 lg:h-48 overflow-hidden">
+            <img src="/videos/car.jpg" alt="Municipal fleets can operate on lower carbon emissions fuel options." class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <div class="p-4">
+            <span class="block font-semibold text-gray-900 mb-2">Biodiesel helps cities lower emissions</span>
+            <p class="text-gray-500 text-sm">
+              <span class="mr-2">Emissions Solutions</span>
+              <span>February 04, 2025</span>
+            </p>
+          </div>
+        </a>
+      </li>
+
+      <!-- Item 2 -->
+      <li class="group bg-white rounded shadow overflow-hidden">
+        <a href="/newsroom/2025/q1/chevron-ceo-discusses-the-future-of-energy" class="block">
+          <div class="w-full h-48 sm:h-56 lg:h-48 overflow-hidden">
+            <img src="/videos/chevr.jpg" alt="Mike Wirth, Chevron Chairman and CEO appeared on CNBC in January 2025 to discuss energy strategy and production." class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <div class="p-4">
+            <span class="block font-semibold text-gray-900 mb-2">Chevron CEO discusses the future of energy</span>
+            <p class="text-gray-500 text-sm">
+              <span class="mr-2">Emissions Solutions</span>
+              <span>January 20, 2025</span>
+            </p>
+          </div>
+        </a>
+      </li>
+
+      <!-- Item 3 -->
+      <li class="group bg-white rounded shadow overflow-hidden">
+        <a href="/newsroom/2025/q1/novel-ideas-established-companies-key-to-advancing-lower-carbon-tech" class="block">
+          <div class="w-full h-48 sm:h-56 lg:h-48 overflow-hidden">
+            <img src="/videos/ceo.jpg" alt="Jeff Gustavson, president of Chevron New Energies, outlines strategies to meet the world's demand for more energy during the Reuters NEXT conference in New York." class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <div class="p-4">
+            <span class="block font-semibold text-gray-900 mb-2">Novel ideas, established companies key to advancing lower carbon tech</span>
+            <p class="text-gray-500 text-sm">
+              <span class="mr-2">Emissions Solutions</span>
+              <span>January 14, 2025</span>
+            </p>
+          </div>
+        </a>
+      </li>
+
+      <!-- Item 4 -->
+      <li class="group bg-white rounded shadow overflow-hidden">
+        <a href="/newsroom/2024/q4/chevron-ceo-talks-growing-production-efficient-spending" class="block">
+          <div class="w-full h-48 sm:h-56 lg:h-48 overflow-hidden">
+            <img src="/videos/novel.jpg" alt="Chevron Chairman and CEO Mike Wirth talked about more efficient production in a December 6, 2024, discussion with the Atlantic Council." class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <div class="p-4">
+            <span class="block font-semibold text-gray-900 mb-2">Chevron CEO talks growing production, efficient spending</span>
+            <p class="text-gray-500 text-sm">
+              <span class="mr-2">Emissions Solutions</span>
+              <span>December 18, 2024</span>
+            </p>
+          </div>
+        </a>
+      </li>
+    </ul>
+
+    <div class="mt-8 text-center">
+      <a href="/newsroom/archive" class="text-blue-600 underline font-medium hover:text-blue-800 flex items-center justify-center gap-2">
+        View Archive
+        <span class="material-icons">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Back to top button (paste before </body>) -->
+<button id="backToTop"
+        class="fixed right-4 bottom-6 z-50 flex items-center justify-center w-12 h-12 rounded-full shadow-lg
+               bg-[#0b2d71] text-white
+               translate-y-6 opacity-0 pointer-events-none
+               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/80
+               transition-all duration-300 ease-out"
+        aria-label="Back to top"
+        title="Back to top"
+        aria-hidden="true">
+  <span class="sr-only">Back to top</span>
+
+  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 5.5v13"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"/>
+    <path d="M6.5 11.5L12 6l5.5 5.5"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"/>
+  </svg>
+</button>
+
+
+   <!-- Footer (Tailwind-ready) -->
+  <footer id="footer" class="bg-[#052c65] text-white">
+    <!-- Promo banner: email updates -->
+    <div class="max-w-4xl mx-auto px-4 pt-8 pb-6">
+      <aside class="rounded-lg overflow-hidden shadow-sm">
+        <a href="/newsroom/preference-center"
+          target="_blank" rel="noopener noreferrer"
+          class="block bg-sky-700 text-white px-4 py-5 rounded-lg">
+          <div class="text-center">
+            <h3 class="text-lg font-semibold">chevron email updates</h3>
+            <p class="mt-1 text-sm">subscribe to our newsletter to receive news and updates.</p>
+          </div>
+        </a>
+      </aside>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 pb-8">
+
+      <!-- top: brand + short copy -->
+      <div class="flex flex-col md:flex-row md:items-start gap-6">
+        <!-- left: logo + copy -->
+        <div class="w-full md:w-1/3">
+          <img src="/img/hallmark-2023-theme-light.png"
+              alt="the human energy company"
+              width="200" height="131"
+              class="w-40 h-auto mb-4">
+
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Chevron has always put people at the center of the energy conversation. Because we understand that the
+            well-being of people everywhere depends on energy — energy that is affordable, reliable and ever-cleaner.
+          </p>
+
+          <div class="mt-4">
+            <a href="/newsroom/preference-center"
+              class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-white transition text-sm"
+              aria-label="Subscribe to our newsletter">
+              <span>subscribe to our newsletter</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- right: accordion + links (we removed "latest at chevron") -->
+        <div class="w-full md:w-2/3">
+          <div id="footer-accordion" class="space-y-3">
+
+            <!-- GET TO KNOW US (populated with user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-get-to-know-us">
+                <span>get to know us</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-get-to-know-us"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0 md:items-start">
+                <li><a class="block hover:underline" href="/who-we-are.html">who we are</a></li>
+                <li><a class="block hover:underline" href="/our-leadership.html">our leadership</a></li>
+                <li><a class="block hover:underline" href="/what-we-do.html">what we do</a></li>
+                <li><a class="block hover:underline" href="/tech-innovation.html">technology and innovation</a></li>
+                <li><a class="block hover:underline" href="/sustainability.html">sustainability</a></li>
+              </ul>
+            </div>
+
+            <!-- FUTURE OF ENERGY (user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-future">
+                <span>future of energy</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-future"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
+                <li><a class="block hover:underline" href="/carbon capture and storage.html">carbon capture and storage</a></li>
+                <li><a class="block hover:underline" href="/energy-in-progress.html">energy in progress</a></li>
+                <li><a class="block hover:underline" href="/new-energy.html">new energies</a></li>
+                <li><a class="block hover:underline" href="/methane-management.html">methane management</a></li>
+              </ul>
+            </div>
+
+            <!-- POPULAR LINKS (user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-popular">
+                <span>popular links</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-popular"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
+                <li><a class="block hover:underline" href="/careers.html">careers</a></li>
+                <li><a class="block hover:underline" href="/contact.html">contact us</a></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- small divider -->
+          <hr class="my-4 border-slate-700">
+
+          <!-- global links + country selector -->
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-slate-300">
+            <div class="flex flex-wrap gap-3">
+              <a class="hover:underline" href="/global-pages/site-map">site map</a>
+              <a class="hover:underline" href="/accessibility">accessibility</a>
+              <a class="hover:underline" href="/terms-of-use">terms of use</a>
+              <a class="hover:underline" href="/privacy">privacy</a>
+              <button type="button" class="hover:underline" onclick="OneTrust.ToggleInfoDisplay()">cookie settings (do not sell/share information)</button>
+              <a class="hover:underline" href="/privacy/global-cookie-statement">cookie statement</a>
+            </div>
+
+            <div class="mt-2 sm:mt-0">
+              <a class="inline-flex items-center gap-2 text-slate-100 hover:underline" href="https://www.chevron.com/worldwide/nigeria" rel="nofollow noopener">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M12 2c2.8 0 5 2.2 5 5 0 5-5 10-5 10s-5-5-5-10c0-2.8 2.2-5 5-5z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Nigeria</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- social icons row -->
+          <div class="mt-4 flex items-center gap-4">
+            <a href="https://www.facebook.com/Chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/facebook.svg" alt="facebook" class="w-6 h-6">
+            </a>
+            <a href="https://twitter.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/twitter.svg" alt="twitter" class="w-6 h-6">
+            </a>
+            <a href="https://www.instagram.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/instagram.svg" alt="instagram" class="w-6 h-6">
+            </a>
+            <a href="https://www.tiktok.com/@chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/tiktok.svg" alt="tiktok" class="w-6 h-6">
+            </a>
+            <a href="https://www.youtube.com/user/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/youtube.svg" alt="youtube" class="w-6 h-6">
+            </a>
+            <a href="https://www.linkedin.com/company/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/linkedin.svg" alt="linkedin" class="w-6 h-6">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- copyright -->
+      <div class="mt-6 border-t border-slate-800 pt-4 text-xs text-slate-400 text-center">
+        © 2001 – 2025 Chevron Corporation. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="/main.js" defer></script>
+  <script>
+  const video = document.getElementById("gridVideo");
+  const toggleBtn = document.getElementById("videoToggleBtn");
+
+  toggleBtn.addEventListener("click", () => {
+    if (video.paused) {
+      video.play();
+      toggleBtn.textContent = "❚❚";  // pause icon
+    } else {
+      video.pause();
+      toggleBtn.textContent = "▶";    // play icon
+    }
+  });
+</script>
+
+<!-- back-to-top -->
+
+<script>
+  const backToTopBtn = document.getElementById('backToTop');
+
+  const toggleBackToTop = () => {
+    if (window.scrollY > 400) {
+      backToTopBtn.classList.remove(
+        'opacity-0',
+        'translate-y-6',
+        'pointer-events-none'
+      );
+      backToTopBtn.classList.add(
+        'opacity-100',
+        'translate-y-0'
+      );
+      backToTopBtn.setAttribute('aria-hidden', 'false');
+    } else {
+      backToTopBtn.classList.add(
+        'opacity-0',
+        'translate-y-6',
+        'pointer-events-none'
+      );
+      backToTopBtn.classList.remove(
+        'opacity-100',
+        'translate-y-0'
+      );
+      backToTopBtn.setAttribute('aria-hidden', 'true');
+    }
+  };
+
+  window.addEventListener('scroll', toggleBackToTop);
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+
+
+</body>
+</html>
