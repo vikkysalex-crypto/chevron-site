@@ -11,30 +11,91 @@
 </head>
 <body class="bg-white text-gray-900">
 
-  <!-- ---------------- header (NOT fixed, TRANSPARENT) ---------------- -->
-  <header class="w-full mobile-only fixed top-0 left-0 z-50 bg-white/10 backdrop-blur-sm">
-    <div class="flex items-center justify-between px-4 py-3">
-      <!-- menu icon LEFT -->
-      <button type="button" id="openMenuBtn" aria-label="Open menu" class="text-white">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<!-- ================= HEADER ================= -->
+<header
+  class="fixed top-0 left-0 z-50 w-full bg-white/10 backdrop-blur-md text-black transition-colors duration-300">
+
+  <div class="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-3 md:px-6">
+
+    <!-- ================= LEFT ================= -->
+    <div class="flex items-center gap-4">
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        id="openMenuBtn"
+        aria-label="Open menu"
+        class="md:hidden active:scale-95 transition">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M3 6h18M3 12h18M3 18h18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
         </svg>
       </button>
 
-      <!-- logo center -->
-      <div class="flex-1 flex justify-center">
-        <img src="/img/hallmark-2023-theme-light.png" alt="Logo" class="h-8 object-contain">
-      </div>
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="/who-we-are.html" class="hover:opacity-80">who we are</a>
+        <a href="/what-we-do.html" class="hover:opacity-80">what we do</a>
+        <a href="/sustainability.html" class="hover:opacity-80">sustainability</a>
+        <a href="/investors.html" class="hover:opacity-80">investors</a>
+      </nav>
 
-      <!-- search icon RIGHT (regular icon) -->
-      <button type="button" id="searchIcon" aria-label="Search (not functional)" class="text-white">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
     </div>
-  </header>
+
+    <!-- ================= CENTER ================= -->
+    <div class="absolute left-1/2 -translate-x-1/2">
+      <img
+        src="/img/hallmark-2023-theme-light.png"
+        alt="Chevron Logo"
+        class="h-9 w-auto object-contain drop-shadow-md"
+      />
+    </div>
+
+    <!-- ================= RIGHT ================= -->
+    <div class="flex items-center gap-5 text-sm font-medium">
+
+      <!-- Desktop Links -->
+      <a href="/Newsroom.html" class="hidden md:inline hover:opacity-80">
+        newsroom
+      </a>
+
+      <a href="/careers.html" class="hidden md:inline hover:opacity-80">
+        careers
+      </a>
+
+      <!-- Search Icon -->
+      <button
+        type="button"
+        id="searchIcon"
+        aria-label="Search"
+        class="active:scale-95 transition">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M21 21l-4.35-4.35"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <circle
+            cx="11"
+            cy="11"
+            r="6"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+        </svg>
+      </button>
+
+    </div>
+
+  </div>
+</header>
+
+
 
   <!-- ---------------- Full-screen blue menu (slides in from left) ---------------- -->
   <div id="menuContainer" class="fixed inset-0 z-50 mobile-only hidden" aria-hidden="true">
@@ -92,145 +153,131 @@
     </div>
   </div>
 
-  <!-- ---------------- Main content (mobile-first) ---------------- -->
-  <!-- main-careers.html -->
+
   <!-- Requires Tailwind CSS to be loaded on the page (CDN or compiled build) -->
   <main id="main-content" role="main" tabindex="-1" class="bg-white text-slate-900">
 
     <!-- HERO: Careers -->
-    <section class="relative pt-8">
-      <!-- background image (mobile-first) -->
-      <div class="w-full h-56 md:h-72 bg-center bg-cover"
-          style="background-image: url('/img/career-img.jpg');"
-          aria-hidden="true"></div>
+<section class="relative">
+  <!-- Background image -->
+  <div class="w-full h-56 sm:h-72 md:h-96 bg-center bg-cover"
+       style="background-image: url('/img/career-img.jpg');"
+       aria-hidden="true"></div>
 
-      <!-- overlaying text card that sits on top of the image -->
-      <div class="max-w-3xl mx-auto px-4 -mt-12 md:-mt-16">
-        <div class="bg-white rounded-xl shadow-lg p-4 md:p-6 text-center">
-          <h1 class="text-2xl md:text-3xl font-extrabold">careers</h1>
-          <p class="mt-2 text-sm md:text-base text-slate-700">
-            Team members of all experience levels tackle global, real world problems facing our business.
-          </p>
-        </div>
+  <!-- Overlaying text card -->
+  <div class="max-w-3xl mx-auto px-4 -mt-16 sm:-mt-20 md:-mt-24">
+    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 text-center">
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold">careers</h1>
+      <p class="mt-3 text-sm sm:text-base md:text-lg text-slate-700">
+        Team members of all experience levels tackle global, real world problems facing our business.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Careers Page Section -->
+<section class="bg-gray-50">
+
+  <!-- Careers Cards -->
+  <div class="max-w-7xl mx-auto px-4 py-10 space-y-10">
+
+    <!-- Card: Careers at Chevron -->
+    <div class="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+      <div class="w-full md:w-1/2 h-64 md:h-80 bg-cover bg-center rounded-lg" style="background-image: url('/img/ict.jpg');"></div>
+      <div class="w-full md:w-1/2 bg-[#0b2d71] text-white rounded-lg p-6 md:p-8 flex flex-col justify-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-[#009dd9] mb-4">careers at chevron</h2>
+        <p class="text-base md:text-lg mb-6">
+          Chevron only accepts job applications through our Careers website. The site features information about careers at Chevron and current job openings.
+        </p>
+        <a href="https://careers.chevron.com/search-jobs?acm=ALL&alrpm=ALL&ascf=[{%22key%22:%22ALL%22,%22value%22:%22%22}]"
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md border border-[#009dd9] text-white hover:bg-[#009dd9] hover:text-white transition w-full md:w-auto">
+          <span>view careers</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </div>
-    </section>
+    </div>
 
-    <!-- Cards list (stacked mobile-first) -->
-    <section class="px-4 mt-6">
-      <div class="max-w-3xl mx-auto space-y-6">
-
-        <!-- Card: Careers at Chevron -->
-        <article class="bg-slate-50 rounded-lg overflow-hidden shadow-sm">
-          <img class="w-full h-48 object-cover" loading="lazy"
-              src="/img/career-img-1.jpg"
-              alt="Chevron workplace">
-          <div class="p-4 bg-[#0b2d71]">
-            <h2 class="text-lg font-semibold text-[#009dd9]">careers at chevron</h2>
-            <p class="mt-2 text-sm text-white">
-              Chevron only accepts job applications through our Careers website. The site features information
-              about careers at Chevron and current job openings.
-            </p>
-            <div class="mt-4">
-              <a href="#"
-                target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center justify-center w-full md:w-auto gap-2 px-4 py-3 rounded-md border border-sky-600 text-white hover:bg-sky-600 hover:text-white transition"
-                title="view careers">
-                <span>view careers</span>
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card: Service station employment -->
-        <article class="bg-[#711b00] rounded-lg overflow-hidden shadow-sm">
-          <img class="w-full h-48 object-cover" loading="lazy"
-              src="/img/career-img-2.jpg"
-              alt="Service station job">
-          <div class="p-4">
-            <h2 class="text-lg font-semibold text-[#e21836]">service station employment</h2>
-            <p class="mt-2 text-sm text-white">
-              Chevron Service Stations, Inc. is looking for Customer Service Representatives who are 18 years or older.
-            </p>
-            <div class="mt-4">
-              <a href="https://www.chevronstations.com/search-jobs" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center justify-center w-full md:w-auto gap-2 px-4 py-3 rounded-md border border-rose-600 text-white hover:bg-rose-600 hover:text-white transition"
-                title="view service station jobs">
-                <span>view service station jobs</span>
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card: Students and recent grads -->
-        <article class="bg-[#0b2d71] rounded-lg overflow-hidden shadow-sm">
-          <img class="w-full h-48 object-cover" loading="lazy"
-              src="/img/career-img-3.jpg"
-              alt="Students and recent graduates">
-          <div class="p-4">
-            <h2 class="text-lg font-semibold text-[#009dd9]">students and recent grads</h2>
-            <p class="mt-2 text-sm text-white">
-              Meet employees and recruiters on your college campus or at a special event.
-            </p>
-            <div class="mt-4">
-              <a href="https://careers.chevron.com/events" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center justify-center w-full md:w-auto gap-2 px-4 py-3 rounded-md border border-sky-600 text-white hover:bg-sky-600 hover:text-white transition"
-                title="learn more">
-                <span>learn more</span>
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card: Recruiting fraud -->
-        <article class="bg-[#751269] rounded-lg overflow-hidden shadow-sm">
-          <img class="w-full h-48 object-cover" loading="lazy"
-              src="/img/career-img-4.jpg"
-              alt="Recruiting fraud illustration">
-          <div class="p-4">
-            <h2 class="text-lg font-semibold text-[#ba3093]">recruiting fraud</h2>
-            <p class="mt-2 text-sm text-white">
-              Chevron never seeks fees from job applicants under any circumstances. If you receive a job offer that you believe is fraudulent, contact your local law enforcement agency.
-            </p>
-            <div class="mt-4">
-              <a href="https://www.chevron.com/who-we-are/contact/chevron?topic=fraud" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center justify-center w-full md:w-auto gap-2 px-4 py-3 rounded-md border border-purple-600 text-white hover:bg-purple-600 hover:text-white transition"
-                title="contact our fraud department">
-                <span>contact our fraud department</span>
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
+    <!-- Card: Service Station Employment -->
+    <div class="flex flex-col md:flex-row-reverse items-center gap-6 md:gap-10">
+      <div class="w-full md:w-1/2 h-64 md:h-80 bg-cover bg-center rounded-lg" style="background-image: url('/img/career-img-2.jpg');"></div>
+      <div class="w-full md:w-1/2 bg-[#711b00] text-white rounded-lg p-6 md:p-8 flex flex-col justify-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-[#e21836] mb-4">service station employment</h2>
+        <p class="text-base md:text-lg mb-6">
+          Chevron Service Stations, Inc. is looking for Customer Service Representatives who are 18 years or older.
+        </p>
+        <a href="https://www.chevronstations.com/search-jobs"
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md border border-[#e21836] text-white hover:bg-[#e21836] hover:text-white transition w-full md:w-auto">
+          <span>view service station jobs</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </div>
-    </section>
+    </div>
+
+    <!-- Card: Students and Recent Grads -->
+    <div class="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+      <div class="w-full md:w-1/2 h-64 md:h-80 bg-cover bg-center rounded-lg" style="background-image: url('/img/human-energy.png');"></div>
+      <div class="w-full md:w-1/2 bg-[#0b2d71] text-white rounded-lg p-6 md:p-8 flex flex-col justify-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-[#009dd9] mb-4">students and recent grads</h2>
+        <p class="text-base md:text-lg mb-6">
+          Meet employees and recruiters on your college campus or at a special event.
+        </p>
+        <a href="https://careers.chevron.com/events"
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md border border-[#009dd9] text-white hover:bg-[#009dd9] hover:text-white transition w-full md:w-auto">
+          <span>learn more</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card: Recruiting Fraud -->
+    <div class="flex flex-col md:flex-row-reverse items-center gap-6 md:gap-10">
+      <div class="w-full md:w-1/2 h-64 md:h-80 bg-cover bg-center rounded-lg" style="background-image: url('/img/city.png');"></div>
+      <div class="w-full md:w-1/2 bg-[#751269] text-white rounded-lg p-6 md:p-8 flex flex-col justify-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-[#ba3093] mb-4">recruiting fraud</h2>
+        <p class="text-base md:text-lg mb-6">
+          Chevron never seeks fees from job applicants under any circumstances. If you receive a job offer that you believe is fraudulent, contact your local law enforcement agency.
+        </p>
+        <a href="https://www.chevron.com/who-we-are/contact/chevron?topic=fraud"
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md border border-[#ba3093] text-white hover:bg-[#ba3093] hover:text-white transition w-full md:w-auto">
+          <span>contact our fraud department</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Newsletter Promo -->
+  <div class="bg-[#0b2d71] text-white py-10">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <a href="/newsroom/preference-center" target="_blank" rel="noopener noreferrer" class="inline-block w-full md:w-auto bg-[#0056a0] hover:bg-[#007acc] rounded-lg p-6 transition">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2">chevron email updates</h2>
+        <p class="text-base md:text-lg">subscribe to our newsletter to receive news and updates.</p>
+      </a>
+    </div>
+  </div>
+
+</section>
+
+
+
+
   </main>
 
    <!-- Footer (Tailwind-ready) -->
   <footer id="footer" class="bg-[#052c65] text-white">
-    <!-- Promo banner: email updates -->
-    <div class="max-w-4xl mx-auto px-4 pt-8 pb-6">
-      <aside class="rounded-lg overflow-hidden shadow-sm">
-        <a href="/newsroom/preference-center"
-          target="_blank" rel="noopener noreferrer"
-          class="block bg-sky-700 text-white px-4 py-5 rounded-lg">
-          <div class="text-center">
-            <h3 class="text-lg font-semibold">chevron email updates</h3>
-            <p class="mt-1 text-sm">subscribe to our newsletter to receive news and updates.</p>
-          </div>
-        </a>
-      </aside>
-    </div>
 
     <div class="max-w-4xl mx-auto px-4 pb-8">
 
