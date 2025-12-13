@@ -1,0 +1,1258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>new energy</title>
+
+  <!-- Tailwind CDN for quick prototyping -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- External small CSS for things not directly in Tailwind -->
+  <link rel="stylesheet" href="/style.css" />
+
+    <!-- back to top style -->
+   <link rel="stylesheet" href="/back-to-top.css">
+
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+<!-- ================= HEADER ================= -->
+<header
+  class="fixed top-0 left-0 z-50 w-full bg-white/10 backdrop-blur-md text-white transition-colors duration-300">
+
+  <div class="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-3 md:px-6">
+
+    <!-- ================= LEFT ================= -->
+    <div class="flex items-center gap-4">
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        id="openMenuBtn"
+        aria-label="Open menu"
+        class="md:hidden active:scale-95 transition">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M3 6h18M3 12h18M3 18h18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="/who-we-are.html" class="hover:opacity-80">who we are</a>
+        <a href="/what-we-do.html" class="hover:opacity-80">what we do</a>
+        <a href="/sustainability.html" class="hover:opacity-80">sustainability</a>
+        <a href="/investors.html" class="hover:opacity-80">investors</a>
+      </nav>
+
+    </div>
+
+    <!-- ================= CENTER ================= -->
+    <div class="absolute left-1/2 -translate-x-1/2">
+      <img
+        src="/img/hallmark-2023-theme-light.png"
+        alt="Chevron Logo"
+        class="h-9 w-auto object-contain drop-shadow-md"
+      />
+    </div>
+
+    <!-- ================= RIGHT ================= -->
+    <div class="flex items-center gap-5 text-sm font-medium">
+
+      <!-- Desktop Links -->
+      <a href="/Newsroom.html" class="hidden md:inline hover:opacity-80">
+        newsroom
+      </a>
+
+      <a href="/careers.html" class="hidden md:inline hover:opacity-80">
+        careers
+      </a>
+
+      <!-- Search Icon -->
+      <button
+        type="button"
+        id="searchIcon"
+        aria-label="Search"
+        class="active:scale-95 transition">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M21 21l-4.35-4.35"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <circle
+            cx="11"
+            cy="11"
+            r="6"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+        </svg>
+      </button>
+
+    </div>
+
+  </div>
+</header>
+
+
+
+  <!-- ---------------- Full-screen blue menu (slides in from left) ---------------- -->
+  <div id="menuContainer" class="fixed inset-0 z-50 mobile-only hidden" aria-hidden="true">
+    <!-- backdrop -->
+    <div id="menuBackdrop" class="absolute inset-0 bg-black/30 backdrop-blur-sm backdrop-brightness-90"></div>
+
+    <!-- panel -->
+    <div id="menuPanel"
+        class="absolute top-0 left-0 w-full h-full bg-[#0b2d71] text-white menu-off transition-transform duration-300"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Main menu">
+
+      <div class="h-full flex flex-col px-6 pt-4 pb-6">
+
+        <!-- close button -->
+        <div class="flex items-center justify-end">
+          <button type="button" id="closeMenuBtn" aria-label="Close menu" class="p-2 text-white">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- menu items -->
+        <nav id="menuNav" class="mt-6 flex-1 flex flex-col justify-start gap-6">
+          <a class="menu-item text-2xl font-semibold" href="/who-we-are.html">Who We Are</a>
+          <a class="menu-item text-2xl font-semibold" href="/what-we-do.html">What We Do</a>
+
+          <!-- Sustainability dropdown -->
+          <div class="flex flex-col">
+            <button 
+              id="sustainBtn"
+              class="menu-item text-2xl font-semibold flex items-center justify-between w-full">
+              Sustainability
+              <svg id="sustainArrow" class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+
+            <div id="sustainDropdown" class="ml-4 mt-3 flex-col gap-3 hidden">
+              <a class="text-xl text-white font-medium block" href="/climate.html">Climate</a>
+              <a class="text-xl text-white font-medium block" href="/Environment.html">Environment</a>
+              <a class="text-xl text-white font-medium block" href="/Social Investment.html">Social Investment</a>
+            </div>
+          </div>
+
+          <a class="menu-item text-2xl font-semibold" href="/Investors.html">Investors</a>
+          <a class="menu-item text-2xl font-semibold" href="/Newsroom.html">Newsroom</a>
+          <a class="menu-item text-2xl font-semibold" href="/careers.html">Careers</a>
+          <a class="menu-item text-2xl font-semibold" href="/energy.html">Energies</a>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <main id="main-content" role="main" tabindex="-1" class="relative">
+
+    <section class="bg-white">
+  <!-- Video wrapper -->
+  <div class="relative w-full overflow-hidden">
+    <video
+      id="ne-video"
+      class="w-full h-[55vh] sm:h-[65vh] md:h-[75vh] object-cover"
+      autoplay
+      muted
+      playsinline
+      loop
+      poster="/img/poster.png"
+    >
+      <source src="/-/media/chevron/operations/documents/CNE-website-10-sec.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Play / Pause Button -->
+    <button
+      id="ne-toggle"
+      class="absolute top-4 right-4 z-10 flex items-center justify-center w-12 h-12 rounded-full bg-[#00708C]/90 text-white backdrop-blur hover:bg-[#00708C]"
+      aria-label="Pause video"
+    >
+      <svg id="pause-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <rect x="6" y="4" width="4" height="16"></rect>
+        <rect x="14" y="4" width="4" height="16"></rect>
+      </svg>
+      <svg id="play-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M5 3v18l15-9L5 3z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Content Card -->
+  <div class="relative z-10 -mt-12 sm:-mt-16 md:-mt-24 px-4">
+    <div class="max-w-3xl mx-auto bg-white shadow-xl rounded-xl p-6 sm:p-8 text-center">
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0b2d71] leading-tight">
+        chevron<br>
+        <span class="text-[#00708C]">new energies</span>
+      </h1>
+
+      <h2 class="mt-3 text-lg sm:text-xl font-semibold text-[#00708C]">
+        accelerating lower carbon solutions
+      </h2>
+
+      <p class="mt-4 text-sm sm:text-base text-gray-700 leading-relaxed">
+        Innovative solutions are needed to help address climate change and the world’s complex energy challenges.
+        We are collaborating in new ways with extensive capabilities and partnerships to help deliver scalable
+        solutions with measurable impact. Our goal is to help customers meet their lower carbon ambitions and
+        reduce the carbon intensity of our operations.
+      </p>
+
+      <a
+        href="https://youtu.be/l0hyE54XC0Q"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 mt-5 text-[#00708C] font-semibold hover:underline"
+      >
+        watch the full video
+        <span aria-hidden="true">›</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Play / Pause Script -->
+<script>
+  const video = document.getElementById('ne-video');
+  const toggle = document.getElementById('ne-toggle');
+  const playIcon = document.getElementById('play-icon');
+  const pauseIcon = document.getElementById('pause-icon');
+
+  toggle.addEventListener('click', () => {
+    if (video.paused) {
+      video.play();
+      playIcon.classList.add('hidden');
+      pauseIcon.classList.remove('hidden');
+    } else {
+      video.pause();
+      pauseIcon.classList.add('hidden');
+      playIcon.classList.remove('hidden');
+    }
+  });
+</script>
+
+
+
+<section id="quote-chevon-new-energies" class="bg-white py-10 sm:py-14">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+
+    <!-- Quote -->
+    <blockquote class="text-lg sm:text-xl md:text-2xl font-medium text-[#0b2d71] leading-relaxed">
+      “At Chevron New Energies, we’re well positioned to reduce emissions of the essential
+      industries that enable modern society. Customers can be confident in our ability to
+      serve their needs with an entrepreneurial mindset, as we help build the lower carbon
+      energy system of tomorrow.”
+    </blockquote>
+
+    <!-- Author -->
+    <p class="mt-6 text-sm sm:text-base font-semibold text-gray-800">
+      Jeff Gustavson
+    </p>
+
+    <!-- Role -->
+    <p class="text-sm text-gray-600">
+      President of Chevron New Energies
+    </p>
+
+  </div>
+</section>
+
+<!-- Chevron New Energies page navigation -->
+<section id="mod-938d3efe" class="bg-white">
+
+  <!-- Navigation bar -->
+  <nav aria-label="Chevron New Energies" class="bg-[#0b2d71]">
+    <ul
+      class="max-w-6xl mx-auto flex gap-6 overflow-x-auto px-4 py-4 text-sm sm:text-base
+             text-white whitespace-nowrap scrollbar-hide">
+
+      <li>
+        <a href="#ccus" class="hover:underline">ccus</a>
+      </li>
+
+      <li>
+        <a href="#hydrogen" class="hover:underline">hydrogen</a>
+      </li>
+
+      <li>
+        <a href="#renewables" class="hover:underline">renewables</a>
+      </li>
+
+      <li>
+        <a href="#carbonoffsets" class="hover:underline">carbon offsets</a>
+      </li>
+
+      <li>
+        <a href="#emergingtechnologies" class="hover:underline">
+          emerging technologies
+        </a>
+      </li>
+
+      <li>
+        <a href="#leadership" class="hover:underline">leadership</a>
+      </li>
+
+      <li>
+        <a href="#inthenews" class="hover:underline">in the news</a>
+      </li>
+
+      <li>
+        <a href="#connectwithus" class="hover:underline">
+          connect with us
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+
+</section>
+
+
+<!-- OUR PORTFOLIO — responsive, Tailwind only -->
+<section id="mod-eb19af38" class="bg-white">
+  <div class="max-w-4xl mx-auto px-4 py-12 sm:py-16 text-center">
+
+    <!-- Heading -->
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0b2d71]">
+      our portfolio
+    </h2>
+
+    <!-- Optional description container (kept for structure consistency) -->
+    <div class="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-slate-700">
+      <!-- add text here if needed later -->
+    </div>
+
+  </div>
+</section>
+
+
+<section class="bg-white py-8 sm:py-12">
+  <div class="max-w-xl mx-auto px-4">
+
+    <img
+      src="/img/carbon.png"
+      alt="Carbon capture, utilization, and storage (CCUS) illustration"
+      class="w-full h-auto mx-auto object-contain"
+      loading="lazy"
+    />
+
+  </div>
+</section>
+
+
+<section id="ccus" class="bg-white py-12 md:py-16">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    
+    <!-- Heading -->
+    <h3 class="text-2xl md:text-3xl font-extrabold text-[#0b2d71] mb-6">
+      Carbon capture, utilization, and storage (CCUS)
+    </h3>
+
+    <!-- Body content -->
+    <div class="max-w-3xl mx-auto space-y-5 text-base md:text-lg text-gray-800 leading-relaxed">
+      <p>
+        Carbon capture, utilization, and storage (CCUS) is a critical enabler of global net zero and our commitment to accelerate progress toward the lower carbon ambitions of our customers and company.
+      </p>
+
+      <p>
+        Chevron has decades of operational experience and a proven track record of carbon-capture projects and is already deploying CCUS technologies in locations across the globe. We’re taking action by deploying CCUS to lower the carbon intensity of our existing assets and growing our CCUS business to help reduce emissions of the essential industries that enable modern society.
+      </p>
+
+      <p>
+        We are leveraging our expertise and global reach to advance CCUS technologies and scaling viable lower carbon solutions across the value chain—capture, transport, utilization, and storage—with a focus on hard-to-abate, energy-intensive industries such as refining, petrochemicals, power, steel, and cement.
+      </p>
+
+      <p>
+        We operate 
+        <a href="/what-we-do/energy/oil-and-natural-gas/assets/gorgon"
+           class="text-[#00708C] font-semibold hover:underline">
+          Gorgon
+        </a>,
+        one of the world’s largest integrated CCS projects. Since the system started up in mid-2019, over 10.5 million tonnes of CO₂ emissions have been injected as of 2022.
+      </p>
+
+      <p>
+        We are investing in emerging CCUS technologies through pilot programs—often using Chevron’s existing assets—to accelerate commercialization. To achieve our ambitions, we are also exploring hub opportunities in the United States and abroad.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="bg-white py-4">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <a
+      href="/what-we-do/technology-and-innovation/capturing-and-storing-carbon-emissions"
+      class="inline-flex items-center gap-2 text-blue-900 font-medium hover:underline transition"
+      title="learn more about our carbon capturing and storage"
+    >
+      <span>Learn more about our carbon capturing and storage</span>
+      <svg
+        class="w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+</section>
+
+<section class="bg-white py-4">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <a
+      href="/what-we-do/energy/new-energies/partnerships#carboncapture,utilization,andstorage"
+      class="inline-flex items-center gap-2 text-blue-900 font-medium hover:underline transition"
+      title="learn more about our CCUS partnerships and projects"
+    >
+      <span>Learn more about our CCUS partnerships and projects</span>
+      <svg
+        class="w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+</section>
+
+<section class="bg-white py-12">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <a
+      href="/-/media/chevron/operations/documents/CCUS-fact-sheet-112024.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block bg-[#0b2d71] text-white font-semibold px-8 py-4 rounded-md
+             hover:bg-[#09245a] transition-colors duration-300 text-base md:text-lg"
+      title="View the CCUS fact sheet"
+    >
+      View the CCUS fact sheet
+    </a>
+  </div>
+</section>
+
+
+<!-- Hydrogen Section -->
+<section class="bg-white py-8">
+  <div class="max-w-5xl mx-auto px-4">
+    
+    <!-- Image -->
+    <div class="w-full mb-6">
+      <img src="/img/hydrogen.png"
+           alt="hydrogen illustration"
+           class="mx-auto w-full max-w-md h-auto object-cover">
+    </div>
+
+    <!-- Heading -->
+    <h3 class="text-2xl md:text-3xl font-bold text-[#0b2d71] text-center mb-4">
+      Hydrogen
+    </h3>
+
+    <!-- Body Text -->
+    <div class="text-center md:text-left text-gray-800 space-y-4 max-w-3xl mx-auto md:mx-0">
+      <p>
+        Chevron believes in the value of delivering large-scale hydrogen solutions that support a lower carbon world. We aim to deliver lower carbon energy to a growing world by creating a profitable, large-scale, lower carbon hydrogen business that builds on our existing assets, capabilities, and customers. We’re well positioned to participate across the value chain to supply industrial, power, and heavy-duty transportation customers.
+      </p>
+      <p>
+        Chevron currently produces approximately 1 million tonnes per year of hydrogen through our traditional business and has experience in retail hydrogen going back to 2005. Chevron holds more than 75 patents from early commercial ventures that are applicable to our future development plans. We produce approximately 1 million tonnes of hydrogen per year for use in our refining operations. Further, we have the potential to supply and sell hydrogen to customers from our existing refineries by leveraging our distribution capabilities, sales channels, and brands. We are currently building hydrogen fueling stations at select locations.
+      </p>
+      <p>
+        We’re exploring profitable opportunities for growth across the value chain, from upstream production through distribution into transportation, power generation, and other industrial sectors. We are also evaluating using hydrogen as an alternative for industries dependent on combustible fuels and assessing development of hydrogen production hubs. And, we are leveraging our capabilities in carbon capture, utilization, and storage to unlock market opportunities for hydrogen solutions.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Hydrogen Learn More Link -->
+<section class="bg-white py-4">
+  <div class="max-w-5xl mx-auto px-4 text-center">
+    <a href="/what-we-do/energy/new-energies/partnerships#hydrogen"
+       class="text-blue-900 underline hover:text-blue-700 transition"
+       title="learn more about our hydrogen partnerships and projects">
+      learn more about our hydrogen partnerships and projects
+    </a>
+  </div>
+</section>
+
+
+<!-- Renewable Fuels Section -->
+<section class="bg-white py-10">
+  <div class="max-w-4xl mx-auto px-4 space-y-8">
+
+    <!-- Image -->
+    <div class="w-full">
+      <img src="/img/product.png"
+           alt="renewable fuels illustration"
+           loading="lazy"
+           class="w-full h-auto object-cover rounded-lg shadow-md">
+    </div>
+
+    <!-- Text Content -->
+    <div class="text-center md:text-left space-y-4">
+      <h3 class="text-2xl md:text-3xl font-bold text-[#0b2d71]">renewable fuels and products</h3>
+      <div class="text-base md:text-lg text-gray-800 space-y-2">
+        <p>Renewable fuels are important products that can help reduce the lifecycle carbon intensity of transportation fuels while meeting the world’s growing energy needs.</p>
+        <p>We are responsive to our customers who will increasingly need renewable fuels and products like renewable natural gas, hydrogen, renewable diesel, sustainable aviation fuel and renewable base oils and lubricants.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Learn More: Fuel Solutions -->
+<div class="bg-white py-4">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <a href="/what-we-do/energy/fuels" 
+       class="text-blue-900 underline font-semibold hover:text-blue-700 transition"
+       title="learn more about fuel solutions">
+      learn more about fuel solutions
+      <svg class="inline w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+
+<!-- Carbon Offsets Image -->
+<section class="bg-white py-10">
+  <div class="max-w-lg mx-auto px-4">
+    <img 
+      src="/img/carborn-2.png" 
+      alt="offsets illustration" 
+      class="w-full h-auto rounded-lg shadow-md"
+      loading="lazy"
+    >
+  </div>
+</section>
+
+
+
+
+<!-- Carbon Offsets Section -->
+<section class="bg-white py-8">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h3 class="text-2xl md:text-3xl font-bold text-blue-900 mb-4">
+      carbon offsets
+    </h3>
+    <div class="space-y-4 text-left text-gray-800 text-base md:text-lg">
+      <p>
+        Carbon offsets are expected to play an important role in global carbon reductions, especially in sectors that do not have cost-effective reduction opportunities or for activities where emissions are harder to abate.
+      </p>
+      <p>
+        Chevron’s experience in developing and using carbon offsets dates back nearly two decades. We have a global carbon trading organization and actively invest in scalable, nature-based solutions – like soil carbon storage, reforestation, and mangrove restoration – to build a portfolio of high-quality credits.
+      </p>
+      <p>
+        We are growing a carbon offsets business to help achieve our net zero ambitions, and we are working to provide verified, low-cost, high-integrity offsets to our customers around the world in an effort to help them achieve their own lower carbon goals. As global demand grows, we expect to be a supplier of offsets by providing customers with offset-paired products. Carbon offsets are available now for use, and they can also be integrated with other lower carbon solutions to help maximize efficiency.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Carbon Offsets Learn More Link -->
+<section class="bg-white py-8">
+  <div class="max-w-5xl mx-auto px-4 text-center">
+    <a href="/what-we-do/energy/new-energies/partnerships#carbonoffsets" 
+       class="text-blue-900 hover:text-blue-700 font-semibold underline inline-flex items-center gap-2"
+       title="learn more about our carbon offsets partnerships and projects">
+      <span>learn more about our carbon offsets partnerships and projects</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+
+<!-- Emerging Technologies Image -->
+<section class="bg-white py-10">
+  <div class="max-w-lg mx-auto px-4">
+    <img src="/img/emergy.png" 
+         alt="emerging technologies illustration" 
+         class="w-full h-auto mx-auto rounded-lg shadow-md"
+         loading="lazy">
+  </div>
+</section>
+
+
+<!-- Emerging Technologies Section -->
+<section class="bg-white py-10">
+  <div class="max-w-3xl mx-auto px-4">
+    <h3 class="text-2xl md:text-3xl font-bold text-[#0b2d71] mb-6 text-center md:text-left">
+      emerging technologies
+    </h3>
+    <div class="space-y-4 text-gray-800 text-base md:text-lg">
+      <p>Chevron has a long history of identifying and driving innovation through investments in emerging technologies, research and development, and university partnerships.</p>
+      <p>We are currently exploring opportunities to commercialize the next generation of emerging technologies. Initially, we are leveraging core capabilities in subsurface, drilling, wells and facilities, and our operating history in geothermal, to advance and scale novel geothermal energy, which can potentially allow access to a widespread baseload, nonintermittent resource that can complement and add capacity to meet the world’s growing renewable-power demand.</p>
+      <p>In addition to geothermal, we are exploring other emerging lower carbon power technologies, such as lithium extraction.</p>
+      <p>We <a href="https://www.chevron.com/newsroom/2025/q2/chevron-enters-domestic-lithium-sector-to-support-us-energy-security" class="text-blue-700 underline hover:text-blue-900">announced the acquisition a significant leasehold acreage position</a> (~125,000 net acres) across the Smackover Formation in Northeast Texas and Southwest Arkansas to explore the potential for <a href="https://www.chevron.com/-/media/chevron/what-we-do/energy/new-energies/documents/Lithium-Fact-Sheet_June-17-2025.pdf" target="_blank" class="text-blue-700 underline hover:text-blue-900">large-scale lithium development</a>. Read more about how <a href="https://www.chevron.com/newsroom/2025/q2/charging-ahead-chevron-evaluates-lithium-potential" class="text-blue-700 underline hover:text-blue-900">we are charging ahead</a> in our Lithium development efforts.</p>
+      <p>Technologies such as long-duration storage or small, modular nuclear reactors can be part of the solutions needed to deliver on the world’s growing demand for lower carbon energy. Through venture capital, we continue to invest in other lower carbon technologies.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Learn More: Emerging Technologies -->
+<section class="bg-white py-10">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <a href="/what-we-do/energy/new-energies/partnerships#emergingtechnologies"
+       class="text-blue-700 hover:text-blue-900 underline inline-flex items-center gap-2"
+       title="learn more about our emerging technologies partnerships and projects">
+      <span>learn more about our emerging technologies partnerships and projects</span>
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-4.147-4.146a.5.5 0 0 1 .708-.708l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+
+<!-- Leadership Section -->
+<section class="bg-white py-16">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-6">
+      leadership
+    </h2>
+    <div class="text-base md:text-lg text-gray-800 space-y-4">
+      <p>
+        Chevron New Energies leadership is on a mission to accelerate progress to a lower carbon future and help customers and partners do the same. Our team of senior leaders have diverse backgrounds and expertise in engineering, technology, commercial, business development, and policy. We invite you to read our leaders’ bios to learn more.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Leadership Grid Section -->
+<section class="bg-white py-16">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+
+      <!-- Jeff Gustavson -->
+      <div class="text-center">
+        <div class="mb-4">
+          <img src="/img/jeff.jpg" 
+               alt="Photo of Jeff Gustavson" 
+               class="mx-auto rounded-full object-cover h-44 w-36">
+        </div>
+        <p class="mb-1">
+          <a href="/-/media/chevron/operations/documents/new-energies-bios/jeff-gustavson-bio.pdf" 
+             target="_blank" rel="noopener noreferrer" 
+             class="text-blue-700 underline inline-flex items-center gap-1">
+            Jeff Gustavson
+            <span class="sr-only">pdf opens in new window</span>
+            <svg class="w-4 h-4 inline" fill="currentColor" viewBox="0 0 16 16"><path d="M9 3h4v4h-1V5.414l-6.293 6.293-.707-.707L11.586 4H9V3z"/><path d="M14 14H2V2h6V1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6h-1v6z"/></svg>
+          </a>
+        </p>
+        <p class="text-sm font-semibold">President<br>Chevron New Energies</p>
+      </div>
+
+      <!-- Kristen Ghattas -->
+      <div class="text-center">
+        <div class="mb-4">
+          <img src="/img/kristen.jpg" 
+               alt="Kristen Ghattas" 
+               class="mx-auto rounded-full object-cover h-44 w-36">
+        </div>
+        <p class="mb-1">
+          <a href="/-/media/chevron/operations/documents/new-energies-bios/kristen-ghattas.pdf" 
+             target="_blank" rel="noopener noreferrer" 
+             class="text-blue-700 underline inline-flex items-center gap-1">
+            Kristen Ghattas
+            <span class="sr-only">pdf opens in new window</span>
+            <svg class="w-4 h-4 inline" fill="currentColor" viewBox="0 0 16 16"><path d="M9 3h4v4h-1V5.414l-6.293 6.293-.707-.707L11.586 4H9V3z"/><path d="M14 14H2V2h6V1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6h-1v6z"/></svg>
+          </a>
+        </p>
+        <p class="text-sm font-semibold">Vice President<br>CCS & Lithium</p>
+      </div>
+
+      <!-- Austin Knight -->
+      <div class="text-center">
+        <div class="mb-4">
+          <img src="/img/austin.jpg" 
+               alt="Austin Knight" 
+               class="mx-auto rounded-full object-cover h-44 w-36">
+        </div>
+        <p class="mb-1">
+          <a href="/-/media/chevron/operations/documents/new-energies-bios/austin-knight-bio.pdf" 
+             target="_blank" rel="noopener noreferrer" 
+             class="text-blue-700 underline inline-flex items-center gap-1">
+            Austin Knight
+            <span class="sr-only">pdf opens in new window</span>
+            <svg class="w-4 h-4 inline" fill="currentColor" viewBox="0 0 16 16"><path d="M9 3h4v4h-1V5.414l-6.293 6.293-.707-.707L11.586 4H9V3z"/><path d="M14 14H2V2h6V1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6h-1v6z"/></svg>
+          </a>
+        </p>
+        <p class="text-sm font-semibold">Vice President<br>Hydrogen, RNG and Offsets</p>
+      </div>
+
+      <!-- Daniel Droog -->
+      <div class="text-center">
+        <div class="mb-4">
+          <img src="/img/daniel.jpg" 
+               alt="Daniel Droog" 
+               class="mx-auto rounded-full object-cover h-44 w-36">
+        </div>
+        <p class="mb-1">
+          <a href="/-/media/chevron/operations/documents/new-energies-bios/daniel-droog-bio.pdf" 
+             target="_blank" rel="noopener noreferrer" 
+             class="text-blue-700 underline inline-flex items-center gap-1">
+            Daniel D. Droog
+            <span class="sr-only">pdf opens in new window</span>
+            <svg class="w-4 h-4 inline" fill="currentColor" viewBox="0 0 16 16"><path d="M9 3h4v4h-1V5.414l-6.293 6.293-.707-.707L11.586 4H9V3z"/><path d="M14 14H2V2h6V1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6h-1v6z"/></svg>
+          </a>
+        </p>
+        <p class="text-sm font-semibold">Vice President<br>Power</p>
+      </div>
+
+      <!-- Stacey Saunders -->
+      <div class="text-center">
+        <div class="mb-4">
+          <img src="/img/stacey.jpg" 
+               alt="Stacey Saunders" 
+               class="mx-auto rounded-full object-cover h-44 w-36">
+        </div>
+        <p class="mb-1 font-semibold text-blue-900">Stacey Saunders</p>
+        <p class="text-sm font-semibold -mt-2">Vice President<br>General Counsel<br>Chevron New Energies & CTV</p>
+      </div>
+
+      <!-- Ashley Birchfield -->
+      <div class="text-center">
+        <div class="mb-4">
+          <img src="/img/ashley.jpg" 
+               alt="Ashley Birchfield" 
+               class="mx-auto rounded-full object-cover h-44 w-36">
+        </div>
+        <p class="mb-1 font-semibold text-blue-900">Ashley Birchfield</p>
+        <p class="text-sm font-semibold -mt-2">Human Resources Manager<br>Chevron New Energies & CBD</p>
+      </div>
+
+      <!-- Nathan Cope -->
+      <div class="text-center">
+        <div class="mb-4">
+          <img src="img/nathan.jpg" 
+               alt="Nathan Cope" 
+               class="mx-auto rounded-full object-cover h-44 w-36">
+        </div>
+        <p class="mb-1 font-semibold text-blue-900">Nathan Cope</p>
+        <p class="text-sm font-semibold -mt-2">General Manager<br>Execution</p>
+      </div>
+
+      <!-- Kelsey Corrigan -->
+      <div class="text-center">
+        <div class="mb-4">
+          <img src="/img/kelsey.jpg" 
+               alt="Kelsey Corrigan" 
+               class="mx-auto rounded-full object-cover h-44 w-36">
+        </div>
+        <p class="mb-1 font-semibold text-blue-900">Kelsey Corrigan</p>
+        <p class="text-sm font-semibold -mt-2">General Manager<br>New Energies and Lower Carbon Strategy</p>
+      </div>
+
+      <!-- Carrie Grant -->
+      <div class="text-center">
+        <div class="mb-4">
+          <img src="/img/carrie.jpg" 
+               alt="Carrie Grant" 
+               class="mx-auto rounded-full object-cover h-44 w-36">
+        </div>
+        <p class="mb-1 font-semibold text-blue-900">Carrie Grant</p>
+        <p class="text-sm font-semibold -mt-2">General Manager<br>CNE – Enterprise Lower Carbon</p>
+      </div>
+
+      <!-- Zandra Kafarela -->
+      <div class="text-center">
+        <div class="mb-4">
+          <img src="img/zandra.jpg" 
+               alt="Zandra Kafarela" 
+               class="mx-auto rounded-full object-cover h-44 w-36">
+        </div>
+        <p class="mb-1 font-semibold text-blue-900">Zandra Kafarela</p>
+        <p class="text-sm font-semibold -mt-2">CNE Advisor</p>
+      </div>
+
+      <!-- Rob Nunmaker -->
+      <div class="text-center">
+        <div class="mb-4">
+          <img src="/img/rob.jpg" 
+               alt="Rob Nunmaker" 
+               class="mx-auto rounded-full object-cover h-44 w-36">
+        </div>
+        <p class="mb-1 font-semibold text-blue-900">Rob Nunmaker</p>
+        <p class="text-sm font-semibold -mt-2">General Manager<br>Commercial and Sales<br>Chevron New Energies</p>
+      </div>
+
+      <!-- Michael Rubio -->
+      <div class="text-center">
+        <div class="mb-4">
+          <img src="/img/micheal.jpg" 
+               alt="Michael Rubio" 
+               class="mx-auto rounded-full object-cover h-44 w-36">
+        </div>
+        <p class="mb-1 font-semibold text-blue-900">Michael Rubio</p>
+        <p class="text-sm font-semibold -mt-2">Director<br>Enterprise Policy & ESG Engagement</p>
+      </div>
+
+      <!-- Dave Tatum -->
+      <div class="text-center">
+        <div class="mb-4">
+          <img src="/img/dave.jpg" 
+               alt="Dave Tatum" 
+               class="mx-auto rounded-full object-cover h-44 w-36">
+        </div>
+        <p class="mb-1 font-semibold text-blue-900">Dave Tatum</p>
+        <p class="text-sm font-semibold -mt-2">General Manager<br>Corporate Business Development</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- In the News Carousel Section -->
+<section class="bg-white py-16">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center">In the News</h2>
+
+    <!-- Carousel Wrapper -->
+    <div class="relative">
+      <!-- Scrollable container -->
+      <div class="scroll-container flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+        <!-- Item 1 -->
+        <a href="/newsroom/2025/q1/power-solutions-for-us-data-centers" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Engine No. 1, Chevron and GE Vernova to power U.S. data centers</p>
+        </a>
+        <!-- Item 2 -->
+        <a href="/newsroom/2024/q3/chevron-builds-on-ccs-portfolio-offshore-australia" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Chevron builds on CCS portfolio with greenhouse gas assessment permit offshore Australia</p>
+        </a>
+        <!-- Item 3 -->
+        <a href="/newsroom/2024/q2/chevron-invests-in-carbon-capture-and-removal-technology-company-ion-clean-energy" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Chevron invests in carbon capture and removal technology company ION clean energy</p>
+        </a>
+        <!-- Item 4 -->
+        <a href="/newsroom/2024/q1/chevron-and-jx-sign-mou-for-collaboration-on-development-of-ccs-value-chain" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Chevron and JX sign MOU for collaboration on development of CCS value chain</p>
+        </a>
+        <!-- Item 5 -->
+        <a href="/newsroom/2023/q2/commencement-of-pilot-tests-of-new-geothermal-technology-with-chevron-in-japan" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">MOECO and Chevron to explore advanced closed loop geothermal pilot in Hokkaido Japan</p>
+        </a>
+        <!-- Item 6 -->
+        <a href="/newsroom/2023/q1/chevron-jera-sign-mou-to-explore-carbon-capture-and-storage-projects-in-united-states-australia" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Chevron and JERA sign MOU to explore carbon capture and storage projects in United States and Australia</p>
+        </a>
+        <!-- Item 7 -->
+        <a href="/newsroom/2023/q1/bayou-bend-expands-carbon-capture-project-to-onshore-southeast-texas" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Bayou Bend expands carbon capture project to onshore southeast Texas</p>
+        </a>
+        <!-- Item 8 -->
+        <a href="/newsroom/2023/q1/raven-sr-chevron-hyzon-motors-collaborate-to-produce-hydrogen-from-green-waste" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Raven SR, Chevron and Hyzon Motors collaborate to produce hydrogen from green waste in Northern California</p>
+        </a>
+        <!-- Item 9 -->
+        <a href="/newsroom/2022/q4/chevron-invests-in-carbon-capture-and-removal-technology-company-svante" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Chevron invests in carbon capture and removal technology company, Svante</p>
+        </a>
+        <!-- Item 10 -->
+        <a href="/newsroom/2022/q4/chevron-and-baseload-capital-create-joint-venture-to-explore-geothermal-development-opportunities" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Chevron and Baseload Capital create joint venture to explore geothermal development opportunities</p>
+        </a>
+        <!-- Item 11 -->
+        <a href="/newsroom/2022/q4/pertamina-keppel-and-chevron-sign-agreement" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Pertamina, Keppel Infrastructure, and Chevron sign agreement to explore development of green hydrogen and ammonia projects</p>
+        </a>
+        <!-- Item 12 -->
+        <a href="https://www.hyvelocityhub.us/support/introducing-hyvelocity-hub" target="_blank" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Introducing Hyvelocity Hub: a commitment to advance clean, affordable, at-scale hydrogen in Texas and Louisiana</p>
+        </a>
+        <!-- Item 13 -->
+        <a href="/newsroom/2022/q4/chevron-and-mol-to-study-co2-shipping-from-singapore-to-australia" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Chevron and MOL to study CO2 shipping from Singapore to Australia</p>
+        </a>
+        <!-- Item 14 -->
+        <a href="/newsroom/2022/q4/chevron-and-jera-advance-lower-carbon-solutions-in-asia-pacific-and-the-us" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Chevron and JERA advance lower carbon solutions in Asia Pacific and the U.S.</p>
+        </a>
+        <!-- Item 15 -->
+        <a href="/newsroom/2022/q3/chevron-and-moeco-to-collaborate-on-advanced-geothermal-technology" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Chevron and MOECO to collaborate on advanced geothermal technology</p>
+        </a>
+        <!-- Item 16 -->
+        <a href="/newsroom/2022/q3/chevron-granted-interest-in-three-permits-to-assess-carbon-storage-offshore-australia" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Chevron granted interest in three permits to assess carbon storage offshore Australia</p>
+        </a>
+        <!-- Item 17 -->
+        <a href="/newsroom/2022/q3/bayou-bend-aims-to-be-first-us-offshore-carbon-storage-hub" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Bayou Bend aims to be first US offshore carbon storage hub</p>
+        </a>
+        <!-- Item 18 -->
+        <a href="/newsroom/2022/q2/new-collaboration-to-explore-lower-carbon-in-indonesia" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">New collaboration to explore lower carbon in Indonesia</p>
+        </a>
+        <!-- Item 19 -->
+        <a href="/newsroom/2022/q2/chevron-completes-acquisition-of-renewable-energy-group" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Chevron completes acquisition of Renewable Energy Group</p>
+        </a>
+        <!-- Item 20 -->
+        <a href="/newsroom/2022/q2/walmart-to-demonstrate-trucks-run-on-chevrons-renewable-natural-gas" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Walmart to demonstrate trucks run on Chevron's renewable natural gas</p>
+        </a>
+        <!-- Item 21 -->
+        <a href="/newsroom/2022/q2/chevron-and-kazmunaygas-announce-collaboration-on-lower-carbon-opportunities" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Chevron and KazMunayGas announce collaboration on lower carbon opportunities</p>
+        </a>
+        <!-- Item 22 -->
+        <a href="/newsroom/2022/q2/carbon-capture-and-storage-project-in-california-takes-root" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Carbon capture and storage project in California takes root</p>
+        </a>
+        <!-- Item 23 -->
+        <a href="/newsroom/2022/q1/chevron-and-restore-the-earth-foundation-agree-to-collaborate-on-carbon-offsets-reforestation" class="flex-shrink-0 w-80 bg-white border rounded-lg p-4 shadow hover:shadow-lg transition transform hover:-translate-y-1 snap-start">
+          <p class="text-blue-600 font-medium underline mb-2 text-center">Chevron and Restore the Earth Foundation agree to collaborate on carbon offsets reforestation</p>
+        </a>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <button onclick="document.querySelector('.scroll-container').scrollBy({left: -320, behavior: 'smooth'})" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-100">&#10094;</button>
+      <button onclick="document.querySelector('.scroll-container').scrollBy({left: 320, behavior: 'smooth'})" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-100">&#10095;</button>
+    </div>
+  </div>
+</section>
+
+<style>
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+</style>
+
+
+<!-- See More News Link -->
+<div class="bg-white py-8">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <a href="/newsroom" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-medium underline inline-flex items-center gap-1 hover:text-blue-800 transition">
+      <span>See more Chevron news</span>
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+        <path d="M9 3h4v4h-1V5.414l-6.293 6.293-.707-.707L11.586 4H9V3z"/>
+        <path d="M14 14H2V2h6V1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6h-1v6z"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+
+<!-- Connect With Us Section -->
+<section class="bg-white py-16">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-blue-900 mb-6">Connect with us</h2>
+    <p class="text-gray-700 text-lg">
+      We work closely with partners and customers to understand and address complex, lower carbon business opportunities. 
+      Contact us at 
+      <a href="mailto:newenergies@chevron.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800 transition">
+        newenergies@chevron.com
+      </a> 
+      to explore how our reliable and cost-effective lower carbon energy solutions could help you meet your lower carbon ambitions.
+    </p>
+  </div>
+</section>
+
+
+<!-- DOE Conflict of Interest Policy Section -->
+<section class="bg-gray-50 py-16">
+  <div class="max-w-5xl mx-auto px-4 text-center">
+    <a href="/-/media/chevron/what-we-do/energy/new-energies/documents/cne-process-doe-interim-conflict-of-interest-policy.pdf" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="inline-block bg-blue-700 text-white font-semibold py-3 px-6 rounded hover:bg-blue-800 transition">
+      Download U.S. Department of Energy Interim Conflict of Interest Policy
+    </a>
+  </div>
+</section>
+
+
+
+
+
+<!-- Back to top button (paste before </body>) -->
+<button id="backToTop"
+        class="fixed right-4 bottom-6 z-50 flex items-center justify-center w-12 h-12 rounded-full shadow-lg
+               bg-[#0b2d71] text-white
+               translate-y-6 opacity-0 pointer-events-none
+               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/80
+               transition-all duration-300 ease-out"
+        aria-label="Back to top"
+        title="Back to top"
+        aria-hidden="true">
+  <span class="sr-only">Back to top</span>
+
+  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 5.5v13"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"/>
+    <path d="M6.5 11.5L12 6l5.5 5.5"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"/>
+  </svg>
+</button>
+
+
+   <!-- Footer (Tailwind-ready) -->
+  <footer id="footer" class="bg-[#052c65] text-white">
+    <!-- Promo banner: email updates -->
+    <div class="max-w-4xl mx-auto px-4 pt-8 pb-6">
+      <aside class="rounded-lg overflow-hidden shadow-sm">
+        <a href="/newsroom/preference-center"
+          target="_blank" rel="noopener noreferrer"
+          class="block bg-sky-700 text-white px-4 py-5 rounded-lg">
+          <div class="text-center">
+            <h3 class="text-lg font-semibold">chevron email updates</h3>
+            <p class="mt-1 text-sm">subscribe to our newsletter to receive news and updates.</p>
+          </div>
+        </a>
+      </aside>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 pb-8">
+
+      <!-- top: brand + short copy -->
+      <div class="flex flex-col md:flex-row md:items-start gap-6">
+        <!-- left: logo + copy -->
+        <div class="w-full md:w-1/3">
+          <img src="/img/hallmark-2023-theme-light.png"
+              alt="the human energy company"
+              width="200" height="131"
+              class="w-40 h-auto mb-4">
+
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Chevron has always put people at the center of the energy conversation. Because we understand that the
+            well-being of people everywhere depends on energy — energy that is affordable, reliable and ever-cleaner.
+          </p>
+
+          <div class="mt-4">
+            <a href="/newsroom/preference-center"
+              class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-white transition text-sm"
+              aria-label="Subscribe to our newsletter">
+              <span>subscribe to our newsletter</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M13 5l7 7-7 7M5 12h14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- right: accordion + links (we removed "latest at chevron") -->
+        <div class="w-full md:w-2/3">
+          <div id="footer-accordion" class="space-y-3">
+
+            <!-- GET TO KNOW US (populated with user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-get-to-know-us">
+                <span>get to know us</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-get-to-know-us"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0 md:items-start">
+                <li><a class="block hover:underline" href="/who-we-are.html">who we are</a></li>
+                <li><a class="block hover:underline" href="/our-leadership.html">our leadership</a></li>
+                <li><a class="block hover:underline" href="/what-we-do.html">what we do</a></li>
+                <li><a class="block hover:underline" href="/tech-innovation.html">technology and innovation</a></li>
+                <li><a class="block hover:underline" href="/sustainability.html">sustainability</a></li>
+              </ul>
+            </div>
+
+            <!-- FUTURE OF ENERGY (user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-future">
+                <span>future of energy</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-future"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
+                <li><a class="block hover:underline" href="/carbon capture and storage.html">carbon capture and storage</a></li>
+                <li><a class="block hover:underline" href="/energy-in-progress.html">energy in progress</a></li>
+                <li><a class="block hover:underline" href="/new-energy.html">new energies</a></li>
+                <li><a class="block hover:underline" href="/methane-management.html">methane management</a></li>
+              </ul>
+            </div>
+
+            <!-- POPULAR LINKS (user items) -->
+            <div class="bg-transparent">
+              <button
+                class="w-full flex items-center justify-between py-3 px-2 text-left text-sm font-medium text-white/90 md:text-base md:font-semibold md:cursor-default"
+                aria-expanded="false"
+                aria-controls="group-popular">
+                <span>popular links</span>
+                <svg class="w-5 h-5 md:hidden transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <ul id="group-popular"
+                  class="pl-2 mt-1 space-y-1 text-sm text-slate-300 md:flex md:flex-wrap md:gap-x-4 md:mt-2 md:pl-0 md:space-y-0">
+                <li><a class="block hover:underline" href="/careers.html">careers</a></li>
+                <li><a class="block hover:underline" href="/contact.html">contact us</a></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- small divider -->
+          <hr class="my-4 border-slate-700">
+
+          <!-- global links + country selector -->
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-slate-300">
+            <div class="flex flex-wrap gap-3">
+              <a class="hover:underline" href="/global-pages/site-map">site map</a>
+              <a class="hover:underline" href="/accessibility">accessibility</a>
+              <a class="hover:underline" href="/terms-of-use">terms of use</a>
+              <a class="hover:underline" href="/privacy">privacy</a>
+              <button type="button" class="hover:underline" onclick="OneTrust.ToggleInfoDisplay()">cookie settings (do not sell/share information)</button>
+              <a class="hover:underline" href="/privacy/global-cookie-statement">cookie statement</a>
+            </div>
+
+            <div class="mt-2 sm:mt-0">
+              <a class="inline-flex items-center gap-2 text-slate-100 hover:underline" href="https://www.chevron.com/worldwide/nigeria" rel="nofollow noopener">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M12 2c2.8 0 5 2.2 5 5 0 5-5 10-5 10s-5-5-5-10c0-2.8 2.2-5 5-5z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Nigeria</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- social icons row -->
+          <div class="mt-4 flex items-center gap-4">
+            <a href="https://www.facebook.com/Chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/facebook.svg" alt="facebook" class="w-6 h-6">
+            </a>
+            <a href="https://twitter.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/twitter.svg" alt="twitter" class="w-6 h-6">
+            </a>
+            <a href="https://www.instagram.com/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/instagram.svg" alt="instagram" class="w-6 h-6">
+            </a>
+            <a href="https://www.tiktok.com/@chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/tiktok.svg" alt="tiktok" class="w-6 h-6">
+            </a>
+            <a href="https://www.youtube.com/user/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/youtube.svg" alt="youtube" class="w-6 h-6">
+            </a>
+            <a href="https://www.linkedin.com/company/chevron" class="opacity-90 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/linkedin.svg" alt="linkedin" class="w-6 h-6">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- copyright -->
+      <div class="mt-6 border-t border-slate-800 pt-4 text-xs text-slate-400 text-center">
+        © 2001 – 2025 Chevron Corporation. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="/main.js" defer></script>
+  <script>
+  const video = document.getElementById("gridVideo");
+  const toggleBtn = document.getElementById("videoToggleBtn");
+
+  toggleBtn.addEventListener("click", () => {
+    if (video.paused) {
+      video.play();
+      toggleBtn.textContent = "❚❚";  // pause icon
+    } else {
+      video.pause();
+      toggleBtn.textContent = "▶";    // play icon
+    }
+  });
+</script>
+
+<!-- back-to-top -->
+
+<script>
+  const backToTopBtn = document.getElementById('backToTop');
+
+  const toggleBackToTop = () => {
+    if (window.scrollY > 400) {
+      backToTopBtn.classList.remove(
+        'opacity-0',
+        'translate-y-6',
+        'pointer-events-none'
+      );
+      backToTopBtn.classList.add(
+        'opacity-100',
+        'translate-y-0'
+      );
+      backToTopBtn.setAttribute('aria-hidden', 'false');
+    } else {
+      backToTopBtn.classList.add(
+        'opacity-0',
+        'translate-y-6',
+        'pointer-events-none'
+      );
+      backToTopBtn.classList.remove(
+        'opacity-100',
+        'translate-y-0'
+      );
+      backToTopBtn.setAttribute('aria-hidden', 'true');
+    }
+  };
+
+  window.addEventListener('scroll', toggleBackToTop);
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+
+
+</body>
+</html>
