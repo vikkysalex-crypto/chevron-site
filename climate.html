@@ -13,42 +13,91 @@
 </head>
 <body class="bg-white text-gray-900">
 
-  <!-- ---------------- Header (transparent, mobile-first) ---------------- -->
-  <header class="w-full fixed top-0 left-0 z-50 bg-white/10 backdrop-blur-md mobile-only">
-    <div class="flex items-center justify-between px-4 py-3">
+<!-- ================= HEADER ================= -->
+<header
+  class="fixed top-0 left-0 z-50 w-full bg-white/10 backdrop-blur-md text-white transition-colors duration-300">
 
-      <!-- Menu icon (Left) -->
-      <button type="button" id="openMenuBtn" aria-label="Open menu" class="text-white active:scale-95 transition">
+  <div class="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-3 md:px-6">
+
+    <!-- ================= LEFT ================= -->
+    <div class="flex items-center gap-4">
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        id="openMenuBtn"
+        aria-label="Open menu"
+        class="md:hidden active:scale-95 transition">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-          <path d="M3 6h18M3 12h18M3 18h18" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round"/>
+          <path
+            d="M3 6h18M3 12h18M3 18h18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
         </svg>
       </button>
 
-      <!-- Logo (Center) -->
-      <div class="flex-1 flex justify-center pointer-events-none">
-        <img src="/img/hallmark-2023-theme-light.png"
-            alt="Chevron Logo"
-            class="h-9 w-auto object-contain drop-shadow-md">
-      </div>
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="/who-we-are.html" class="hover:opacity-80">who we are</a>
+        <a href="/what-we-do.html" class="hover:opacity-80">what we do</a>
+        <a href="/sustainability.html" class="hover:opacity-80">sustainability</a>
+        <a href="/investors.html" class="hover:opacity-80">investors</a>
+      </nav>
 
-      <!-- Search icon (Right) -->
-      <button type="button" id="searchIcon" aria-label="Search" class="text-white active:scale-95 transition">
+    </div>
+
+    <!-- ================= CENTER ================= -->
+    <div class="absolute left-1/2 -translate-x-1/2">
+      <img
+        src="/img/hallmark-2023-theme-light.png"
+        alt="Chevron Logo"
+        class="h-9 w-auto object-contain drop-shadow-md"
+      />
+    </div>
+
+    <!-- ================= RIGHT ================= -->
+    <div class="flex items-center gap-5 text-sm font-medium">
+
+      <!-- Desktop Links -->
+      <a href="/Newsroom.html" class="hidden md:inline hover:opacity-80">
+        newsroom
+      </a>
+
+      <a href="/careers.html" class="hidden md:inline hover:opacity-80">
+        careers
+      </a>
+
+      <!-- Search Icon -->
+      <button
+        type="button"
+        id="searchIcon"
+        aria-label="Search"
+        class="active:scale-95 transition">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-          <path d="M21 21l-4.35-4.35" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round"/>
-          <circle cx="11" cy="11" r="6" 
-                  stroke="currentColor" 
-                  stroke-width="2"/>
+          <path
+            d="M21 21l-4.35-4.35"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <circle
+            cx="11"
+            cy="11"
+            r="6"
+            stroke="currentColor"
+            stroke-width="2"
+          />
         </svg>
       </button>
 
     </div>
-  </header>
+
+  </div>
+</header>
+
+
 
   <!-- ---------------- Full-screen blue menu (slides in from left) ---------------- -->
   <div id="menuContainer" class="fixed inset-0 z-50 mobile-only hidden" aria-hidden="true">
@@ -150,39 +199,41 @@
 
     </section>
 
-<!-- "fueling a lower carbon future" — mobile-first, Tailwind -->
+<!-- Fueling a Lower Carbon Future — Mobile-First, Tailwind -->
 <section id="mod-6cdc4bb6" class="bg-[#0b2d71] text-white">
   <div class="max-w-7xl mx-auto px-4 py-12 sm:py-16">
     <div class="max-w-[1000px] mx-auto text-center">
-      <!-- eyebrow / topic -->
+
+      <!-- Eyebrow / Topic Label -->
       <p class="text-sm sm:text-base font-semibold uppercase tracking-wider text-[#bfe9e6] mb-3">
         future outlook
       </p>
 
-      <!-- main heading -->
+      <!-- Main Heading -->
       <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
         fueling a lower carbon future
       </h2>
 
-      <!-- description -->
+      <!-- Description -->
       <div class="mx-auto max-w-[600px]">
         <p class="text-sm sm:text-base text-white/90 leading-relaxed">
           The world’s energy demand is greater than any other time in human history. We’re working to meet demand today and help build the energy system of tomorrow.
         </p>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- Mobile-first Tailwind rewrite — population + video section -->
+
+<!-- Population + Video Section — Auto-play -->
 <section id="mod-fba7e2fa" class="bg-[#0b2d71] text-white">
   <div class="max-w-7xl mx-auto px-4 pt-6 pb-8 sm:pt-10 sm:pb-12">
     <!-- Headline block (centered) -->
     <div class="max-w-[1000px] mx-auto text-center">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-white mb-3">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-3">
         by 2050 global population is expected to rise by 2 billion
       </h2>
-
       <div class="mx-auto max-w-[600px]">
         <p class="text-sm sm:text-base text-white/90">
           Increasing urbanization and income drive demand.
@@ -191,46 +242,31 @@
     </div>
   </div>
 
-  <!-- Video area -->
+  <!-- Video Area -->
   <div class="max-w-7xl mx-auto px-4 pb-12">
     <div class="mx-auto max-w-[1200px]">
-      <div class="relative w-full rounded-lg overflow-hidden shadow-lg" style="aspect-ratio: 16/9;">
-        <!-- Poster button (lazy-load iframe/video) — improves LCP on mobile -->
-        <button id="global-population-poster"
-                class="absolute inset-0 w-full h-full bg-center bg-cover focus:outline-none focus:ring-4 focus:ring-white/40"
-                aria-label="Play video — By 2050 global population is expected to rise by 2 billion"
-                style="background-image: linear-gradient(180deg, rgba(11,45,113,0.40), rgba(2,6,23,0.12));">
-          <!-- Decorative poster image can be added via inline style or background-image url(...) -->
-          <span class="sr-only">Play video</span>
-
-          <!-- Big play icon centered -->
-          <span aria-hidden="true" class="absolute inset-0 flex items-center justify-center">
-            <svg class="w-20 h-20 text-white/95" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="42" cy="42" r="40" fill="rgba(255,255,255,0.08)"/>
-              <path d="M33 28v28l22-14-22-14z" fill="#ffffff"/>
-            </svg>
-          </span>
-        </button>
-
-        <!-- Actual <video> (hidden until activated) -->
+      <div class="relative w-full rounded-lg overflow-hidden shadow-lg" style="aspect-ratio:16/9;">
+        
+        <!-- Auto-play Video -->
         <video id="global-population-video"
                class="absolute inset-0 w-full h-full object-cover"
-               playsinline
-               muted
-               loop
-               preload="none"
-               aria-hidden="true"
-               style="display:none;"
-               data-src="/videos/Bayou Bend CCS_ The future of energy along the Texas Gulf Coast.mp4"
-               poster="">
-          <!-- source will be inserted via JS when the user clicks the poster -->
+               playsinline muted loop autoplay
+               aria-hidden="false"
+               preload="auto"
+               src="/videos/Bayou Bend CCS_ The future of energy along the Texas Gulf Coast.mp4">
+          Your browser does not support the video tag.
         </video>
 
-        <!-- control: play/pause toggle (visible after activation) -->
-        <div id="global-population-controls" class="absolute right-4 bottom-4 z-30 hidden">
-          <button id="gp-toggle" class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-3 py-2 rounded-full focus:outline-none focus:ring-4 focus:ring-white/30">
-            <svg id="gp-icon-play" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 3v18l15-9z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <svg id="gp-icon-pause" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <!-- Optional Controls -->
+        <div id="global-population-controls" class="absolute right-4 bottom-4 z-30">
+          <button id="gp-toggle"
+                  class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-3 py-2 rounded-full focus:outline-none focus:ring-4 focus:ring-white/30">
+            <svg id="gp-icon-play" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M5 3v18l15-9z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg id="gp-icon-pause" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 5h4v14H6zM14 5h4v14h-4z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
             <span class="sr-only">Pause video</span>
           </button>
         </div>
@@ -238,50 +274,13 @@
     </div>
   </div>
 
-  <!-- Small scoped styles to complement Tailwind -->
-  <style>
-    /* Fallback aspect-ratio for older browsers */
-    #mod-fba7e2fa [style*="aspect-ratio"] { aspect-ratio: 16/9; }
-
-    /* Ensure poster button is accessible and shows a subtle focus ring on keyboard */
-    #global-population-poster:focus { box-shadow: 0 6px 22px rgba(2,6,23,0.5), 0 0 0 4px rgba(255,255,255,0.08); border-radius: 8px; }
-
-    /* Controls polish */
-    #global-population-controls button:focus { box-shadow: 0 8px 30px rgba(2,6,23,0.45); }
-  </style>
-
-  <!-- Small JS: lazy-load video when user activates the poster; accessible play/pause toggle -->
+  <!-- JS: play/pause toggle -->
   <script>
     (function () {
-      const poster = document.getElementById('global-population-poster');
       const video = document.getElementById('global-population-video');
-      const controls = document.getElementById('global-population-controls');
       const toggle = document.getElementById('gp-toggle');
       const iconPlay = document.getElementById('gp-icon-play');
       const iconPause = document.getElementById('gp-icon-pause');
-
-      if (!poster || !video) return;
-
-      function showVideo() {
-        // insert source and show video element
-        if (!video.querySelector('source')) {
-          const src = video.getAttribute('data-src');
-          const source = document.createElement('source');
-          source.src = src;
-          video.appendChild(source);
-        }
-        poster.style.display = 'none';
-        video.style.display = 'block';
-        video.setAttribute('aria-hidden', 'false');
-        // try play (muted autoplay allowed on most browsers)
-        video.play().catch(() => {
-          // if autoplay blocked, show controls and let user interact
-        });
-        controls.classList.remove('hidden');
-        // set icon to pause (video is playing)
-        iconPlay.classList.add('hidden');
-        iconPause.classList.remove('hidden');
-      }
 
       function togglePlay() {
         if (video.paused) {
@@ -297,38 +296,17 @@
         }
       }
 
-      poster.addEventListener('click', (e) => {
-        e.preventDefault();
-        showVideo();
-      });
+      toggle && toggle.addEventListener('click', togglePlay);
 
-      poster.addEventListener('keydown', (ev) => {
-        if (ev.key === 'Enter' || ev.key === ' ' || ev.key === 'Spacebar') {
-          ev.preventDefault();
-          showVideo();
-        }
-      });
-
-      toggle && toggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        togglePlay();
-      });
-
-      // Pause video when navigating away from the page/tab
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden && !video.paused) video.pause();
-      });
-
-      // Make sure video pauses on page unload for some browsers
-      window.addEventListener('pagehide', () => {
-        try { video.pause(); } catch (e) {}
-      });
+      document.addEventListener('visibilitychange', () => { if (document.hidden && !video.paused) video.pause(); });
+      window.addEventListener('pagehide', () => { try { video.pause(); } catch(e) {} });
     })();
   </script>
 </section>
 
 
-<!-- Mobile-first Tailwind rewrite — "a mix that includes oil and gas..." (video + sources) -->
+
+<!-- Video section — auto-play immediately -->
 <section id="mod-aff3b202" class="bg-[#0b2d71] text-white">
   <div class="max-w-7xl mx-auto px-4 pt-8 sm:pt-12">
     <!-- Headline -->
@@ -343,41 +321,29 @@
   <div class="max-w-7xl mx-auto px-4 pb-8 sm:pb-12">
     <div class="mx-auto max-w-[1200px]">
       <div class="relative rounded-lg overflow-hidden shadow-lg" style="aspect-ratio:16/9;">
-        <!-- Poster (lazy-loads video on activation) -->
-        <button id="mix-poster"
-                class="absolute inset-0 w-full h-full bg-center bg-cover focus:outline-none focus:ring-4 focus:ring-white/30"
-                aria-label="Play video — A mix that includes oil and gas can help satisfy those demands"
-                style="background-color: rgba(2,6,23,0.35);">
-          <span class="sr-only">Play video</span>
-          <span class="absolute inset-0 flex items-center justify-center">
-            <svg class="w-20 h-20 text-white/95" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="42" cy="42" r="40" fill="rgba(255,255,255,0.06)"/>
-              <path d="M33 28v28l22-14-22-14z" fill="#fff"/>
-            </svg>
-          </span>
-        </button>
 
-        <!-- Real video element (hidden until poster clicked) -->
+        <!-- Auto-play Video -->
         <video id="mix-video"
                class="absolute inset-0 w-full h-full object-cover"
-               playsinline
-               muted
-               loop
-               preload="none"
-               aria-hidden="true"
-               style="display:none;"
-               data-src="/videos/Bayou Bend CCS_ The future of energy along the Texas Gulf Coast.mp4">
-          <!-- Source inserted via JS -->
+               playsinline muted loop autoplay
+               aria-hidden="false"
+               preload="auto"
+               src="/videos/Bayou Bend CCS_ The future of energy along the Texas Gulf Coast.mp4">
+          Your browser does not support the video tag.
         </video>
 
-        <!-- Play/Pause control (shown after activation) -->
-        <div id="mix-controls" class="absolute right-4 bottom-4 z-30 hidden">
+        <!-- Play/Pause control -->
+        <div id="mix-controls" class="absolute right-4 bottom-4 z-30">
           <button id="mix-toggle"
                   class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-3 py-2 rounded-full focus:outline-none focus:ring-4 focus:ring-white/30"
-                  aria-pressed="false"
+                  aria-pressed="true"
                   aria-label="Pause video">
-            <svg id="mix-icon-play" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 3v18l15-9z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <svg id="mix-icon-pause" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg id="mix-icon-play" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M5 3v18l15-9z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg id="mix-icon-pause" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M6 5h4v14H6zM14 5h4v14h-4z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
             <span class="sr-only">Pause video</span>
           </button>
         </div>
@@ -399,57 +365,13 @@
     </div>
   </div>
 
-  <!-- Small CSS helpers -->
-  <style>
-    /* Fallback aspect-ratio for browsers without support */
-    #mod-aff3b202 [style*="aspect-ratio"], #mod-aff3b202 [style*="aspect-ratio"] + * { aspect-ratio: 16/9; }
-
-    /* Poster focus polish */
-    #mix-poster:focus { box-shadow: 0 8px 30px rgba(2,6,23,0.6), 0 0 0 4px rgba(255,255,255,0.06); border-radius: 8px; }
-
-    /* Controls focus */
-    #mix-controls button:focus { box-shadow: 0 10px 30px rgba(2,6,23,0.5); outline: none; }
-  </style>
-
-  <!-- Small JS: lazy-load and play video, accessible controls -->
+  <!-- JS: play/pause toggle -->
   <script>
     (function () {
-      const poster = document.getElementById('mix-poster');
       const video = document.getElementById('mix-video');
-      const controls = document.getElementById('mix-controls');
       const toggle = document.getElementById('mix-toggle');
       const iconPlay = document.getElementById('mix-icon-play');
       const iconPause = document.getElementById('mix-icon-pause');
-
-      if (!poster || !video) return;
-
-      function showVideo() {
-        if (!video.querySelector('source')) {
-          const source = document.createElement('source');
-          source.src = video.getAttribute('data-src');
-          video.appendChild(source);
-        }
-
-        poster.style.display = 'none';
-        video.style.display = 'block';
-        video.setAttribute('aria-hidden', 'false');
-
-        // attempt to autoplay (muted)
-        video.play().then(() => {
-          controls.classList.remove('hidden');
-          iconPlay.classList.add('hidden');
-          iconPause.classList.remove('hidden');
-          toggle.setAttribute('aria-pressed', 'true');
-          toggle.querySelector('.sr-only').textContent = 'Pause video';
-        }).catch(() => {
-          // If autoplay blocked, show controls but do not force play
-          controls.classList.remove('hidden');
-          iconPlay.classList.remove('hidden');
-          iconPause.classList.add('hidden');
-          toggle.setAttribute('aria-pressed', 'false');
-          toggle.querySelector('.sr-only').textContent = 'Play video';
-        });
-      }
 
       function togglePlay() {
         if (video.paused) {
@@ -467,24 +389,14 @@
         }
       }
 
-      poster.addEventListener('click', (e) => { e.preventDefault(); showVideo(); });
-      poster.addEventListener('keydown', (ev) => {
-        if (ev.key === 'Enter' || ev.key === ' ' || ev.key === 'Spacebar') { ev.preventDefault(); showVideo(); }
-      });
+      toggle && toggle.addEventListener('click', togglePlay);
 
-      toggle && toggle.addEventListener('click', (e) => { e.preventDefault(); togglePlay(); });
-
-      // Pause when tab hidden
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden && !video.paused) video.pause();
-      });
-
-      // Pause on pagehide
-      window.addEventListener('pagehide', () => { try { video.pause(); } catch (e) {} });
-
+      document.addEventListener('visibilitychange', () => { if (document.hidden && !video.paused) video.pause(); });
+      window.addEventListener('pagehide', () => { try { video.pause(); } catch(e) {} });
     })();
   </script>
 </section>
+
 
 
 <!-- "our strategy is clear" — mobile-first Tailwind -->
@@ -547,90 +459,35 @@
 
 
 
-<!-- Strategy grid — mobile-first Tailwind -->
-<section id="mod-6a805456" class="bg-[#4b2b6b] text-white">
-  <div class="max-w-7xl mx-auto px-4 py-8 sm:py-12">
-
-    <!-- Grid: 1 column on mobile, 2 columns on md+ -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-start max-w-[1400px] mx-auto">
-
-      <!-- Block A: image then heading -->
-      <div class="flex flex-col">
-        <!-- Image block (keeps 16:9 / 4:3 feel, shows <img> on small view for semantics) -->
-        <div class="relative w-full rounded-lg overflow-hidden shadow-lg" style="aspect-ratio: 16/9;">
-          <!-- Decorative background image (object-cover) -->
-          <img
-            src="/img/climate-img-1.jpg"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            alt="Strategy image 1"
-            class="w-full h-full object-cover object-center"
-            loading="lazy" decoding="async"
-          />
-        </div>
-
-        <!-- Heading (keeps spacing and centered on small screens, left-aligned on wider) -->
-        <div class="mt-5 md:mt-6 text-center md:text-left">
-          <h2 class="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-extrabold leading-tight text-white">
-            working to lower the carbon intensity of our operations
-          </h2>
-        </div>
-      </div>
-
-      <!-- Block B: image then heading -->
-      <div class="flex flex-col">
-        <div class="relative w-full rounded-lg overflow-hidden shadow-lg" style="aspect-ratio: 16/9;">
-          <img
-            src="/img/climate-img-1.jpg"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            alt="Strategy image 2"
-            class="w-full h-full object-cover object-center"
-            loading="lazy" decoding="async"
-          />
-        </div>
-
-        <div class="mt-5 md:mt-6 text-center md:text-left">
-          <h2 class="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-extrabold leading-tight text-white">
-            investing to grow capabilities in new&nbsp;energies
-          </h2>
-        </div>
-      </div>
-
-    </div> <!-- /grid -->
-
-  </div>
-
-  <!-- small fallback CSS for browsers without aspect-ratio -->
-  <style>
-    #mod-6a805456 [style*="aspect-ratio"] { aspect-ratio: 16/9; }
-    @media (min-width: 768px) {
-      #mod-6a805456 .object-center { object-position: center; }
-    }
-  </style>
-</section>
 
 
 <!-- Our lower carbon targets — mobile-first Tailwind -->
 <section id="mod-ac950622" class="bg-[#0b2d71] text-white">
   <div class="max-w-7xl mx-auto px-4 pt-10 pb-8 sm:pt-14 sm:pb-12">
     <div class="max-w-[1000px] mx-auto text-center">
+      
       <!-- Heading -->
       <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight mb-4">
         our lower carbon targets
       </h2>
 
-      <!-- Description (keeps the anchor for deep linking) -->
+      <!-- Description (with hidden anchor for deep linking) -->
       <div class="mx-auto max-w-[600px] text-sm sm:text-base text-white/90">
         <a id="carbontargets" class="sr-only">carbon targets anchor</a>
         <p class="leading-relaxed">
-          We are investing to grow our oil and gas business, lower the carbon intensity of our operations and grow new energies businesses. We set targets to lower our carbon emissions intensities by 2028.*
+          We are investing to grow our oil and gas business, lower the carbon intensity of our operations, and grow new energies businesses. We set targets to lower our carbon emissions intensities by 2028.*
         </p>
       </div>
 
-      <!-- optional footnote text (small) -->
-      <p class="mt-4 text-xs text-white/60">*Targets refer to emissions intensity improvements announced by Chevron.</p>
+      <!-- Optional footnote -->
+      <p class="mt-4 text-xs text-white/60">
+        *Targets refer to emissions intensity improvements announced by Chevron.
+      </p>
+
     </div>
   </div>
 </section>
+
 
 
 <!-- Carbon intensity targets — mobile-first Tailwind -->
@@ -730,14 +587,14 @@
 <section id="mod-840d46c7" class="bg-white text-gray-900 py-10">
   <div class="max-w-7xl mx-auto px-4 mb-10">
 
-    <section class="flex flex-col md:flex-row items-center md:items-start gap-8">
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
 
       <!-- Image -->
       <div class="w-full md:w-1/2">
         <img 
           src="/img/climate-img-2.jpg"
-          alt=""
-          class="w-full h-auto object-cover"
+          alt="Illustration related to lower carbon energy solutions"
+          class="w-full h-auto object-cover rounded-lg"
         />
       </div>
 
@@ -766,16 +623,17 @@
 
       </figure>
 
-    </section>
+    </div>
 
   </div>
 </section>
+
 
 <section id="mod-97d39a9d" class="bg-white text-gray-900 py-8">
   <div class="max-w-7xl mx-auto px-4">
     <div class="max-w-3xl mx-auto text-center">
 
-      <h2 class="text-2xl md:text-3xl font-semibold text-[#1c4c8e]">
+      <h2 class="text-2xl sm:text-2xl md:text-3xl font-semibold text-[#1c4c8e] leading-snug">
         additional resources
       </h2>
 
@@ -784,81 +642,72 @@
 </section>
 
 
-<!-- Additional links list — mobile-first Tailwind -->
 <section id="mod-f5e2b76d" class="bg-white text-gray-900 py-8">
   <div class="max-w-7xl mx-auto px-4">
     <div class="max-w-[900px] mx-auto">
 
       <nav aria-label="Additional resources" class="space-y-4">
         <!-- List item 1 -->
-        <div>
-          <a href="/investors/esg"
-             class="group flex items-center justify-between rounded-md px-4 py-3 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
-             aria-label="ESG A-Z Index">
-            <span class="truncate text-base font-medium text-[#0b2d71]">ESG A-Z Index</span>
-            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-              <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
+        <a href="/investors/esg"
+           class="group flex items-center justify-between rounded-md px-4 py-3 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+           aria-label="ESG A-Z Index">
+          <span class="truncate text-base font-medium text-[#0b2d71]">ESG A-Z Index</span>
+          <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
 
         <!-- List item 2 -->
-        <div>
-          <a href="/newsroom/media/publications/corporate-sustainability-report"
-             class="group flex items-center justify-between rounded-md px-4 py-3 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
-             aria-label="2024 Corporate Sustainability Highlights">
-            <span class="truncate text-base font-medium text-[#0b2d71]">2024 Corporate Sustainability Highlights</span>
-            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+        <a href="/newsroom/media/publications/corporate-sustainability-report"
+           class="group flex items-center justify-between rounded-md px-4 py-3 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+           aria-label="2024 Corporate Sustainability Highlights">
+          <span class="truncate text-base font-medium text-[#0b2d71]">2024 Corporate Sustainability Highlights</span>
+          <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <!-- List item 3 (PDF) -->
+        <a href="/-/media/chevron/sustainability/documents/climate-change-resilience-report.pdf"
+           target="_blank" rel="noopener noreferrer"
+           class="group flex items-center justify-between rounded-md px-4 py-3 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+           aria-label="2023 Climate Change Resilience Report (PDF)">
+          <span class="truncate text-base font-medium text-[#0b2d71]">2023 Climate Change Resilience Report</span>
+          <span class="flex items-center gap-3">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 3v12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 11l4 4 4-4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="4" y="17" width="16" height="3" rx="1.2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-          </a>
-        </div>
-
-        <!-- List item 3 (PDF, opens new tab) -->
-        <div>
-          <a href="/-/media/chevron/sustainability/documents/climate-change-resilience-report.pdf"
-             class="group flex items-center justify-between rounded-md px-4 py-3 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="2023 Climate Change Resilience Report (PDF)">
-            <span class="truncate text-base font-medium text-[#0b2d71]">2023 Climate Change Resilience Report</span>
-            <span class="flex items-center gap-3">
-              <!-- download icon -->
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path d="M12 3v12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M8 11l4 4 4-4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <rect x="4" y="17" width="16" height="3" rx="1.2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </a>
-        </div>
+          </span>
+        </a>
 
         <!-- List item 4 (PDF) -->
-        <div>
-          <a href="/-/media/shared-media/documents/chevron-methane-report.pdf"
-             class="group flex items-center justify-between rounded-md px-4 py-3 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="2022 Methane Report (PDF)">
-            <span class="truncate text-base font-medium text-[#0b2d71]">2022 Methane Report</span>
-            <span class="flex items-center gap-3">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path d="M12 3v12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M8 11l4 4 4-4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                <rect x="4" y="17" width="16" height="3" rx="1.2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </a>
-        </div>
+        <a href="/-/media/shared-media/documents/chevron-methane-report.pdf"
+           target="_blank" rel="noopener noreferrer"
+           class="group flex items-center justify-between rounded-md px-4 py-3 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+           aria-label="2022 Methane Report (PDF)">
+          <span class="truncate text-base font-medium text-[#0b2d71]">2022 Methane Report</span>
+          <span class="flex items-center gap-3">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 3v12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 11l4 4 4-4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="4" y="17" width="16" height="3" rx="1.2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M5 12h14M13 5l7 7-7 7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
       </nav>
 
     </div>
   </div>
 </section>
+
 
 
 

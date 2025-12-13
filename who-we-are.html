@@ -162,13 +162,12 @@
   <!-- Main -->
   <main id="main-content" role="main" tabindex="-1" class="relative">
 
- <!-- ================= HERO SECTION ================= -->
+<!-- ================= HERO SECTION ================= -->
 <section class="relative w-full bg-gray-900 text-white pt-14 md:pt-16">
-  <!-- ↑ Pushes hero BELOW fixed header -->
+  <!-- ↑ Push hero BELOW fixed header -->
 
   <!-- ===== VIDEO AREA ===== -->
   <div class="relative w-full overflow-hidden">
-
     <video
       id="hero-video"
       class="w-full h-[60vh] sm:h-[65vh] md:h-[72vh] object-cover"
@@ -185,10 +184,10 @@
       Your browser does not support the video tag.
     </video>
 
-    <!-- Overlay -->
+    <!-- Overlay Gradient -->
     <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40"></div>
 
-    <!-- Play / Pause -->
+    <!-- Play / Pause Button -->
     <div class="absolute top-4 right-4 z-20">
       <button
         id="hero-playpause"
@@ -196,6 +195,7 @@
         aria-pressed="false"
         class="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/40 transition"
       >
+        <!-- Pause icon (shown when playing) -->
         <svg id="icon-pause" class="h-5 w-5" viewBox="0 0 24 24" fill="none">
           <path
             d="M6 4h4v16H6zM14 4h4v16h-4z"
@@ -205,6 +205,7 @@
           />
         </svg>
 
+        <!-- Play icon (shown when paused) -->
         <svg id="icon-play" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none">
           <path
             d="M5 3v18l15-9L5 3z"
@@ -215,21 +216,23 @@
         </svg>
       </button>
     </div>
-
   </div>
 
   <!-- ===== WHITE CONTENT PANEL ===== -->
   <div class="w-full bg-white text-[#0b2d71]">
     <div class="mx-auto max-w-6xl px-5 py-8 sm:py-10 md:py-12 text-center">
 
+      <!-- Subheading -->
       <p class="mb-2 text-xs sm:text-sm font-medium uppercase tracking-wider text-[#0b2d71]/80">
         who we are
       </p>
 
+      <!-- Main Heading -->
       <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
         leaders in energy
       </h1>
 
+      <!-- Paragraph -->
       <p class="mx-auto mt-4 max-w-3xl text-base sm:text-lg text-slate-800">
         Energy drives human progress and creates positive change for modern society.
         We work hard to deliver energy that can improve the lives of millions of people
@@ -238,8 +241,8 @@
 
     </div>
   </div>
-
 </section>
+
 
 <!-- What we believe -->
 
