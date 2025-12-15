@@ -181,44 +181,82 @@
         </div>
       </div>
     </div>
-<!-- HERO: video + overlay content -->
-<section class="relative bg-gray-900 text-white">
-  <!-- Video container -->
+
+   <!-- ================= HERO SECTION ================= -->
+<section class="relative w-full bg-gray-900 text-white pt-14 md:pt-16">
+  <!-- ↑ Push hero BELOW fixed header -->
+
+  <!-- ===== VIDEO AREA ===== -->
   <div class="relative w-full overflow-hidden">
-    <video id="hero-video"
-           class="w-full h-[60vh] md:h-[70vh] object-cover"
-           poster="/-/media/chevron/what-we-do/energy/images/01_hero_fallback_xlarge.jpg"
-           muted playsinline loop>
-      <source src="/videos/Bayou Bend CCS_ The future of energy along the Texas Gulf Coast.mp4" type="video/mp4">
+    <video
+      id="hero-video"
+      class="w-full h-[60vh] sm:h-[65vh] md:h-[72vh] object-cover"
+      poster="/-/media/chevron/what-we-do/energy/images/01_hero_fallback_xlarge.jpg"
+      muted
+      playsinline
+      loop
+      autoplay
+    >
+      <source
+        src="/videos/Bayou Bend CCS_ The future of energy along the Texas Gulf Coast.mp4"
+        type="video/mp4"
+      />
       Your browser does not support the video tag.
     </video>
 
-    <!-- Overlay gradient -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/25"></div>
+    <!-- Overlay Gradient -->
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40"></div>
 
-    <!-- Play/Pause button -->
-    <div class="absolute top-4 md:top-16 right-4 md:right-6">
-      <button id="hero-playpause" aria-pressed="false"
-              class="bg-white/10 hover:bg-white/20 text-white rounded-full p-3 backdrop-blur-sm transition">
-        <span id="hero-play-icon" class="sr-only">Pause</span>
-        <svg id="icon-play" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M5 3v18l15-9L5 3z"/>
+    <!-- Play / Pause Button -->
+    <div class="absolute top-4 right-4 z-20">
+      <button
+        id="hero-playpause"
+        aria-label="Pause video"
+        aria-pressed="false"
+        class="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/40 transition"
+      >
+        <!-- Pause icon (shown when playing) -->
+        <svg id="icon-pause" class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M6 4h4v16H6zM14 4h4v16h-4z"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          />
         </svg>
-        <svg id="icon-pause" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M6 4h4v16H6zM14 4h4v16h-4z"/>
+
+        <!-- Play icon (shown when paused) -->
+        <svg id="icon-play" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M5 3v18l15-9L5 3z"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          />
         </svg>
       </button>
     </div>
+  </div>
 
-    <!-- Eyebrow + title + description -->
-    <div class="absolute inset-x-0 bottom-0 md:bottom-6">
-      <div class="mx-auto px-4 md:px-12 pb-4 md:pb-6 text-center bg-white/90 backdrop-blur-sm rounded-t-lg">
-        <p class="inline-block bg-gray-200 text-blue-900 px-3 py-1 rounded-full text-sm font-semibold mb-4">what we do</p>
-        <h1 class="mt-2 text-2xl md:text-4xl font-extrabold text-[#0b2d71]">Energy Solutions</h1>
-        <p class="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-black/90">
-          Affordable, reliable and ever-cleaner energy for today and tomorrow. That’s what we’re working towards, every day.
-        </p>
-      </div>
+  <!-- ===== WHITE CONTENT PANEL ===== -->
+  <div class="w-full bg-white text-[#0b2d71]">
+    <div class="mx-auto max-w-6xl px-5 py-8 sm:py-10 md:py-12 text-center">
+
+      <!-- Subheading -->
+      <p class="mb-2 text-xs sm:text-sm font-medium uppercase tracking-wider text-[#0b2d71]/80">
+        what we do
+      </p>
+
+      <!-- Main Heading -->
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
+       energy solutions
+      </h1>
+
+      <!-- Paragraph -->
+      <p class="mx-auto mt-4 max-w-3xl text-base sm:text-lg text-slate-800">
+        Affordable, reliable and ever-cleaner energy for today and tomorrow. That’s what we’re working towards, every day.
+      </p>
+
     </div>
   </div>
 </section>

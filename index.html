@@ -13,42 +13,90 @@
 </head>
 <body class="bg-white text-gray-900">
 
-  <!-- ---------------- Header (transparent, mobile-first) ---------------- -->
-  <header class="w-full fixed top-0 left-0 z-50 bg-white/10 backdrop-blur-md mobile-only">
-    <div class="flex items-center justify-between px-4 py-3">
+<!-- ================= HEADER ================= -->
+<header
+  class="fixed top-0 left-0 z-50 w-full bg-white/10 backdrop-blur-md text-white transition-colors duration-300">
 
-      <!-- Menu icon (Left) -->
-      <button type="button" id="openMenuBtn" aria-label="Open menu" class="text-white active:scale-95 transition">
+  <div class="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-3 md:px-6">
+
+    <!-- ================= LEFT ================= -->
+    <div class="flex items-center gap-4">
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        id="openMenuBtn"
+        aria-label="Open menu"
+        class="md:hidden active:scale-95 transition">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-          <path d="M3 6h18M3 12h18M3 18h18" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round"/>
+          <path
+            d="M3 6h18M3 12h18M3 18h18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
         </svg>
       </button>
 
-      <!-- Logo (Center) -->
-      <div class="flex-1 flex justify-center pointer-events-none">
-        <img src="/img/hallmark-2023-theme-light.png"
-            alt="Chevron Logo"
-            class="h-9 w-auto object-contain drop-shadow-md">
-      </div>
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="/who-we-are.html" class="hover:opacity-80">who we are</a>
+        <a href="/what-we-do.html" class="hover:opacity-80">what we do</a>
+        <a href="/sustainability.html" class="hover:opacity-80">sustainability</a>
+        <a href="/investors.html" class="hover:opacity-80">investors</a>
+      </nav>
 
-      <!-- Search icon (Right) -->
-      <button type="button" id="searchIcon" aria-label="Search" class="text-white active:scale-95 transition">
+    </div>
+
+    <!-- ================= CENTER ================= -->
+    <div class="absolute left-1/2 -translate-x-1/2">
+      <img
+        src="/img/hallmark-2023-theme-light.png"
+        alt="Chevron Logo"
+        class="h-9 w-auto object-contain drop-shadow-md"
+      />
+    </div>
+
+    <!-- ================= RIGHT ================= -->
+    <div class="flex items-center gap-5 text-sm font-medium">
+
+      <!-- Desktop Links -->
+      <a href="/Newsroom.html" class="hidden md:inline hover:opacity-80">
+        newsroom
+      </a>
+
+      <a href="/careers.html" class="hidden md:inline hover:opacity-80">
+        careers
+      </a>
+
+      <!-- Search Icon -->
+      <button
+        type="button"
+        id="searchIcon"
+        aria-label="Search"
+        class="active:scale-95 transition">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-          <path d="M21 21l-4.35-4.35" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round"/>
-          <circle cx="11" cy="11" r="6" 
-                  stroke="currentColor" 
-                  stroke-width="2"/>
+          <path
+            d="M21 21l-4.35-4.35"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <circle
+            cx="11"
+            cy="11"
+            r="6"
+            stroke="currentColor"
+            stroke-width="2"
+          />
         </svg>
       </button>
 
     </div>
-  </header>
+
+  </div>
+</header>
+
 
   <!-- ---------------- Full-screen blue menu (slides in from left) ---------------- -->
   <div id="menuContainer" class="fixed inset-0 z-50 mobile-only hidden" aria-hidden="true">
@@ -128,7 +176,7 @@
 
         <!-- CTA -->
         <div class="mt-6 sm:mt-8">
-          <a href="/who-we-are"
+          <a href="/who-we-are.html"
             class="group inline-flex items-center justify-center w-full sm:w-auto gap-3 px-5 py-3 sm:px-6 sm:py-3 rounded-md border border-white/20 bg-white/10 text-white font-semibold shadow-sm transition
                     hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/40 focus:ring-offset-2"
             aria-label="Discover who we are">
@@ -143,29 +191,48 @@
       </div>
     </section>
 
-    <!-- WHAT WE DO -->
-    <section class="bg-[#F5F6F7] py-10 px-5">
-      <div class="max-w-xl mx-auto text-center">
 
-        <!-- Eyebrow -->
-        <p class="text-sm font-semibold text-[#0A2A66] tracking-wide mb-2 reveal">
-          what we do
-        </p>
+    <!-- what we do -->
+    <section class="bg-[#f5f7fa] text-[#0b2d71]">
+  <div class="max-w-screen-2xl mx-auto px-5 py-14 sm:py-20 md:py-24">
+    
+    <div class="max-w-3xl mx-auto text-center">
+      
+      <!-- Eyebrow -->
+      <p class="text-sm sm:text-base font-medium uppercase tracking-wide mb-3">
+        what we do
+      </p>
 
-        <!-- Heading -->
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0A2A66] mb-4 leading-tight reveal">
-          energy that fuels <br class="hidden sm:block"> the world
-        </h2>
+      <!-- Heading -->
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight mb-5">
+        energy that fuels <span class="whitespace-nowrap">the world</span>
+      </h2>
 
-        <!-- Description -->
-        <p class="max-w-md mx-auto text-gray-700 text-base sm:text-lg leading-relaxed reveal">
-          We’re working to deliver the energy needed today. To lower the carbon
-          intensity of our operations. And to build the lower carbon energy
-          system of tomorrow.
-        </p>
-      </div>
+      <!-- Description -->
+      <p class="max-w-xl mx-auto text-base sm:text-lg leading-relaxed mb-8">
+        We’re working to deliver the energy needed today. To lower the carbon
+        intensity of our operations. And to build the lower carbon energy system
+        of tomorrow.
+      </p>
 
-      <!-- IMAGE GRID -->
+      <!-- CTA -->
+      <a
+        href="/energy.html"
+        class="inline-flex items-center gap-3 font-medium text-base sm:text-lg group"
+      >
+        <span
+          class="flex items-center justify-center w-10 h-10 rounded-full border border-current transition-transform duration-300 group-hover:translate-x-1"
+        >
+          →
+        </span>
+        <span class="underline underline-offset-4">
+          see our solutions
+        </span>
+      </a>
+
+    </div>
+
+    <!-- IMAGE GRID -->
       <div class="mt-8 px-2">
         <div class="grid grid-cols-2 gap-3 max-w-xl mx-auto">
 
@@ -186,7 +253,10 @@
               src="/img/downloamd.jpeg" alt="">
         </div>
       </div>
+
+  </div>
     </section>
+
 
     <!-- NEWSROOM CAROUSEL -->
     <section id="newsroom-carousel" class="py-6 px-4">
